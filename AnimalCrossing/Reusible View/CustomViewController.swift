@@ -8,7 +8,7 @@
 import UIKit
 import SnapKit
 
-class CustomViewController: UIViewController {
+class CustomViewController: UIViewController, UITextFieldDelegate {
     
     let userStatus: UserStatus
     let controllerTitle: String
@@ -55,14 +55,12 @@ class CustomViewController: UIViewController {
             image = backgroundImage
             
             titleLabel.textColor = #colorLiteral(red: 0.2605174184, green: 0.2605243921, blue: 0.260520637, alpha: 1)
+        case .loginScreen:
+            view.backgroundColor = #colorLiteral(red: 0.768627451, green: 0.8078431373, blue: 0.9294117647, alpha: 1)
         }
+        if userStatus != .loginScreen {
         imageView.image = image
-        
-        self.navigationController?.navigationBar.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 0)
-        self.navigationController!.navigationBar.setBackgroundImage(UIImage(), for: .default)
-        self.navigationController!.navigationBar.shadowImage = UIImage()
-        self.navigationController?.navigationBar.isTranslucent = true
-        
+
         view.addSubview(titleLabel)
         self.titleLabel.snp.makeConstraints { make in
             make.top.equalTo(view).offset(AppContraints.navTitle)
@@ -71,7 +69,11 @@ class CustomViewController: UIViewController {
         titleLabel.text = controllerTitle
         titleLabel.textAlignment = .center
         titleLabel.font = UIFont(name: AppFont.fink.rawValue, size: 40)
-        
+        }
+        self.navigationController?.navigationBar.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 0)
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        self.navigationController?.navigationBar.isTranslucent = true
     }
     
     static func makeTextField(withPlacehoder placeholder: String, withImageName imageName: String) -> UITextField {
@@ -84,11 +86,13 @@ class CustomViewController: UIViewController {
         let view = makeImageLefViewTF(withImageName: imageName)
         textfield.leftViewMode = .always
         textfield.leftView = view
+       // textfield.delegate = self.view.d
         textfield.snp.makeConstraints { make in
             make.height.equalTo(AppContraints.Login.heightTF)
         }
 
         return textfield
+    
     }
     
     static func makeImageLefViewTF(withImageName imageName: String) -> UIView {
@@ -134,10 +138,12 @@ class CustomViewController: UIViewController {
         let circleLabel = UILabel()
         circleView.addSubview(circleLabel)
         circleLabel.snp.makeConstraints { make in
-            make.edges.equalTo(circleView)
+            make.leading.top.equalTo(circleView).offset(-1)
+            make.trailing.bottom.equalTo(circleView)
         }
         let firstCharacter: String = "\(buttonTitle.first ?? "+")"
         circleLabel.text = firstCharacter
+        circleLabel.font = UIFont(name: AppFont.maruBold.rawValue, size: 18)
         circleLabel.textColor = #colorLiteral(red: 0.9607843137, green: 0.9607843137, blue: 0.8862745098, alpha: 1)
         circleLabel.textAlignment = .center
         
@@ -149,11 +155,12 @@ class CustomViewController: UIViewController {
         }
         titleLabel.text = buttonTitle
         titleLabel.textColor = #colorLiteral(red: 0.5137254902, green: 0.4823529412, blue: 0.4588235294, alpha: 1)
-        titleLabel.font = UIFont(name: AppFont.maruBold.rawValue, size: 14)
+        titleLabel.font = UIFont(name: AppFont.maruBold.rawValue, size: 16)
        // titleLabel.font = titleLabel.font.withSize(14)
         
         return button
     }
+    
     
     
 }
