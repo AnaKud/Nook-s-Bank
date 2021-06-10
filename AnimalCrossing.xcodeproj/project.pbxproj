@@ -3,29 +3,59 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A20C412E0FE5A340C7207DA1 /* Pods_AnimalCrossing.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A207B86D830A555F32D3F965 /* Pods_AnimalCrossing.framework */; };
 		E3A6E7EA266C1ED500E2A5FE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A6E7E9266C1ED500E2A5FE /* AppDelegate.swift */; };
 		E3A6E7EC266C1ED500E2A5FE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A6E7EB266C1ED500E2A5FE /* SceneDelegate.swift */; };
-		E3A6E7EE266C1ED500E2A5FE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A6E7ED266C1ED500E2A5FE /* ViewController.swift */; };
-		E3A6E7F1266C1ED500E2A5FE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E3A6E7EF266C1ED500E2A5FE /* Main.storyboard */; };
+		E3A6E7EE266C1ED500E2A5FE /* CustomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A6E7ED266C1ED500E2A5FE /* CustomViewController.swift */; };
 		E3A6E7F4266C1ED500E2A5FE /* AnimalCrossing.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E3A6E7F2266C1ED500E2A5FE /* AnimalCrossing.xcdatamodeld */; };
 		E3A6E7F6266C1ED500E2A5FE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E3A6E7F5266C1ED500E2A5FE /* Assets.xcassets */; };
 		E3A6E7F9266C1ED500E2A5FE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E3A6E7F7266C1ED500E2A5FE /* LaunchScreen.storyboard */; };
+		E3C16D34266C269E00DE15E8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E3A6E802266C204A00E2A5FE /* GoogleService-Info.plist */; };
+		E3F0BD2A26723CAB00B2698C /* LoginAssebmly.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F0BD2926723CAB00B2698C /* LoginAssebmly.swift */; };
+		E3F0BD2D26723FE600B2698C /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F0BD2C26723FE600B2698C /* CoreDataManager.swift */; };
+		E3F0BD2F2672404F00B2698C /* LoginRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F0BD2E2672404F00B2698C /* LoginRouter.swift */; };
+		E3F0BD32267240FB00B2698C /* LoginPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F0BD31267240FB00B2698C /* LoginPresenter.swift */; };
+		E3F0BD342672418200B2698C /* FireBaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F0BD332672418200B2698C /* FireBaseManager.swift */; };
+		E3F0BD36267241EB00B2698C /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F0BD35267241EB00B2698C /* NetworkManager.swift */; };
+		E3F0BD382672431300B2698C /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F0BD372672431300B2698C /* LoginViewController.swift */; };
+		E3F0BD3A267245DD00B2698C /* MainRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F0BD39267245DD00B2698C /* MainRouter.swift */; };
+		E3F0BD3E26724EA900B2698C /* FinkHeavy.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E3F0BD3B267248B300B2698C /* FinkHeavy.ttf */; };
+		E3F0BD4126725B8700B2698C /* IwataMaruGothicW55-D.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E3F0BD3F26725ABE00B2698C /* IwataMaruGothicW55-D.ttf */; };
+		E3F0BD4226725B8900B2698C /* IwataMaruGothicW55-L.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E3F0BD4026725ABE00B2698C /* IwataMaruGothicW55-L.ttf */; };
+		E3F0BD4726725E0B00B2698C /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F0BD4626725E0B00B2698C /* StringExtension.swift */; };
+		E3F6E56B2671FDA70056CDCF /* SupportingFiles.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F6E56A2671FDA70056CDCF /* SupportingFiles.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		028EB4766B8E0348A8B5CC30 /* Pods-AnimalCrossing.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AnimalCrossing.release.xcconfig"; path = "Target Support Files/Pods-AnimalCrossing/Pods-AnimalCrossing.release.xcconfig"; sourceTree = "<group>"; };
+		3272AD05C6CC5C8A98803B96 /* Pods-AnimalCrossing.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AnimalCrossing.debug.xcconfig"; path = "Target Support Files/Pods-AnimalCrossing/Pods-AnimalCrossing.debug.xcconfig"; sourceTree = "<group>"; };
+		A207B86D830A555F32D3F965 /* Pods_AnimalCrossing.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AnimalCrossing.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E3A6E7E6266C1ED500E2A5FE /* AnimalCrossing.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AnimalCrossing.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E3A6E7E9266C1ED500E2A5FE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E3A6E7EB266C1ED500E2A5FE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		E3A6E7ED266C1ED500E2A5FE /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		E3A6E7F0266C1ED500E2A5FE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		E3A6E7ED266C1ED500E2A5FE /* CustomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomViewController.swift; sourceTree = "<group>"; };
 		E3A6E7F3266C1ED500E2A5FE /* AnimalCrossing.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = AnimalCrossing.xcdatamodel; sourceTree = "<group>"; };
 		E3A6E7F5266C1ED500E2A5FE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E3A6E7F8266C1ED500E2A5FE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E3A6E7FA266C1ED500E2A5FE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E3A6E802266C204A00E2A5FE /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		E3F0BD2926723CAB00B2698C /* LoginAssebmly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginAssebmly.swift; sourceTree = "<group>"; };
+		E3F0BD2C26723FE600B2698C /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		E3F0BD2E2672404F00B2698C /* LoginRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRouter.swift; sourceTree = "<group>"; };
+		E3F0BD31267240FB00B2698C /* LoginPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPresenter.swift; sourceTree = "<group>"; };
+		E3F0BD332672418200B2698C /* FireBaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireBaseManager.swift; sourceTree = "<group>"; };
+		E3F0BD35267241EB00B2698C /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		E3F0BD372672431300B2698C /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		E3F0BD39267245DD00B2698C /* MainRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainRouter.swift; sourceTree = "<group>"; };
+		E3F0BD3B267248B300B2698C /* FinkHeavy.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FinkHeavy.ttf; sourceTree = "<group>"; };
+		E3F0BD3F26725ABE00B2698C /* IwataMaruGothicW55-D.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "IwataMaruGothicW55-D.ttf"; sourceTree = "<group>"; };
+		E3F0BD4026725ABE00B2698C /* IwataMaruGothicW55-L.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "IwataMaruGothicW55-L.ttf"; sourceTree = "<group>"; };
+		E3F0BD4626725E0B00B2698C /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
+		E3F6E56A2671FDA70056CDCF /* SupportingFiles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupportingFiles.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,17 +63,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A20C412E0FE5A340C7207DA1 /* Pods_AnimalCrossing.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		37579C762EE1F868C5596A52 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				A207B86D830A555F32D3F965 /* Pods_AnimalCrossing.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		78F39AB7143511A165AED64A /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				3272AD05C6CC5C8A98803B96 /* Pods-AnimalCrossing.debug.xcconfig */,
+				028EB4766B8E0348A8B5CC30 /* Pods-AnimalCrossing.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		E3A6E7DD266C1ED500E2A5FE = {
 			isa = PBXGroup;
 			children = (
 				E3A6E7E8266C1ED500E2A5FE /* AnimalCrossing */,
 				E3A6E7E7266C1ED500E2A5FE /* Products */,
+				78F39AB7143511A165AED64A /* Pods */,
+				37579C762EE1F868C5596A52 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -58,16 +108,69 @@
 		E3A6E7E8266C1ED500E2A5FE /* AnimalCrossing */ = {
 			isa = PBXGroup;
 			children = (
-				E3A6E7E9266C1ED500E2A5FE /* AppDelegate.swift */,
-				E3A6E7EB266C1ED500E2A5FE /* SceneDelegate.swift */,
-				E3A6E7ED266C1ED500E2A5FE /* ViewController.swift */,
-				E3A6E7EF266C1ED500E2A5FE /* Main.storyboard */,
-				E3A6E7F5266C1ED500E2A5FE /* Assets.xcassets */,
-				E3A6E7F7266C1ED500E2A5FE /* LaunchScreen.storyboard */,
+				E3F0BD2826723C8600B2698C /* News */,
+				E3F0BD2726723C7A00B2698C /* Login */,
+				E3A6E802266C204A00E2A5FE /* GoogleService-Info.plist */,
+				E3A6E800266C1F0A00E2A5FE /* Supporting Files */,
+				E3F0BD30267240D200B2698C /* Reusible View */,
 				E3A6E7FA266C1ED500E2A5FE /* Info.plist */,
-				E3A6E7F2266C1ED500E2A5FE /* AnimalCrossing.xcdatamodeld */,
+				E3A6E801266C1F2400E2A5FE /* Core Data */,
 			);
 			path = AnimalCrossing;
+			sourceTree = "<group>";
+		};
+		E3A6E800266C1F0A00E2A5FE /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				E3F0BD39267245DD00B2698C /* MainRouter.swift */,
+				E3A6E7E9266C1ED500E2A5FE /* AppDelegate.swift */,
+				E3A6E7EB266C1ED500E2A5FE /* SceneDelegate.swift */,
+				E3A6E7F7266C1ED500E2A5FE /* LaunchScreen.storyboard */,
+				E3A6E7F5266C1ED500E2A5FE /* Assets.xcassets */,
+				E3F0BD4626725E0B00B2698C /* StringExtension.swift */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		E3A6E801266C1F2400E2A5FE /* Core Data */ = {
+			isa = PBXGroup;
+			children = (
+				E3A6E7F2266C1ED500E2A5FE /* AnimalCrossing.xcdatamodeld */,
+				E3F0BD2C26723FE600B2698C /* CoreDataManager.swift */,
+				E3F0BD332672418200B2698C /* FireBaseManager.swift */,
+				E3F0BD35267241EB00B2698C /* NetworkManager.swift */,
+			);
+			path = "Core Data";
+			sourceTree = "<group>";
+		};
+		E3F0BD2726723C7A00B2698C /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				E3F0BD2926723CAB00B2698C /* LoginAssebmly.swift */,
+				E3F0BD2E2672404F00B2698C /* LoginRouter.swift */,
+				E3F0BD372672431300B2698C /* LoginViewController.swift */,
+				E3F0BD31267240FB00B2698C /* LoginPresenter.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		E3F0BD2826723C8600B2698C /* News */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = News;
+			sourceTree = "<group>";
+		};
+		E3F0BD30267240D200B2698C /* Reusible View */ = {
+			isa = PBXGroup;
+			children = (
+				E3A6E7ED266C1ED500E2A5FE /* CustomViewController.swift */,
+				E3F6E56A2671FDA70056CDCF /* SupportingFiles.swift */,
+				E3F0BD3B267248B300B2698C /* FinkHeavy.ttf */,
+				E3F0BD3F26725ABE00B2698C /* IwataMaruGothicW55-D.ttf */,
+				E3F0BD4026725ABE00B2698C /* IwataMaruGothicW55-L.ttf */,
+			);
+			path = "Reusible View";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -77,15 +180,19 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E3A6E7FD266C1ED500E2A5FE /* Build configuration list for PBXNativeTarget "AnimalCrossing" */;
 			buildPhases = (
+				B0EB3E0D883C73321F638655 /* [CP] Check Pods Manifest.lock */,
 				E3A6E7E2266C1ED500E2A5FE /* Sources */,
 				E3A6E7E3266C1ED500E2A5FE /* Frameworks */,
 				E3A6E7E4266C1ED500E2A5FE /* Resources */,
+				42D95F08F9A65235CCA7D848 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			name = AnimalCrossing;
+			packageProductDependencies = (
+			);
 			productName = AnimalCrossing;
 			productReference = E3A6E7E6266C1ED500E2A5FE /* AnimalCrossing.app */;
 			productType = "com.apple.product-type.application";
@@ -113,6 +220,8 @@
 				Base,
 			);
 			mainGroup = E3A6E7DD266C1ED500E2A5FE;
+			packageReferences = (
+			);
 			productRefGroup = E3A6E7E7266C1ED500E2A5FE /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -129,20 +238,75 @@
 			files = (
 				E3A6E7F9266C1ED500E2A5FE /* LaunchScreen.storyboard in Resources */,
 				E3A6E7F6266C1ED500E2A5FE /* Assets.xcassets in Resources */,
-				E3A6E7F1266C1ED500E2A5FE /* Main.storyboard in Resources */,
+				E3F0BD4126725B8700B2698C /* IwataMaruGothicW55-D.ttf in Resources */,
+				E3F0BD4226725B8900B2698C /* IwataMaruGothicW55-L.ttf in Resources */,
+				E3F0BD3E26724EA900B2698C /* FinkHeavy.ttf in Resources */,
+				E3C16D34266C269E00DE15E8 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		42D95F08F9A65235CCA7D848 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-AnimalCrossing/Pods-AnimalCrossing-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-AnimalCrossing/Pods-AnimalCrossing-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-AnimalCrossing/Pods-AnimalCrossing-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B0EB3E0D883C73321F638655 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-AnimalCrossing-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		E3A6E7E2266C1ED500E2A5FE /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E3A6E7EE266C1ED500E2A5FE /* ViewController.swift in Sources */,
+				E3F0BD382672431300B2698C /* LoginViewController.swift in Sources */,
+				E3F6E56B2671FDA70056CDCF /* SupportingFiles.swift in Sources */,
+				E3A6E7EE266C1ED500E2A5FE /* CustomViewController.swift in Sources */,
 				E3A6E7F4266C1ED500E2A5FE /* AnimalCrossing.xcdatamodeld in Sources */,
+				E3F0BD32267240FB00B2698C /* LoginPresenter.swift in Sources */,
+				E3F0BD3A267245DD00B2698C /* MainRouter.swift in Sources */,
+				E3F0BD36267241EB00B2698C /* NetworkManager.swift in Sources */,
+				E3F0BD342672418200B2698C /* FireBaseManager.swift in Sources */,
+				E3F0BD4726725E0B00B2698C /* StringExtension.swift in Sources */,
 				E3A6E7EA266C1ED500E2A5FE /* AppDelegate.swift in Sources */,
+				E3F0BD2D26723FE600B2698C /* CoreDataManager.swift in Sources */,
+				E3F0BD2A26723CAB00B2698C /* LoginAssebmly.swift in Sources */,
+				E3F0BD2F2672404F00B2698C /* LoginRouter.swift in Sources */,
 				E3A6E7EC266C1ED500E2A5FE /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -150,14 +314,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		E3A6E7EF266C1ED500E2A5FE /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				E3A6E7F0266C1ED500E2A5FE /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		E3A6E7F7266C1ED500E2A5FE /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -173,6 +329,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -220,7 +377,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -234,6 +391,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -275,7 +433,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -287,11 +445,13 @@
 		};
 		E3A6E7FE266C1ED500E2A5FE /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3272AD05C6CC5C8A98803B96 /* Pods-AnimalCrossing.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = AnimalCrossing/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -299,17 +459,19 @@
 				PRODUCT_BUNDLE_IDENTIFIER = AnaKud.AnimalCrossing;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
 		E3A6E7FF266C1ED500E2A5FE /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 028EB4766B8E0348A8B5CC30 /* Pods-AnimalCrossing.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = AnimalCrossing/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -317,7 +479,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = AnaKud.AnimalCrossing;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
