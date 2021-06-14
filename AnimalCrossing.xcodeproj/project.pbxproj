@@ -8,6 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		A20C412E0FE5A340C7207DA1 /* Pods_AnimalCrossing.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A207B86D830A555F32D3F965 /* Pods_AnimalCrossing.framework */; };
+		E324193D2676759800B1F867 /* BankViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E324193C2676759800B1F867 /* BankViewController.swift */; };
+		E324193F267675C800B1F867 /* BankPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E324193E267675C800B1F867 /* BankPresenter.swift */; };
+		E3241941267676BC00B1F867 /* BankAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3241940267676BC00B1F867 /* BankAssembly.swift */; };
+		E32419432676828B00B1F867 /* BankModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32419422676828B00B1F867 /* BankModel.swift */; };
+		E324194526769A6A00B1F867 /* ExpenseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E324194426769A6A00B1F867 /* ExpenseCollectionViewCell.swift */; };
+		E324194826775FCA00B1F867 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = E324194726775FCA00B1F867 /* User.swift */; };
+		E399E1AA26739B1F0017F450 /* NewsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E399E1A926739B1F0017F450 /* NewsPresenter.swift */; };
+		E399E1AD2673A72F0017F450 /* EventsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E399E1AC2673A72F0017F450 /* EventsModel.swift */; };
+		E399E1AF2673D40E0017F450 /* NewsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E399E1AE2673D40E0017F450 /* NewsTableViewCell.swift */; };
 		E3A6E7EA266C1ED500E2A5FE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A6E7E9266C1ED500E2A5FE /* AppDelegate.swift */; };
 		E3A6E7EC266C1ED500E2A5FE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A6E7EB266C1ED500E2A5FE /* SceneDelegate.swift */; };
 		E3A6E7EE266C1ED500E2A5FE /* CustomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A6E7ED266C1ED500E2A5FE /* CustomViewController.swift */; };
@@ -26,14 +35,25 @@
 		E3F0BD3E26724EA900B2698C /* FinkHeavy.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E3F0BD3B267248B300B2698C /* FinkHeavy.ttf */; };
 		E3F0BD4126725B8700B2698C /* IwataMaruGothicW55-D.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E3F0BD3F26725ABE00B2698C /* IwataMaruGothicW55-D.ttf */; };
 		E3F0BD4226725B8900B2698C /* IwataMaruGothicW55-L.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E3F0BD4026725ABE00B2698C /* IwataMaruGothicW55-L.ttf */; };
-		E3F0BD4726725E0B00B2698C /* StringExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F0BD4626725E0B00B2698C /* StringExtension.swift */; };
-		E3F6E56B2671FDA70056CDCF /* SupportingFiles.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F6E56A2671FDA70056CDCF /* SupportingFiles.swift */; };
+		E3F14733267328C200FF91FD /* CustomAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F14732267328C200FF91FD /* CustomAlertController.swift */; };
+		E3F147382673561000FF91FD /* NewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F147372673561000FF91FD /* NewsViewController.swift */; };
+		E3F1473A2673562300FF91FD /* NewsAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F147392673562300FF91FD /* NewsAssembly.swift */; };
+		E3F6E56B2671FDA70056CDCF /* SupportingFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F6E56A2671FDA70056CDCF /* SupportingFile.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		028EB4766B8E0348A8B5CC30 /* Pods-AnimalCrossing.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AnimalCrossing.release.xcconfig"; path = "Target Support Files/Pods-AnimalCrossing/Pods-AnimalCrossing.release.xcconfig"; sourceTree = "<group>"; };
 		3272AD05C6CC5C8A98803B96 /* Pods-AnimalCrossing.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AnimalCrossing.debug.xcconfig"; path = "Target Support Files/Pods-AnimalCrossing/Pods-AnimalCrossing.debug.xcconfig"; sourceTree = "<group>"; };
 		A207B86D830A555F32D3F965 /* Pods_AnimalCrossing.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AnimalCrossing.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E324193C2676759800B1F867 /* BankViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankViewController.swift; sourceTree = "<group>"; };
+		E324193E267675C800B1F867 /* BankPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankPresenter.swift; sourceTree = "<group>"; };
+		E3241940267676BC00B1F867 /* BankAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankAssembly.swift; sourceTree = "<group>"; };
+		E32419422676828B00B1F867 /* BankModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankModel.swift; sourceTree = "<group>"; };
+		E324194426769A6A00B1F867 /* ExpenseCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseCollectionViewCell.swift; sourceTree = "<group>"; };
+		E324194726775FCA00B1F867 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		E399E1A926739B1F0017F450 /* NewsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsPresenter.swift; sourceTree = "<group>"; };
+		E399E1AC2673A72F0017F450 /* EventsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsModel.swift; sourceTree = "<group>"; };
+		E399E1AE2673D40E0017F450 /* NewsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsTableViewCell.swift; sourceTree = "<group>"; };
 		E3A6E7E6266C1ED500E2A5FE /* AnimalCrossing.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AnimalCrossing.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E3A6E7E9266C1ED500E2A5FE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E3A6E7EB266C1ED500E2A5FE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -54,8 +74,10 @@
 		E3F0BD3B267248B300B2698C /* FinkHeavy.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FinkHeavy.ttf; sourceTree = "<group>"; };
 		E3F0BD3F26725ABE00B2698C /* IwataMaruGothicW55-D.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "IwataMaruGothicW55-D.ttf"; sourceTree = "<group>"; };
 		E3F0BD4026725ABE00B2698C /* IwataMaruGothicW55-L.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "IwataMaruGothicW55-L.ttf"; sourceTree = "<group>"; };
-		E3F0BD4626725E0B00B2698C /* StringExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtension.swift; sourceTree = "<group>"; };
-		E3F6E56A2671FDA70056CDCF /* SupportingFiles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupportingFiles.swift; sourceTree = "<group>"; };
+		E3F14732267328C200FF91FD /* CustomAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAlertController.swift; sourceTree = "<group>"; };
+		E3F147372673561000FF91FD /* NewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewController.swift; sourceTree = "<group>"; };
+		E3F147392673562300FF91FD /* NewsAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsAssembly.swift; sourceTree = "<group>"; };
+		E3F6E56A2671FDA70056CDCF /* SupportingFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupportingFile.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +109,27 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		E324193B2676756D00B1F867 /* Bank */ = {
+			isa = PBXGroup;
+			children = (
+				E324193C2676759800B1F867 /* BankViewController.swift */,
+				E324194426769A6A00B1F867 /* ExpenseCollectionViewCell.swift */,
+				E324193E267675C800B1F867 /* BankPresenter.swift */,
+				E3241940267676BC00B1F867 /* BankAssembly.swift */,
+			);
+			path = Bank;
+			sourceTree = "<group>";
+		};
+		E399E1AB2673A6EE0017F450 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				E399E1AC2673A72F0017F450 /* EventsModel.swift */,
+				E324194726775FCA00B1F867 /* User.swift */,
+				E32419422676828B00B1F867 /* BankModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		E3A6E7DD266C1ED500E2A5FE = {
 			isa = PBXGroup;
 			children = (
@@ -108,13 +151,15 @@
 		E3A6E7E8266C1ED500E2A5FE /* AnimalCrossing */ = {
 			isa = PBXGroup;
 			children = (
+				E3A6E801266C1F2400E2A5FE /* Core Data */,
+				E324193B2676756D00B1F867 /* Bank */,
+				E399E1AB2673A6EE0017F450 /* Models */,
 				E3F0BD2826723C8600B2698C /* News */,
 				E3F0BD2726723C7A00B2698C /* Login */,
 				E3A6E802266C204A00E2A5FE /* GoogleService-Info.plist */,
 				E3A6E800266C1F0A00E2A5FE /* Supporting Files */,
 				E3F0BD30267240D200B2698C /* Reusible View */,
 				E3A6E7FA266C1ED500E2A5FE /* Info.plist */,
-				E3A6E801266C1F2400E2A5FE /* Core Data */,
 			);
 			path = AnimalCrossing;
 			sourceTree = "<group>";
@@ -122,12 +167,12 @@
 		E3A6E800266C1F0A00E2A5FE /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				E3F6E56A2671FDA70056CDCF /* SupportingFile.swift */,
 				E3F0BD39267245DD00B2698C /* MainRouter.swift */,
 				E3A6E7E9266C1ED500E2A5FE /* AppDelegate.swift */,
 				E3A6E7EB266C1ED500E2A5FE /* SceneDelegate.swift */,
 				E3A6E7F7266C1ED500E2A5FE /* LaunchScreen.storyboard */,
 				E3A6E7F5266C1ED500E2A5FE /* Assets.xcassets */,
-				E3F0BD4626725E0B00B2698C /* StringExtension.swift */,
 			);
 			path = "Supporting Files";
 			sourceTree = "<group>";
@@ -157,6 +202,10 @@
 		E3F0BD2826723C8600B2698C /* News */ = {
 			isa = PBXGroup;
 			children = (
+				E3F147372673561000FF91FD /* NewsViewController.swift */,
+				E399E1AE2673D40E0017F450 /* NewsTableViewCell.swift */,
+				E399E1A926739B1F0017F450 /* NewsPresenter.swift */,
+				E3F147392673562300FF91FD /* NewsAssembly.swift */,
 			);
 			path = News;
 			sourceTree = "<group>";
@@ -165,7 +214,7 @@
 			isa = PBXGroup;
 			children = (
 				E3A6E7ED266C1ED500E2A5FE /* CustomViewController.swift */,
-				E3F6E56A2671FDA70056CDCF /* SupportingFiles.swift */,
+				E3F14732267328C200FF91FD /* CustomAlertController.swift */,
 				E3F0BD3B267248B300B2698C /* FinkHeavy.ttf */,
 				E3F0BD3F26725ABE00B2698C /* IwataMaruGothicW55-D.ttf */,
 				E3F0BD4026725ABE00B2698C /* IwataMaruGothicW55-L.ttf */,
@@ -294,20 +343,31 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E324194826775FCA00B1F867 /* User.swift in Sources */,
+				E3F14733267328C200FF91FD /* CustomAlertController.swift in Sources */,
+				E3241941267676BC00B1F867 /* BankAssembly.swift in Sources */,
 				E3F0BD382672431300B2698C /* LoginViewController.swift in Sources */,
-				E3F6E56B2671FDA70056CDCF /* SupportingFiles.swift in Sources */,
+				E3F6E56B2671FDA70056CDCF /* SupportingFile.swift in Sources */,
+				E399E1AA26739B1F0017F450 /* NewsPresenter.swift in Sources */,
 				E3A6E7EE266C1ED500E2A5FE /* CustomViewController.swift in Sources */,
+				E32419432676828B00B1F867 /* BankModel.swift in Sources */,
 				E3A6E7F4266C1ED500E2A5FE /* AnimalCrossing.xcdatamodeld in Sources */,
 				E3F0BD32267240FB00B2698C /* LoginPresenter.swift in Sources */,
+				E399E1AF2673D40E0017F450 /* NewsTableViewCell.swift in Sources */,
 				E3F0BD3A267245DD00B2698C /* MainRouter.swift in Sources */,
 				E3F0BD36267241EB00B2698C /* NetworkManager.swift in Sources */,
 				E3F0BD342672418200B2698C /* FireBaseManager.swift in Sources */,
-				E3F0BD4726725E0B00B2698C /* StringExtension.swift in Sources */,
 				E3A6E7EA266C1ED500E2A5FE /* AppDelegate.swift in Sources */,
+				E3F1473A2673562300FF91FD /* NewsAssembly.swift in Sources */,
 				E3F0BD2D26723FE600B2698C /* CoreDataManager.swift in Sources */,
 				E3F0BD2A26723CAB00B2698C /* LoginAssebmly.swift in Sources */,
 				E3F0BD2F2672404F00B2698C /* LoginRouter.swift in Sources */,
+				E324193F267675C800B1F867 /* BankPresenter.swift in Sources */,
 				E3A6E7EC266C1ED500E2A5FE /* SceneDelegate.swift in Sources */,
+				E399E1AD2673A72F0017F450 /* EventsModel.swift in Sources */,
+				E324194526769A6A00B1F867 /* ExpenseCollectionViewCell.swift in Sources */,
+				E324193D2676759800B1F867 /* BankViewController.swift in Sources */,
+				E3F147382673561000FF91FD /* NewsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

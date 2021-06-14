@@ -5,57 +5,39 @@
 //  Created by Anastasiya Kudasheva on 05.05.2021.
 //
 
-//let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-//    var exampleViewController: ExampleViewController = mainStoryboard.instantiateViewControllerWithIdentifier("ExampleController") as! ExampleViewController
-
-
-
 import UIKit
 
 internal final class MainRouter {
+    var userStatus: UserStatus
+    var title: String
     private let tabbar: UITabBarController
     
-  //  private let loginNavigationController: UINavigationController
-    //private let loginViewController: LoginViewController
+    private let newsNavigationController: UINavigationController
+    private let newsViewController: NewsViewController
     
-//    private let newsNavigationController: UINavigationController
-//    private let newsViewController: NewsViewController
-//
-//    private let bankNavigationController: UINavigationController
-//    private let bankViewController: BankViewController
-//
-//    private let turnipNavigationController: UINavigationController
-//    private let turnipViewController: TurnipViewController
+    private let bankNavigationController: UINavigationController
+    private let bankViewController: BankViewController
     
-    internal init() {
+    init(userStatus: UserStatus, title: String) {
+        self.userStatus = userStatus
+        self.title = title
         self.tabbar = UITabBarController()
         
-//        self.bioViewController = mainStoryboard.instantiateViewController(withIdentifier: "BioViewController") as! BioViewController
-//        self.bioNavigationController = UINavigationController(rootViewController: self.bioViewController)
-//
-//        // to-do
-//        self.cvViewController = mainStoryboard.instantiateViewController(withIdentifier: "CVViewController") as! CVViewController
-//            //CVViewController()
-//        //instantiateViewController(withIdentifier: "CVViewController") as! CVViewController
-//        self.cvNavigationController = UINavigationController(rootViewController: self.cvViewController)
-//
-//        self.inspirationViewController = InspirationViewController()
-//        self.inspirationNavigationController = UINavigationController(rootViewController: self.inspirationViewController)
-//
-//        self.interestsViewController = InterestsViewController()
-//        self.interestsNavigationController = UINavigationController(rootViewController: self.interestsViewController)
-//
-//        self.quotesViewController =  QuotesViewController()
-//        self.quotesNavigationController = UINavigationController(rootViewController: quotesViewController)
+        self.newsViewController = NewsAssembly().build(userStatus: userStatus, title: title)
+        self.newsNavigationController = UINavigationController(rootViewController: self.newsViewController)
         
-       // self.tabbar.setViewControllers([self.bioNavigationController,
-//                                        self.cvNavigationController,
-//                                        self.interestsNavigationController],
-//                                        animated: true)
-//        tabbar.tabBar.items?[1].title = "CV"
-//        tabbar.tabBar.items?[1].image = UIImage(systemName: "eyeglasses")
-       // tabbar.tabBar.items?[2].title = "Interests"
-      //  tabbar.tabBar.items?[2].image = UIImage(systemName: "star.fill")
+        self.bankViewController = BankAssembly().build(userStatus: userStatus, title: title)
+        self.bankNavigationController = UINavigationController(rootViewController: bankViewController)
+
+        self.tabbar.setViewControllers([self.newsNavigationController, self.bankNavigationController], animated: true)
+        
+        let newsTabBarItem = UITabBarItem(title: "", image: UIImage(named: TabbarItems.ImageDefault.news), selectedImage: UIImage(named: TabbarItems.ImagePressed.news))
+        let bankTabBarItem = UITabBarItem(title: "", image: UIImage(named: TabbarItems.ImageDefault.bank), selectedImage: UIImage(named: TabbarItems.ImagePressed.bank))
+        
+        self.newsViewController.tabBarItem = newsTabBarItem
+        self.bankViewController.tabBarItem = bankTabBarItem
+        
+        self.tabbar.modalPresentationStyle = .fullScreen
     }
     
     internal func returnController() -> UITabBarController {
