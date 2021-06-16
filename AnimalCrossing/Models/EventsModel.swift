@@ -18,12 +18,6 @@ class EventsFromInternet: Codable {
     }
 }
 
-//enum EventType: String {
-//    case birthday
-//    case event
-//    case shopping
-//}
-
 class EventsViewModel {
     var date: String
     var event: String

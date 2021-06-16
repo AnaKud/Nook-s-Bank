@@ -14,6 +14,7 @@ class CustomViewController: UIViewController {
     var controllerTitle: String?
     
     let topImageView = UIImageView()
+
     let bottomImageView = UIImageView()
     let titleLabel = UILabel()
     let contentView = UIView()
@@ -28,9 +29,10 @@ class CustomViewController: UIViewController {
         view.addGestureRecognizer(tap)
     }
     
-    static func makeTextField(withPlacehoder placeholder: String, withImageName imageName: String) -> UITextField {
+    static func makeTextField(withPlacehoder placeholder: String, withImageName imageName: String, isSecureTextEntry: Bool) -> UITextField {
         let textfield = UITextField()
         textfield.placeholder = placeholder
+        textfield.isSecureTextEntry = isSecureTextEntry
         textfield.font = UIFont(name: AppFont.maruLight.rawValue, size: 20)
         textfield.textColor = #colorLiteral(red: 0.3725490196, green: 0.4862745098, blue: 0.8117647059, alpha: 1)
         textfield.layer.cornerRadius = AppContraints.Login.cornerRadiusTF
@@ -130,7 +132,7 @@ class CustomViewController: UIViewController {
         self.navigationController?.navigationBar.shadowImage = UIImage()
         self.navigationController?.navigationBar.topItem?.title = " "
         self.navigationController?.navigationBar.topItem?.title = " "
-        self.navigationController?.navigationBar.barStyle = .black
+        self.navigationController?.navigationBar.barStyle = .default
         self.navigationController?.navigationBar.tintColor = #colorLiteral(red: 0.3490196078, green: 0.4352941176, blue: 0.6823529412, alpha: 1)
         self.tabBarController?.tabBar.barTintColor = UIColor.clear
         self.tabBarController?.tabBar.backgroundImage = UIImage()
@@ -139,12 +141,12 @@ class CustomViewController: UIViewController {
         view.addSubview(topImageView)
         topImageView.snp.makeConstraints { make in
             make.top.trailing.leading.equalTo(view)
-            make.height.equalTo(120)
+            make.height.equalTo(AppContraints.navAndTabHeight)
         }
         view.addSubview(bottomImageView)
         bottomImageView.snp.makeConstraints { make in
             make.bottom.trailing.leading.equalTo(view)
-            make.height.equalTo(120)
+            make.height.equalTo(AppContraints.navAndTabHeight)
         }
         view.addSubview(contentView)
         contentView.snp.makeConstraints { make in

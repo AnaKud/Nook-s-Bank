@@ -26,17 +26,12 @@ class NewsTableViewCell: UITableViewCell {
     func config(withEvent event: EventsViewModel) {
         dateLabel.text = event.date
         eventLabel.text = event.event
-        
+        print(event.url)
         let firstCharacter: String = "\(event.type.first ?? "+")"
         eventCircleView = CustomViewController.makeCircleView(circleViewSize: AppContraints.News.circleViewSize, firstCharacter: firstCharacter)
         backView.addGestureRecognizer(UIGestureRecognizer(target: self, action: #selector(openURL(_: )) ))
-        
     }
 
-    @objc func openURL(_ sender: UITapGestureRecognizer) {
-        print("Tapped cell")
-    }
-    
     private func setupLayout() {
         contentView.backgroundColor = .clear
         contentView.addSubview(backView)
@@ -79,5 +74,9 @@ class NewsTableViewCell: UITableViewCell {
         eventLabel.numberOfLines = 0
         eventLabel.font = UIFont(name: AppFont.maruLight.rawValue, size: 20)
         eventLabel.textColor =  #colorLiteral(red: 0.5137254902, green: 0.4823529412, blue: 0.4588235294, alpha: 1)
+    }
+    
+    @objc func openURL(_ sender: UITapGestureRecognizer) {
+        print("Tapped cell")
     }
 }

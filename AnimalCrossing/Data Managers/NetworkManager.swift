@@ -34,7 +34,7 @@ class NetworkManager: INewsNetworkManager  {
                     let events = try decoder.decode([EventsFromInternet].self, from: data)
                     eventHandler(events)
                 } catch {
-                    print(error)
+                    print(error.localizedDescription)
                 }
             }
         }

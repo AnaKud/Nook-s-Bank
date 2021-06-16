@@ -58,18 +58,7 @@ class NewsPresenter: INewsPresenter {
     func itemForCell(index: Int) -> EventsViewModel {
         return eventViewModel[index]
     }
-    
-    private func convertFromInternetToVM(eventsFromInternet: [EventsFromInternet]) -> [EventsViewModel] {
-        var eventsVM = [EventsViewModel]()
-        let subArray = self.sortEventsFromInternetByDay(events: eventsFromInternet)
-        for item in subArray {
-            let newEventVM = EventsViewModel(fromInternet: item)
-            eventsVM.append(newEventVM)
-            self.saveToCoreData (event: newEventVM)
-        }
-        return eventsVM
-    }
-    
+
     private func saveToCoreData(event: EventsViewModel) {
         DispatchQueue.main.sync {
             self.coreData.addNews(news: event)
@@ -81,7 +70,13 @@ class NewsPresenter: INewsPresenter {
             self.coreData.deleteAllNews()
         }
     }
-    
+
+    private func refreshView() {
+        self.view?.refreshView()
+    }
+}
+
+fileprivate extension NewsPresenter {
     private func sortEventsFromInternetByDay(events: [EventsFromInternet]) -> [EventsFromInternet] {
         let today = Date()
         let dateFormatter = DateFormatter()
@@ -106,8 +101,14 @@ class NewsPresenter: INewsPresenter {
         return Array(subArray)
     }
     
-    private func refreshView() {
-        self.view?.refreshView()
+    private func convertFromInternetToVM(eventsFromInternet: [EventsFromInternet]) -> [EventsViewModel] {
+        var eventsVM = [EventsViewModel]()
+        let subArray = self.sortEventsFromInternetByDay(events: eventsFromInternet)
+        for item in subArray {
+            let newEventVM = EventsViewModel(fromInternet: item)
+            eventsVM.append(newEventVM)
+            self.saveToCoreData (event: newEventVM)
+        }
+        return eventsVM
     }
-    
 }

@@ -9,7 +9,7 @@ import UIKit
 
 final class LoginAssebmly {
     func build() -> LoginViewController {
-        var fireBaseManager: ILoginFireBaseManager = FireBaseManager()
+        var fireBaseManager: ILoginFireBaseManager = FireBaseManager.shared
         let router = LoginRouter()
         let presenter = LoginPresenter(fireBaseManager: fireBaseManager, router: router)
         fireBaseManager.loginPresenter = presenter

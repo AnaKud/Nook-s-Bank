@@ -18,8 +18,8 @@ class LoginViewController: CustomViewController {
     var presenter: ILoginPresenter
     let welcomeLabel = UILabel()
     let appNameLabel = UILabel()
-    let emailTextField = makeTextField(withPlacehoder: AppTitle.Login.emailTF, withImageName: AppImage.Login.iconForEmailTF.rawValue)
-    let passwordNameTextField = makeTextField(withPlacehoder: AppTitle.Login.passwordTF, withImageName: AppImage.Login.iconForPasswordTF.rawValue)
+    let emailTextField = makeTextField(withPlacehoder: AppTitle.Login.emailTF, withImageName: AppImage.Login.iconForEmailTF.rawValue, isSecureTextEntry: false)
+    let passwordNameTextField = makeTextField(withPlacehoder: AppTitle.Login.passwordTF, withImageName: AppImage.Login.iconForPasswordTF.rawValue, isSecureTextEntry: true)
     let loginButton = makeOvalButtonWithCircle(withTitle: AppTitle.Login.loginButton, buttonWidth: AppContraints.Login.widthLoginButton, buttonHeight: AppContraints.Login.heightButtons)
     let registerButton = makeOvalButtonWithCircle(withTitle: AppTitle.Login.registerButton, buttonWidth: AppContraints.Login.widthButton, buttonHeight: AppContraints.Login.heightButtons)
     let freeEnterButton = makeOvalButtonWithCircle(withTitle: AppTitle.Login.freeButton, buttonWidth: AppContraints.Login.widthButton, buttonHeight: AppContraints.Login.heightButtons)
@@ -42,6 +42,23 @@ class LoginViewController: CustomViewController {
         self.setupInterface()
         self.setupLayout()
         self.addActionForButton()
+    }
+    
+    @objc func registerButtonPressed(sender: UIButton) {
+        self.presenter.registerButtonTapped(email: emailTextField.text, password: passwordNameTextField.text)
+    }
+    
+    @objc func loginButtonPressed(sender: UIButton) {
+        self.presenter.loginButtonTapped(email: emailTextField.text, password: passwordNameTextField.text)
+    }
+    
+    @objc func continueButtonPressed(sender: UIButton) {
+        self.presenter.openWithoutLogin()
+    }
+    
+    @objc func passwordTextfieldEndEditing() {
+        self.passwordNameTextField.resignFirstResponder()
+        self.presenter.loginButtonTapped(email: emailTextField.text, password: passwordNameTextField.text)
     }
     
     private func setupLayout() {
@@ -67,6 +84,8 @@ class LoginViewController: CustomViewController {
             make.leading.equalTo(view).offset(AppContraints.Login.loginHorizontelEdge)
             make.trailing.equalTo(view).offset(-AppContraints.Login.loginHorizontelEdge)
         }
+        passwordNameTextField.addTarget(self, action: #selector(passwordTextfieldEndEditing), for: .editingDidEndOnExit)
+        
         view.addSubview(loginButton)
         loginButton.snp.makeConstraints { make in
             make.top.equalTo(passwordNameTextField.snp.bottom).offset(AppContraints.standartEdge)
@@ -75,7 +94,6 @@ class LoginViewController: CustomViewController {
         view.addSubview(registerButton)
         registerButton.snp.makeConstraints { make in
             make.top.equalTo(passwordNameTextField.snp.bottom).offset(AppContraints.standartEdge)
-            
             make.trailing.equalTo(loginButton.snp.leading).offset(-AppContraints.minEdge)
         }
         view.addSubview(freeEnterButton)
@@ -111,19 +129,6 @@ class LoginViewController: CustomViewController {
         loginButton.addTarget(self, action: #selector(loginButtonPressed), for: .touchUpInside)
         freeEnterButton.addTarget(self, action: #selector(continueButtonPressed), for: .touchUpInside)
     }
-    
-    @objc func registerButtonPressed(sender: UIButton) {
-        self.presenter.registerButtonTapped(email: emailTextField.text, password: passwordNameTextField.text)
-    }
-    
-    @objc func loginButtonPressed(sender: UIButton) {
-        
-        self.presenter.loginButtonTapped(email: emailTextField.text, password: passwordNameTextField.text)
-    }
-    
-    @objc func continueButtonPressed(sender: UIButton) {
-        self.presenter.openWithoutLogin()
-    }
 }
 
 extension LoginViewController: ILoginViewController {
@@ -137,7 +142,7 @@ extension LoginViewController: ILoginViewController {
     }
     
     func showUserNameAlert(withEmail email: String, withPassword password: String) {
-        let alert = CustomAlertController(title: "Hello", message: "Enter your name", preferredStyle: .alert)
+        let alert = CustomAlertController(title: AppTitle.Login.hello, message: AppTitle.Login.nameMessage, preferredStyle: .alert)
         alert.addTextField { (nameTextField) in
             nameTextField.addAction(UIAction(handler: { _ in
                 let count: Int = nameTextField.text?.count ?? 0
@@ -149,13 +154,15 @@ extension LoginViewController: ILoginViewController {
                 }
             }), for: .editingChanged)
         }
-        let saveAction = UIAlertAction(title: "Save", style: .default) { _ in
+        let saveAction = UIAlertAction(title: AppTitle.save, style: .default) { _ in
             guard let nameTextField = alert.textFields?[0], let nameText = nameTextField.text
             else { return }
             self.presenter.registerUser(withUserName: nameText, withEmail: email, withPassword: password)
         }
+        let cancelAction = UIAlertAction(title: AppTitle.cancel, style: .cancel)
         saveAction.isEnabled = false
         alert.addAction(saveAction)
+        alert.addAction(cancelAction)
         self.present(alert, animated: true)
     }
 }

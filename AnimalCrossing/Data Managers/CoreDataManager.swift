@@ -21,6 +21,7 @@ protocol INewsCoreDataManager {
 
 class CoreDataManager {
     static let shared = CoreDataManager()
+    
     var errorPresenter: IPresenterForCoreDataError?
     
     private enum Constant {
@@ -40,7 +41,6 @@ class CoreDataManager {
     
     lazy var context: NSManagedObjectContext = container.viewContext
     
-    
     func saveContext () {
         if context.hasChanges {
             do {
@@ -51,12 +51,9 @@ class CoreDataManager {
             }
         }
     }
-    
 }
 
-
 extension CoreDataManager: INewsCoreDataManager {
-    
     func loadNews() -> [EventsViewModel] {
         let fetchRequest: NSFetchRequest<News> = News.fetchRequest()
         do {
@@ -111,7 +108,4 @@ extension CoreDataManager: INewsCoreDataManager {
         }
         return result
     }
-    
 }
-
-

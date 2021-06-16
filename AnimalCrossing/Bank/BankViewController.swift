@@ -8,26 +8,24 @@
 import UIKit
 
 protocol IBankViewController {
-    func refreshView(currentValue: Int)
+    func interfaceWithData()
+    func refreshView(currentValue: String)
     func showAddExpenseAlert(expense: @escaping (ExpenseViewModel) -> ())
     var currentAccount: BankViewModel? { get set }
 }
 
 class BankViewController: CustomViewController {
     var currentAccount: BankViewModel?
-    
     let bankAccountView = UIView()
     let coinImageView = UIImageView()
     let currentAccountTitleLabel = UILabel()
     let currentAccountLabel = UILabel()
-    
     let historyTitleLabel = UILabel()
     let historyView = UIView()
-    
     var expensesCollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
-    
     let plusButton = UIButton()
     var plusImage: UIImage?
+    var activityIndicatorView = UIActivityIndicatorView()
     
     var presenter: IBankPresenter
     
@@ -41,44 +39,48 @@ class BankViewController: CustomViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    
     override func loadView() {
         super.loadView()
         self.presenter.loadView(view: self)
+        self.displayActivity()
+        self.initailInterface()
         self.dataForUserStatus()
-        self.setupBankAccountView()
-        self.setupPlusButton()
-        self.setupViewForCollection()
-        self.setupCollectionView()
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.presenter.getCurrentUser()
-        
+    }
+    
+    private func displayActivity() {
+        self.contentView.addSubview(activityIndicatorView)
+        activityIndicatorView.snp.makeConstraints { make in
+            make.centerX.centerY.equalTo(contentView)
+        }
+        self.activityIndicatorView.style = .large
+        switch userStatus {
+        case .loggined:
+            self.activityIndicatorView.color = #colorLiteral(red: 0.3490196078, green: 0.4352941176, blue: 0.6823529412, alpha: 1)
+        default:
+            self.activityIndicatorView.color = #colorLiteral(red: 0.768627451, green: 0.768627451, blue: 0.768627451, alpha: 1)
+        }
+        self.activityIndicatorView.startAnimating()
+        self.activityIndicatorView.hidesWhenStopped = true
     }
     
     private func dataForUserStatus(){
-        
         switch userStatus {
         case .loggined:
             currentAccountTitleLabel.text = AppTitle.Bank.currentAccountTitle
             coinImageView.image = UIImage(named: AppImage.Bank.coinLogin.rawValue)
             historyTitleLabel.text = AppTitle.Bank.purchaseHistory
-            
             plusImage = UIImage(named: AppImage.Bank.plusLogin.rawValue)
-            
         default:
             currentAccountTitleLabel.text = AppTitle.Bank.demoTitle
             coinImageView.image = UIImage(named: AppImage.Bank.coinUnLogin.rawValue)
             historyTitleLabel.text = AppTitle.Bank.demoHistory
             plusImage = UIImage(named: AppImage.Bank.plusUnlogin.rawValue)
-            
-            
         }
-        
-        
     }
     
     private func setupBankAccountView() {
@@ -118,7 +120,6 @@ class BankViewController: CustomViewController {
         currentAccountLabel.text = self.presenter.returnCurrentAccountValue()
     }
     
-    
     private func setupPlusButton() {
         self.contentView.addSubview(plusButton)
         plusButton.snp.makeConstraints { make in
@@ -132,9 +133,6 @@ class BankViewController: CustomViewController {
             self.presenter.plusButtonPressed()
         }), for: .touchUpInside)
     }
-    
-    
-    
     
     private func setupViewForCollection() {
         self.contentView.addSubview(historyView)
@@ -157,7 +155,6 @@ class BankViewController: CustomViewController {
         historyTitleLabel.font = UIFont(name: AppFont.maruBold.rawValue, size: 20)
         historyTitleLabel.textColor = #colorLiteral(red: 0.3490196078, green: 0.4352941176, blue: 0.6823529412, alpha: 1)
         
-        
         historyView.addSubview(expensesCollectionView)
         expensesCollectionView.snp.makeConstraints { make in
             make.top.equalTo(historyTitleLabel.snp.bottom).offset(AppContraints.minEdge)
@@ -175,16 +172,34 @@ class BankViewController: CustomViewController {
         self.expensesCollectionView.dataSource = self
         expensesCollectionView.register(ExpenseCollectionViewCell.self, forCellWithReuseIdentifier: CellReusibleID.expense.rawValue)
     }
-    
-    
-    
-    
 }
 
 extension BankViewController: IBankViewController {
+    func initailInterface() {
+        bankAccountView.isHidden = true
+        coinImageView.isHidden = true
+        historyView.isHidden = true
+        expensesCollectionView.isHidden = true
+        plusButton.isHidden = true
+        activityIndicatorView.isHidden = false
+    }
+    
+    func interfaceWithData() {
+        self.setupBankAccountView()
+        self.setupPlusButton()
+        self.setupViewForCollection()
+        self.setupCollectionView()
+        bankAccountView.isHidden = false
+        coinImageView.isHidden = false
+        historyView.isHidden = false
+        expensesCollectionView.isHidden = false
+        plusButton.isHidden = false
+        activityIndicatorView.stopAnimating()
+        activityIndicatorView.isHidden = true
+    }
+    
     func showAddExpenseAlert(expense: @escaping (ExpenseViewModel) -> ()) {
         let alert = CustomAlertController(title: AppTitle.Bank.newExpense, message: nil, preferredStyle: .alert)
-        
         alert.addTextField { (valueTextField) in
             valueTextField.placeholder = "Bells"
             valueTextField.keyboardType = .numberPad
@@ -199,7 +214,6 @@ extension BankViewController: IBankViewController {
                     alert.actions[1].isEnabled = false
                 }
             }), for: .editingChanged)
-            
         }
         
         let expenseAction = UIAlertAction(title: "Add Expense", style: .default) { _ in
@@ -225,18 +239,13 @@ extension BankViewController: IBankViewController {
         self.present(alert, animated: true)
     }
     
-    func refreshView(currentValue: Int) {
+    func refreshView(currentValue: String) {
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2) {
             self.expensesCollectionView.reloadData()
-            self.currentAccountLabel.text = "\(currentValue)"
+            self.currentAccountLabel.text = currentValue
         }
-        
     }
-    
-    
 }
-
-
 
 extension BankViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -247,11 +256,10 @@ extension BankViewController: UICollectionViewDelegate, UICollectionViewDataSour
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CellReusibleID.expense.rawValue, for: indexPath) as? ExpenseCollectionViewCell else { return UICollectionViewCell() }
         let expenseItem = self.presenter.returnCollectionItem(index: indexPath.row)
         cell.config(item: expenseItem)
-        
         return cell
     }
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: AppContraints.Bank.collectionCellWidth, height: AppContraints.Bank.collectionCellHeight)
     }
-    
 }

@@ -27,40 +27,12 @@ class NewsViewController: CustomViewController {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    
-    
+
     override func loadView() {
         super.loadView()
-        self.setupNavBar()
         self.presenter.loadView(view: self)
         self.presenter.makeRequest()
-        
         self.setupTable()
-        
-       
-    }
-    
-    private func setupNavBar() {
-        
-        
-//        let backImage = UIImage(systemName: AppImage.Login.iconForEmailTF.rawValue)
-//
-//        switch userStatus {
-//        case .loggined:
-//            backImage?.withTintColor(#colorLiteral(red: 0.1215686277, green: 0.01176470611, blue: 0.4235294163, alpha: 1))
-//            self.navigationItem.backBarButtonItem = UIBarButtonItem(title: nil, image: nil, primaryAction: nil, menu: nil)
-//            self.navigationController?.navigationBar.backItem?.title = "Log Out"
-//        case .unloggined:
-//            self.navigationItem.backBarButtonItem = UIBarButtonItem(title: nil, image: nil, primaryAction: nil, menu: nil)
-//            backImage?.withTintColor(#colorLiteral(red: 0.1215686277, green: 0.01176470611, blue: 0.4235294163, alpha: 1))
-//            self.navigationController?.navigationBar.backItem?.title = "Log In"
-//        default:
-//            backImage?.withTintColor(#colorLiteral(red: 0.1215686277, green: 0.01176470611, blue: 0.4235294163, alpha: 1))
-//            self.navigationController?.navigationBar.backItem?.title = ""
-//        }
-//        self.navigationController?.navigationBar.backIndicatorImage = backImage
-//        self.navigationController?.navigationBar.backIndicatorTransitionMaskImage = backImage
     }
     
     private func setupTable(){
@@ -83,16 +55,12 @@ class NewsViewController: CustomViewController {
         default:
             self.activityIndicator.color = #colorLiteral(red: 0.768627451, green: 0.768627451, blue: 0.768627451, alpha: 1)
         }
-        
         self.activityIndicator.startAnimating()
         self.activityIndicator.hidesWhenStopped = true
-        
     }
     
     func displayTable() {
         DispatchQueue.main.async {
-            
-            
             self.activityIndicator.stopAnimating()
             self.activityIndicator.isHidden = true
             self.contentView.addSubview(self.tableView)
@@ -104,7 +72,6 @@ class NewsViewController: CustomViewController {
             self.tableView.isHidden = false
         }
     }
-    
 }
 
 extension NewsViewController: UITableViewDelegate, UITableViewDataSource {
@@ -116,20 +83,12 @@ extension NewsViewController: UITableViewDelegate, UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: CellReusibleID.news.rawValue) as? NewsTableViewCell else { return UITableViewCell() }
         let event = self.presenter.itemForCell(index: indexPath.row)
         cell.config(withEvent: event)
-        
         return cell
     }
+    
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         cell.backgroundColor = .clear
     }
-//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        guard let cell = tableView.dequeueReusableCell(withIdentifier: CellReusibleID.news.rawValue) as? NewsTableViewCell else { return }
-//        let event = self.presenter.itemForCell(index: indexPath.row)
-//        guard let url = URL(string: event.url) else { return }
-//        UIApplication.shared.open(url, options: [:], completionHandler: nil)
-//    }
-    
-    
 }
 
 extension NewsViewController: INewsViewController {

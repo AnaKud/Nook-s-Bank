@@ -13,7 +13,7 @@
 		E3241941267676BC00B1F867 /* BankAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3241940267676BC00B1F867 /* BankAssembly.swift */; };
 		E32419432676828B00B1F867 /* BankModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32419422676828B00B1F867 /* BankModel.swift */; };
 		E324194526769A6A00B1F867 /* ExpenseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E324194426769A6A00B1F867 /* ExpenseCollectionViewCell.swift */; };
-		E324194826775FCA00B1F867 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = E324194726775FCA00B1F867 /* User.swift */; };
+		E324194826775FCA00B1F867 /* UserLocale.swift in Sources */ = {isa = PBXBuildFile; fileRef = E324194726775FCA00B1F867 /* UserLocale.swift */; };
 		E399E1AA26739B1F0017F450 /* NewsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E399E1A926739B1F0017F450 /* NewsPresenter.swift */; };
 		E399E1AD2673A72F0017F450 /* EventsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E399E1AC2673A72F0017F450 /* EventsModel.swift */; };
 		E399E1AF2673D40E0017F450 /* NewsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E399E1AE2673D40E0017F450 /* NewsTableViewCell.swift */; };
@@ -50,7 +50,7 @@
 		E3241940267676BC00B1F867 /* BankAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankAssembly.swift; sourceTree = "<group>"; };
 		E32419422676828B00B1F867 /* BankModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankModel.swift; sourceTree = "<group>"; };
 		E324194426769A6A00B1F867 /* ExpenseCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseCollectionViewCell.swift; sourceTree = "<group>"; };
-		E324194726775FCA00B1F867 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		E324194726775FCA00B1F867 /* UserLocale.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLocale.swift; sourceTree = "<group>"; };
 		E399E1A926739B1F0017F450 /* NewsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsPresenter.swift; sourceTree = "<group>"; };
 		E399E1AC2673A72F0017F450 /* EventsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsModel.swift; sourceTree = "<group>"; };
 		E399E1AE2673D40E0017F450 /* NewsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsTableViewCell.swift; sourceTree = "<group>"; };
@@ -124,7 +124,7 @@
 			isa = PBXGroup;
 			children = (
 				E399E1AC2673A72F0017F450 /* EventsModel.swift */,
-				E324194726775FCA00B1F867 /* User.swift */,
+				E324194726775FCA00B1F867 /* UserLocale.swift */,
 				E32419422676828B00B1F867 /* BankModel.swift */,
 			);
 			path = Models;
@@ -151,9 +151,9 @@
 		E3A6E7E8266C1ED500E2A5FE /* AnimalCrossing */ = {
 			isa = PBXGroup;
 			children = (
+				E399E1AB2673A6EE0017F450 /* Models */,
 				E3A6E801266C1F2400E2A5FE /* Data Managers */,
 				E324193B2676756D00B1F867 /* Bank */,
-				E399E1AB2673A6EE0017F450 /* Models */,
 				E3F0BD2826723C8600B2698C /* News */,
 				E3F0BD2726723C7A00B2698C /* Login */,
 				E3A6E802266C204A00E2A5FE /* GoogleService-Info.plist */,
@@ -343,7 +343,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E324194826775FCA00B1F867 /* User.swift in Sources */,
+				E324194826775FCA00B1F867 /* UserLocale.swift in Sources */,
 				E3F14733267328C200FF91FD /* CustomAlertController.swift in Sources */,
 				E3241941267676BC00B1F867 /* BankAssembly.swift in Sources */,
 				E3F0BD382672431300B2698C /* LoginViewController.swift in Sources */,

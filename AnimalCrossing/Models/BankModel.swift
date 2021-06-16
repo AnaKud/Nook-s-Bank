@@ -32,19 +32,12 @@ class BankViewModel {
     func converToDictionary() -> Any {
         return["currentValue": currentValue, "expenses": expenses]
     }
-    
-    
-    
-    
 }
 
 class ExpenseViewModel {
     var uid: String
-    var dateString: String = {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "y-MM-dd HH:mm"
-        return dateFormatter.string(from: Date())
-    }()
+    var dateString: String
+    var date: Date?
     var value: Int
     var operationType: OperationType
     var expenseType: ExpenseType
@@ -52,6 +45,12 @@ class ExpenseViewModel {
     var refExpense: DatabaseReference?
     init(value: Int, operationType: OperationType, expenseType: ExpenseType){
         self.uid = UUID().uuidString
+        let creationDate = Date()
+        self.dateString = {
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "y-MM-dd HH:mm"
+            return dateFormatter.string(from: creationDate)
+        }()
         self.value = value
         self.operationType = operationType
         self.expenseType = expenseType
@@ -59,6 +58,13 @@ class ExpenseViewModel {
     }
     init(value: Int, operationType: OperationType){
         self.uid = UUID().uuidString
+        let creationDate = Date()
+        self.dateString = {
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "y-MM-dd HH:mm"
+            return dateFormatter.string(from: creationDate)
+        }()
+        self.date = creationDate
         self.value = value
         self.operationType = operationType
         self.expenseType = ExpenseType.allCases[.random(in: 0...10)]
@@ -76,6 +82,11 @@ class ExpenseViewModel {
         else { return nil }
         self.uid = uidFB
         self.dateString = dateStringFB
+        self.date = {
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "y-MM-dd HH:mm"
+            return dateFormatter.date(from: dateStringFB)
+        }()
         self.value = valueFB
         self.operationType = convertToOperationEnum(stringFromFB: operationTypeFB)
         self.expenseType = convertToExpenseEnum(stringFromFB: expenseTypeFB)
@@ -87,7 +98,6 @@ class ExpenseViewModel {
     func converToDictionary() -> Any {
         return["uid": uid, "dateString": dateString, "value": value, "operationType": operationType, "expenseType": expenseType]
     }
-
 }
 
 class ExpenseFB {
@@ -111,7 +121,7 @@ class ExpenseFB {
 }
 
 enum ExpenseType: String, CaseIterable {
-    case Furniture = "Furniture" //-
+    case Furniture = "Furniture"
     case Clothing = "Clothing"
     case Bugs = "Bugs"
     case Fish = "Fish"

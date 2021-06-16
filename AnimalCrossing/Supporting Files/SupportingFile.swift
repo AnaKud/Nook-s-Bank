@@ -17,7 +17,8 @@ enum UserStatus {
 struct AppContraints {
     static let iphoneWidth = UIWindow().screen.bounds.width
     static let iphoneHeight = UIWindow().screen.bounds.height
-    static let navTitle = iphoneHeight > 800 ? 50 : 30
+    static let navTitle: CGFloat = iphoneHeight > 800 ? 50 : 30
+    static let navAndTabHeight: CGFloat = iphoneHeight > 800 ? 110 : 80
     
     static let minEdge: CGFloat = 5
     static let midEdge: CGFloat = 10
@@ -27,7 +28,7 @@ struct AppContraints {
     static let standartCornerRadius: CGFloat = 15
     
     struct Login {
-        static let loginVerticalEdge = navTitle * 5
+        static let loginVerticalEdge = navTitle * 4
         static let loginMinVerticalEdge = navTitle * 2
         static let loginHorizontelEdge: CGFloat = 50
         static let cornerRadiusTF: CGFloat = 15
@@ -47,8 +48,10 @@ struct AppContraints {
     struct Bank {
         static let bankAccountViewHeight: CGFloat = 70
         static let plusButtonHeight: CGFloat = 50
-        static let collectionCellWidth: CGFloat = (iphoneWidth - 4 * midEdge) / 3.3
-        static let collectionCellHeight: CGFloat = collectionCellWidth * 1.5
+        static let collectionCellWidth: CGFloat = (iphoneWidth - 4 * midEdge) / 4.3
+        static let collectionCellHeight: CGFloat = collectionCellWidth * 1.54
+        static let imageCollectionViewEdge: CGFloat = 10
+        static let imageCollectionViewSize: CGFloat = collectionCellWidth - 2 * imageCollectionViewEdge
         static let circleWidth = (collectionCellWidth - (2 * midEdge)) / 2
     }
 }
@@ -56,12 +59,16 @@ struct AppContraints {
 struct AppTitle {
     static let nookBank = "Nook Bank"
     static let welcome = "Welcome to"
+    static let save = "Save"
+    static let cancel = "Cancel"
     struct Login {
         static let emailTF = "Your email"
         static let passwordTF = "Your password"
         static let registerButton = "Register"
         static let loginButton = "Log in"
         static let freeButton = "Continue"
+        static let hello = "Hello"
+        static let nameMessage = "Enter your name"
     }
     struct News {
         static let controllerTitle = "Nook News"
@@ -109,7 +116,7 @@ enum LoginWarnings: String {
     case incorrectInfo = "Info is incorrect"
     case incorrectEmail = "Email is incorrect"
     case notRegister = "You are not registered"
-    case unexpectedError = "Unexpected error"
+    case unexpectedError = "Something wrong"
     case registerError = "Register error"
     case sucssessRegister = "Please login"
 }
@@ -119,11 +126,6 @@ enum TabbarItems {
         static let news = "news"
         static let bank = "bank"
         static let turnip = "turnip"
-    }
-    struct ImagePressed {
-        static let news = "newsP"
-        static let bank = "bankP"
-        static let turnip = "turnipP"
     }
 }
 
@@ -136,8 +138,3 @@ enum CellReusibleID: String {
     case expense = "expenseCell"
 }
 
-//enum Response {
-//    case success
-//    case failure
-//
-//}

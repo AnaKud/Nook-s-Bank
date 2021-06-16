@@ -1,5 +1,5 @@
 //
-//  User.swift
+//  UserLocale.swift
 //  AnimalCrossing
 //
 //  Created by Anastasiya Kudasheva on 14.06.2021.

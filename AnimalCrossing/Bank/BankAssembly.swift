@@ -7,21 +7,15 @@
 
 import Foundation
 
-
 class BankAssembly {
     func build(userStatus: UserStatus, title: String) -> BankViewController {
-        //let networkManager: INewsNetworkManager = NetworkManager()
-       // let coreData: INewsCoreDataManager = CoreDataManager()
-        var fireBaseManager: IBankFireBaseManager = FireBaseManager()
+        var fireBaseManager: IBankFireBaseManager = FireBaseManager.shared
         var presenter: IBankPresenter = BankPresenter(fireBaseManager: fireBaseManager)
         presenter.userStatus = userStatus
         fireBaseManager.bankPresenter = presenter
-        //coreData.initErrorPresenterForNews(errorPresenter: presenter)
         let controller = BankViewController(presenter: presenter)
         controller.userStatus = userStatus
         controller.controllerTitle = title
-        print("ullog statt \(userStatus)")
         return controller
     }
-    
 }
