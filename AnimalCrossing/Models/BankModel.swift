@@ -18,16 +18,16 @@ class BankViewModel {
         self.expenses = expenses
         self.refBank = nil
     }
-//    init?(snapshot: DataSnapshot) {
-//        guard
-//            let snapshotValue = snapshot.value as? [String: AnyObject],
-//            let currentValueFB = snapshot["currentValue"] as? Int,
-//            let expensesFB = snapshot["expenses"] as? [ExpenseViewModel]
-//        else { return nil }
-//        self.currentValue = currentValueFB
-//        self.expenses = expensesFB
-//        self.refBank = snapshot.ref
-//    }
+    init?(snapshot: DataSnapshot) {
+        guard
+            let snapshotValue = snapshot.value as? [String: AnyObject],
+            let currentValueFB = snapshotValue["currentValue"] as? Int,
+            let expensesFB = snapshotValue["expenses"] as? [ExpenseViewModel]
+        else { return nil }
+        self.currentValue = currentValueFB
+        self.expenses = expensesFB
+        self.refBank = snapshot.ref
+    }
     
     func converToDictionary() -> Any {
         return["currentValue": currentValue, "expenses": expenses]
@@ -65,29 +65,48 @@ class ExpenseViewModel {
         self.imageName = expenseType.rawValue
     }
     
-//    init?(snapshot: DataSnapshot) {
-//        guard
-//            let snapshotValue = snapshot.value as? [String: AnyObject],
-//            let uidFB = snapshot["uid"] as? String,
-//            let dateStringFB = snapshot["dateString"] as? String,
-//            let valueFB = snapshot["value"] as? Int,
-//            let operationTypeFB = snapshot["operationType"] as? OperationType,
-//            let expenseTypeFB = snapshot["expenseType"] as? ExpenseType
-//        else { return nil }
-//        self.uid = uidFB
-//        self.dateString = dateStringFB
-//        self.value = valueFB
-//        self.operationType = operationTypeFB
-//        self.expenseType = expenseTypeFB
-//        self.imageName = expenseType.rawValue
-//
-//        self.refExpense = snapshot.ref
-//    }
+    init?(snapshot: DataSnapshot) {
+        guard
+            let snapshotValue = snapshot.value as? [String: AnyObject],
+            let uidFB = snapshotValue["uid"] as? String,
+            let dateStringFB = snapshotValue["dateString"] as? String,
+            let valueFB = snapshotValue["value"] as? Int,
+            let operationTypeFB = snapshotValue["operationType"] as? String,
+            let expenseTypeFB = snapshotValue["expenseType"] as? String
+        else { return nil }
+        self.uid = uidFB
+        self.dateString = dateStringFB
+        self.value = valueFB
+        self.operationType = convertToOperationEnum(stringFromFB: operationTypeFB)
+        self.expenseType = convertToExpenseEnum(stringFromFB: expenseTypeFB)
+        self.imageName = expenseType.rawValue
+
+        self.refExpense = snapshot.ref
+    }
     
     func converToDictionary() -> Any {
         return["uid": uid, "dateString": dateString, "value": value, "operationType": operationType, "expenseType": expenseType]
     }
-    
+
+}
+
+class ExpenseFB {
+    var uid: String
+    var dateString: String
+    var value: Int
+    var operationType: String
+    var expenseType: String
+   
+    init(fromVM model: ExpenseViewModel) {
+        self.uid = model.uid
+        self.dateString = model.dateString
+        self.value = model.value
+        self.operationType = model.operationType.rawValue
+        self.expenseType = model.expenseType.rawValue
+    }
+    func converToDictionary() -> Any {
+        return["uid": uid, "dateString": dateString, "value": value, "operationType": operationType, "expenseType": expenseType]
+    }
     
 }
 
@@ -139,4 +158,44 @@ enum ExpenseType: String, CaseIterable {
 enum OperationType: String {
     case plus
     case minus
+}
+
+func convertToOperationEnum(stringFromFB: String) -> OperationType {
+    switch stringFromFB {
+    case "plus":
+        return .plus
+    case "minus":
+        return .minus
+    default:
+        return .plus
+    }
+}
+
+func convertToExpenseEnum(stringFromFB: String) -> ExpenseType {
+    switch stringFromFB {
+    case "Furniture":
+        return .Furniture
+    case "Clothing":
+        return.Clothing
+    case "Bugs":
+        return .Bugs
+    case "Fish":
+        return .Fish
+    case "SeaCreatures":
+        return .SeaCreatures
+    case "Tools":
+        return .Tools
+    case "Fossils":
+        return .Fossils
+    case"Artwork":
+        return .Artwork
+    case "Music":
+        return .Music
+    case "Garden":
+        return .Garden
+    case "Other":
+        return .Other
+    default:
+        return .Other
+    }
 }

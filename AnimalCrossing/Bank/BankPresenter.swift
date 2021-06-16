@@ -10,12 +10,13 @@ import Foundation
 
 protocol IBankPresenter {
     var user: UserLocale? { get set }
-    var account: BankViewModel? { get set }
+    var account: BankViewModel { get set }
     var userStatus: UserStatus? { get set }
     
     func getCurrentUser()
     
     func loadView(view: IBankViewController)
+    func getCurrentBankAccountFromFB()
     func plusButtonPressed()
     func returnCurrentAccountValue() -> String
     func returnCollectionCount() -> Int
@@ -27,16 +28,14 @@ class BankPresenter {
     
     var view: IBankViewController?
     
-    var account: BankViewModel?
+    var account: BankViewModel = BankViewModel(currentValue: 0, expenses: [ExpenseViewModel(value: 999, operationType: .minus, expenseType: .Other)])
     
     var user: UserLocale?
     
     var fireBaseManager: IBankFireBaseManager
     
     init(fireBaseManager: IBankFireBaseManager) {
-        
         self.fireBaseManager = fireBaseManager
-        self.user = self.fireBaseManager.getUser()
     }
     
 }
@@ -55,42 +54,66 @@ extension BankPresenter: IBankPresenter {
             self.user = nil
             self.getDemoData()
         }
-        self.refreshView()
+        
     }
     
     private func getAccountData() {
         print("add fetch data from fb")
+        self.getCurrentBankAccountFromFB()
+        self.getCurrentExpensesFromFB()
         
     }
     private func getDemoData() {
         self.account = BankViewModel(currentValue: 100500,
                                      expenses: [ExpenseViewModel(value: 1452, operationType: .plus), ExpenseViewModel(value: 1248, operationType: .minus), ExpenseViewModel(value: 3248, operationType: .minus), ExpenseViewModel(value: 74532, operationType: .plus), ExpenseViewModel(value: 29012, operationType: .plus, expenseType: .Other)])
+        self.refreshView(currentValue: self.account.currentValue)
     }
     
     func addExpense(expense: ExpenseViewModel) {
+         let expenseForFir = ExpenseFB(fromVM: expense)
         switch expense.operationType {
         case .plus:
-            self.account?.currentValue = (self.account?.currentValue ?? 0) + expense.value
+            self.account.currentValue = self.account.currentValue + expense.value
+            print(self.account.currentValue)
         case .minus:
-            self.account?.currentValue = (self.account?.currentValue ?? 0) - expense.value
+            self.account.currentValue = self.account.currentValue - expense.value
         }
         switch userStatus {
         case .loggined:
-            self.account?.expenses?.insert(expense, at: 0)
-            self.addExpenseToFb(expense: expense)
+            print(self.account.currentValue)
+            self.account.expenses?.insert(expense, at: 0)
+            self.addExpenseToFb(expense: expenseForFir)
             self.updateCurrentAccountValue()
         default:
-            self.account?.expenses?.insert(expense, at: 0)
+            self.account.expenses?.insert(expense, at: 0)
         }
-        self.refreshView()
+        self.refreshView(currentValue: self.account.currentValue)
     }
     
     func updateCurrentAccountValue() {
-        guard let account = self.account?.currentValue else { return }
+       // guard
+            let account = self.account.currentValue //else { return }
         self.fireBaseManager.updateAccountValue(newValue: account)
     }
     
-    private func addExpenseToFb(expense: ExpenseViewModel) {
+    func getCurrentBankAccountFromFB() {
+        self.fireBaseManager.currentBankAccountFromFB { value in
+           self.account.currentValue = value
+            print("presenter VAlur")
+            print(self.account.currentValue)
+            self.refreshView(currentValue: self.account.currentValue)
+        }
+    }
+    func getCurrentExpensesFromFB() {
+        self.fireBaseManager.currentExpensesFromFB { expensesArray in
+            self.account.expenses = expensesArray
+            print(self.account.expenses?.count)
+            self.refreshView(currentValue: self.account.currentValue)
+        }
+        
+    }
+    
+    private func addExpenseToFb(expense: ExpenseFB) {
         self.fireBaseManager.addExpenseToFb(expense: expense)
     }
     
@@ -99,7 +122,6 @@ extension BankPresenter: IBankPresenter {
         print("pressed")
         self.view?.showAddExpenseAlert(expense: { expense in
             self.addExpense(expense: expense)
-            self.refreshView()
         })
     }
     
@@ -109,22 +131,25 @@ extension BankPresenter: IBankPresenter {
     
     func returnCurrentAccountValue() -> String {
             var string = "888"
-            if let value = self.account?.currentValue {
+            //if
+                let value = self.account.currentValue
+            //{
                 string = String(value)
-            }
+            //}
             return string
     }
     
     func returnCollectionCount() -> Int {
-        return account?.expenses?.count ?? 0
+        return account.expenses?.count ?? 0
     }
     
     func returnCollectionItem(index: Int) -> ExpenseViewModel {
-        return account?.expenses?[index] ?? ExpenseViewModel(value: 0, operationType: .plus)
+        return account.expenses?[index] ?? ExpenseViewModel(value: 0, operationType: .plus)
     }
     
-    private func refreshView() {
-        self.view?.refreshView(currentValue: self.account?.currentValue ?? 0)
+    private func refreshView(currentValue: Int?) {
+        guard let currentValue = currentValue else { return }
+        self.view?.refreshView(currentValue: currentValue)
     }
     
 }

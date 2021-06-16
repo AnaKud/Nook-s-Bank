@@ -45,12 +45,18 @@ class BankViewController: CustomViewController {
     override func loadView() {
         super.loadView()
         self.presenter.loadView(view: self)
-        self.presenter.getCurrentUser()
         self.dataForUserStatus()
         self.setupBankAccountView()
         self.setupPlusButton()
         self.setupViewForCollection()
         self.setupCollectionView()
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.presenter.getCurrentUser()
+        
     }
     
     private func dataForUserStatus(){

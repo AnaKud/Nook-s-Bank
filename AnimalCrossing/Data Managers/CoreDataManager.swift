@@ -17,40 +17,40 @@ protocol INewsCoreDataManager {
     func addNews(news: EventsViewModel)
     func deleteAllNews()
     func initErrorPresenterForNews(errorPresenter: IPresenterForCoreDataError)
-    
 }
 
 class CoreDataManager {
-        var errorPresenter: IPresenterForCoreDataError?
-        
-        private enum Constant {
-            static let containerName = "AnimalCrossing"
-            static let news = "News"
-        }
-        
-        lazy var container: NSPersistentContainer = {
-            let container = NSPersistentContainer(name: Constant.containerName)
-            container.loadPersistentStores(completionHandler: { (_, error) in
-                if let error = error as NSError? {
-                    fatalError("Unresolved error \(error), \(error.userInfo)")
-                }
-            })
-            return container
-        }()
-        
-        lazy var context: NSManagedObjectContext = container.viewContext
-
+    static let shared = CoreDataManager()
+    var errorPresenter: IPresenterForCoreDataError?
     
-        func saveContext () {
-            if context.hasChanges {
-                do {
-                    try context.save()
-                } catch {
-                    let nserror = error as NSError
-                    fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
-                }
+    private enum Constant {
+        static let containerName = "AnimalCrossing"
+        static let news = "News"
+    }
+    
+    lazy var container: NSPersistentContainer = {
+        let container = NSPersistentContainer(name: Constant.containerName)
+        container.loadPersistentStores(completionHandler: { (_, error) in
+            if let error = error as NSError? {
+                fatalError("Unresolved error \(error), \(error.userInfo)")
+            }
+        })
+        return container
+    }()
+    
+    lazy var context: NSManagedObjectContext = container.viewContext
+    
+    
+    func saveContext () {
+        if context.hasChanges {
+            do {
+                try context.save()
+            } catch {
+                let nserror = error as NSError
+                fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
             }
         }
+    }
     
 }
 

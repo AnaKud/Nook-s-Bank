@@ -22,17 +22,18 @@ protocol ILoginFireBaseManager {
 protocol IBankFireBaseManager {
     var bankPresenter: IBankPresenter? { get set }
     
-    func addExpenseToFb(expense: ExpenseViewModel)
+    func addExpenseToFb(expense: ExpenseFB)
     func getUser() -> UserLocale?
     func updateAccountValue(newValue: Int)
-    
+    func currentBankAccountFromFB(completion: @escaping (Int) -> ())
+    func currentExpensesFromFB(completion: @escaping ([ExpenseViewModel]) -> ())
 }
 
 class FireBaseManager {
+    static let shared = FireBaseManager()
     
     var loginPresenter: ILoginPresenter?
     var bankPresenter: IBankPresenter?
-    
     
     let refUser = Database.database().reference(withPath: "users")
     var refBankAccount: DatabaseReference?
@@ -97,39 +98,67 @@ extension FireBaseManager: IBankFireBaseManager {
         guard let currentUser = Auth.auth().currentUser,
               let user = UserLocale(user: currentUser)
         else { return nil }
-        self.refBankAccount = self.setupRefBankAccount()
+        self.refBankAccount = self.setupRefBankAccount(forUser: currentUser)
         self.refExpenses = self.setupRefExpense()
         return user
     }
     
-    func currentBankAccountFromFB() {
-        self.refBankAccount?.observe(.value, with: { [ weak self ] (snapshot) in
-           // var account: BankViewModel?
-           // guard let item = BankViewModel(s)
-                 
-            
+    func currentBankAccountFromFB(completion: @escaping (Int) -> ()) {
+        self.refBankAccount?.observe(.value, with: { (snapshot) in
+            guard let bankAccount = snapshot.childSnapshot(forPath: "currentValue").value as? Int else { return }
+            print(bankAccount)
+            completion(bankAccount)
         })
     }
+    
+    func currentExpensesFromFB(completion: @escaping ([ExpenseViewModel]) -> ()) {
+        self.refExpenses?.observe(.value, with: { (snapshot) in
+            var expenses = [ExpenseViewModel]()
+            for item in snapshot.children {
+                guard
+                    let item = item as? DataSnapshot,
+                    let expense = ExpenseViewModel(snapshot: item)
+                else { return }
+                expenses.append(expense)
+            }
+            print("fb expenses value = \(expenses.count)")
+            completion(expenses)
+        })
+    }
+    
+//    func currentBankAccountFromFB() -> Int? {
+//        guard let result = self.refBankAccount?.value(forKey: "currentValue") as? Int else { return nil }
+//        return result
+        //self.refBankAccount?.child("currentValue").observe(.value, with: { _ in//{ (snapshot) in
+            //snapshot.childSnapshot(forPath: "currentValue").value
+        //self.refBankAccount?.observe(.value, with: { (snapshot) in
+            //print("snapdhotVAlue")
+           
+            //guard let bankAccount = snapshot.childSnapshot(forPath: "currentValue").value as? Int else { return }
+                    //snapshot.value(forKey: "currentValue") as? String, let bank = Int(bankAccount) else { return }
+           // print(bankAccount)
+           // completion(bankAccount)
+        //})
+   // }
     
     func updateAccountValue(newValue: Int) {
         self.refBankAccount?.updateChildValues(["currentValue": newValue])
     }
     
-    func addExpenseToFb(expense: ExpenseViewModel) {
+    func addExpenseToFb(expense: ExpenseFB) {
         let refOnCurrentFb = self.refExpenses?.child(expense.uid)
         refOnCurrentFb?.setValue(expense.converToDictionary())
-        
     }
     
 
-    func setupRefBankAccount() -> DatabaseReference? {
-        guard let user = self.bankPresenter?.user else { return nil }
-        return self.refUser.child(String(user.uid)).child("currentAcount")
+    func setupRefBankAccount(forUser user: User) -> DatabaseReference? {
+        //guard let user = self.bankPresenter?.user else { return nil }
+        return Database.database().reference(withPath: "users").child(String(user.uid)).child("currentAcount")
     }
      
     func setupRefExpense() -> DatabaseReference? {
-        let bankRef = self.setupRefBankAccount()
-        let expenseRef = bankRef?.child("expenses")
+        guard let bankRef = self.refBankAccount else { return nil }
+        let expenseRef = bankRef.child("expenses")
         return expenseRef
     }
  
