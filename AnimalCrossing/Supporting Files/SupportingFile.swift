@@ -57,7 +57,7 @@ struct AppContraints {
 }
 
 struct AppTitle {
-    static let nookBank = "Nook Bank"
+    static let nookBank = "Nook's Bank"
     static let welcome = "Welcome to"
     static let save = "Save"
     static let cancel = "Cancel"
@@ -71,10 +71,10 @@ struct AppTitle {
         static let nameMessage = "Enter your name"
     }
     struct News {
-        static let controllerTitle = "Nook News"
+        static let controllerTitle = "Nook's News"
     }
     struct Bank {
-        static let controllerTitle = "Nook Bank"
+        static let controllerTitle = "Nook's Bank"
         static let currentAccountTitle = "Your current account:"
         static let purchaseHistory = "Purchase History:"
         static let demoTitle = "Demo account:"

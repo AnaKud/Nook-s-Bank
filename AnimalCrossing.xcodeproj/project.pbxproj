@@ -112,10 +112,10 @@
 		E324193B2676756D00B1F867 /* Bank */ = {
 			isa = PBXGroup;
 			children = (
+				E3241940267676BC00B1F867 /* BankAssembly.swift */,
 				E324193C2676759800B1F867 /* BankViewController.swift */,
 				E324194426769A6A00B1F867 /* ExpenseCollectionViewCell.swift */,
 				E324193E267675C800B1F867 /* BankPresenter.swift */,
-				E3241940267676BC00B1F867 /* BankAssembly.swift */,
 			);
 			path = Bank;
 			sourceTree = "<group>";
@@ -156,10 +156,10 @@
 				E324193B2676756D00B1F867 /* Bank */,
 				E3F0BD2826723C8600B2698C /* News */,
 				E3F0BD2726723C7A00B2698C /* Login */,
-				E3A6E802266C204A00E2A5FE /* GoogleService-Info.plist */,
 				E3A6E800266C1F0A00E2A5FE /* Supporting Files */,
 				E3F0BD30267240D200B2698C /* Reusible View */,
 				E3A6E7FA266C1ED500E2A5FE /* Info.plist */,
+				E3A6E802266C204A00E2A5FE /* GoogleService-Info.plist */,
 			);
 			path = AnimalCrossing;
 			sourceTree = "<group>";
@@ -202,10 +202,10 @@
 		E3F0BD2826723C8600B2698C /* News */ = {
 			isa = PBXGroup;
 			children = (
+				E3F147392673562300FF91FD /* NewsAssembly.swift */,
 				E3F147372673561000FF91FD /* NewsViewController.swift */,
 				E399E1AE2673D40E0017F450 /* NewsTableViewCell.swift */,
 				E399E1A926739B1F0017F450 /* NewsPresenter.swift */,
-				E3F147392673562300FF91FD /* NewsAssembly.swift */,
 			);
 			path = News;
 			sourceTree = "<group>";
