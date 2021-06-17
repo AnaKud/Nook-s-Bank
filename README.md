@@ -1,4 +1,4 @@
-# Nook Bank
+# Nook's Bank
 Focus Start graduating project
 App Description: iOS application for reading News about events in Animal Crossing and Bank App for your Bells Acoount.
 
@@ -8,7 +8,9 @@ Tech Stack: MVP, FireBase(Auth&DB), API, CoreData, SnapKit
 ____
 ## Author(-s)
 Developed by: [Anastasiya Kudasheva](https://t.me/anakud)
+
 Original design: [Lilie Bingham](https://www.figma.com/community/file/969056012925031551/Animal-Crossing-Nook-Tunes-for-the-Nookphone)
+
 Additional design by: [Sergei Toporkov](https://t.me/spacemanfromul) 
 ____
 ## Getting Started
