@@ -104,6 +104,7 @@ enum AppImage {
 }
 
 enum FailureCases: String {
+    case accountError = "Sorry. Your current account can't be lower 0"
     case fetchError = "Sorry. Can't fetch your data"
     case createError = "Sorry. Can't create your data"
     case saveError = "Sorry. Can't save your data"

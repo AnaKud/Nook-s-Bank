@@ -11,6 +11,7 @@ protocol IBankViewController {
     func interfaceWithData()
     func refreshView(currentValue: String)
     func showAddExpenseAlert(expense: @escaping (ExpenseViewModel) -> ())
+    func showErrrorAlert(withMessage: FailureCases)
     var currentAccount: BankViewModel? { get set }
 }
 
@@ -240,7 +241,7 @@ extension BankViewController: IBankViewController {
     }
     
     func refreshView(currentValue: String) {
-        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2) {
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1) {
             self.expensesCollectionView.reloadData()
             self.currentAccountLabel.text = currentValue
         }

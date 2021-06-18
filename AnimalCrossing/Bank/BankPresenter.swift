@@ -66,13 +66,20 @@ extension BankPresenter: IBankPresenter {
     }
     
     func addExpense(expense: ExpenseViewModel) {
+        var supportingAccountData = self.account.currentValue
         let expenseForFir = ExpenseFB(fromVM: expense)
         switch expense.operationType {
         case .plus:
             self.account.currentValue = self.account.currentValue + expense.value
             print(self.account.currentValue)
         case .minus:
-            self.account.currentValue = self.account.currentValue - expense.value
+            supportingAccountData = supportingAccountData - expense.value
+            if supportingAccountData > 0 {
+                self.account.currentValue = self.account.currentValue - expense.value
+            } else {
+                self.presentError(error: .accountError)
+                return
+            }
         }
         switch userStatus {
         case .loggined:
@@ -143,5 +150,9 @@ extension BankPresenter: IBankPresenter {
         var result = [ExpenseViewModel]()
         result = expensesInput?.sorted(by: { $0.date?.compare($1.date ?? Date()) == .orderedDescending }) ?? [ExpenseViewModel]()
         return result
+    }
+    
+    private func presentError(error: FailureCases) {
+        self.view?.showErrrorAlert(withMessage: error)
     }
 }
