@@ -34,9 +34,14 @@ ____
 N/A
 ____
 ## Interface screens 
+![alt_text](https://github.com/AnaKud/Nook-s-Bank/blob/main/Attachments/NBGif.gif?raw=true)
 
-
-
+![alt_text](https://github.com/AnaKud/Nook-s-Bank/blob/main/Attachments/LoginScreenEmpty.png?raw=true)
+![alt_text](https://github.com/AnaKud/Nook-s-Bank/blob/main/Attachments/NewsUnlogin.png?raw=true)
+![alt_text](https://github.com/AnaKud/Nook-s-Bank/blob/main/Attachments/BankUnlogin.png?raw=true)
+![alt_text](https://github.com/AnaKud/Nook-s-Bank/blob/main/Attachments/NewsLogin.png?raw=true)
+![alt_text](https://github.com/AnaKud/Nook-s-Bank/blob/main/Attachments/BankLogin.png?raw=true)
+![alt_text](https://github.com/AnaKud/Nook-s-Bank/blob/main/Attachments/BankAddLogin.png?raw=true)
 ____
 ## Additional information
 N/A
