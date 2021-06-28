@@ -39,7 +39,7 @@ class NewsViewController: CustomViewController {
         self.tableView.dataSource = self
         self.tableView.delegate = self
         self.tableView.register(NewsTableViewCell.self, forCellReuseIdentifier: CellReusibleID.news.rawValue)
-        self.tableView.allowsSelection = false
+        //self.tableView.allowsSelection = false
     }
     
     func displayActivity() {
@@ -88,6 +88,10 @@ extension NewsViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         cell.backgroundColor = .clear
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        self.presenter.cellPressed(index: indexPath.row)
     }
 }
 

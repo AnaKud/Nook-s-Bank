@@ -48,7 +48,7 @@ class ExpenseViewModel {
         let creationDate = Date()
         self.dateString = {
             let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "y-MM-dd HH:mm"
+            dateFormatter.dateFormat = "HH:mm \n dd MMM yyyy"
             return dateFormatter.string(from: creationDate)
         }()
         self.value = value
@@ -61,7 +61,7 @@ class ExpenseViewModel {
         let creationDate = Date()
         self.dateString = {
             let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "y-MM-dd HH:mm"
+            dateFormatter.dateFormat = "HH:mm \n dd MMM yyyy"
             return dateFormatter.string(from: creationDate)
         }()
         self.date = creationDate

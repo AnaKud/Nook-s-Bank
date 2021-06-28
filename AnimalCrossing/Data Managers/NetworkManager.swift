@@ -8,31 +8,31 @@
 import Foundation
 
 protocol INewsNetworkManager {
-    func downloadData(link: AdditionalLink, eventHandler: @escaping ([EventsFromInternet]?) -> ())
+    func downloadNews(link: AdditionalLink, newsHandler: @escaping ([NewsResponse]?) -> ())
 }
 
 class NetworkManager: INewsNetworkManager  {
     static let shared = NetworkManager()
     
-    let baseUrlString = "https://api.nookipedia.com/"
+    let baseNookipediaUrlString = "https://api.nookipedia.com/"
     
-    func downloadData(link: AdditionalLink, eventHandler: @escaping ([EventsFromInternet]?) -> ()) {
-        guard let request = self.makeRequest(link: link) else { return }
+    func downloadNews(link: AdditionalLink, newsHandler: @escaping ([NewsResponse]?) -> ()) {
+        guard let request = self.makeNewsRequest(link: link) else { return }
         let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
             guard
                 error == nil,
                 let httpResponse = response as? HTTPURLResponse,
                 let data = data
             else {
-                eventHandler(nil)
+                newsHandler(nil)
                 return
             }
             
             if httpResponse.statusCode == 200 {
                 do {
                     let decoder = JSONDecoder()
-                    let events = try decoder.decode([EventsFromInternet].self, from: data)
-                    eventHandler(events)
+                    let news = try decoder.decode([NewsResponse].self, from: data)
+                    newsHandler(news)
                 } catch {
                     print(error.localizedDescription)
                 }
@@ -41,8 +41,8 @@ class NetworkManager: INewsNetworkManager  {
         task.resume()
     }
     
-    private func makeRequest(link: AdditionalLink) -> URLRequest? {
-        let urlString = self.baseUrlString + link.rawValue
+    private func makeNewsRequest(link: AdditionalLink) -> URLRequest? {
+        let urlString = self.baseNookipediaUrlString + link.rawValue
         
         guard let url = URL(string: urlString) else { return nil }
         var request = URLRequest(url: url)
@@ -52,3 +52,48 @@ class NetworkManager: INewsNetworkManager  {
         return request
     }
 }
+
+///https://animal-crossing-api.glitch.me/ac-turnip.com
+
+protocol ITurnipNetworkManager {
+    
+}
+
+extension NetworkManager: ITurnipNetworkManager {
+    func downloadNews(forTurnipPrices prices: TurnipPrices, turnipHandler: @escaping (TurnipResponse) -> ()) {
+        let urlString = self.makeBaseTurnipUrl(forTurnipPrices: prices)
+        guard let url = URL(string: urlString) else { return }
+        let request = URLRequest(url: url)
+        let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+            guard
+                error == nil,
+                let httpResponse = response as? HTTPURLResponse,
+                let data = data
+            else { return }
+            
+            if httpResponse.statusCode == 200 {
+                do {
+                    let decoder = JSONDecoder()
+                    let turnipData = try decoder.decode(TurnipResponse.self, from: data)
+                    turnipHandler(turnipData)
+                } catch {
+                    print(error.localizedDescription)
+                }
+            }
+        }
+        task.resume()
+    }
+    
+    
+    private func makeBaseTurnipUrl(forTurnipPrices prices: TurnipPrices) -> String {
+        var baseTurnipUrl = "https://api.ac-turnip.com/data/?f=\(prices.buyPrice)"
+        let pricesArray = prices.pricesArray()
+      
+        for price in pricesArray {
+                baseTurnipUrl += "-\(price)"
+        }
+        return baseTurnipUrl
+    }
+    
+}
+

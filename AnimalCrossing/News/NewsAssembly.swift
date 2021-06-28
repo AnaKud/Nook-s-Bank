@@ -11,10 +11,13 @@ class NewsAssembly {
     func build(userStatus: UserStatus, title: String) -> NewsViewController {
         let networkManager: INewsNetworkManager = NetworkManager.shared
         let coreData: INewsCoreDataManager = CoreDataManager.shared
-        let presenter: INewsPresenter = NewsPresenter(networkManager: networkManager, coreData: coreData)
+        var router: INewsRouter = NewsRouter()
+        let presenter: INewsPresenter = NewsPresenter(networkManager: networkManager, coreData: coreData, router: router)
         let controller = NewsViewController(presenter: presenter)
         controller.userStatus = userStatus
         controller.controllerTitle = AppTitle.News.controllerTitle
+        
+        router.controller = controller
         return controller
     }
 }

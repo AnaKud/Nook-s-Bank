@@ -1,5 +1,5 @@
 //
-//  EventsModel.swift
+//  NewsModel.swift
 //  AnimalCrossing
 //
 //  Created by Anastasiya Kudasheva on 11.06.2021.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-class EventsFromInternet: Codable {
+class NewsResponse: Codable {
     var date: String
     var event: String
     var url: String
@@ -18,7 +18,7 @@ class EventsFromInternet: Codable {
     }
 }
 
-class EventsViewModel {
+class NewsViewModel {
     var date: String
     var event: String
     var url: String
@@ -30,14 +30,18 @@ class EventsViewModel {
         self.type = returnType(data: event)
     }
     
-    init(fromInternet model: EventsFromInternet) {
-        self.date = model.date
+    init(fromInternet model: NewsResponse) {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd"
+        let internetDate = dateFormatter.date(from: model.date)
+        dateFormatter.dateFormat = "dd MMM yyyy"
+        self.date = dateFormatter.string(from: internetDate ?? Date())
         self.event = model.event
         self.url = model.url
         self.type = returnType(data: event)
     }
     
-    init(fromCoreData model: EventsCoreData) {
+    init(fromCoreData model: NewsCoreData) {
         self.date = model.date
         self.event = model.event
         self.url = model.url
@@ -65,12 +69,12 @@ fileprivate func returnType(data: String) -> String {
     return "Event"
 }
 
-class EventsCoreData {
+class NewsCoreData {
     var date: String
     var event: String
     var url: String
     var type: String
-    init(fromViewModel model: EventsViewModel) {
+    init(fromViewModel model: NewsViewModel) {
         self.date = model.date
         self.event = model.event
         self.url = model.url
@@ -78,7 +82,7 @@ class EventsCoreData {
     }
 }
 
-class EventsFireBase {
+class NewsFireBase {
     var date: String
     var event: String
     

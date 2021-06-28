@@ -13,10 +13,14 @@ protocol IPresenterForCoreDataError {
 }
 
 protocol INewsCoreDataManager {
-    func loadNews()-> [EventsViewModel]
-    func addNews(news: EventsViewModel)
+    func loadNews()-> [NewsViewModel]
+    func addNews(news: NewsViewModel)
     func deleteAllNews()
     func initErrorPresenterForNews(errorPresenter: IPresenterForCoreDataError)
+}
+
+protocol ITurnipCoreDataManager {
+   
 }
 
 class CoreDataManager {
@@ -27,6 +31,7 @@ class CoreDataManager {
     private enum Constant {
         static let containerName = "AnimalCrossing"
         static let news = "News"
+        static let turnip = "Turnip"
     }
     
     lazy var container: NSPersistentContainer = {
@@ -54,19 +59,19 @@ class CoreDataManager {
 }
 
 extension CoreDataManager: INewsCoreDataManager {
-    func loadNews() -> [EventsViewModel] {
+    func loadNews() -> [NewsViewModel] {
         let fetchRequest: NSFetchRequest<News> = News.fetchRequest()
         do {
             let data = try context.fetch(fetchRequest)
-            return convertToEventsFromCoreData(news: data)
+            return convertToNewsFromCoreData(news: data)
         } catch let error {
             self.errorPresenter?.presentError(error: .fetchError)
             print(error.localizedDescription)
         }
-        return [EventsViewModel]()
+        return [NewsViewModel]()
     }
     
-    func addNews(news: EventsViewModel) {
+    func addNews(news: NewsViewModel) {
         let newsContext = News(context: context)
         newsContext.date = news.date
         newsContext.event = news.event
@@ -99,13 +104,17 @@ extension CoreDataManager: INewsCoreDataManager {
         self.errorPresenter = errorPresenter
     }
     
-    private func convertToEventsFromCoreData(news: [News]) -> [EventsViewModel] {
-        var result = [EventsViewModel]()
+    private func convertToNewsFromCoreData(news: [News]) -> [NewsViewModel] {
+        var result = [NewsViewModel]()
         for event in news {
-            if let newEvent = EventsViewModel(fromNews: event) {
+            if let newEvent = NewsViewModel(fromNews: event) {
                 result.append(newEvent)
             }
         }
         return result
     }
+}
+
+extension CoreDataManager: ITurnipCoreDataManager {
+    
 }
