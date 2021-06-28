@@ -8,76 +8,91 @@
 
 /* Begin PBXBuildFile section */
 		A20C412E0FE5A340C7207DA1 /* Pods_AnimalCrossing.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A207B86D830A555F32D3F965 /* Pods_AnimalCrossing.framework */; };
-		E324193D2676759800B1F867 /* BankViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E324193C2676759800B1F867 /* BankViewController.swift */; };
-		E324193F267675C800B1F867 /* BankPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E324193E267675C800B1F867 /* BankPresenter.swift */; };
-		E3241941267676BC00B1F867 /* BankAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3241940267676BC00B1F867 /* BankAssembly.swift */; };
-		E32419432676828B00B1F867 /* BankModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32419422676828B00B1F867 /* BankModel.swift */; };
-		E324194526769A6A00B1F867 /* ExpenseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E324194426769A6A00B1F867 /* ExpenseCollectionViewCell.swift */; };
-		E324194826775FCA00B1F867 /* UserLocale.swift in Sources */ = {isa = PBXBuildFile; fileRef = E324194726775FCA00B1F867 /* UserLocale.swift */; };
-		E399E1AA26739B1F0017F450 /* NewsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E399E1A926739B1F0017F450 /* NewsPresenter.swift */; };
-		E399E1AD2673A72F0017F450 /* EventsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E399E1AC2673A72F0017F450 /* EventsModel.swift */; };
-		E399E1AF2673D40E0017F450 /* NewsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E399E1AE2673D40E0017F450 /* NewsTableViewCell.swift */; };
-		E3A6E7EA266C1ED500E2A5FE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A6E7E9266C1ED500E2A5FE /* AppDelegate.swift */; };
-		E3A6E7EC266C1ED500E2A5FE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A6E7EB266C1ED500E2A5FE /* SceneDelegate.swift */; };
-		E3A6E7EE266C1ED500E2A5FE /* CustomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A6E7ED266C1ED500E2A5FE /* CustomViewController.swift */; };
-		E3A6E7F4266C1ED500E2A5FE /* AnimalCrossing.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E3A6E7F2266C1ED500E2A5FE /* AnimalCrossing.xcdatamodeld */; };
-		E3A6E7F6266C1ED500E2A5FE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E3A6E7F5266C1ED500E2A5FE /* Assets.xcassets */; };
-		E3A6E7F9266C1ED500E2A5FE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E3A6E7F7266C1ED500E2A5FE /* LaunchScreen.storyboard */; };
-		E3C16D34266C269E00DE15E8 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E3A6E802266C204A00E2A5FE /* GoogleService-Info.plist */; };
-		E3F0BD2A26723CAB00B2698C /* LoginAssebmly.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F0BD2926723CAB00B2698C /* LoginAssebmly.swift */; };
-		E3F0BD2D26723FE600B2698C /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F0BD2C26723FE600B2698C /* CoreDataManager.swift */; };
-		E3F0BD2F2672404F00B2698C /* LoginRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F0BD2E2672404F00B2698C /* LoginRouter.swift */; };
-		E3F0BD32267240FB00B2698C /* LoginPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F0BD31267240FB00B2698C /* LoginPresenter.swift */; };
-		E3F0BD342672418200B2698C /* FireBaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F0BD332672418200B2698C /* FireBaseManager.swift */; };
-		E3F0BD36267241EB00B2698C /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F0BD35267241EB00B2698C /* NetworkManager.swift */; };
-		E3F0BD382672431300B2698C /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F0BD372672431300B2698C /* LoginViewController.swift */; };
-		E3F0BD3A267245DD00B2698C /* MainRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F0BD39267245DD00B2698C /* MainRouter.swift */; };
-		E3F0BD3E26724EA900B2698C /* FinkHeavy.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E3F0BD3B267248B300B2698C /* FinkHeavy.ttf */; };
-		E3F0BD4126725B8700B2698C /* IwataMaruGothicW55-D.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E3F0BD3F26725ABE00B2698C /* IwataMaruGothicW55-D.ttf */; };
-		E3F0BD4226725B8900B2698C /* IwataMaruGothicW55-L.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E3F0BD4026725ABE00B2698C /* IwataMaruGothicW55-L.ttf */; };
-		E3F14733267328C200FF91FD /* CustomAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F14732267328C200FF91FD /* CustomAlertController.swift */; };
-		E3F147382673561000FF91FD /* NewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F147372673561000FF91FD /* NewsViewController.swift */; };
-		E3F1473A2673562300FF91FD /* NewsAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F147392673562300FF91FD /* NewsAssembly.swift */; };
-		E3F6E56B2671FDA70056CDCF /* SupportingFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3F6E56A2671FDA70056CDCF /* SupportingFile.swift */; };
+		E3A2E9D82689C3A600297E51 /* LoginAssebmly.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A2E9882689C3A500297E51 /* LoginAssebmly.swift */; };
+		E3A2E9D92689C3A600297E51 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A2E9892689C3A500297E51 /* LoginViewController.swift */; };
+		E3A2E9DA2689C3A600297E51 /* LoginPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A2E98A2689C3A500297E51 /* LoginPresenter.swift */; };
+		E3A2E9DB2689C3A600297E51 /* LoginRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A2E98B2689C3A500297E51 /* LoginRouter.swift */; };
+		E3A2E9DC2689C3A600297E51 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A2E98D2689C3A600297E51 /* CoreDataManager.swift */; };
+		E3A2E9DD2689C3A600297E51 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A2E98E2689C3A600297E51 /* NetworkManager.swift */; };
+		E3A2E9DE2689C3A600297E51 /* AnimalCrossing.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = E3A2E98F2689C3A600297E51 /* AnimalCrossing.xcdatamodeld */; };
+		E3A2E9DF2689C3A600297E51 /* FireBaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A2E9912689C3A600297E51 /* FireBaseManager.swift */; };
+		E3A2E9E02689C3A600297E51 /* DatesOfCurrentWeek.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A2E9932689C3A600297E51 /* DatesOfCurrentWeek.swift */; };
+		E3A2E9EB2689C3A600297E51 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E3A2E9B12689C3A600297E51 /* Assets.xcassets */; };
+		E3A2E9EC2689C3A600297E51 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E3A2E9B22689C3A600297E51 /* LaunchScreen.storyboard */; };
+		E3A2E9ED2689C3A600297E51 /* MainRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A2E9B42689C3A600297E51 /* MainRouter.swift */; };
+		E3A2E9EE2689C3A600297E51 /* LaunchScreen.strings in Resources */ = {isa = PBXBuildFile; fileRef = E3A2E9B52689C3A600297E51 /* LaunchScreen.strings */; };
+		E3A2E9EF2689C3A600297E51 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A2E9B72689C3A600297E51 /* AppDelegate.swift */; };
+		E3A2E9F02689C3A600297E51 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A2E9B82689C3A600297E51 /* SceneDelegate.swift */; };
+		E3A2E9F12689C3A600297E51 /* SupportingFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A2E9B92689C3A600297E51 /* SupportingFile.swift */; };
+		E3A2E9F22689C3A600297E51 /* NewsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A2E9BB2689C3A600297E51 /* NewsModel.swift */; };
+		E3A2E9F32689C3A600297E51 /* BankModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A2E9BC2689C3A600297E51 /* BankModel.swift */; };
+		E3A2E9F42689C3A600297E51 /* TurnipModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A2E9BD2689C3A600297E51 /* TurnipModel.swift */; };
+		E3A2E9F52689C3A600297E51 /* UserLocale.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A2E9BE2689C3A600297E51 /* UserLocale.swift */; };
+		E3A2E9F62689C3A600297E51 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E3A2E9BF2689C3A600297E51 /* GoogleService-Info.plist */; };
+		E3A2E9F72689C3A600297E51 /* BankAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A2E9C12689C3A600297E51 /* BankAssembly.swift */; };
+		E3A2E9F82689C3A600297E51 /* BankViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A2E9C22689C3A600297E51 /* BankViewController.swift */; };
+		E3A2E9F92689C3A600297E51 /* BankPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A2E9C32689C3A600297E51 /* BankPresenter.swift */; };
+		E3A2E9FA2689C3A600297E51 /* ExpenseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A2E9C42689C3A600297E51 /* ExpenseCollectionViewCell.swift */; };
+		E3A2E9FB2689C3A600297E51 /* NewsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A2E9C62689C3A600297E51 /* NewsRouter.swift */; };
+		E3A2E9FC2689C3A600297E51 /* NewsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A2E9C72689C3A600297E51 /* NewsPresenter.swift */; };
+		E3A2E9FD2689C3A600297E51 /* NewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A2E9C82689C3A600297E51 /* NewsViewController.swift */; };
+		E3A2E9FE2689C3A600297E51 /* NewsAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A2E9C92689C3A600297E51 /* NewsAssembly.swift */; };
+		E3A2E9FF2689C3A600297E51 /* NewsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A2E9CA2689C3A600297E51 /* NewsTableViewCell.swift */; };
+		E3A2EA002689C3A600297E51 /* EventWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A2E9CC2689C3A600297E51 /* EventWebView.swift */; };
+		E3A2EA012689C3A600297E51 /* FinkHeavy.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E3A2E9CE2689C3A600297E51 /* FinkHeavy.ttf */; };
+		E3A2EA022689C3A600297E51 /* IwataMaruGothicW55-D.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E3A2E9CF2689C3A600297E51 /* IwataMaruGothicW55-D.ttf */; };
+		E3A2EA032689C3A600297E51 /* IwataMaruGothicW55-L.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E3A2E9D02689C3A600297E51 /* IwataMaruGothicW55-L.ttf */; };
+		E3A2EA042689C3A600297E51 /* CustomAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A2E9D12689C3A600297E51 /* CustomAlertController.swift */; };
+		E3A2EA052689C3A600297E51 /* CustomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A2E9D22689C3A600297E51 /* CustomViewController.swift */; };
+		E3A2EA062689C3A600297E51 /* TurnipViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A2E9D42689C3A600297E51 /* TurnipViewController.swift */; };
+		E3A2EA072689C3A600297E51 /* TurnipPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A2E9D52689C3A600297E51 /* TurnipPresenter.swift */; };
+		E3A2EA082689C3A600297E51 /* TurnipAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A2E9D62689C3A600297E51 /* TurnipAssembly.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		028EB4766B8E0348A8B5CC30 /* Pods-AnimalCrossing.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AnimalCrossing.release.xcconfig"; path = "Target Support Files/Pods-AnimalCrossing/Pods-AnimalCrossing.release.xcconfig"; sourceTree = "<group>"; };
 		3272AD05C6CC5C8A98803B96 /* Pods-AnimalCrossing.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AnimalCrossing.debug.xcconfig"; path = "Target Support Files/Pods-AnimalCrossing/Pods-AnimalCrossing.debug.xcconfig"; sourceTree = "<group>"; };
 		A207B86D830A555F32D3F965 /* Pods_AnimalCrossing.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AnimalCrossing.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		E324193C2676759800B1F867 /* BankViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankViewController.swift; sourceTree = "<group>"; };
-		E324193E267675C800B1F867 /* BankPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankPresenter.swift; sourceTree = "<group>"; };
-		E3241940267676BC00B1F867 /* BankAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankAssembly.swift; sourceTree = "<group>"; };
-		E32419422676828B00B1F867 /* BankModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankModel.swift; sourceTree = "<group>"; };
-		E324194426769A6A00B1F867 /* ExpenseCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseCollectionViewCell.swift; sourceTree = "<group>"; };
-		E324194726775FCA00B1F867 /* UserLocale.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLocale.swift; sourceTree = "<group>"; };
-		E399E1A926739B1F0017F450 /* NewsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsPresenter.swift; sourceTree = "<group>"; };
-		E399E1AC2673A72F0017F450 /* EventsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsModel.swift; sourceTree = "<group>"; };
-		E399E1AE2673D40E0017F450 /* NewsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsTableViewCell.swift; sourceTree = "<group>"; };
+		E3A2E9882689C3A500297E51 /* LoginAssebmly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginAssebmly.swift; sourceTree = "<group>"; };
+		E3A2E9892689C3A500297E51 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		E3A2E98A2689C3A500297E51 /* LoginPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginPresenter.swift; sourceTree = "<group>"; };
+		E3A2E98B2689C3A500297E51 /* LoginRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginRouter.swift; sourceTree = "<group>"; };
+		E3A2E98D2689C3A600297E51 /* CoreDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		E3A2E98E2689C3A600297E51 /* NetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		E3A2E9902689C3A600297E51 /* AnimalCrossing.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = AnimalCrossing.xcdatamodel; sourceTree = "<group>"; };
+		E3A2E9912689C3A600297E51 /* FireBaseManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FireBaseManager.swift; sourceTree = "<group>"; };
+		E3A2E9932689C3A600297E51 /* DatesOfCurrentWeek.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatesOfCurrentWeek.swift; sourceTree = "<group>"; };
+		E3A2E9B12689C3A600297E51 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		E3A2E9B32689C3A600297E51 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		E3A2E9B42689C3A600297E51 /* MainRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainRouter.swift; sourceTree = "<group>"; };
+		E3A2E9B62689C3A600297E51 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		E3A2E9B72689C3A600297E51 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		E3A2E9B82689C3A600297E51 /* SceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		E3A2E9B92689C3A600297E51 /* SupportingFile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SupportingFile.swift; sourceTree = "<group>"; };
+		E3A2E9BB2689C3A600297E51 /* NewsModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsModel.swift; sourceTree = "<group>"; };
+		E3A2E9BC2689C3A600297E51 /* BankModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BankModel.swift; sourceTree = "<group>"; };
+		E3A2E9BD2689C3A600297E51 /* TurnipModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TurnipModel.swift; sourceTree = "<group>"; };
+		E3A2E9BE2689C3A600297E51 /* UserLocale.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserLocale.swift; sourceTree = "<group>"; };
+		E3A2E9BF2689C3A600297E51 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		E3A2E9C12689C3A600297E51 /* BankAssembly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BankAssembly.swift; sourceTree = "<group>"; };
+		E3A2E9C22689C3A600297E51 /* BankViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BankViewController.swift; sourceTree = "<group>"; };
+		E3A2E9C32689C3A600297E51 /* BankPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BankPresenter.swift; sourceTree = "<group>"; };
+		E3A2E9C42689C3A600297E51 /* ExpenseCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpenseCollectionViewCell.swift; sourceTree = "<group>"; };
+		E3A2E9C62689C3A600297E51 /* NewsRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsRouter.swift; sourceTree = "<group>"; };
+		E3A2E9C72689C3A600297E51 /* NewsPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsPresenter.swift; sourceTree = "<group>"; };
+		E3A2E9C82689C3A600297E51 /* NewsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsViewController.swift; sourceTree = "<group>"; };
+		E3A2E9C92689C3A600297E51 /* NewsAssembly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsAssembly.swift; sourceTree = "<group>"; };
+		E3A2E9CA2689C3A600297E51 /* NewsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsTableViewCell.swift; sourceTree = "<group>"; };
+		E3A2E9CC2689C3A600297E51 /* EventWebView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventWebView.swift; sourceTree = "<group>"; };
+		E3A2E9CE2689C3A600297E51 /* FinkHeavy.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FinkHeavy.ttf; sourceTree = "<group>"; };
+		E3A2E9CF2689C3A600297E51 /* IwataMaruGothicW55-D.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "IwataMaruGothicW55-D.ttf"; sourceTree = "<group>"; };
+		E3A2E9D02689C3A600297E51 /* IwataMaruGothicW55-L.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "IwataMaruGothicW55-L.ttf"; sourceTree = "<group>"; };
+		E3A2E9D12689C3A600297E51 /* CustomAlertController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomAlertController.swift; sourceTree = "<group>"; };
+		E3A2E9D22689C3A600297E51 /* CustomViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomViewController.swift; sourceTree = "<group>"; };
+		E3A2E9D42689C3A600297E51 /* TurnipViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TurnipViewController.swift; sourceTree = "<group>"; };
+		E3A2E9D52689C3A600297E51 /* TurnipPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TurnipPresenter.swift; sourceTree = "<group>"; };
+		E3A2E9D62689C3A600297E51 /* TurnipAssembly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TurnipAssembly.swift; sourceTree = "<group>"; };
 		E3A6E7E6266C1ED500E2A5FE /* AnimalCrossing.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AnimalCrossing.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		E3A6E7E9266C1ED500E2A5FE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		E3A6E7EB266C1ED500E2A5FE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		E3A6E7ED266C1ED500E2A5FE /* CustomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomViewController.swift; sourceTree = "<group>"; };
-		E3A6E7F3266C1ED500E2A5FE /* AnimalCrossing.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = AnimalCrossing.xcdatamodel; sourceTree = "<group>"; };
-		E3A6E7F5266C1ED500E2A5FE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		E3A6E7F8266C1ED500E2A5FE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		E3A6E7FA266C1ED500E2A5FE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		E3A6E802266C204A00E2A5FE /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		E3F0BD2926723CAB00B2698C /* LoginAssebmly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginAssebmly.swift; sourceTree = "<group>"; };
-		E3F0BD2C26723FE600B2698C /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
-		E3F0BD2E2672404F00B2698C /* LoginRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRouter.swift; sourceTree = "<group>"; };
-		E3F0BD31267240FB00B2698C /* LoginPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPresenter.swift; sourceTree = "<group>"; };
-		E3F0BD332672418200B2698C /* FireBaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FireBaseManager.swift; sourceTree = "<group>"; };
-		E3F0BD35267241EB00B2698C /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
-		E3F0BD372672431300B2698C /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
-		E3F0BD39267245DD00B2698C /* MainRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainRouter.swift; sourceTree = "<group>"; };
-		E3F0BD3B267248B300B2698C /* FinkHeavy.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FinkHeavy.ttf; sourceTree = "<group>"; };
-		E3F0BD3F26725ABE00B2698C /* IwataMaruGothicW55-D.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "IwataMaruGothicW55-D.ttf"; sourceTree = "<group>"; };
-		E3F0BD4026725ABE00B2698C /* IwataMaruGothicW55-L.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "IwataMaruGothicW55-L.ttf"; sourceTree = "<group>"; };
-		E3F14732267328C200FF91FD /* CustomAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAlertController.swift; sourceTree = "<group>"; };
-		E3F147372673561000FF91FD /* NewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewController.swift; sourceTree = "<group>"; };
-		E3F147392673562300FF91FD /* NewsAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsAssembly.swift; sourceTree = "<group>"; };
-		E3F6E56A2671FDA70056CDCF /* SupportingFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupportingFile.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,25 +124,106 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
-		E324193B2676756D00B1F867 /* Bank */ = {
+		E3A2E9872689C3A500297E51 /* Login */ = {
 			isa = PBXGroup;
 			children = (
-				E324193C2676759800B1F867 /* BankViewController.swift */,
-				E324194426769A6A00B1F867 /* ExpenseCollectionViewCell.swift */,
-				E324193E267675C800B1F867 /* BankPresenter.swift */,
-				E3241940267676BC00B1F867 /* BankAssembly.swift */,
+				E3A2E9882689C3A500297E51 /* LoginAssebmly.swift */,
+				E3A2E9892689C3A500297E51 /* LoginViewController.swift */,
+				E3A2E98A2689C3A500297E51 /* LoginPresenter.swift */,
+				E3A2E98B2689C3A500297E51 /* LoginRouter.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		E3A2E98C2689C3A600297E51 /* Data Managers */ = {
+			isa = PBXGroup;
+			children = (
+				E3A2E98D2689C3A600297E51 /* CoreDataManager.swift */,
+				E3A2E98E2689C3A600297E51 /* NetworkManager.swift */,
+				E3A2E98F2689C3A600297E51 /* AnimalCrossing.xcdatamodeld */,
+				E3A2E9912689C3A600297E51 /* FireBaseManager.swift */,
+			);
+			path = "Data Managers";
+			sourceTree = "<group>";
+		};
+		E3A2E9922689C3A600297E51 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				E3A2E9932689C3A600297E51 /* DatesOfCurrentWeek.swift */,
+				E3A2E9B12689C3A600297E51 /* Assets.xcassets */,
+				E3A2E9B22689C3A600297E51 /* LaunchScreen.storyboard */,
+				E3A2E9B42689C3A600297E51 /* MainRouter.swift */,
+				E3A2E9B52689C3A600297E51 /* LaunchScreen.strings */,
+				E3A2E9B72689C3A600297E51 /* AppDelegate.swift */,
+				E3A2E9B82689C3A600297E51 /* SceneDelegate.swift */,
+				E3A2E9B92689C3A600297E51 /* SupportingFile.swift */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		E3A2E9BA2689C3A600297E51 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				E3A2E9BB2689C3A600297E51 /* NewsModel.swift */,
+				E3A2E9BC2689C3A600297E51 /* BankModel.swift */,
+				E3A2E9BD2689C3A600297E51 /* TurnipModel.swift */,
+				E3A2E9BE2689C3A600297E51 /* UserLocale.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		E3A2E9C02689C3A600297E51 /* Bank */ = {
+			isa = PBXGroup;
+			children = (
+				E3A2E9C12689C3A600297E51 /* BankAssembly.swift */,
+				E3A2E9C22689C3A600297E51 /* BankViewController.swift */,
+				E3A2E9C32689C3A600297E51 /* BankPresenter.swift */,
+				E3A2E9C42689C3A600297E51 /* ExpenseCollectionViewCell.swift */,
 			);
 			path = Bank;
 			sourceTree = "<group>";
 		};
-		E399E1AB2673A6EE0017F450 /* Models */ = {
+		E3A2E9C52689C3A600297E51 /* News */ = {
 			isa = PBXGroup;
 			children = (
-				E399E1AC2673A72F0017F450 /* EventsModel.swift */,
-				E324194726775FCA00B1F867 /* UserLocale.swift */,
-				E32419422676828B00B1F867 /* BankModel.swift */,
+				E3A2E9C62689C3A600297E51 /* NewsRouter.swift */,
+				E3A2E9C72689C3A600297E51 /* NewsPresenter.swift */,
+				E3A2E9C82689C3A600297E51 /* NewsViewController.swift */,
+				E3A2E9C92689C3A600297E51 /* NewsAssembly.swift */,
+				E3A2E9CA2689C3A600297E51 /* NewsTableViewCell.swift */,
+				E3A2E9CB2689C3A600297E51 /* EventView */,
 			);
-			path = Models;
+			path = News;
+			sourceTree = "<group>";
+		};
+		E3A2E9CB2689C3A600297E51 /* EventView */ = {
+			isa = PBXGroup;
+			children = (
+				E3A2E9CC2689C3A600297E51 /* EventWebView.swift */,
+			);
+			path = EventView;
+			sourceTree = "<group>";
+		};
+		E3A2E9CD2689C3A600297E51 /* Reusible View */ = {
+			isa = PBXGroup;
+			children = (
+				E3A2E9CE2689C3A600297E51 /* FinkHeavy.ttf */,
+				E3A2E9CF2689C3A600297E51 /* IwataMaruGothicW55-D.ttf */,
+				E3A2E9D02689C3A600297E51 /* IwataMaruGothicW55-L.ttf */,
+				E3A2E9D12689C3A600297E51 /* CustomAlertController.swift */,
+				E3A2E9D22689C3A600297E51 /* CustomViewController.swift */,
+			);
+			path = "Reusible View";
+			sourceTree = "<group>";
+		};
+		E3A2E9D32689C3A600297E51 /* Turnip */ = {
+			isa = PBXGroup;
+			children = (
+				E3A2E9D42689C3A600297E51 /* TurnipViewController.swift */,
+				E3A2E9D52689C3A600297E51 /* TurnipPresenter.swift */,
+				E3A2E9D62689C3A600297E51 /* TurnipAssembly.swift */,
+			);
+			path = Turnip;
 			sourceTree = "<group>";
 		};
 		E3A6E7DD266C1ED500E2A5FE = {
@@ -151,75 +247,17 @@
 		E3A6E7E8266C1ED500E2A5FE /* AnimalCrossing */ = {
 			isa = PBXGroup;
 			children = (
-				E399E1AB2673A6EE0017F450 /* Models */,
-				E3A6E801266C1F2400E2A5FE /* Data Managers */,
-				E324193B2676756D00B1F867 /* Bank */,
-				E3F0BD2826723C8600B2698C /* News */,
-				E3F0BD2726723C7A00B2698C /* Login */,
-				E3A6E802266C204A00E2A5FE /* GoogleService-Info.plist */,
-				E3A6E800266C1F0A00E2A5FE /* Supporting Files */,
-				E3F0BD30267240D200B2698C /* Reusible View */,
-				E3A6E7FA266C1ED500E2A5FE /* Info.plist */,
+				E3A2E9C02689C3A600297E51 /* Bank */,
+				E3A2E98C2689C3A600297E51 /* Data Managers */,
+				E3A2E9BF2689C3A600297E51 /* GoogleService-Info.plist */,
+				E3A2E9872689C3A500297E51 /* Login */,
+				E3A2E9BA2689C3A600297E51 /* Models */,
+				E3A2E9C52689C3A600297E51 /* News */,
+				E3A2E9CD2689C3A600297E51 /* Reusible View */,
+				E3A2E9922689C3A600297E51 /* Supporting Files */,
+				E3A2E9D32689C3A600297E51 /* Turnip */,
 			);
 			path = AnimalCrossing;
-			sourceTree = "<group>";
-		};
-		E3A6E800266C1F0A00E2A5FE /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				E3F6E56A2671FDA70056CDCF /* SupportingFile.swift */,
-				E3F0BD39267245DD00B2698C /* MainRouter.swift */,
-				E3A6E7E9266C1ED500E2A5FE /* AppDelegate.swift */,
-				E3A6E7EB266C1ED500E2A5FE /* SceneDelegate.swift */,
-				E3A6E7F7266C1ED500E2A5FE /* LaunchScreen.storyboard */,
-				E3A6E7F5266C1ED500E2A5FE /* Assets.xcassets */,
-			);
-			path = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		E3A6E801266C1F2400E2A5FE /* Data Managers */ = {
-			isa = PBXGroup;
-			children = (
-				E3A6E7F2266C1ED500E2A5FE /* AnimalCrossing.xcdatamodeld */,
-				E3F0BD2C26723FE600B2698C /* CoreDataManager.swift */,
-				E3F0BD332672418200B2698C /* FireBaseManager.swift */,
-				E3F0BD35267241EB00B2698C /* NetworkManager.swift */,
-			);
-			path = "Data Managers";
-			sourceTree = "<group>";
-		};
-		E3F0BD2726723C7A00B2698C /* Login */ = {
-			isa = PBXGroup;
-			children = (
-				E3F0BD2926723CAB00B2698C /* LoginAssebmly.swift */,
-				E3F0BD2E2672404F00B2698C /* LoginRouter.swift */,
-				E3F0BD372672431300B2698C /* LoginViewController.swift */,
-				E3F0BD31267240FB00B2698C /* LoginPresenter.swift */,
-			);
-			path = Login;
-			sourceTree = "<group>";
-		};
-		E3F0BD2826723C8600B2698C /* News */ = {
-			isa = PBXGroup;
-			children = (
-				E3F147372673561000FF91FD /* NewsViewController.swift */,
-				E399E1AE2673D40E0017F450 /* NewsTableViewCell.swift */,
-				E399E1A926739B1F0017F450 /* NewsPresenter.swift */,
-				E3F147392673562300FF91FD /* NewsAssembly.swift */,
-			);
-			path = News;
-			sourceTree = "<group>";
-		};
-		E3F0BD30267240D200B2698C /* Reusible View */ = {
-			isa = PBXGroup;
-			children = (
-				E3A6E7ED266C1ED500E2A5FE /* CustomViewController.swift */,
-				E3F14732267328C200FF91FD /* CustomAlertController.swift */,
-				E3F0BD3B267248B300B2698C /* FinkHeavy.ttf */,
-				E3F0BD3F26725ABE00B2698C /* IwataMaruGothicW55-D.ttf */,
-				E3F0BD4026725ABE00B2698C /* IwataMaruGothicW55-L.ttf */,
-			);
-			path = "Reusible View";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -267,6 +305,7 @@
 			knownRegions = (
 				en,
 				Base,
+				ru,
 			);
 			mainGroup = E3A6E7DD266C1ED500E2A5FE;
 			packageReferences = (
@@ -285,12 +324,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E3A6E7F9266C1ED500E2A5FE /* LaunchScreen.storyboard in Resources */,
-				E3A6E7F6266C1ED500E2A5FE /* Assets.xcassets in Resources */,
-				E3F0BD4126725B8700B2698C /* IwataMaruGothicW55-D.ttf in Resources */,
-				E3F0BD4226725B8900B2698C /* IwataMaruGothicW55-L.ttf in Resources */,
-				E3F0BD3E26724EA900B2698C /* FinkHeavy.ttf in Resources */,
-				E3C16D34266C269E00DE15E8 /* GoogleService-Info.plist in Resources */,
+				E3A2E9F62689C3A600297E51 /* GoogleService-Info.plist in Resources */,
+				E3A2E9EC2689C3A600297E51 /* LaunchScreen.storyboard in Resources */,
+				E3A2EA032689C3A600297E51 /* IwataMaruGothicW55-L.ttf in Resources */,
+				E3A2E9EE2689C3A600297E51 /* LaunchScreen.strings in Resources */,
+				E3A2E9EB2689C3A600297E51 /* Assets.xcassets in Resources */,
+				E3A2EA022689C3A600297E51 /* IwataMaruGothicW55-D.ttf in Resources */,
+				E3A2EA012689C3A600297E51 /* FinkHeavy.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -343,43 +383,58 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E324194826775FCA00B1F867 /* UserLocale.swift in Sources */,
-				E3F14733267328C200FF91FD /* CustomAlertController.swift in Sources */,
-				E3241941267676BC00B1F867 /* BankAssembly.swift in Sources */,
-				E3F0BD382672431300B2698C /* LoginViewController.swift in Sources */,
-				E3F6E56B2671FDA70056CDCF /* SupportingFile.swift in Sources */,
-				E399E1AA26739B1F0017F450 /* NewsPresenter.swift in Sources */,
-				E3A6E7EE266C1ED500E2A5FE /* CustomViewController.swift in Sources */,
-				E32419432676828B00B1F867 /* BankModel.swift in Sources */,
-				E3A6E7F4266C1ED500E2A5FE /* AnimalCrossing.xcdatamodeld in Sources */,
-				E3F0BD32267240FB00B2698C /* LoginPresenter.swift in Sources */,
-				E399E1AF2673D40E0017F450 /* NewsTableViewCell.swift in Sources */,
-				E3F0BD3A267245DD00B2698C /* MainRouter.swift in Sources */,
-				E3F0BD36267241EB00B2698C /* NetworkManager.swift in Sources */,
-				E3F0BD342672418200B2698C /* FireBaseManager.swift in Sources */,
-				E3A6E7EA266C1ED500E2A5FE /* AppDelegate.swift in Sources */,
-				E3F1473A2673562300FF91FD /* NewsAssembly.swift in Sources */,
-				E3F0BD2D26723FE600B2698C /* CoreDataManager.swift in Sources */,
-				E3F0BD2A26723CAB00B2698C /* LoginAssebmly.swift in Sources */,
-				E3F0BD2F2672404F00B2698C /* LoginRouter.swift in Sources */,
-				E324193F267675C800B1F867 /* BankPresenter.swift in Sources */,
-				E3A6E7EC266C1ED500E2A5FE /* SceneDelegate.swift in Sources */,
-				E399E1AD2673A72F0017F450 /* EventsModel.swift in Sources */,
-				E324194526769A6A00B1F867 /* ExpenseCollectionViewCell.swift in Sources */,
-				E324193D2676759800B1F867 /* BankViewController.swift in Sources */,
-				E3F147382673561000FF91FD /* NewsViewController.swift in Sources */,
+				E3A2EA062689C3A600297E51 /* TurnipViewController.swift in Sources */,
+				E3A2E9F22689C3A600297E51 /* NewsModel.swift in Sources */,
+				E3A2E9F72689C3A600297E51 /* BankAssembly.swift in Sources */,
+				E3A2E9F32689C3A600297E51 /* BankModel.swift in Sources */,
+				E3A2E9F52689C3A600297E51 /* UserLocale.swift in Sources */,
+				E3A2E9FF2689C3A600297E51 /* NewsTableViewCell.swift in Sources */,
+				E3A2E9F82689C3A600297E51 /* BankViewController.swift in Sources */,
+				E3A2EA072689C3A600297E51 /* TurnipPresenter.swift in Sources */,
+				E3A2E9EF2689C3A600297E51 /* AppDelegate.swift in Sources */,
+				E3A2E9E02689C3A600297E51 /* DatesOfCurrentWeek.swift in Sources */,
+				E3A2E9DE2689C3A600297E51 /* AnimalCrossing.xcdatamodeld in Sources */,
+				E3A2E9DD2689C3A600297E51 /* NetworkManager.swift in Sources */,
+				E3A2E9FA2689C3A600297E51 /* ExpenseCollectionViewCell.swift in Sources */,
+				E3A2E9DA2689C3A600297E51 /* LoginPresenter.swift in Sources */,
+				E3A2E9FB2689C3A600297E51 /* NewsRouter.swift in Sources */,
+				E3A2E9FC2689C3A600297E51 /* NewsPresenter.swift in Sources */,
+				E3A2EA002689C3A600297E51 /* EventWebView.swift in Sources */,
+				E3A2EA082689C3A600297E51 /* TurnipAssembly.swift in Sources */,
+				E3A2E9F92689C3A600297E51 /* BankPresenter.swift in Sources */,
+				E3A2E9F12689C3A600297E51 /* SupportingFile.swift in Sources */,
+				E3A2E9FD2689C3A600297E51 /* NewsViewController.swift in Sources */,
+				E3A2E9D92689C3A600297E51 /* LoginViewController.swift in Sources */,
+				E3A2E9ED2689C3A600297E51 /* MainRouter.swift in Sources */,
+				E3A2E9DF2689C3A600297E51 /* FireBaseManager.swift in Sources */,
+				E3A2EA042689C3A600297E51 /* CustomAlertController.swift in Sources */,
+				E3A2EA052689C3A600297E51 /* CustomViewController.swift in Sources */,
+				E3A2E9DB2689C3A600297E51 /* LoginRouter.swift in Sources */,
+				E3A2E9DC2689C3A600297E51 /* CoreDataManager.swift in Sources */,
+				E3A2E9D82689C3A600297E51 /* LoginAssebmly.swift in Sources */,
+				E3A2E9FE2689C3A600297E51 /* NewsAssembly.swift in Sources */,
+				E3A2E9F02689C3A600297E51 /* SceneDelegate.swift in Sources */,
+				E3A2E9F42689C3A600297E51 /* TurnipModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		E3A6E7F7266C1ED500E2A5FE /* LaunchScreen.storyboard */ = {
+		E3A2E9B22689C3A600297E51 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				E3A6E7F8266C1ED500E2A5FE /* Base */,
+				E3A2E9B32689C3A600297E51 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		E3A2E9B52689C3A600297E51 /* LaunchScreen.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E3A2E9B62689C3A600297E51 /* ru */,
+			);
+			name = LaunchScreen.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -569,12 +624,12 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		E3A6E7F2266C1ED500E2A5FE /* AnimalCrossing.xcdatamodeld */ = {
+		E3A2E98F2689C3A600297E51 /* AnimalCrossing.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				E3A6E7F3266C1ED500E2A5FE /* AnimalCrossing.xcdatamodel */,
+				E3A2E9902689C3A600297E51 /* AnimalCrossing.xcdatamodel */,
 			);
-			currentVersion = E3A6E7F3266C1ED500E2A5FE /* AnimalCrossing.xcdatamodel */;
+			currentVersion = E3A2E9902689C3A600297E51 /* AnimalCrossing.xcdatamodel */;
 			path = AnimalCrossing.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
