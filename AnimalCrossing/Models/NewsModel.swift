@@ -41,13 +41,13 @@ class NewsViewModel {
         self.type = returnType(data: event)
     }
     
-    init(fromCoreData model: NewsCoreData) {
-        self.date = model.date
-        self.event = model.event
-        self.url = model.url
-        self.type = model.type
-    }
-    init?(fromNews model: News) {
+//    init(fromCoreData model: NewsCoreData) {
+//        self.date = model.date
+//        self.event = model.event
+//        self.url = model.url
+//        self.type = model.type
+//    }
+    init?(fromCoreData model: News) {
         guard let modelDate = model.date,
               let modelEvent = model.event,
               let modelUrl = model.url,
@@ -67,19 +67,6 @@ fileprivate func returnType(data: String) -> String {
         return "Birthday"
     }
     return "Event"
-}
-
-class NewsCoreData {
-    var date: String
-    var event: String
-    var url: String
-    var type: String
-    init(fromViewModel model: NewsViewModel) {
-        self.date = model.date
-        self.event = model.event
-        self.url = model.url
-        self.type = model.type
-    }
 }
 
 class NewsFireBase {

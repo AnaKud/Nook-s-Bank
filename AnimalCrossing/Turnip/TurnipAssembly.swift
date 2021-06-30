@@ -8,7 +8,7 @@
 import Foundation
 
 class TurnipAssembly {
-    func build(userStatus: UserStatus, title: String) -> TurnipViewController {
+    func build(userStatus: ScreenTypes) -> TurnipViewController {
         let networkManager: ITurnipNetworkManager = NetworkManager.shared
         let coreDataManger: ITurnipCoreDataManager = CoreDataManager.shared
         
@@ -16,7 +16,7 @@ class TurnipAssembly {
         
         let controller = TurnipViewController(presenter: presenter)
         controller.userStatus = userStatus
-        controller.title = title
+        controller.controllerTitle = AppTitle.Turnip.controllerTitle
         return controller
     }
 }

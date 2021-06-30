@@ -49,12 +49,8 @@ class NewsViewController: CustomViewController {
             make.centerX.centerY.equalTo(contentView)
         }
         self.activityIndicator.style = .large
-        switch userStatus {
-        case .loggined:
-            self.activityIndicator.color = #colorLiteral(red: 0.3490196078, green: 0.4352941176, blue: 0.6823529412, alpha: 1)
-        default:
-            self.activityIndicator.color = #colorLiteral(red: 0.768627451, green: 0.768627451, blue: 0.768627451, alpha: 1)
-        }
+        self.activityIndicator.color = colors?.activityIndicatorColor.activityColor
+       
         self.activityIndicator.startAnimating()
         self.activityIndicator.hidesWhenStopped = true
     }
@@ -82,6 +78,8 @@ extension NewsViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: CellReusibleID.news.rawValue) as? NewsTableViewCell else { return UITableViewCell() }
         let event = self.presenter.itemForCell(index: indexPath.row)
+        cell.colors = self.colors
+        cell.customView = self.customView
         cell.config(withEvent: event)
         return cell
     }

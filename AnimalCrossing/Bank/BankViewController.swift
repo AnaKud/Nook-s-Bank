@@ -58,12 +58,8 @@ class BankViewController: CustomViewController {
             make.centerX.centerY.equalTo(contentView)
         }
         self.activityIndicatorView.style = .large
-        switch userStatus {
-        case .loggined:
-            self.activityIndicatorView.color = #colorLiteral(red: 0.3490196078, green: 0.4352941176, blue: 0.6823529412, alpha: 1)
-        default:
-            self.activityIndicatorView.color = #colorLiteral(red: 0.768627451, green: 0.768627451, blue: 0.768627451, alpha: 1)
-        }
+        self.activityIndicatorView.color = colors?.activityIndicatorColor.activityColor
+       
         self.activityIndicatorView.startAnimating()
         self.activityIndicatorView.hidesWhenStopped = true
     }
@@ -91,7 +87,7 @@ class BankViewController: CustomViewController {
             make.height.equalTo(AppContraints.Bank.bankAccountViewHeight)
         }
         bankAccountView.layer.cornerRadius = AppContraints.standartCornerRadius
-        bankAccountView.backgroundColor = #colorLiteral(red: 0.9607843137, green: 0.9647058824, blue: 0.8901960784, alpha: 1)
+        bankAccountView.backgroundColor = colors?.bankViewColor.backgroundViewColor
         
         bankAccountView.addSubview(coinImageView)
         coinImageView.snp.makeConstraints { make in
@@ -107,7 +103,7 @@ class BankViewController: CustomViewController {
             make.trailing.equalTo(bankAccountView).offset(-AppContraints.minEdge)
         }
         currentAccountTitleLabel.font = UIFont(name: AppFont.maruBold.rawValue, size: 20)
-        currentAccountTitleLabel.textColor = #colorLiteral(red: 0.3490196078, green: 0.4352941176, blue: 0.6823529412, alpha: 1)
+        currentAccountTitleLabel.textColor = colors?.bankViewColor.titleTextColor
         
         bankAccountView.addSubview(currentAccountLabel)
         currentAccountLabel.snp.makeConstraints { make in
@@ -116,7 +112,7 @@ class BankViewController: CustomViewController {
             make.trailing.bottom.equalTo(bankAccountView).offset(-AppContraints.minEdge)
         }
         currentAccountLabel.font = UIFont(name: AppFont.maruLight.rawValue, size: 20)
-        currentAccountLabel.textColor = #colorLiteral(red: 0.4470588235, green: 0.4039215686, blue: 0.3411764706, alpha: 1)
+        currentAccountLabel.textColor = colors?.bankViewColor.itemTextColor
         currentAccountLabel.text = self.presenter.returnCurrentAccountValue()
     }
     
@@ -143,7 +139,7 @@ class BankViewController: CustomViewController {
             make.bottom.equalTo(plusButton.snp.top).offset(-AppContraints.midEdge)
         }
         historyView.layer.cornerRadius = AppContraints.standartCornerRadius
-        historyView.backgroundColor = #colorLiteral(red: 0.9607843137, green: 0.9647058824, blue: 0.8901960784, alpha: 1)
+        historyView.backgroundColor = colors?.bankViewColor.backgroundViewColor
         historyView.layer.masksToBounds = true
         
         historyView.addSubview(historyTitleLabel)
@@ -153,7 +149,7 @@ class BankViewController: CustomViewController {
             make.trailing.equalTo(historyView).offset(-AppContraints.midEdge)
         }
         historyTitleLabel.font = UIFont(name: AppFont.maruBold.rawValue, size: 20)
-        historyTitleLabel.textColor = #colorLiteral(red: 0.3490196078, green: 0.4352941176, blue: 0.6823529412, alpha: 1)
+        historyTitleLabel.textColor = colors?.bankViewColor.titleTextColor
         
         historyView.addSubview(expensesCollectionView)
         expensesCollectionView.snp.makeConstraints { make in
@@ -255,6 +251,8 @@ extension BankViewController: UICollectionViewDelegate, UICollectionViewDataSour
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CellReusibleID.expense.rawValue, for: indexPath) as? ExpenseCollectionViewCell else { return UICollectionViewCell() }
         let expenseItem = self.presenter.returnCollectionItem(index: indexPath.row)
+        cell.colors = self.colors
+        cell.customView = self.customView
         cell.config(item: expenseItem)
         return cell
     }

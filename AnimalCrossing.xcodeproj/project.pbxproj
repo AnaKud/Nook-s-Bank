@@ -20,7 +20,6 @@
 		E3A2E9EB2689C3A600297E51 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E3A2E9B12689C3A600297E51 /* Assets.xcassets */; };
 		E3A2E9EC2689C3A600297E51 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E3A2E9B22689C3A600297E51 /* LaunchScreen.storyboard */; };
 		E3A2E9ED2689C3A600297E51 /* MainRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A2E9B42689C3A600297E51 /* MainRouter.swift */; };
-		E3A2E9EE2689C3A600297E51 /* LaunchScreen.strings in Resources */ = {isa = PBXBuildFile; fileRef = E3A2E9B52689C3A600297E51 /* LaunchScreen.strings */; };
 		E3A2E9EF2689C3A600297E51 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A2E9B72689C3A600297E51 /* AppDelegate.swift */; };
 		E3A2E9F02689C3A600297E51 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A2E9B82689C3A600297E51 /* SceneDelegate.swift */; };
 		E3A2E9F12689C3A600297E51 /* SupportingFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A2E9B92689C3A600297E51 /* SupportingFile.swift */; };
@@ -47,6 +46,7 @@
 		E3A2EA062689C3A600297E51 /* TurnipViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A2E9D42689C3A600297E51 /* TurnipViewController.swift */; };
 		E3A2EA072689C3A600297E51 /* TurnipPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A2E9D52689C3A600297E51 /* TurnipPresenter.swift */; };
 		E3A2EA082689C3A600297E51 /* TurnipAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A2E9D62689C3A600297E51 /* TurnipAssembly.swift */; };
+		E3D4E44C268B5B2500F26908 /* CustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D4E44B268B5B2500F26908 /* CustomView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -65,7 +65,6 @@
 		E3A2E9B12689C3A600297E51 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E3A2E9B32689C3A600297E51 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E3A2E9B42689C3A600297E51 /* MainRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainRouter.swift; sourceTree = "<group>"; };
-		E3A2E9B62689C3A600297E51 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		E3A2E9B72689C3A600297E51 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E3A2E9B82689C3A600297E51 /* SceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		E3A2E9B92689C3A600297E51 /* SupportingFile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SupportingFile.swift; sourceTree = "<group>"; };
@@ -93,6 +92,7 @@
 		E3A2E9D52689C3A600297E51 /* TurnipPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TurnipPresenter.swift; sourceTree = "<group>"; };
 		E3A2E9D62689C3A600297E51 /* TurnipAssembly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TurnipAssembly.swift; sourceTree = "<group>"; };
 		E3A6E7E6266C1ED500E2A5FE /* AnimalCrossing.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AnimalCrossing.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E3D4E44B268B5B2500F26908 /* CustomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -138,9 +138,9 @@
 		E3A2E98C2689C3A600297E51 /* Data Managers */ = {
 			isa = PBXGroup;
 			children = (
+				E3A2E98F2689C3A600297E51 /* AnimalCrossing.xcdatamodeld */,
 				E3A2E98D2689C3A600297E51 /* CoreDataManager.swift */,
 				E3A2E98E2689C3A600297E51 /* NetworkManager.swift */,
-				E3A2E98F2689C3A600297E51 /* AnimalCrossing.xcdatamodeld */,
 				E3A2E9912689C3A600297E51 /* FireBaseManager.swift */,
 			);
 			path = "Data Managers";
@@ -149,11 +149,11 @@
 		E3A2E9922689C3A600297E51 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				E3E754192689C8150029D07C /* Fonts */,
 				E3A2E9932689C3A600297E51 /* DatesOfCurrentWeek.swift */,
 				E3A2E9B12689C3A600297E51 /* Assets.xcassets */,
 				E3A2E9B22689C3A600297E51 /* LaunchScreen.storyboard */,
 				E3A2E9B42689C3A600297E51 /* MainRouter.swift */,
-				E3A2E9B52689C3A600297E51 /* LaunchScreen.strings */,
 				E3A2E9B72689C3A600297E51 /* AppDelegate.swift */,
 				E3A2E9B82689C3A600297E51 /* SceneDelegate.swift */,
 				E3A2E9B92689C3A600297E51 /* SupportingFile.swift */,
@@ -207,11 +207,9 @@
 		E3A2E9CD2689C3A600297E51 /* Reusible View */ = {
 			isa = PBXGroup;
 			children = (
-				E3A2E9CE2689C3A600297E51 /* FinkHeavy.ttf */,
-				E3A2E9CF2689C3A600297E51 /* IwataMaruGothicW55-D.ttf */,
-				E3A2E9D02689C3A600297E51 /* IwataMaruGothicW55-L.ttf */,
 				E3A2E9D12689C3A600297E51 /* CustomAlertController.swift */,
 				E3A2E9D22689C3A600297E51 /* CustomViewController.swift */,
+				E3D4E44B268B5B2500F26908 /* CustomView.swift */,
 			);
 			path = "Reusible View";
 			sourceTree = "<group>";
@@ -260,6 +258,16 @@
 			path = AnimalCrossing;
 			sourceTree = "<group>";
 		};
+		E3E754192689C8150029D07C /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				E3A2E9CE2689C3A600297E51 /* FinkHeavy.ttf */,
+				E3A2E9CF2689C3A600297E51 /* IwataMaruGothicW55-D.ttf */,
+				E3A2E9D02689C3A600297E51 /* IwataMaruGothicW55-L.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -305,7 +313,6 @@
 			knownRegions = (
 				en,
 				Base,
-				ru,
 			);
 			mainGroup = E3A6E7DD266C1ED500E2A5FE;
 			packageReferences = (
@@ -327,7 +334,6 @@
 				E3A2E9F62689C3A600297E51 /* GoogleService-Info.plist in Resources */,
 				E3A2E9EC2689C3A600297E51 /* LaunchScreen.storyboard in Resources */,
 				E3A2EA032689C3A600297E51 /* IwataMaruGothicW55-L.ttf in Resources */,
-				E3A2E9EE2689C3A600297E51 /* LaunchScreen.strings in Resources */,
 				E3A2E9EB2689C3A600297E51 /* Assets.xcassets in Resources */,
 				E3A2EA022689C3A600297E51 /* IwataMaruGothicW55-D.ttf in Resources */,
 				E3A2EA012689C3A600297E51 /* FinkHeavy.ttf in Resources */,
@@ -389,6 +395,7 @@
 				E3A2E9F32689C3A600297E51 /* BankModel.swift in Sources */,
 				E3A2E9F52689C3A600297E51 /* UserLocale.swift in Sources */,
 				E3A2E9FF2689C3A600297E51 /* NewsTableViewCell.swift in Sources */,
+				E3D4E44C268B5B2500F26908 /* CustomView.swift in Sources */,
 				E3A2E9F82689C3A600297E51 /* BankViewController.swift in Sources */,
 				E3A2EA072689C3A600297E51 /* TurnipPresenter.swift in Sources */,
 				E3A2E9EF2689C3A600297E51 /* AppDelegate.swift in Sources */,
@@ -427,14 +434,6 @@
 				E3A2E9B32689C3A600297E51 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-		E3A2E9B52689C3A600297E51 /* LaunchScreen.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				E3A2E9B62689C3A600297E51 /* ru */,
-			);
-			name = LaunchScreen.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

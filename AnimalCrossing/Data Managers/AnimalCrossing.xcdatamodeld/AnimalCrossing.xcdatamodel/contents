@@ -6,7 +6,26 @@
         <attribute name="type" optional="YES" attributeType="String"/>
         <attribute name="url" optional="YES" attributeType="String"/>
     </entity>
+    <entity name="Turnip" representedClassName="Turnip" syncable="YES" codeGenerationType="class">
+        <attribute name="buyPrice" attributeType="Integer 32" maxValueString="1000" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="fridayEvening" optional="YES" attributeType="Integer 32" maxValueString="1000" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="fridayMorning" optional="YES" attributeType="Integer 32" maxValueString="1000" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="mondayEvening" optional="YES" attributeType="Integer 32" maxValueString="1000" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="mondayMorning" optional="YES" attributeType="Integer 32" maxValueString="1000" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="saturdayEvening" optional="YES" attributeType="Integer 32" maxValueString="1000" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="saturdayMorning" optional="YES" attributeType="Integer 32" maxValueString="1000" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="sellPrice" optional="YES" attributeType="Integer 32" maxValueString="1000" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="sundayDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="thursdayEvening" optional="YES" attributeType="Integer 32" maxValueString="1000" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="thursdayMorning" optional="YES" attributeType="Integer 32" maxValueString="1000" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="tuesdayEvening" optional="YES" attributeType="Integer 32" maxValueString="1000" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="tuesdayMorning" optional="YES" attributeType="Integer 32" maxValueString="1000" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="turnipCount" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="wednesdayEvening" optional="YES" attributeType="Integer 32" maxValueString="1000" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="wednesdayMorning" optional="YES" attributeType="Integer 32" maxValueString="1000" defaultValueString="0" usesScalarValueType="YES"/>
+    </entity>
     <elements>
         <element name="News" positionX="-63" positionY="-18" width="128" height="89"/>
+        <element name="Turnip" positionX="-63" positionY="9" width="128" height="269"/>
     </elements>
 </model>

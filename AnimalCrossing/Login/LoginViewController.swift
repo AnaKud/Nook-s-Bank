@@ -18,16 +18,18 @@ class LoginViewController: CustomViewController {
     var presenter: ILoginPresenter
     let welcomeLabel = UILabel()
     let appNameLabel = UILabel()
-    let emailTextField = makeTextField(withPlacehoder: AppTitle.Login.emailTF, withImageName: AppImage.Login.iconForEmailTF.rawValue, isSecureTextEntry: false)
-    let passwordNameTextField = makeTextField(withPlacehoder: AppTitle.Login.passwordTF, withImageName: AppImage.Login.iconForPasswordTF.rawValue, isSecureTextEntry: true)
-    let loginButton = makeOvalButtonWithCircle(withTitle: AppTitle.Login.loginButton, buttonWidth: AppContraints.Login.widthLoginButton, buttonHeight: AppContraints.Login.heightButtons)
-    let registerButton = makeOvalButtonWithCircle(withTitle: AppTitle.Login.registerButton, buttonWidth: AppContraints.Login.widthButton, buttonHeight: AppContraints.Login.heightButtons)
-    let freeEnterButton = makeOvalButtonWithCircle(withTitle: AppTitle.Login.freeButton, buttonWidth: AppContraints.Login.widthButton, buttonHeight: AppContraints.Login.heightButtons)
+    var emailTextField = UITextField()
+    var passwordNameTextField = UITextField()
+    var loginButton = UIButton()
+    var registerButton = UIButton()
+    var freeEnterButton = UIButton()
     let warningLabel = UILabel()
     
     init(presenter: ILoginPresenter) {
         self.presenter = presenter
+        
         super.init(nibName: nil, bundle: nil)
+        self.userStatus = .loginScreen
     }
     
     required init?(coder: NSCoder) {
@@ -36,7 +38,7 @@ class LoginViewController: CustomViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.userStatus = .loginScreen
+        
         self.controllerTitle = ""
         self.presenter.viewDidLoad(view: self)
         self.setupInterface()
@@ -62,6 +64,11 @@ class LoginViewController: CustomViewController {
     }
     
     private func setupLayout() {
+        emailTextField = self.customView?.makeTextField(withPlacehoder: AppTitle.Login.emailTF, height: AppContraints.Login.heightTF, withImageName: AppImage.Login.iconForEmailTF.rawValue, isSecureTextEntry: false) ?? UITextField()
+        passwordNameTextField = self.customView?.makeTextField(withPlacehoder: AppTitle.Login.passwordTF, height: AppContraints.Login.heightTF, withImageName: AppImage.Login.iconForPasswordTF.rawValue, isSecureTextEntry: true) ?? UITextField()
+         loginButton = self.customView?.makeOvalButtonWithCircle(withTitle: AppTitle.Login.loginButton, buttonWidth: AppContraints.Login.widthLoginButton, buttonHeight: AppContraints.Login.heightButtons) ?? UIButton()
+         registerButton = self.customView?.makeOvalButtonWithCircle(withTitle: AppTitle.Login.registerButton, buttonWidth: AppContraints.Login.widthButton, buttonHeight: AppContraints.Login.heightButtons) ?? UIButton()
+         freeEnterButton = self.customView?.makeOvalButtonWithCircle(withTitle: AppTitle.Login.freeButton, buttonWidth: AppContraints.Login.widthButton, buttonHeight: AppContraints.Login.heightButtons) ?? UIButton()
         view.addSubview(welcomeLabel)
         welcomeLabel.snp.makeConstraints { make in
             make.top.equalTo(view).offset(AppContraints.Login.loginVerticalEdge)

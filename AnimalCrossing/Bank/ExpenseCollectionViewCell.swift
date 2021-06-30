@@ -8,6 +8,9 @@
 import UIKit
 
 class ExpenseCollectionViewCell: UICollectionViewCell {
+    var colors: ColorsSet?
+    var customView: CustomView?
+    
     let expenseTypeImageView = UIImageView()
     let valueLabel = UILabel()
     let dateLabel = UILabel()
@@ -48,7 +51,7 @@ class ExpenseCollectionViewCell: UICollectionViewCell {
         }
         dateLabel.textAlignment = .center
         dateLabel.numberOfLines = 0
-        dateLabel.textColor = #colorLiteral(red: 0.501960814, green: 0.501960814, blue: 0.501960814, alpha: 1)
+        dateLabel.textColor = colors?.bankViewColor.itemTextColor
         dateLabel.font = UIFont(name: AppFont.maruLight.rawValue, size: 10)
     }
     
@@ -56,10 +59,10 @@ class ExpenseCollectionViewCell: UICollectionViewCell {
         switch item.operationType {
         case .plus:
             valueLabel.text = "+\(item.value)"
-            valueLabel.textColor = #colorLiteral(red: 0.721568644, green: 0.8862745166, blue: 0.5921568871, alpha: 1)
+            valueLabel.textColor = colors?.bankViewColor.incomeLabelColor
         case .minus:
             valueLabel.text = "-\(item.value)"
-            valueLabel.textColor = #colorLiteral(red: 0.9568627477, green: 0.6588235497, blue: 0.5450980663, alpha: 1)
+            valueLabel.textColor = colors?.bankViewColor.expenseLabelColor
         }
         dateLabel.text = item.dateString
         expenseTypeImageView.image = UIImage(named: item.imageName)

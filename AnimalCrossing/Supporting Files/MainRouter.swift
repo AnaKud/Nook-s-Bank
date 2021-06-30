@@ -8,8 +8,7 @@
 import UIKit
 
 internal final class MainRouter {
-    var userStatus: UserStatus
-    var title: String
+    var userStatus: ScreenTypes
     private let tabbar: UITabBarController
     
     private let newsNavigationController: UINavigationController
@@ -21,23 +20,24 @@ internal final class MainRouter {
     private let turnipNavigationController: UINavigationController
     private let turnipViewController: TurnipViewController
     
-    init(userStatus: UserStatus, title: String) {
+    init(userStatus: ScreenTypes) {
         self.userStatus = userStatus
-        self.title = title
+        let colors = TapBarColor(for: userStatus)
         self.tabbar = UITabBarController()
         
-        self.newsViewController = NewsAssembly().build(userStatus: userStatus, title: title)
+        
+        self.newsViewController = NewsAssembly().build(userStatus: userStatus)
         self.newsNavigationController = UINavigationController(rootViewController: self.newsViewController)
         
-        self.bankViewController = BankAssembly().build(userStatus: userStatus, title: title)
+        self.bankViewController = BankAssembly().build(userStatus: userStatus)
         self.bankNavigationController = UINavigationController(rootViewController: bankViewController)
         
-        self.turnipViewController = TurnipAssembly().build(userStatus: userStatus, title: title)
+        self.turnipViewController = TurnipAssembly().build(userStatus: userStatus)
         self.turnipNavigationController = UINavigationController(rootViewController: turnipViewController)
 
         self.tabbar.setViewControllers([self.newsNavigationController, self.bankNavigationController, self.turnipNavigationController], animated: true)
-        self.tabbar.tabBar.tintColor = #colorLiteral(red: 0.3490196078, green: 0.4352941176, blue: 0.6823529412, alpha: 1)
-        self.tabbar.tabBar.unselectedItemTintColor = #colorLiteral(red: 0.5137254902, green: 0.4823529412, blue: 0.4588235294, alpha: 1)
+        self.tabbar.tabBar.tintColor = colors.selectedColor
+        self.tabbar.tabBar.unselectedItemTintColor = colors.unselectedColor
         
         let newsTabBarItem = UITabBarItem(title: " ", image: UIImage(named: TabbarItems.ImageDefault.news), tag: 0)
         let bankTabBarItem = UITabBarItem(title: " ", image: UIImage(named: TabbarItems.ImageDefault.bank), tag: 1)

@@ -10,7 +10,7 @@ import Foundation
 protocol IBankPresenter {
     var user: UserLocale? { get set }
     var account: BankViewModel { get set }
-    var userStatus: UserStatus? { get set }
+    var userStatus: ScreenTypes? { get set }
     
     func getCurrentUser()
     
@@ -22,7 +22,7 @@ protocol IBankPresenter {
 }
 
 class BankPresenter {
-    var userStatus: UserStatus?
+    var userStatus: ScreenTypes?
     
     var view: IBankViewController?
     

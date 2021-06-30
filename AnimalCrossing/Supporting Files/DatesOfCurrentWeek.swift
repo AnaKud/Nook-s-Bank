@@ -24,17 +24,7 @@ class DatesOfCurrentWeek {
         return weekDates
     }
     
-    private func getNextDay(afterDate date: Date?) -> Date? {
-        guard let date = date else { return nil }
-        let calendar = Calendar.current
-        var dayComponent = calendar.dateComponents([.year, .month, .day], from: date)
-        guard let day = dayComponent.day else { return nil }
-        dayComponent.day = day + 1
-        let nextDay = calendar.date(from: dayComponent)
-        return nextDay
-    }
-    
-    private func getLastSunday() -> Date? {
+    func getLastSunday() -> Date? {
         let nowDate = Date()
         let calendar = Calendar.current
         let dayComponent = calendar.dateComponents([.year, .month, .day, .weekday], from: nowDate)
@@ -60,4 +50,13 @@ class DatesOfCurrentWeek {
         return sunday
     }
     
+    private func getNextDay(afterDate date: Date?) -> Date? {
+        guard let date = date else { return nil }
+        let calendar = Calendar.current
+        var dayComponent = calendar.dateComponents([.year, .month, .day], from: date)
+        guard let day = dayComponent.day else { return nil }
+        dayComponent.day = day + 1
+        let nextDay = calendar.date(from: dayComponent)
+        return nextDay
+    }
 }
