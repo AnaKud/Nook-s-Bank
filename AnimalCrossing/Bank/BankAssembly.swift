@@ -8,13 +8,13 @@
 import Foundation
 
 class BankAssembly {
-    func build(userStatus: ScreenTypes) -> BankViewController {
+    func build(screenType: ScreenTypes) -> BankViewController {
         var fireBaseManager: IBankFireBaseManager = FireBaseManager.shared
         var presenter: IBankPresenter = BankPresenter(fireBaseManager: fireBaseManager)
-        presenter.userStatus = userStatus
+        presenter.screenType = screenType
         fireBaseManager.bankPresenter = presenter
         let controller = BankViewController(presenter: presenter)
-        controller.userStatus = userStatus
+        controller.screenType = screenType
         controller.controllerTitle = AppTitle.Bank.controllerTitle
         return controller
     }

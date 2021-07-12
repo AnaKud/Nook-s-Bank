@@ -8,15 +8,17 @@
 import Foundation
 
 class TurnipAssembly {
-    func build(userStatus: ScreenTypes) -> TurnipViewController {
-        let networkManager: ITurnipNetworkManager = NetworkManager.shared
+    func build(screenType: ScreenTypes) -> TurnipViewController {
+        let firebaseManager: ITurnipFireBaseManager = FireBaseManager.shared
         let coreDataManger: ITurnipCoreDataManager = CoreDataManager.shared
+        var router: ITurnipRouter = TurnipRouter()
         
-        let presenter: ITurnipPresenter = TurnipPresenter(networkManager: networkManager, coreDataManger: coreDataManger)
-        
+        var presenter: ITurnipPresenter = TurnipPresenter(firebaseManager: firebaseManager, coreDataManger: coreDataManger, router: router)
+        presenter.screenType = screenType
         let controller = TurnipViewController(presenter: presenter)
-        controller.userStatus = userStatus
+        controller.screenType = screenType
         controller.controllerTitle = AppTitle.Turnip.controllerTitle
+        router.controller = controller
         return controller
     }
 }

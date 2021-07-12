@@ -29,29 +29,30 @@ class DatesOfCurrentWeek {
         let calendar = Calendar.current
         let dayComponent = calendar.dateComponents([.year, .month, .day, .weekday], from: nowDate)
         
-        // Get today is the day of the week
+// Get today is the day of the week
         guard let weekDay = dayComponent.weekday, let day = dayComponent.day  else { return nil }
-        
-        // Calculate the difference between the current date and this week's Monday and Sunday
+// Calculate the difference between the current date and this week's Monday and Sunday
         var diffWithSunday: Int
-        if weekDay == 7 {
+        if weekDay == 1 {
+            print(nowDate)
             return nowDate
-        } else if weekDay == 1 {
-            diffWithSunday = -7;
+        //} else if weekDay == 7 {
+        //    diffWithSunday = -6
         } else {
-            diffWithSunday = calendar.firstWeekday - weekDay
+            diffWithSunday = calendar.firstWeekday - weekDay + 1
         }
         
         // Add the difference in days based on the current date
-        var sundayComp = calendar.dateComponents([.year, .month, .day], from: nowDate)
+        var sundayComp = calendar.dateComponents([.year, .month, .day, .hour], from: nowDate)
+        sundayComp.hour = -12
         sundayComp.day = day + diffWithSunday
         let sunday = calendar.date(from: sundayComp)
-        
         return sunday
     }
     
     private func getNextDay(afterDate date: Date?) -> Date? {
         guard let date = date else { return nil }
+       
         let calendar = Calendar.current
         var dayComponent = calendar.dateComponents([.year, .month, .day], from: date)
         guard let day = dayComponent.day else { return nil }

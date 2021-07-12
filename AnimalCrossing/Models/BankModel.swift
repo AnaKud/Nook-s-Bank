@@ -56,7 +56,7 @@ class ExpenseViewModel {
         self.expenseType = expenseType
         self.imageName = expenseType.rawValue
     }
-    init(value: Int, operationType: OperationType){
+    init(value: Int, operationType: OperationType) {
         self.uid = UUID().uuidString
         let creationDate = Date()
         self.dateString = {
@@ -67,7 +67,7 @@ class ExpenseViewModel {
         self.date = creationDate
         self.value = value
         self.operationType = operationType
-        self.expenseType = ExpenseType.allCases[.random(in: 0...10)]
+        self.expenseType = ExpenseType.allCases[.random(in: 0...11)]
         self.imageName = expenseType.rawValue
     }
     
@@ -114,10 +114,22 @@ class ExpenseFB {
         self.operationType = model.operationType.rawValue
         self.expenseType = model.expenseType.rawValue
     }
+    init(value: Int, operationType: OperationType, expenseType: ExpenseType) {
+        self.uid = UUID().uuidString
+        let creationDate = Date()
+        self.dateString = {
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "HH:mm \n dd MMM yyyy"
+            return dateFormatter.string(from: creationDate)
+        }()
+        self.value = value
+        self.operationType = operationType.rawValue
+        self.expenseType = expenseType.rawValue
+    }
+    
     func converToDictionary() -> Any {
         return["uid": uid, "dateString": dateString, "value": value, "operationType": operationType, "expenseType": expenseType]
     }
-    
 }
 
 enum ExpenseType: String, CaseIterable {
@@ -131,6 +143,7 @@ enum ExpenseType: String, CaseIterable {
     case Artwork = "Artwork"
     case Music = "Music"
     case Garden = "Garden"
+    case Turnip = "Turnip"
     case Other = "Other"
     
     static let allValue: [String] = [ExpenseType.RawValue]()
@@ -158,6 +171,8 @@ enum ExpenseType: String, CaseIterable {
         case 9:
             self = .Garden
         case 10:
+            self = .Turnip
+        case 11:
             self = .Other
         default:
             self = .Other
@@ -203,6 +218,8 @@ func convertToExpenseEnum(stringFromFB: String) -> ExpenseType {
         return .Music
     case "Garden":
         return .Garden
+    case "Turnip":
+        return .Turnip
     case "Other":
         return .Other
     default:

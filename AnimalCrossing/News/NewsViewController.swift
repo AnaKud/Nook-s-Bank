@@ -31,7 +31,6 @@ class NewsViewController: CustomViewController {
     override func loadView() {
         super.loadView()
         self.presenter.loadView(view: self)
-        self.presenter.makeRequest()
         self.setupTable()
     }
     

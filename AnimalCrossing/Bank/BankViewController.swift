@@ -44,7 +44,7 @@ class BankViewController: CustomViewController {
         self.presenter.loadView(view: self)
         self.displayActivity()
         self.initailInterface()
-        self.dataForUserStatus()
+        self.dataForUser()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -64,8 +64,8 @@ class BankViewController: CustomViewController {
         self.activityIndicatorView.hidesWhenStopped = true
     }
     
-    private func dataForUserStatus(){
-        switch userStatus {
+    private func dataForUser(){
+        switch screenType {
         case .loggined:
             currentAccountTitleLabel.text = AppTitle.Bank.currentAccountTitle
             coinImageView.image = UIImage(named: AppImage.Bank.coinLogin.rawValue)

@@ -11,7 +11,7 @@ import SnapKit
 protocol ILoginViewController {
     func showUserNameAlert(withEmail email: String, withPassword password: String)
     func showWarningLabel(withWarningText warningText: String)
-    func showErrrorAlert(withMessage message: FailureCases) 
+    func showErrorAlert(withMessage message: FailureCases) 
 }
 
 class LoginViewController: CustomViewController {
@@ -29,7 +29,7 @@ class LoginViewController: CustomViewController {
         self.presenter = presenter
         
         super.init(nibName: nil, bundle: nil)
-        self.userStatus = .loginScreen
+        self.screenType = .loginScreen
     }
     
     required init?(coder: NSCoder) {
@@ -64,8 +64,8 @@ class LoginViewController: CustomViewController {
     }
     
     private func setupLayout() {
-        emailTextField = self.customView?.makeTextField(withPlacehoder: AppTitle.Login.emailTF, height: AppContraints.Login.heightTF, withImageName: AppImage.Login.iconForEmailTF.rawValue, isSecureTextEntry: false) ?? UITextField()
-        passwordNameTextField = self.customView?.makeTextField(withPlacehoder: AppTitle.Login.passwordTF, height: AppContraints.Login.heightTF, withImageName: AppImage.Login.iconForPasswordTF.rawValue, isSecureTextEntry: true) ?? UITextField()
+        emailTextField = self.customView?.makeTextField(withPlacehoder: AppTitle.Login.emailTF, height: AppContraints.Login.heightTF, cornerRadius: AppContraints.Login.cornerRadiusTF, withImageName: AppImage.Login.iconForEmailTF.rawValue, isSecureTextEntry: false) ?? UITextField()
+        passwordNameTextField = self.customView?.makeTextField(withPlacehoder: AppTitle.Login.passwordTF, height: AppContraints.Login.heightTF, cornerRadius: AppContraints.Login.cornerRadiusTF, withImageName: AppImage.Login.iconForPasswordTF.rawValue, isSecureTextEntry: true) ?? UITextField()
          loginButton = self.customView?.makeOvalButtonWithCircle(withTitle: AppTitle.Login.loginButton, buttonWidth: AppContraints.Login.widthLoginButton, buttonHeight: AppContraints.Login.heightButtons) ?? UIButton()
          registerButton = self.customView?.makeOvalButtonWithCircle(withTitle: AppTitle.Login.registerButton, buttonWidth: AppContraints.Login.widthButton, buttonHeight: AppContraints.Login.heightButtons) ?? UIButton()
          freeEnterButton = self.customView?.makeOvalButtonWithCircle(withTitle: AppTitle.Login.freeButton, buttonWidth: AppContraints.Login.widthButton, buttonHeight: AppContraints.Login.heightButtons) ?? UIButton()
@@ -173,3 +173,5 @@ extension LoginViewController: ILoginViewController {
         self.present(alert, animated: true)
     }
 }
+
+// TO-DO GenericKeychain

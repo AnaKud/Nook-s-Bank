@@ -55,12 +55,12 @@ class NetworkManager: INewsNetworkManager  {
 
 ///https://animal-crossing-api.glitch.me/ac-turnip.com
 
-protocol ITurnipNetworkManager {
-    
+protocol IProphetPricesNetworkManager {
+    func downloadTurnip(forTurnipPrices prices: ProphetPrices.Turnip.Request, turnipHandler: @escaping (TurnipResponse) -> ())
 }
 
-extension NetworkManager: ITurnipNetworkManager {
-    func downloadNews(forTurnipPrices prices: TurnipPrices, turnipHandler: @escaping (TurnipResponse) -> ()) {
+extension NetworkManager: IProphetPricesNetworkManager {
+    func downloadTurnip(forTurnipPrices prices: ProphetPrices.Turnip.Request, turnipHandler: @escaping (TurnipResponse) -> ()) {
         let urlString = self.makeBaseTurnipUrl(forTurnipPrices: prices)
         guard let url = URL(string: urlString) else { return }
         let request = URLRequest(url: url)
@@ -85,12 +85,12 @@ extension NetworkManager: ITurnipNetworkManager {
     }
     
     
-    private func makeBaseTurnipUrl(forTurnipPrices prices: TurnipPrices) -> String {
+    private func makeBaseTurnipUrl(forTurnipPrices prices: ProphetPrices.Turnip.Request) -> String {
         var baseTurnipUrl = "https://api.ac-turnip.com/data/?f=\(prices.buyPrice)"
         let pricesArray = prices.pricesArray()
       
         for price in pricesArray {
-                baseTurnipUrl += "-\(price)"
+                baseTurnipUrl += "-\(price ?? 0)"
         }
         return baseTurnipUrl
     }

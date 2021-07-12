@@ -27,6 +27,10 @@ protocol IBankFireBaseManager {
     func currentExpensesFromFB(completion: @escaping ([ExpenseViewModel]) -> ())
 }
 
+protocol ITurnipFireBaseManager {
+    func addExpenseToFb(expense: ExpenseFB)
+}
+
 class FireBaseManager {
     static let shared = FireBaseManager()
     
@@ -128,6 +132,11 @@ extension FireBaseManager: IBankFireBaseManager {
         return expenseRef
     }
 }
+
+extension FireBaseManager: ITurnipFireBaseManager {
+    
+}
+
 
 extension FireBaseManager: IPresenterForFireBaseManager {
     func presentError(error: FailureCases) {

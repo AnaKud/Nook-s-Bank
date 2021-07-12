@@ -11,7 +11,7 @@ import SnapKit
 class CustomViewController: UIViewController {
     var colors: ColorsSet?
     var customView: CustomView?
-    var userStatus: ScreenTypes?
+    var screenType: ScreenTypes?
     var controllerTitle: String?
     
     let topImageView = UIImageView()
@@ -22,19 +22,17 @@ class CustomViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.colors = ColorsSet(for: userStatus)
+        self.colors = ColorsSet(for: screenType)
         self.customView = CustomView(colorSet: colors)
         self.setupTopBottomLayout()
-        self.setupView(forUserStatus: userStatus)
+        self.setupView(forScreenType: screenType)
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.dissmissKeyboard))
         tap.cancelsTouchesInView = false
         view.addGestureRecognizer(tap)
-        
-        print(userStatus)
     }
 
-    func showErrrorAlert(withMessage message: FailureCases)  {
+    func showErrorAlert(withMessage message: FailureCases)  {
         let alert = CustomAlertController(title: "Error", message: message.rawValue, preferredStyle: .alert)
         let saveAction = UIAlertAction(title: "Ok", style: .default)
         alert.addAction(saveAction)
@@ -49,8 +47,7 @@ class CustomViewController: UIViewController {
         self.navigationController?.navigationBar.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 0)
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
         self.navigationController?.navigationBar.shadowImage = UIImage()
-        self.navigationController?.navigationBar.topItem?.title = " "
-        self.navigationController?.navigationBar.topItem?.title = " "
+        self.navigationController?.navigationBar.topItem?.title = ""
         self.navigationController?.navigationBar.barStyle = .default
         self.navigationController?.navigationBar.tintColor = colors?.mainViewColor.navigationItemColor
         self.tabBarController?.tabBar.barTintColor = UIColor.clear
@@ -76,23 +73,23 @@ class CustomViewController: UIViewController {
         contentView.backgroundColor = .clear
     }
     
-    private func setupView(forUserStatus userStatus: ScreenTypes?) {
+    private func setupView(forScreenType screenType: ScreenTypes?) {
         view.backgroundColor = colors?.mainViewColor.backgroundColor
         titleLabel.textColor = colors?.mainViewColor.textColor
-        
-        switch userStatus {
+        titleLabel.numberOfLines = 0
+        switch screenType {
         case .loggined:
-            topImageView.image = UIImage(named: "LoginedTop")
-            bottomImageView.image = UIImage(named: "LoginedBottom")
+            topImageView.image = UIImage(named: AppImage.TopBottomImage.logTop.rawValue)
+            bottomImageView.image = UIImage(named: AppImage.TopBottomImage.logBottom.rawValue)
         case .unloggined:
-            topImageView.image = UIImage(named: "UnLoginedTop")
-            bottomImageView.image = UIImage(named: "UnLoginedBottom")
+            topImageView.image = UIImage(named: AppImage.TopBottomImage.unlogTop.rawValue)
+            bottomImageView.image = UIImage(named: AppImage.TopBottomImage.unlogBottom.rawValue)
         default:
-            view.backgroundColor = #colorLiteral(red: 0.768627451, green: 0.8078431373, blue: 0.9294117647, alpha: 1)
+            view.backgroundColor = colors?.mainViewColor.backgroundColor
         }
-        if userStatus != .loginScreen {
+        if screenType != .loginScreen {
             view.addSubview(titleLabel)
-            self.titleLabel.snp.makeConstraints { make in
+            titleLabel.snp.makeConstraints { make in
                 make.top.equalTo(view).offset(AppContraints.navTitle)
                 make.leading.trailing.equalTo(view)
             }

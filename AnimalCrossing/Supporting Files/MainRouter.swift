@@ -8,7 +8,7 @@
 import UIKit
 
 internal final class MainRouter {
-    var userStatus: ScreenTypes
+    var screenType: ScreenTypes
     private let tabbar: UITabBarController
     
     private let newsNavigationController: UINavigationController
@@ -20,19 +20,19 @@ internal final class MainRouter {
     private let turnipNavigationController: UINavigationController
     private let turnipViewController: TurnipViewController
     
-    init(userStatus: ScreenTypes) {
-        self.userStatus = userStatus
-        let colors = TapBarColor(for: userStatus)
+    init(screenType: ScreenTypes) {
+        self.screenType = screenType
+        let colors = TapBarColor(for: screenType)
         self.tabbar = UITabBarController()
         
         
-        self.newsViewController = NewsAssembly().build(userStatus: userStatus)
+        self.newsViewController = NewsAssembly().build(screenType: screenType)
         self.newsNavigationController = UINavigationController(rootViewController: self.newsViewController)
         
-        self.bankViewController = BankAssembly().build(userStatus: userStatus)
+        self.bankViewController = BankAssembly().build(screenType: screenType)
         self.bankNavigationController = UINavigationController(rootViewController: bankViewController)
         
-        self.turnipViewController = TurnipAssembly().build(userStatus: userStatus)
+        self.turnipViewController = TurnipAssembly().build(screenType: screenType)
         self.turnipNavigationController = UINavigationController(rootViewController: turnipViewController)
 
         self.tabbar.setViewControllers([self.newsNavigationController, self.bankNavigationController, self.turnipNavigationController], animated: true)

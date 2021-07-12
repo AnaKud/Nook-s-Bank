@@ -6,7 +6,8 @@ target 'AnimalCrossing' do
   use_frameworks!
 
   # Pods for AnimalCrossing
-pod 'SnapKit', '~> 5.0.0'
+	pod 'SnapKit', '~> 5.0.0'
+	pod 'ChartView', :git => 'https://github.com/AppPear/ChartView.git'
 
 # add pods for desired Firebase products
 # https://firebase.google.com/docs/ios/setup#available-pods

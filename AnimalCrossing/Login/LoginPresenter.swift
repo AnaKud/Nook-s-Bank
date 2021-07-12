@@ -8,7 +8,7 @@
 import Foundation
 
 protocol ILoginPresenter {
-    var userStatus: ScreenTypes { get set }
+    var screenType: ScreenTypes { get set }
     var titleForViewContoller: String { get set }
     func loginButtonTapped(email: String?, password: String?)
     func openWithoutLogin()
@@ -22,7 +22,7 @@ protocol ILoginPresenter {
 }
 
 class LoginPresenter {
-    var userStatus: ScreenTypes = .loginScreen
+    var screenType: ScreenTypes = .loginScreen
     var titleForViewContoller: String = ""
     var fireBaseManager: ILoginFireBaseManager
     var router: ILoginRouter
@@ -45,15 +45,15 @@ extension LoginPresenter: ILoginPresenter {
     }
     
     func openWithoutLogin() {
-        self.userStatus = .unloggined
+        self.screenType = .unloggined
         self.titleForViewContoller = AppTitle.nookBank
-        self.router.goToNextWithoutLogin(withUserStatus: userStatus)
+        self.router.goToNextWithoutLogin(withScreenType: screenType)
     }
     
     func openWithLogin() {
-        self.userStatus = .loggined
+        self.screenType = .loggined
         self.titleForViewContoller = AppTitle.nookBank
-        self.router.goToNextWithLogin(withUserStatus: userStatus)
+        self.router.goToNextWithLogin(withScreenType: screenType)
     }
     
     func registerButtonTapped(email: String?, password: String?) {
@@ -95,7 +95,7 @@ extension LoginPresenter: ILoginPresenter {
 
 extension LoginPresenter: IPresenterForFireBaseManager {
     func presentError(error: FailureCases) {
-        self.view?.showErrrorAlert(withMessage: error)
+        self.view?.showErrorAlert(withMessage: error)
     }
 }
 

@@ -10,7 +10,7 @@ import Foundation
 protocol IBankPresenter {
     var user: UserLocale? { get set }
     var account: BankViewModel { get set }
-    var userStatus: ScreenTypes? { get set }
+    var screenType: ScreenTypes? { get set }
     
     func getCurrentUser()
     
@@ -22,7 +22,7 @@ protocol IBankPresenter {
 }
 
 class BankPresenter {
-    var userStatus: ScreenTypes?
+    var screenType: ScreenTypes?
     
     var view: IBankViewController?
     
@@ -39,9 +39,10 @@ class BankPresenter {
 
 extension BankPresenter: IBankPresenter {
     func getCurrentUser() {
-        switch userStatus {
+        switch screenType {
         case .loggined:
             self.user = self.fireBaseManager.getUser()
+            print(self.user?.email)
             self.getAccountData()
         default:
             self.user = nil
@@ -55,12 +56,7 @@ extension BankPresenter: IBankPresenter {
     }
     
     private func getDemoData() {
-        self.account = BankViewModel(currentValue: 100500,
-                                     expenses: [ExpenseViewModel(value: 1452, operationType: .plus),
-                                                ExpenseViewModel(value: 1248, operationType: .minus),
-                                                ExpenseViewModel(value: 3248, operationType: .minus),
-                                                ExpenseViewModel(value: 74532, operationType: .plus),
-                                                ExpenseViewModel(value: 29012, operationType: .plus, expenseType: .Other)])
+        self.account = DemoBankData.account
         self.view?.interfaceWithData()
         self.refreshView()
     }
@@ -74,7 +70,7 @@ extension BankPresenter: IBankPresenter {
         case .minus:
             self.account.currentValue = self.account.currentValue - expense.value
         }
-        switch userStatus {
+        switch screenType {
         case .loggined:
             print(self.account.currentValue)
             self.account.expenses?.insert(expense, at: 0)

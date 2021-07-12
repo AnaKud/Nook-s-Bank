@@ -30,7 +30,7 @@ class NewsPresenter: INewsPresenter {
         self.networkManager = networkManager
         self.coreData = coreData
         self.router = router
-        self.newsFromCoreData = self.coreData.loadNews()
+        self.makeRequest()
     }
     
     func makeRequest() {
@@ -42,8 +42,8 @@ class NewsPresenter: INewsPresenter {
                 self.newsViewModel = self.convertFromInternetToVM(eventsFromInternet: events)
                 self.view?.displayTable()
                 self.refreshView()
-                
             } else {
+                self.newsFromCoreData = self.coreData.loadNews()
                 self.newsViewModel = self.sortEventsFromCoreDataByDay(events: self.newsFromCoreData)
             }
             self.view?.displayTable()

@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -46,7 +46,20 @@
 		E3A2EA062689C3A600297E51 /* TurnipViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A2E9D42689C3A600297E51 /* TurnipViewController.swift */; };
 		E3A2EA072689C3A600297E51 /* TurnipPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A2E9D52689C3A600297E51 /* TurnipPresenter.swift */; };
 		E3A2EA082689C3A600297E51 /* TurnipAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A2E9D62689C3A600297E51 /* TurnipAssembly.swift */; };
+		E3CC113A2696F7570080FD88 /* TurnipRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3CC11392696F7570080FD88 /* TurnipRouter.swift */; };
+		E3CC11422696F8DA0080FD88 /* ProphetPricesPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3CC113C2696F8DA0080FD88 /* ProphetPricesPresenter.swift */; };
+		E3CC11432696F8DA0080FD88 /* ProphetPricesWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3CC113D2696F8DA0080FD88 /* ProphetPricesWorker.swift */; };
+		E3CC11452696F8DA0080FD88 /* ProphetPricesModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3CC113F2696F8DA0080FD88 /* ProphetPricesModels.swift */; };
+		E3CC11462696F8DA0080FD88 /* ProphetPricesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3CC11402696F8DA0080FD88 /* ProphetPricesViewController.swift */; };
+		E3CC11472696F8DA0080FD88 /* ProphetPricesInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3CC11412696F8DA0080FD88 /* ProphetPricesInteractor.swift */; };
+		E3CC11492696FAC30080FD88 /* ProphetPricesAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3CC11482696FAC30080FD88 /* ProphetPricesAssembly.swift */; };
+		E3CF43F726975C9A00BFDAB8 /* SwiftUICharts in Frameworks */ = {isa = PBXBuildFile; productRef = E3CF43F626975C9A00BFDAB8 /* SwiftUICharts */; };
+		E3CF43F926975FA500BFDAB8 /* GraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3CF43F826975FA500BFDAB8 /* GraphView.swift */; };
 		E3D4E44C268B5B2500F26908 /* CustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D4E44B268B5B2500F26908 /* CustomView.swift */; };
+		E3FC7E802692E9D40078A7E8 /* AppContraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3FC7E7F2692E9D40078A7E8 /* AppContraints.swift */; };
+		E3FC7E822692E9FF0078A7E8 /* AppTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3FC7E812692E9FF0078A7E8 /* AppTitle.swift */; };
+		E3FC7E842692EA510078A7E8 /* DesignData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3FC7E832692EA510078A7E8 /* DesignData.swift */; };
+		E3FC7E862692EBE40078A7E8 /* WeekView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3FC7E852692EBE40078A7E8 /* WeekView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -92,7 +105,19 @@
 		E3A2E9D52689C3A600297E51 /* TurnipPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TurnipPresenter.swift; sourceTree = "<group>"; };
 		E3A2E9D62689C3A600297E51 /* TurnipAssembly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TurnipAssembly.swift; sourceTree = "<group>"; };
 		E3A6E7E6266C1ED500E2A5FE /* AnimalCrossing.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AnimalCrossing.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E3CC11392696F7570080FD88 /* TurnipRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TurnipRouter.swift; sourceTree = "<group>"; };
+		E3CC113C2696F8DA0080FD88 /* ProphetPricesPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProphetPricesPresenter.swift; sourceTree = "<group>"; };
+		E3CC113D2696F8DA0080FD88 /* ProphetPricesWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProphetPricesWorker.swift; sourceTree = "<group>"; };
+		E3CC113F2696F8DA0080FD88 /* ProphetPricesModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProphetPricesModels.swift; sourceTree = "<group>"; };
+		E3CC11402696F8DA0080FD88 /* ProphetPricesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProphetPricesViewController.swift; sourceTree = "<group>"; };
+		E3CC11412696F8DA0080FD88 /* ProphetPricesInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProphetPricesInteractor.swift; sourceTree = "<group>"; };
+		E3CC11482696FAC30080FD88 /* ProphetPricesAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProphetPricesAssembly.swift; sourceTree = "<group>"; };
+		E3CF43F826975FA500BFDAB8 /* GraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphView.swift; sourceTree = "<group>"; };
 		E3D4E44B268B5B2500F26908 /* CustomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomView.swift; sourceTree = "<group>"; };
+		E3FC7E7F2692E9D40078A7E8 /* AppContraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppContraints.swift; sourceTree = "<group>"; };
+		E3FC7E812692E9FF0078A7E8 /* AppTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTitle.swift; sourceTree = "<group>"; };
+		E3FC7E832692EA510078A7E8 /* DesignData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignData.swift; sourceTree = "<group>"; };
+		E3FC7E852692EBE40078A7E8 /* WeekView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +126,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A20C412E0FE5A340C7207DA1 /* Pods_AnimalCrossing.framework in Frameworks */,
+				E3CF43F726975C9A00BFDAB8 /* SwiftUICharts in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -149,14 +175,17 @@
 		E3A2E9922689C3A600297E51 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				E3A2E9B72689C3A600297E51 /* AppDelegate.swift */,
+				E3A2E9B82689C3A600297E51 /* SceneDelegate.swift */,
 				E3E754192689C8150029D07C /* Fonts */,
 				E3A2E9932689C3A600297E51 /* DatesOfCurrentWeek.swift */,
 				E3A2E9B12689C3A600297E51 /* Assets.xcassets */,
 				E3A2E9B22689C3A600297E51 /* LaunchScreen.storyboard */,
 				E3A2E9B42689C3A600297E51 /* MainRouter.swift */,
-				E3A2E9B72689C3A600297E51 /* AppDelegate.swift */,
-				E3A2E9B82689C3A600297E51 /* SceneDelegate.swift */,
+				E3FC7E7F2692E9D40078A7E8 /* AppContraints.swift */,
+				E3FC7E812692E9FF0078A7E8 /* AppTitle.swift */,
 				E3A2E9B92689C3A600297E51 /* SupportingFile.swift */,
+				E3FC7E832692EA510078A7E8 /* DesignData.swift */,
 			);
 			path = "Supporting Files";
 			sourceTree = "<group>";
@@ -210,6 +239,8 @@
 				E3A2E9D12689C3A600297E51 /* CustomAlertController.swift */,
 				E3A2E9D22689C3A600297E51 /* CustomViewController.swift */,
 				E3D4E44B268B5B2500F26908 /* CustomView.swift */,
+				E3FC7E852692EBE40078A7E8 /* WeekView.swift */,
+				E3CF43F826975FA500BFDAB8 /* GraphView.swift */,
 			);
 			path = "Reusible View";
 			sourceTree = "<group>";
@@ -219,6 +250,7 @@
 			children = (
 				E3A2E9D42689C3A600297E51 /* TurnipViewController.swift */,
 				E3A2E9D52689C3A600297E51 /* TurnipPresenter.swift */,
+				E3CC11392696F7570080FD88 /* TurnipRouter.swift */,
 				E3A2E9D62689C3A600297E51 /* TurnipAssembly.swift */,
 			);
 			path = Turnip;
@@ -253,9 +285,23 @@
 				E3A2E9C52689C3A600297E51 /* News */,
 				E3A2E9CD2689C3A600297E51 /* Reusible View */,
 				E3A2E9922689C3A600297E51 /* Supporting Files */,
+				E3CC113B2696F8790080FD88 /* ProphetPricesVC */,
 				E3A2E9D32689C3A600297E51 /* Turnip */,
 			);
 			path = AnimalCrossing;
+			sourceTree = "<group>";
+		};
+		E3CC113B2696F8790080FD88 /* ProphetPricesVC */ = {
+			isa = PBXGroup;
+			children = (
+				E3CC11412696F8DA0080FD88 /* ProphetPricesInteractor.swift */,
+				E3CC113C2696F8DA0080FD88 /* ProphetPricesPresenter.swift */,
+				E3CC113F2696F8DA0080FD88 /* ProphetPricesModels.swift */,
+				E3CC11482696FAC30080FD88 /* ProphetPricesAssembly.swift */,
+				E3CC11402696F8DA0080FD88 /* ProphetPricesViewController.swift */,
+				E3CC113D2696F8DA0080FD88 /* ProphetPricesWorker.swift */,
+			);
+			path = ProphetPricesVC;
 			sourceTree = "<group>";
 		};
 		E3E754192689C8150029D07C /* Fonts */ = {
@@ -287,6 +333,7 @@
 			);
 			name = AnimalCrossing;
 			packageProductDependencies = (
+				E3CF43F626975C9A00BFDAB8 /* SwiftUICharts */,
 			);
 			productName = AnimalCrossing;
 			productReference = E3A6E7E6266C1ED500E2A5FE /* AnimalCrossing.app */;
@@ -316,6 +363,7 @@
 			);
 			mainGroup = E3A6E7DD266C1ED500E2A5FE;
 			packageReferences = (
+				E3CF43F526975C9A00BFDAB8 /* XCRemoteSwiftPackageReference "ChartView" */,
 			);
 			productRefGroup = E3A6E7E7266C1ED500E2A5FE /* Products */;
 			projectDirPath = "";
@@ -391,37 +439,49 @@
 			files = (
 				E3A2EA062689C3A600297E51 /* TurnipViewController.swift in Sources */,
 				E3A2E9F22689C3A600297E51 /* NewsModel.swift in Sources */,
+				E3CC113A2696F7570080FD88 /* TurnipRouter.swift in Sources */,
 				E3A2E9F72689C3A600297E51 /* BankAssembly.swift in Sources */,
 				E3A2E9F32689C3A600297E51 /* BankModel.swift in Sources */,
 				E3A2E9F52689C3A600297E51 /* UserLocale.swift in Sources */,
 				E3A2E9FF2689C3A600297E51 /* NewsTableViewCell.swift in Sources */,
 				E3D4E44C268B5B2500F26908 /* CustomView.swift in Sources */,
+				E3CC11452696F8DA0080FD88 /* ProphetPricesModels.swift in Sources */,
 				E3A2E9F82689C3A600297E51 /* BankViewController.swift in Sources */,
+				E3FC7E802692E9D40078A7E8 /* AppContraints.swift in Sources */,
 				E3A2EA072689C3A600297E51 /* TurnipPresenter.swift in Sources */,
 				E3A2E9EF2689C3A600297E51 /* AppDelegate.swift in Sources */,
 				E3A2E9E02689C3A600297E51 /* DatesOfCurrentWeek.swift in Sources */,
 				E3A2E9DE2689C3A600297E51 /* AnimalCrossing.xcdatamodeld in Sources */,
+				E3FC7E862692EBE40078A7E8 /* WeekView.swift in Sources */,
 				E3A2E9DD2689C3A600297E51 /* NetworkManager.swift in Sources */,
 				E3A2E9FA2689C3A600297E51 /* ExpenseCollectionViewCell.swift in Sources */,
 				E3A2E9DA2689C3A600297E51 /* LoginPresenter.swift in Sources */,
 				E3A2E9FB2689C3A600297E51 /* NewsRouter.swift in Sources */,
+				E3CF43F926975FA500BFDAB8 /* GraphView.swift in Sources */,
 				E3A2E9FC2689C3A600297E51 /* NewsPresenter.swift in Sources */,
 				E3A2EA002689C3A600297E51 /* EventWebView.swift in Sources */,
 				E3A2EA082689C3A600297E51 /* TurnipAssembly.swift in Sources */,
+				E3CC11472696F8DA0080FD88 /* ProphetPricesInteractor.swift in Sources */,
 				E3A2E9F92689C3A600297E51 /* BankPresenter.swift in Sources */,
 				E3A2E9F12689C3A600297E51 /* SupportingFile.swift in Sources */,
 				E3A2E9FD2689C3A600297E51 /* NewsViewController.swift in Sources */,
+				E3CC11492696FAC30080FD88 /* ProphetPricesAssembly.swift in Sources */,
+				E3FC7E842692EA510078A7E8 /* DesignData.swift in Sources */,
 				E3A2E9D92689C3A600297E51 /* LoginViewController.swift in Sources */,
 				E3A2E9ED2689C3A600297E51 /* MainRouter.swift in Sources */,
 				E3A2E9DF2689C3A600297E51 /* FireBaseManager.swift in Sources */,
 				E3A2EA042689C3A600297E51 /* CustomAlertController.swift in Sources */,
+				E3CC11432696F8DA0080FD88 /* ProphetPricesWorker.swift in Sources */,
 				E3A2EA052689C3A600297E51 /* CustomViewController.swift in Sources */,
+				E3CC11422696F8DA0080FD88 /* ProphetPricesPresenter.swift in Sources */,
 				E3A2E9DB2689C3A600297E51 /* LoginRouter.swift in Sources */,
 				E3A2E9DC2689C3A600297E51 /* CoreDataManager.swift in Sources */,
+				E3FC7E822692E9FF0078A7E8 /* AppTitle.swift in Sources */,
 				E3A2E9D82689C3A600297E51 /* LoginAssebmly.swift in Sources */,
 				E3A2E9FE2689C3A600297E51 /* NewsAssembly.swift in Sources */,
 				E3A2E9F02689C3A600297E51 /* SceneDelegate.swift in Sources */,
 				E3A2E9F42689C3A600297E51 /* TurnipModel.swift in Sources */,
+				E3CC11462696F8DA0080FD88 /* ProphetPricesViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -621,6 +681,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		E3CF43F526975C9A00BFDAB8 /* XCRemoteSwiftPackageReference "ChartView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/AppPear/ChartView";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.5.5;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		E3CF43F626975C9A00BFDAB8 /* SwiftUICharts */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E3CF43F526975C9A00BFDAB8 /* XCRemoteSwiftPackageReference "ChartView" */;
+			productName = SwiftUICharts;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		E3A2E98F2689C3A600297E51 /* AnimalCrossing.xcdatamodeld */ = {

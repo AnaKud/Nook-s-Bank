@@ -8,22 +8,22 @@
 import UIKit
 
 protocol ILoginRouter {
-    func goToNextWithoutLogin(withUserStatus userStatus: ScreenTypes)
-    func goToNextWithLogin(withUserStatus userStatus: ScreenTypes)
+    func goToNextWithoutLogin(withScreenType screenType: ScreenTypes)
+    func goToNextWithLogin(withScreenType screenType: ScreenTypes)
 }
 
 class LoginRouter: ILoginRouter{
     weak var controller: LoginViewController?
-    func goToNextWithoutLogin(withUserStatus userStatus: ScreenTypes) {
-        let mainRouter = MainRouter(userStatus: userStatus)
-        mainRouter.userStatus = userStatus
+    func goToNextWithoutLogin(withScreenType screenType: ScreenTypes) {
+        let mainRouter = MainRouter(screenType: screenType)
+        mainRouter.screenType = screenType
         let nextVC = mainRouter.returnController()
         self.controller?.navigationController?.pushViewController(nextVC, animated: true)
     }
     
-    func goToNextWithLogin(withUserStatus userStatus: ScreenTypes) {
-        let mainRouter = MainRouter(userStatus: userStatus)
-        mainRouter.userStatus = userStatus
+    func goToNextWithLogin(withScreenType screenType: ScreenTypes) {
+        let mainRouter = MainRouter(screenType: screenType)
+        mainRouter.screenType = screenType
         let nextVC = mainRouter.returnController()
         self.controller?.navigationController?.pushViewController(nextVC, animated: true)
     }

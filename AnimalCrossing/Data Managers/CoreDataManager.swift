@@ -21,7 +21,8 @@ protocol INewsCoreDataManager {
 
 protocol ITurnipCoreDataManager {
     func loadTurnip() -> TurnipPrices?
-    func addOrUpdateTurnip(turnip: TurnipPrices)
+    func addTurnip(turnip: TurnipPrices)
+    func updateTurnip(turnip: TurnipPrices)
     func deleteTurnip()
 }
 
@@ -113,6 +114,7 @@ extension CoreDataManager: ITurnipCoreDataManager {
         do {
             let dataArray = try context.fetch(fetchRequest)
             guard let data = dataArray.first else { return nil }
+            print("cd t fetch -- \(data.fridayMorning) -- \(data.fridayEvening)")
             return TurnipPrices(fromCoreData: data)
         } catch let error {
             self.errorPresenter?.presentError(error: .fetchError)
@@ -121,24 +123,51 @@ extension CoreDataManager: ITurnipCoreDataManager {
         return nil
     }
     
-    func addOrUpdateTurnip(turnip: TurnipPrices) {
+    func addTurnip(turnip: TurnipPrices) {
         let turnipContext = Turnip(context: context)
         turnipContext.sundayDate = turnip.sundayDate
         turnipContext.buyPrice = Int32(turnip.buyPrice)
         turnipContext.turnipCount = Int32(turnip.turnipCount ?? 0)
-        turnipContext.mondayMorning = Int32(turnip.mondayMorning)
-        turnipContext.mondayEvening = Int32(turnip.mondayEvening)
-        turnipContext.tuesdayMorning = Int32(turnip.tuesdayMorning)
-        turnipContext.tuesdayEvening = Int32(turnip.tuesdayEvening)
-        turnipContext.wednesdayMorning = Int32(turnip.wednesdayMorning)
-        turnipContext.wednesdayEvening = Int32(turnip.wednesdayEvening)
-        turnipContext.thursdayMorning = Int32(turnip.thursdayMorning)
-        turnipContext.thursdayEvening = Int32(turnip.thursdayEvening)
-        turnipContext.fridayMorning = Int32(turnip.fridayMorning)
-        turnipContext.fridayEvening = Int32(turnip.fridayEvening)
-        turnipContext.saturdayMorning = Int32(turnip.saturdayMorning)
-        turnipContext.saturdayEvening = Int32(turnip.saturdayEvening)
-        
+        turnipContext.mondayMorning = Int32(turnip.mondayMorning ?? 0)
+        turnipContext.mondayEvening = Int32(turnip.mondayEvening ?? 0)
+        turnipContext.tuesdayMorning = Int32(turnip.tuesdayMorning ?? 0)
+        turnipContext.tuesdayEvening = Int32(turnip.tuesdayEvening ?? 0)
+        turnipContext.wednesdayMorning = Int32(turnip.wednesdayMorning ?? 0)
+        turnipContext.wednesdayEvening = Int32(turnip.wednesdayEvening ?? 0)
+        turnipContext.thursdayMorning = Int32(turnip.thursdayMorning ?? 0)
+        turnipContext.thursdayEvening = Int32(turnip.thursdayEvening ?? 0)
+        turnipContext.fridayMorning = Int32(turnip.fridayMorning ?? 0)
+        turnipContext.fridayEvening = Int32(turnip.fridayEvening ?? 0)
+        turnipContext.saturdayMorning = Int32(turnip.saturdayMorning ?? 0)
+        turnipContext.saturdayEvening = Int32(turnip.saturdayEvening ?? 0)
+        print("cd t savr -- \(turnipContext.fridayMorning) -- \(turnipContext.fridayEvening)")
+        do {
+            try context.save()
+        } catch let error {
+            self.errorPresenter?.presentError(error: .saveError)
+            print(error.localizedDescription)
+        }
+    }
+    
+    func updateTurnip(turnip: TurnipPrices) {
+        let fetchRequest: NSFetchRequest<Turnip> = Turnip.fetchRequest()
+        if let object = try? context.fetch(fetchRequest).first {
+            object.sundayDate = turnip.sundayDate
+            object.buyPrice = Int32(turnip.buyPrice)
+            object.turnipCount = Int32(turnip.turnipCount ?? 0)
+            object.mondayMorning = Int32(turnip.mondayMorning ?? 0)
+            object.mondayEvening = Int32(turnip.mondayEvening ?? 0)
+            object.tuesdayMorning = Int32(turnip.tuesdayMorning ?? 0)
+            object.tuesdayEvening = Int32(turnip.tuesdayEvening ?? 0)
+            object.wednesdayMorning = Int32(turnip.wednesdayMorning ?? 0)
+            object.wednesdayEvening = Int32(turnip.wednesdayEvening ?? 0)
+            object.thursdayMorning = Int32(turnip.thursdayMorning ?? 0)
+            object.thursdayEvening = Int32(turnip.thursdayEvening ?? 0)
+            object.fridayMorning = Int32(turnip.fridayMorning ?? 0)
+            object.fridayEvening = Int32(turnip.fridayEvening ?? 0)
+            object.saturdayMorning = Int32(turnip.saturdayMorning ?? 0)
+            object.saturdayEvening = Int32(turnip.saturdayEvening ?? 0)
+        }
         do {
             try context.save()
         } catch let error {
