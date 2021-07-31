@@ -23,16 +23,23 @@ enum AppImage {
         case unlogBottom  = "UnLoginedBottom"
     }
     
+    enum UserSettings: String {
+        case pensil = "pensil"
+    }
+    
     enum Login: String {
+        case back = "chevron.backward"
         case iconForEmailTF = "person.fill"
         case iconForPasswordTF = "key.fill"
     }
+    
     enum Bank: String {
         case coinLogin = "CoinLog"
         case coinUnLogin = "CoinUnlog"
         case plusLogin = "plusLog"
         case plusUnlogin = "plusUnlog"
     }
+    
     enum Turnip: String {
         case morning = "sun.max"
         case evening = "moon.stars"
@@ -40,8 +47,15 @@ enum AppImage {
         case count = "multiply.circle"
         case sell = "s.circle"
     }
+    
     enum Prices: String {
         case daisyMae = "DaisyMae"
+    }
+    
+    enum PinPad: String {
+        case backspace = "chevron.backward.square"
+        case faceId = "faceid"
+        case person = "person.fill.questionmark"
     }
 }
 
@@ -61,7 +75,7 @@ struct ColorsSet {
     var mainViewColor: MainViewColor
     var activityIndicatorColor: ActivityIndicatorColor
     var bankViewColor: BankViewColor
-   // var prophetPricesViewColor: ProphetPricesViewColor
+    var passCodeColor: PassCodeViewColor
     
     
     init(for screenType: ScreenTypes?){
@@ -72,6 +86,7 @@ struct ColorsSet {
         self.mainViewColor = MainViewColor(for: screenType)
         self.activityIndicatorColor = ActivityIndicatorColor(for: screenType)
         self.bankViewColor = BankViewColor(for: screenType)
+        self.passCodeColor = PassCodeViewColor(for: screenType)
     }
     
     struct BankViewColor {
@@ -111,6 +126,37 @@ struct ColorsSet {
         }
     }
     
+    struct PassCodeViewColor {
+        let backgroundColor: UIColor?
+        let textColor: UIColor?
+        let pinColor: UIColor?
+        let pinBorderColor: CGColor?
+        let buttonBorderColor: CGColor?
+        let buttonBgColor: UIColor?
+        let buttonNumberColor: UIColor?
+        
+        init(for screenType: ScreenTypes?) {
+            switch screenType {
+            case .other:
+                self.backgroundColor = #colorLiteral(red: 0.8745098039, green: 0.9803921569, blue: 0.6, alpha: 1)
+                self.textColor = #colorLiteral(red: 0.303658396, green: 0.2938010395, blue: 0.03124490753, alpha: 1)
+                self.pinColor = #colorLiteral(red: 0.1948110163, green: 0.388961494, blue: 0.01023789216, alpha: 1)
+                self.pinBorderColor = #colorLiteral(red: 0.1948110163, green: 0.388961494, blue: 0.01023789216, alpha: 1)
+                self.buttonBorderColor = #colorLiteral(red: 0.1948110163, green: 0.388961494, blue: 0.01023789216, alpha: 1)
+                self.buttonBgColor = #colorLiteral(red: 0.8745098039, green: 0.9803921569, blue: 0.6, alpha: 1)
+                self.buttonNumberColor = #colorLiteral(red: 0.1948110163, green: 0.388961494, blue: 0.01023789216, alpha: 1)
+            default:
+                self.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+                self.textColor = #colorLiteral(red: 0.2605174184, green: 0.2605243921, blue: 0.260520637, alpha: 1)
+                self.pinColor = #colorLiteral(red: 0.1948110163, green: 0.388961494, blue: 0.01023789216, alpha: 1)
+                self.pinBorderColor = #colorLiteral(red: 0.1948110163, green: 0.388961494, blue: 0.01023789216, alpha: 1)
+                self.buttonBorderColor = #colorLiteral(red: 0.2605174184, green: 0.2605243921, blue: 0.260520637, alpha: 1)
+                self.buttonBgColor = #colorLiteral(red: 0.1948110163, green: 0.388961494, blue: 0.01023789216, alpha: 1)
+                self.buttonNumberColor = #colorLiteral(red: 0.2605174184, green: 0.2605243921, blue: 0.260520637, alpha: 1)
+            }
+        }
+    }
+    
     struct MainViewColor {
         let backgroundColor:  UIColor?
         let textColor: UIColor?
@@ -123,12 +169,12 @@ struct ColorsSet {
                 self.navigationItemColor = #colorLiteral(red: 0.2605174184, green: 0.2605243921, blue: 0.260520637, alpha: 1)
             case .other :
                 self.backgroundColor = #colorLiteral(red: 0.8740545511, green: 0.9797915816, blue: 0.5994428396, alpha: 1)
-                self.textColor = #colorLiteral(red: 0.1948110163, green: 0.388961494, blue: 0.01023789216, alpha: 1)
-                self.navigationItemColor = #colorLiteral(red: 0.2605174184, green: 0.2605243921, blue: 0.260520637, alpha: 1)
+                self.textColor = #colorLiteral(red: 0.303658396, green: 0.2938010395, blue: 0.03124490753, alpha: 1)
+                self.navigationItemColor = #colorLiteral(red: 0.303658396, green: 0.2938010395, blue: 0.03124490753, alpha: 1)
             default:
                 self.backgroundColor = #colorLiteral(red: 0.768627451, green: 0.8078431373, blue: 0.9294117647, alpha: 1)
                 self.textColor = #colorLiteral(red: 0.3490196078, green: 0.4352941176, blue: 0.6823529412, alpha: 1)
-                self.navigationItemColor = #colorLiteral(red: 0.2605174184, green: 0.2605243921, blue: 0.260520637, alpha: 1)
+                self.navigationItemColor = #colorLiteral(red: 0.3490196078, green: 0.4352941176, blue: 0.6823529412, alpha: 1)
             }
         }
     }
@@ -150,6 +196,11 @@ struct ColorsSet {
                 self.borderColor = #colorLiteral(red: 0.9607843137, green: 0.9607843137, blue: 0.8862745098, alpha: 1)
                 self.textColor = #colorLiteral(red: 0.3490196078, green: 0.4352941176, blue: 0.6823529412, alpha: 1)
                 self.imageColor = #colorLiteral(red: 0.3490196078, green: 0.4352941176, blue: 0.6823529412, alpha: 1)
+            case .other:
+                self.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+                self.borderColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+                self.textColor = #colorLiteral(red: 0.1294117647, green: 0.3058823529, blue: 0.06666666667, alpha: 1)
+                self.imageColor = #colorLiteral(red: 0.1294117647, green: 0.3058823529, blue: 0.06666666667, alpha: 1)
             default:
                 self.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
                 self.borderColor = #colorLiteral(red: 0.4470588235, green: 0.4039215686, blue: 0.3411764706, alpha: 1)
@@ -212,8 +263,8 @@ struct ColorsSet {
                 self.itemTextColor = #colorLiteral(red: 0.2605174184, green: 0.2605243921, blue: 0.260520637, alpha: 1)
             case .other:
                 self.backgroundViewColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-                self.topViewColor = #colorLiteral(red: 0.1948110163, green: 0.388961494, blue: 0.01023789216, alpha: 1)
-                self.accentColor = #colorLiteral(red: 0.8740545511, green: 0.9797915816, blue: 0.5994428396, alpha: 1)
+                self.topViewColor = #colorLiteral(red: 0.1294117647, green: 0.3058823529, blue: 0.06666666667, alpha: 1)
+                self.accentColor = #colorLiteral(red: 0.8745098039, green: 0.9450980392, blue: 0.7333333333, alpha: 1)
                 self.titleTextColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
                 self.itemTextColor = #colorLiteral(red: 0.303658396, green: 0.2938010395, blue: 0.03124490753, alpha: 1)
             default:
@@ -244,8 +295,6 @@ struct TapBarColor {
 
 struct GraphColors {
     static let backgroundColor = Color(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1))
-    static let gradientStart = Color(#colorLiteral(red: 0.1948110163, green: 0.388961494, blue: 0.01023789216, alpha: 1))
-    static let gradientStop = Color(#colorLiteral(red: 0.8740545511, green: 0.9797915816, blue: 0.5994428396, alpha: 1))
-    
-
+    static let gradientStart = Color(#colorLiteral(red: 0.1294117647, green: 0.3058823529, blue: 0.06666666667, alpha: 1))
+    static let gradientStop = Color(#colorLiteral(red: 0.303658396, green: 0.2938010395, blue: 0.03124490753, alpha: 1))
 }

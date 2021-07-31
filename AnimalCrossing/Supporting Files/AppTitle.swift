@@ -8,7 +8,7 @@
 import Foundation
 
 struct AppTitle {
-    static let nookBank = "Nook Bank"
+    static let nookBank = "Bank of Nook"
     static let welcome = "Welcome to"
     static let save = "Save"
     static let cancel = "Cancel"
@@ -25,7 +25,7 @@ struct AppTitle {
         static let controllerTitle = "Nook News"
     }
     struct Bank {
-        static let controllerTitle = "Nook Bank"
+        static let controllerTitle = "Bank of Nook"
         static let currentAccountTitle = "Your current account:"
         static let purchaseHistory = "Purchase History:"
         static let demoTitle = "Demo account:"
@@ -55,6 +55,10 @@ struct AppTitle {
         static let graphTitle = "Graph of price changing"
         static let emptyLabel = "Your response was empty. \nNo data to display"
         static let priceMinValue = "Garanted minimum price: "
+    }
+    
+    struct PassCode {
+        static let forgetTitle = "Forget Password?"
     }
 }
 

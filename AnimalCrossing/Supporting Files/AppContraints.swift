@@ -20,6 +20,29 @@ struct AppContraints {
     
     static let standartCornerRadius: CGFloat = 15
     
+    struct FontsSize {
+        static let loginButtonFont: CGFloat = iphoneHeight > 800 ? 16 : 13
+        static let welcomeFont: CGFloat = iphoneHeight > 800 ? 36 : 32
+        static let appNameFont: CGFloat = iphoneHeight > 800 ? 40 : 36
+        static let defaultFont: CGFloat = iphoneHeight > 800 ? 20 : 16
+        static let padFont: CGFloat = iphoneHeight > 800 ? 50 : 46
+        static let controllerTitleFont: CGFloat = iphoneHeight > 800 ? 40 : 30
+        
+        static let newsFont: CGFloat = iphoneHeight > 800 ? 20 : 18
+        
+        static let topViewFont: CGFloat = iphoneHeight > 800 ? 20 : 16
+        
+        static let bankAccontFont: CGFloat = iphoneHeight > 800 ? 20 : 18
+        static let bankValueFont: CGFloat = iphoneHeight > 800 ? 14 : 12
+        static let bankDateFont: CGFloat = iphoneHeight > 800 ? 10 : 8
+        
+        static let weekViewFont: CGFloat = iphoneHeight > 800 ? 14 : 10
+        static let priceFont: CGFloat = iphoneHeight > 800 ? 16 : 14
+        
+        static let purchaseFont: CGFloat = iphoneHeight > 800 ? 18 : 16
+        
+    }
+    
     struct Login {
         static let loginVerticalEdge = navTitle * 4
         static let loginMinVerticalEdge = navTitle * 2
@@ -31,6 +54,16 @@ struct AppContraints {
         static let widthButton = AppContraints.iphoneWidth / 3.3
         static let widthLoginButton = AppContraints.iphoneWidth / 3.3 - 15
     }
+    
+    struct UserSettings {
+        static let sizeImageView = iphoneWidth / 5
+        static let cornerRadiusImageView = sizeImageView / 2
+        static let cornerRadiusTF = AppContraints.standartCornerRadius
+        static let heightTF = AppContraints.Login.heightTF
+        static let sizeButton = heightTF / 1.5
+        
+    }
+    
     struct CellSizes {
         static let cellBgEdge: CGFloat = 10
         static let cellMaxEdge: CGFloat = 40
@@ -93,5 +126,22 @@ struct AppContraints {
         static let height = width * 0.9
         
     }
+    
+    struct PinPadLogin {
+        
+        
+        static let pinSize: CGFloat = AppContraints.iphoneHeight > 800 ? 30 : 15
+        static let pinCorner = pinSize / 2
+        static let pinBorder: CGFloat = 2
+        
+        static let maxPasswordLength = 6
+        static let passCodeWidth: CGFloat = AppContraints.iphoneWidth / 2
+        
+        static let padSize: CGFloat = AppContraints.iphoneWidth / 4
+        static let padCorner = padSize / 2
+        static let padBorder: CGFloat = 3
+        
+    }
+    
 }
 
