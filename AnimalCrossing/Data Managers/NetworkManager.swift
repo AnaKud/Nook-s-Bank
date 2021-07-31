@@ -1,9 +1,9 @@
-////
-////  NetworkManager.swift
-////  AnimalCrossing
-////
-////  Created by Anastasiya Kudasheva on 10.06.2021.
-////
+//
+//  NetworkManager.swift
+//  AnimalCrossing
+//
+//  Created by Anastasiya Kudasheva on 10.06.2021.
+//
 //
 import Foundation
 

@@ -66,6 +66,7 @@ extension CoreDataManager: INewsCoreDataManager {
         let fetchRequest: NSFetchRequest<News> = News.fetchRequest()
         do {
             let data = try context.fetch(fetchRequest)
+            print(data.count)
             return convertToNewsFromCoreData(news: data)
         } catch let error {
             self.errorPresenter?.presentError(error: .fetchError)
@@ -75,16 +76,18 @@ extension CoreDataManager: INewsCoreDataManager {
     }
     
     func addNews(news: NewsViewModel) {
-        let newsContext = News(context: context)
-        newsContext.date = news.date
-        newsContext.event = news.event
-        newsContext.url = news.url
-        newsContext.type = news.type
-        do {
-            try context.save()
-        } catch let error {
-            self.errorPresenter?.presentError(error: .saveError)
-            print(error.localizedDescription)
+        container.performBackgroundTask { context in
+            let newsContext = News(context: context)
+            newsContext.date = news.date
+            newsContext.event = news.event
+            newsContext.url = news.url
+            newsContext.type = news.type
+            do {
+                try context.save()
+            } catch let error {
+                self.errorPresenter?.presentError(error: .saveError)
+                print(error.localizedDescription)
+            }
         }
     }
     
@@ -114,7 +117,6 @@ extension CoreDataManager: ITurnipCoreDataManager {
         do {
             let dataArray = try context.fetch(fetchRequest)
             guard let data = dataArray.first else { return nil }
-            print("cd t fetch -- \(data.fridayMorning) -- \(data.fridayEvening)")
             return TurnipPrices(fromCoreData: data)
         } catch let error {
             self.errorPresenter?.presentError(error: .fetchError)
@@ -140,7 +142,6 @@ extension CoreDataManager: ITurnipCoreDataManager {
         turnipContext.fridayEvening = Int32(turnip.fridayEvening ?? 0)
         turnipContext.saturdayMorning = Int32(turnip.saturdayMorning ?? 0)
         turnipContext.saturdayEvening = Int32(turnip.saturdayEvening ?? 0)
-        print("cd t savr -- \(turnipContext.fridayMorning) -- \(turnipContext.fridayEvening)")
         do {
             try context.save()
         } catch let error {
