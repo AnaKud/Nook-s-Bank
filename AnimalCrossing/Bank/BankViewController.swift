@@ -11,7 +11,6 @@ protocol IBankViewController {
     func interfaceWithData()
     func refreshView(currentValue: String)
     func showAddExpenseAlert(expense: @escaping (ExpenseViewModel) -> ())
-    func showErrrorAlert(withMessage: FailureCases)
     var currentAccount: BankViewModel? { get set }
 }
 

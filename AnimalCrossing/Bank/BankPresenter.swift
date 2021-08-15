@@ -77,7 +77,6 @@ extension BankPresenter: IBankPresenter {
             if supportingAccountData > 0 {
                 self.account.currentValue = self.account.currentValue - expense.value
             } else {
-                self.presentError(error: .accountError)
                 return
             }
         }
@@ -153,7 +152,4 @@ extension BankPresenter: IBankPresenter {
         return result
     }
     
-    private func presentError(error: FailureCases) {
-        self.view?.showErrrorAlert(withMessage: error)
-    }
 }
