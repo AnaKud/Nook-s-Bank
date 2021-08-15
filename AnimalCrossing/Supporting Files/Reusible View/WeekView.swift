@@ -8,7 +8,7 @@
 import UIKit
 
 class WeekView: UIView {
-    static func setupWeekView(weekDayText: String?, colors: ColorsSet?) -> UIView {
+    static func setupWeekView(weekDayText: String?, colors: ColorSet?) -> UIView {
         let mainView = UIView()
         let label = UILabel()
         
@@ -22,7 +22,7 @@ class WeekView: UIView {
             make.trailing.equalTo(mainView).offset(-AppContraints.minEdge)
         }
         label.text = weekDayText
-        label.font = UIFont(name: AppFont.maruLight.rawValue, size: 14)
+        label.font = UIFont(name: AppFont.maruLight.rawValue, size: AppContraints.FontsSize.weekViewFont)
         label.textColor = colors?.cellColorSet.titleTextColor
         label.textAlignment = .right
         return mainView

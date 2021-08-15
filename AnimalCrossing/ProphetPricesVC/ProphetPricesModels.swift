@@ -13,7 +13,6 @@
 import UIKit
 
 enum ProphetPrices {
-    // MARK: Use cases
     enum Turnip {
         struct Request {
             let buyPrice: Int
@@ -84,7 +83,6 @@ enum ProphetPrices {
             }
             struct PriceForGraph {
                 let pricesData: [Double]?
-               // let maxPricesArray: [Double]
                 init(prices: ProphetPrices.Turnip.ViewModel.Prices) {
                     if prices.minimumPrice == 0 {
                         self.pricesData = nil
@@ -101,7 +99,6 @@ enum ProphetPrices {
                         }
                         self.pricesData = result
                     }
-                    
                 }
             }
             
@@ -141,5 +138,4 @@ enum ProphetPrices {
         case saturdayMorning
         case saturdayEvening
     }
-    
 }

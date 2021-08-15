@@ -8,13 +8,13 @@
 import UIKit
 
 class CustomView {
-    var colorSet: ColorsSet?
+    var colorSet: ColorSet?
     
-    init(for user: ScreenTypes?) {
-        self.colorSet = ColorsSet(for: user)
+    init(for screenType: ScreenTypes?) {
+        self.colorSet = ColorSet(for: screenType)
     }
     
-    init(colorSet: ColorsSet?) {
+    init(colorSet: ColorSet?) {
         self.colorSet = colorSet
     }
     
@@ -41,17 +41,18 @@ class CustomView {
             make.bottom.equalTo(topView).offset(-AppContraints.CellSizes.cellBgEdge)
         }
         label.text = text
-        label.font = UIFont(name: AppFont.maruBold.rawValue, size: 20)
+        label.font = UIFont(name: AppFont.maruBold.rawValue, size: AppContraints.FontsSize.topViewFont)
         label.textColor = colorSet?.cellColorSet.titleTextColor
-        
         return topView
     }
     
-    func makeTextField() -> UITextField {
+    func makeTextField(height: CGFloat, cornerRadius: CGFloat, editable: Bool) -> UITextField {
         let textfield = UITextField()
-        textfield.font = UIFont(name: AppFont.maruLight.rawValue, size: 20)
+        textfield.font = UIFont(name: AppFont.maruLight.rawValue, size: AppContraints.FontsSize.defaultFont)
         textfield.textColor = colorSet?.textfieldColor.textColor
-        textfield.layer.cornerRadius = AppContraints.Login.cornerRadiusTF
+        textfield.layer.cornerRadius = cornerRadius
+        textfield.borderStyle = .none
+        textfield.isUserInteractionEnabled = editable
         textfield.backgroundColor = colorSet?.textfieldColor.backgroundColor
         textfield.leftViewMode = .always
         textfield.leftView = UIView(frame: CGRect(x: 0, y: 0, width: AppContraints.minEdge, height: textfield.frame.height))
@@ -64,7 +65,7 @@ class CustomView {
         let textfield = UITextField()
         textfield.placeholder = placeholder
         textfield.isSecureTextEntry = isSecureTextEntry
-        textfield.font = UIFont(name: AppFont.maruLight.rawValue, size: 20)
+        textfield.font = UIFont(name: AppFont.maruLight.rawValue, size: AppContraints.FontsSize.defaultFont)
         textfield.textColor = colorSet?.textfieldColor.textColor
         textfield.layer.cornerRadius = cornerRadius
         textfield.backgroundColor = colorSet?.textfieldColor.backgroundColor
@@ -127,7 +128,7 @@ class CustomView {
         }
         titleLabel.text = buttonTitle
         titleLabel.textColor = colorSet?.ovalButtonColor.buttonTextColor
-        titleLabel.font = UIFont(name: AppFont.maruBold.rawValue, size: 16)
+        titleLabel.font = UIFont(name: AppFont.maruBold.rawValue, size: AppContraints.FontsSize.loginButtonFont)
         return button
     }
     

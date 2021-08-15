@@ -76,19 +76,17 @@ extension CoreDataManager: INewsCoreDataManager {
     }
     
     func addNews(news: NewsViewModel) {
-        container.performBackgroundTask { context in
-            let newsContext = News(context: context)
-            newsContext.date = news.date
-            newsContext.event = news.event
-            newsContext.url = news.url
-            newsContext.type = news.type
-            do {
-                try context.save()
-            } catch let error {
-                self.errorPresenter?.presentError(error: .saveError)
-                print(error.localizedDescription)
-            }
-        }
+		let newsContext = News(context: context)
+		newsContext.date = news.date
+		newsContext.event = news.event
+		newsContext.url = news.url
+		newsContext.type = news.type
+		do {
+			try context.save()
+		} catch let error {
+			self.errorPresenter?.presentError(error: .saveError)
+			print(error.localizedDescription)
+		}
     }
     
     func deleteAllNews() {

@@ -7,7 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		A20C412E0FE5A340C7207DA1 /* Pods_AnimalCrossing.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A207B86D830A555F32D3F965 /* Pods_AnimalCrossing.framework */; };
+		E30B5E6826C6D6C300E4D02E /* GeneralUserInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E30B5E6726C6D6C300E4D02E /* GeneralUserInfoView.swift */; };
+		E38D44F0269F46DB001E87EE /* PassCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E38D44EF269F46DB001E87EE /* PassCodeView.swift */; };
 		E3A2E9D82689C3A600297E51 /* LoginAssebmly.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A2E9882689C3A500297E51 /* LoginAssebmly.swift */; };
 		E3A2E9D92689C3A600297E51 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A2E9892689C3A500297E51 /* LoginViewController.swift */; };
 		E3A2E9DA2689C3A600297E51 /* LoginPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A2E98A2689C3A500297E51 /* LoginPresenter.swift */; };
@@ -46,6 +47,16 @@
 		E3A2EA062689C3A600297E51 /* TurnipViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A2E9D42689C3A600297E51 /* TurnipViewController.swift */; };
 		E3A2EA072689C3A600297E51 /* TurnipPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A2E9D52689C3A600297E51 /* TurnipPresenter.swift */; };
 		E3A2EA082689C3A600297E51 /* TurnipAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A2E9D62689C3A600297E51 /* TurnipAssembly.swift */; };
+		E3A927F126A96E41002323F0 /* UserSettingsAssemly.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A927F026A96E41002323F0 /* UserSettingsAssemly.swift */; };
+		E3A927F326A96F3D002323F0 /* UserSettingsWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A927F226A96F3D002323F0 /* UserSettingsWorker.swift */; };
+		E3A927F526A96F94002323F0 /* UserSettingsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A927F426A96F94002323F0 /* UserSettingsPresenter.swift */; };
+		E3A927F726A96FCD002323F0 /* UserSettingsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A927F626A96FCD002323F0 /* UserSettingsInteractor.swift */; };
+		E3A927F926A9A01A002323F0 /* BankRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A927F826A9A01A002323F0 /* BankRouter.swift */; };
+		E3B9329126A05A03003AFE7F /* SwiftUICharts in Frameworks */ = {isa = PBXBuildFile; productRef = E3B9329026A05A03003AFE7F /* SwiftUICharts */; };
+		E3B9329326A079DD003AFE7F /* DeviceOwnerAuthentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3B9329226A079DD003AFE7F /* DeviceOwnerAuthentication.swift */; };
+		E3B9329526A16AEA003AFE7F /* LoginWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3B9329426A16AEA003AFE7F /* LoginWorker.swift */; };
+		E3B9329726A16B0B003AFE7F /* LoginInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3B9329626A16B0B003AFE7F /* LoginInteractor.swift */; };
+		E3B932A626A16F2A003AFE7F /* UserSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3B932A526A16F2A003AFE7F /* UserSettingsViewController.swift */; };
 		E3CC113A2696F7570080FD88 /* TurnipRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3CC11392696F7570080FD88 /* TurnipRouter.swift */; };
 		E3CC11422696F8DA0080FD88 /* ProphetPricesPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3CC113C2696F8DA0080FD88 /* ProphetPricesPresenter.swift */; };
 		E3CC11432696F8DA0080FD88 /* ProphetPricesWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3CC113D2696F8DA0080FD88 /* ProphetPricesWorker.swift */; };
@@ -53,19 +64,22 @@
 		E3CC11462696F8DA0080FD88 /* ProphetPricesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3CC11402696F8DA0080FD88 /* ProphetPricesViewController.swift */; };
 		E3CC11472696F8DA0080FD88 /* ProphetPricesInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3CC11412696F8DA0080FD88 /* ProphetPricesInteractor.swift */; };
 		E3CC11492696FAC30080FD88 /* ProphetPricesAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3CC11482696FAC30080FD88 /* ProphetPricesAssembly.swift */; };
-		E3CF43F726975C9A00BFDAB8 /* SwiftUICharts in Frameworks */ = {isa = PBXBuildFile; productRef = E3CF43F626975C9A00BFDAB8 /* SwiftUICharts */; };
 		E3CF43F926975FA500BFDAB8 /* GraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3CF43F826975FA500BFDAB8 /* GraphView.swift */; };
 		E3D4E44C268B5B2500F26908 /* CustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D4E44B268B5B2500F26908 /* CustomView.swift */; };
+		E3ED9CB526B5C10E005E603D /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = E3ED9CB426B5C10E005E603D /* FirebaseAuth */; };
+		E3ED9CB726B5C10E005E603D /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = E3ED9CB626B5C10E005E603D /* FirebaseDatabase */; };
+		E3ED9CB926B5C10E005E603D /* FirebaseDatabaseSwift-Beta in Frameworks */ = {isa = PBXBuildFile; productRef = E3ED9CB826B5C10E005E603D /* FirebaseDatabaseSwift-Beta */; };
+		E3ED9CBC26B5C124005E603D /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = E3ED9CBB26B5C124005E603D /* SnapKit */; };
 		E3FC7E802692E9D40078A7E8 /* AppContraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3FC7E7F2692E9D40078A7E8 /* AppContraints.swift */; };
 		E3FC7E822692E9FF0078A7E8 /* AppTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3FC7E812692E9FF0078A7E8 /* AppTitle.swift */; };
 		E3FC7E842692EA510078A7E8 /* DesignData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3FC7E832692EA510078A7E8 /* DesignData.swift */; };
 		E3FC7E862692EBE40078A7E8 /* WeekView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3FC7E852692EBE40078A7E8 /* WeekView.swift */; };
+		E3FF64C2269CAEE500AC64D7 /* KeychainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3FF64C1269CAEE500AC64D7 /* KeychainService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		028EB4766B8E0348A8B5CC30 /* Pods-AnimalCrossing.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AnimalCrossing.release.xcconfig"; path = "Target Support Files/Pods-AnimalCrossing/Pods-AnimalCrossing.release.xcconfig"; sourceTree = "<group>"; };
-		3272AD05C6CC5C8A98803B96 /* Pods-AnimalCrossing.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AnimalCrossing.debug.xcconfig"; path = "Target Support Files/Pods-AnimalCrossing/Pods-AnimalCrossing.debug.xcconfig"; sourceTree = "<group>"; };
-		A207B86D830A555F32D3F965 /* Pods_AnimalCrossing.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AnimalCrossing.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E30B5E6726C6D6C300E4D02E /* GeneralUserInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralUserInfoView.swift; sourceTree = "<group>"; };
+		E38D44EF269F46DB001E87EE /* PassCodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassCodeView.swift; sourceTree = "<group>"; };
 		E3A2E9882689C3A500297E51 /* LoginAssebmly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginAssebmly.swift; sourceTree = "<group>"; };
 		E3A2E9892689C3A500297E51 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		E3A2E98A2689C3A500297E51 /* LoginPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginPresenter.swift; sourceTree = "<group>"; };
@@ -105,6 +119,15 @@
 		E3A2E9D52689C3A600297E51 /* TurnipPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TurnipPresenter.swift; sourceTree = "<group>"; };
 		E3A2E9D62689C3A600297E51 /* TurnipAssembly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TurnipAssembly.swift; sourceTree = "<group>"; };
 		E3A6E7E6266C1ED500E2A5FE /* AnimalCrossing.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AnimalCrossing.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E3A927F026A96E41002323F0 /* UserSettingsAssemly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettingsAssemly.swift; sourceTree = "<group>"; };
+		E3A927F226A96F3D002323F0 /* UserSettingsWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettingsWorker.swift; sourceTree = "<group>"; };
+		E3A927F426A96F94002323F0 /* UserSettingsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettingsPresenter.swift; sourceTree = "<group>"; };
+		E3A927F626A96FCD002323F0 /* UserSettingsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettingsInteractor.swift; sourceTree = "<group>"; };
+		E3A927F826A9A01A002323F0 /* BankRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankRouter.swift; sourceTree = "<group>"; };
+		E3B9329226A079DD003AFE7F /* DeviceOwnerAuthentication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceOwnerAuthentication.swift; sourceTree = "<group>"; };
+		E3B9329426A16AEA003AFE7F /* LoginWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginWorker.swift; sourceTree = "<group>"; };
+		E3B9329626A16B0B003AFE7F /* LoginInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginInteractor.swift; sourceTree = "<group>"; };
+		E3B932A526A16F2A003AFE7F /* UserSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettingsViewController.swift; sourceTree = "<group>"; };
 		E3CC11392696F7570080FD88 /* TurnipRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TurnipRouter.swift; sourceTree = "<group>"; };
 		E3CC113C2696F8DA0080FD88 /* ProphetPricesPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProphetPricesPresenter.swift; sourceTree = "<group>"; };
 		E3CC113D2696F8DA0080FD88 /* ProphetPricesWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProphetPricesWorker.swift; sourceTree = "<group>"; };
@@ -118,6 +141,7 @@
 		E3FC7E812692E9FF0078A7E8 /* AppTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTitle.swift; sourceTree = "<group>"; };
 		E3FC7E832692EA510078A7E8 /* DesignData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignData.swift; sourceTree = "<group>"; };
 		E3FC7E852692EBE40078A7E8 /* WeekView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekView.swift; sourceTree = "<group>"; };
+		E3FF64C1269CAEE500AC64D7 /* KeychainService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,35 +149,52 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A20C412E0FE5A340C7207DA1 /* Pods_AnimalCrossing.framework in Frameworks */,
-				E3CF43F726975C9A00BFDAB8 /* SwiftUICharts in Frameworks */,
+				E3ED9CB926B5C10E005E603D /* FirebaseDatabaseSwift-Beta in Frameworks */,
+				E3ED9CB526B5C10E005E603D /* FirebaseAuth in Frameworks */,
+				E3ED9CBC26B5C124005E603D /* SnapKit in Frameworks */,
+				E3ED9CB726B5C10E005E603D /* FirebaseDatabase in Frameworks */,
+				E3B9329126A05A03003AFE7F /* SwiftUICharts in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		37579C762EE1F868C5596A52 /* Frameworks */ = {
+		E30B5E6426C6C01F00E4D02E /* ContantAndData */ = {
 			isa = PBXGroup;
 			children = (
-				A207B86D830A555F32D3F965 /* Pods_AnimalCrossing.framework */,
+				E3A2E9B92689C3A600297E51 /* SupportingFile.swift */,
+				E3FC7E7F2692E9D40078A7E8 /* AppContraints.swift */,
+				E3FC7E812692E9FF0078A7E8 /* AppTitle.swift */,
+				E3FC7E832692EA510078A7E8 /* DesignData.swift */,
 			);
-			name = Frameworks;
+			path = ContantAndData;
 			sourceTree = "<group>";
 		};
-		78F39AB7143511A165AED64A /* Pods */ = {
+		E30B5E6526C6C06700E4D02E /* Other */ = {
 			isa = PBXGroup;
 			children = (
-				3272AD05C6CC5C8A98803B96 /* Pods-AnimalCrossing.debug.xcconfig */,
-				028EB4766B8E0348A8B5CC30 /* Pods-AnimalCrossing.release.xcconfig */,
+				E3A2E9B42689C3A600297E51 /* MainRouter.swift */,
+				E3A2E9932689C3A600297E51 /* DatesOfCurrentWeek.swift */,
 			);
-			path = Pods;
+			path = Other;
+			sourceTree = "<group>";
+		};
+		E30B5E6626C6D69A00E4D02E /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				E30B5E6726C6D6C300E4D02E /* GeneralUserInfoView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		E3A2E9872689C3A500297E51 /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				E3A2E9BE2689C3A600297E51 /* UserLocale.swift */,
 				E3A2E9882689C3A500297E51 /* LoginAssebmly.swift */,
+				E3B9329426A16AEA003AFE7F /* LoginWorker.swift */,
+				E3B9329626A16B0B003AFE7F /* LoginInteractor.swift */,
 				E3A2E9892689C3A500297E51 /* LoginViewController.swift */,
 				E3A2E98A2689C3A500297E51 /* LoginPresenter.swift */,
 				E3A2E98B2689C3A500297E51 /* LoginRouter.swift */,
@@ -168,6 +209,8 @@
 				E3A2E98D2689C3A600297E51 /* CoreDataManager.swift */,
 				E3A2E98E2689C3A600297E51 /* NetworkManager.swift */,
 				E3A2E9912689C3A600297E51 /* FireBaseManager.swift */,
+				E3FF64C1269CAEE500AC64D7 /* KeychainService.swift */,
+				E3B9329226A079DD003AFE7F /* DeviceOwnerAuthentication.swift */,
 			);
 			path = "Data Managers";
 			sourceTree = "<group>";
@@ -175,36 +218,25 @@
 		E3A2E9922689C3A600297E51 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				E3A2E9B72689C3A600297E51 /* AppDelegate.swift */,
-				E3A2E9B82689C3A600297E51 /* SceneDelegate.swift */,
+				E3A2E9CD2689C3A600297E51 /* Reusible View */,
+				E30B5E6526C6C06700E4D02E /* Other */,
+				E30B5E6426C6C01F00E4D02E /* ContantAndData */,
+				E3A2E98C2689C3A600297E51 /* Data Managers */,
 				E3E754192689C8150029D07C /* Fonts */,
-				E3A2E9932689C3A600297E51 /* DatesOfCurrentWeek.swift */,
 				E3A2E9B12689C3A600297E51 /* Assets.xcassets */,
 				E3A2E9B22689C3A600297E51 /* LaunchScreen.storyboard */,
-				E3A2E9B42689C3A600297E51 /* MainRouter.swift */,
-				E3FC7E7F2692E9D40078A7E8 /* AppContraints.swift */,
-				E3FC7E812692E9FF0078A7E8 /* AppTitle.swift */,
-				E3A2E9B92689C3A600297E51 /* SupportingFile.swift */,
-				E3FC7E832692EA510078A7E8 /* DesignData.swift */,
+				E3A2E9B72689C3A600297E51 /* AppDelegate.swift */,
+				E3A2E9B82689C3A600297E51 /* SceneDelegate.swift */,
 			);
 			path = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		E3A2E9BA2689C3A600297E51 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				E3A2E9BB2689C3A600297E51 /* NewsModel.swift */,
-				E3A2E9BC2689C3A600297E51 /* BankModel.swift */,
-				E3A2E9BD2689C3A600297E51 /* TurnipModel.swift */,
-				E3A2E9BE2689C3A600297E51 /* UserLocale.swift */,
-			);
-			path = Models;
 			sourceTree = "<group>";
 		};
 		E3A2E9C02689C3A600297E51 /* Bank */ = {
 			isa = PBXGroup;
 			children = (
+				E3A2E9BC2689C3A600297E51 /* BankModel.swift */,
 				E3A2E9C12689C3A600297E51 /* BankAssembly.swift */,
+				E3A927F826A9A01A002323F0 /* BankRouter.swift */,
 				E3A2E9C22689C3A600297E51 /* BankViewController.swift */,
 				E3A2E9C32689C3A600297E51 /* BankPresenter.swift */,
 				E3A2E9C42689C3A600297E51 /* ExpenseCollectionViewCell.swift */,
@@ -215,6 +247,7 @@
 		E3A2E9C52689C3A600297E51 /* News */ = {
 			isa = PBXGroup;
 			children = (
+				E3A2E9BB2689C3A600297E51 /* NewsModel.swift */,
 				E3A2E9C62689C3A600297E51 /* NewsRouter.swift */,
 				E3A2E9C72689C3A600297E51 /* NewsPresenter.swift */,
 				E3A2E9C82689C3A600297E51 /* NewsViewController.swift */,
@@ -241,6 +274,7 @@
 				E3D4E44B268B5B2500F26908 /* CustomView.swift */,
 				E3FC7E852692EBE40078A7E8 /* WeekView.swift */,
 				E3CF43F826975FA500BFDAB8 /* GraphView.swift */,
+				E38D44EF269F46DB001E87EE /* PassCodeView.swift */,
 			);
 			path = "Reusible View";
 			sourceTree = "<group>";
@@ -248,6 +282,7 @@
 		E3A2E9D32689C3A600297E51 /* Turnip */ = {
 			isa = PBXGroup;
 			children = (
+				E3A2E9BD2689C3A600297E51 /* TurnipModel.swift */,
 				E3A2E9D42689C3A600297E51 /* TurnipViewController.swift */,
 				E3A2E9D52689C3A600297E51 /* TurnipPresenter.swift */,
 				E3CC11392696F7570080FD88 /* TurnipRouter.swift */,
@@ -261,8 +296,6 @@
 			children = (
 				E3A6E7E8266C1ED500E2A5FE /* AnimalCrossing */,
 				E3A6E7E7266C1ED500E2A5FE /* Products */,
-				78F39AB7143511A165AED64A /* Pods */,
-				37579C762EE1F868C5596A52 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -277,18 +310,29 @@
 		E3A6E7E8266C1ED500E2A5FE /* AnimalCrossing */ = {
 			isa = PBXGroup;
 			children = (
-				E3A2E9C02689C3A600297E51 /* Bank */,
-				E3A2E98C2689C3A600297E51 /* Data Managers */,
 				E3A2E9BF2689C3A600297E51 /* GoogleService-Info.plist */,
 				E3A2E9872689C3A500297E51 /* Login */,
-				E3A2E9BA2689C3A600297E51 /* Models */,
+				E3B9329826A16E5F003AFE7F /* User */,
+				E3A2E9C02689C3A600297E51 /* Bank */,
 				E3A2E9C52689C3A600297E51 /* News */,
-				E3A2E9CD2689C3A600297E51 /* Reusible View */,
 				E3A2E9922689C3A600297E51 /* Supporting Files */,
 				E3CC113B2696F8790080FD88 /* ProphetPricesVC */,
 				E3A2E9D32689C3A600297E51 /* Turnip */,
 			);
 			path = AnimalCrossing;
+			sourceTree = "<group>";
+		};
+		E3B9329826A16E5F003AFE7F /* User */ = {
+			isa = PBXGroup;
+			children = (
+				E30B5E6626C6D69A00E4D02E /* Views */,
+				E3B932A526A16F2A003AFE7F /* UserSettingsViewController.swift */,
+				E3A927F626A96FCD002323F0 /* UserSettingsInteractor.swift */,
+				E3A927F026A96E41002323F0 /* UserSettingsAssemly.swift */,
+				E3A927F226A96F3D002323F0 /* UserSettingsWorker.swift */,
+				E3A927F426A96F94002323F0 /* UserSettingsPresenter.swift */,
+			);
+			path = User;
 			sourceTree = "<group>";
 		};
 		E3CC113B2696F8790080FD88 /* ProphetPricesVC */ = {
@@ -321,11 +365,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E3A6E7FD266C1ED500E2A5FE /* Build configuration list for PBXNativeTarget "AnimalCrossing" */;
 			buildPhases = (
-				B0EB3E0D883C73321F638655 /* [CP] Check Pods Manifest.lock */,
 				E3A6E7E2266C1ED500E2A5FE /* Sources */,
 				E3A6E7E3266C1ED500E2A5FE /* Frameworks */,
 				E3A6E7E4266C1ED500E2A5FE /* Resources */,
-				42D95F08F9A65235CCA7D848 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -333,7 +375,11 @@
 			);
 			name = AnimalCrossing;
 			packageProductDependencies = (
-				E3CF43F626975C9A00BFDAB8 /* SwiftUICharts */,
+				E3B9329026A05A03003AFE7F /* SwiftUICharts */,
+				E3ED9CB426B5C10E005E603D /* FirebaseAuth */,
+				E3ED9CB626B5C10E005E603D /* FirebaseDatabase */,
+				E3ED9CB826B5C10E005E603D /* FirebaseDatabaseSwift-Beta */,
+				E3ED9CBB26B5C124005E603D /* SnapKit */,
 			);
 			productName = AnimalCrossing;
 			productReference = E3A6E7E6266C1ED500E2A5FE /* AnimalCrossing.app */;
@@ -363,7 +409,9 @@
 			);
 			mainGroup = E3A6E7DD266C1ED500E2A5FE;
 			packageReferences = (
-				E3CF43F526975C9A00BFDAB8 /* XCRemoteSwiftPackageReference "ChartView" */,
+				E3B9328F26A05A03003AFE7F /* XCRemoteSwiftPackageReference "ChartView" */,
+				E3ED9CB326B5C10E005E603D /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				E3ED9CBA26B5C124005E603D /* XCRemoteSwiftPackageReference "SnapKit" */,
 			);
 			productRefGroup = E3A6E7E7266C1ED500E2A5FE /* Products */;
 			projectDirPath = "";
@@ -390,48 +438,6 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
-/* Begin PBXShellScriptBuildPhase section */
-		42D95F08F9A65235CCA7D848 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-AnimalCrossing/Pods-AnimalCrossing-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-AnimalCrossing/Pods-AnimalCrossing-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-AnimalCrossing/Pods-AnimalCrossing-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		B0EB3E0D883C73321F638655 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-AnimalCrossing-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
-
 /* Begin PBXSourcesBuildPhase section */
 		E3A6E7E2266C1ED500E2A5FE /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -441,28 +447,37 @@
 				E3A2E9F22689C3A600297E51 /* NewsModel.swift in Sources */,
 				E3CC113A2696F7570080FD88 /* TurnipRouter.swift in Sources */,
 				E3A2E9F72689C3A600297E51 /* BankAssembly.swift in Sources */,
+				E3B932A626A16F2A003AFE7F /* UserSettingsViewController.swift in Sources */,
 				E3A2E9F32689C3A600297E51 /* BankModel.swift in Sources */,
+				E3B9329326A079DD003AFE7F /* DeviceOwnerAuthentication.swift in Sources */,
 				E3A2E9F52689C3A600297E51 /* UserLocale.swift in Sources */,
+				E3A927F926A9A01A002323F0 /* BankRouter.swift in Sources */,
 				E3A2E9FF2689C3A600297E51 /* NewsTableViewCell.swift in Sources */,
 				E3D4E44C268B5B2500F26908 /* CustomView.swift in Sources */,
+				E3B9329526A16AEA003AFE7F /* LoginWorker.swift in Sources */,
 				E3CC11452696F8DA0080FD88 /* ProphetPricesModels.swift in Sources */,
 				E3A2E9F82689C3A600297E51 /* BankViewController.swift in Sources */,
 				E3FC7E802692E9D40078A7E8 /* AppContraints.swift in Sources */,
+				E3A927F126A96E41002323F0 /* UserSettingsAssemly.swift in Sources */,
 				E3A2EA072689C3A600297E51 /* TurnipPresenter.swift in Sources */,
 				E3A2E9EF2689C3A600297E51 /* AppDelegate.swift in Sources */,
 				E3A2E9E02689C3A600297E51 /* DatesOfCurrentWeek.swift in Sources */,
+				E3A927F726A96FCD002323F0 /* UserSettingsInteractor.swift in Sources */,
 				E3A2E9DE2689C3A600297E51 /* AnimalCrossing.xcdatamodeld in Sources */,
 				E3FC7E862692EBE40078A7E8 /* WeekView.swift in Sources */,
 				E3A2E9DD2689C3A600297E51 /* NetworkManager.swift in Sources */,
 				E3A2E9FA2689C3A600297E51 /* ExpenseCollectionViewCell.swift in Sources */,
 				E3A2E9DA2689C3A600297E51 /* LoginPresenter.swift in Sources */,
 				E3A2E9FB2689C3A600297E51 /* NewsRouter.swift in Sources */,
+				E30B5E6826C6D6C300E4D02E /* GeneralUserInfoView.swift in Sources */,
 				E3CF43F926975FA500BFDAB8 /* GraphView.swift in Sources */,
 				E3A2E9FC2689C3A600297E51 /* NewsPresenter.swift in Sources */,
 				E3A2EA002689C3A600297E51 /* EventWebView.swift in Sources */,
 				E3A2EA082689C3A600297E51 /* TurnipAssembly.swift in Sources */,
 				E3CC11472696F8DA0080FD88 /* ProphetPricesInteractor.swift in Sources */,
 				E3A2E9F92689C3A600297E51 /* BankPresenter.swift in Sources */,
+				E3A927F526A96F94002323F0 /* UserSettingsPresenter.swift in Sources */,
+				E3B9329726A16B0B003AFE7F /* LoginInteractor.swift in Sources */,
 				E3A2E9F12689C3A600297E51 /* SupportingFile.swift in Sources */,
 				E3A2E9FD2689C3A600297E51 /* NewsViewController.swift in Sources */,
 				E3CC11492696FAC30080FD88 /* ProphetPricesAssembly.swift in Sources */,
@@ -474,9 +489,12 @@
 				E3CC11432696F8DA0080FD88 /* ProphetPricesWorker.swift in Sources */,
 				E3A2EA052689C3A600297E51 /* CustomViewController.swift in Sources */,
 				E3CC11422696F8DA0080FD88 /* ProphetPricesPresenter.swift in Sources */,
+				E3FF64C2269CAEE500AC64D7 /* KeychainService.swift in Sources */,
 				E3A2E9DB2689C3A600297E51 /* LoginRouter.swift in Sources */,
 				E3A2E9DC2689C3A600297E51 /* CoreDataManager.swift in Sources */,
+				E3A927F326A96F3D002323F0 /* UserSettingsWorker.swift in Sources */,
 				E3FC7E822692E9FF0078A7E8 /* AppTitle.swift in Sources */,
+				E38D44F0269F46DB001E87EE /* PassCodeView.swift in Sources */,
 				E3A2E9D82689C3A600297E51 /* LoginAssebmly.swift in Sources */,
 				E3A2E9FE2689C3A600297E51 /* NewsAssembly.swift in Sources */,
 				E3A2E9F02689C3A600297E51 /* SceneDelegate.swift in Sources */,
@@ -502,6 +520,7 @@
 		E3A6E7FB266C1ED500E2A5FE /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -537,6 +556,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				EXCLUDED_ARCHS = "";
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -564,6 +584,7 @@
 		E3A6E7FC266C1ED500E2A5FE /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -599,6 +620,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				EXCLUDED_ARCHS = "";
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -610,6 +632,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
@@ -619,12 +642,12 @@
 		};
 		E3A6E7FE266C1ED500E2A5FE /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3272AD05C6CC5C8A98803B96 /* Pods-AnimalCrossing.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = KD4B6U375X;
+				EXCLUDED_ARCHS = "";
 				INFOPLIST_FILE = AnimalCrossing/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -640,12 +663,12 @@
 		};
 		E3A6E7FF266C1ED500E2A5FE /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 028EB4766B8E0348A8B5CC30 /* Pods-AnimalCrossing.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = KD4B6U375X;
+				EXCLUDED_ARCHS = "";
 				INFOPLIST_FILE = AnimalCrossing/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -683,7 +706,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		E3CF43F526975C9A00BFDAB8 /* XCRemoteSwiftPackageReference "ChartView" */ = {
+		E3B9328F26A05A03003AFE7F /* XCRemoteSwiftPackageReference "ChartView" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/AppPear/ChartView";
 			requirement = {
@@ -691,13 +714,49 @@
 				minimumVersion = 1.5.5;
 			};
 		};
+		E3ED9CB326B5C10E005E603D /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 8.4.0;
+			};
+		};
+		E3ED9CBA26B5C124005E603D /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.1;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		E3CF43F626975C9A00BFDAB8 /* SwiftUICharts */ = {
+		E3B9329026A05A03003AFE7F /* SwiftUICharts */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = E3CF43F526975C9A00BFDAB8 /* XCRemoteSwiftPackageReference "ChartView" */;
+			package = E3B9328F26A05A03003AFE7F /* XCRemoteSwiftPackageReference "ChartView" */;
 			productName = SwiftUICharts;
+		};
+		E3ED9CB426B5C10E005E603D /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E3ED9CB326B5C10E005E603D /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		E3ED9CB626B5C10E005E603D /* FirebaseDatabase */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E3ED9CB326B5C10E005E603D /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseDatabase;
+		};
+		E3ED9CB826B5C10E005E603D /* FirebaseDatabaseSwift-Beta */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E3ED9CB326B5C10E005E603D /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = "FirebaseDatabaseSwift-Beta";
+		};
+		E3ED9CBB26B5C124005E603D /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E3ED9CBA26B5C124005E603D /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
 		};
 /* End XCSwiftPackageProductDependency section */
 

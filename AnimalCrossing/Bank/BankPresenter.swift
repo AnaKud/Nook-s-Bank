@@ -15,7 +15,7 @@ protocol IBankPresenter {
     func getCurrentUser()
     
     func loadView(view: IBankViewController)
-    func plusButtonPressed()
+    func plusButtonTapped()
     func returnCurrentAccountValue() -> String
     func returnCollectionCount() -> Int
     func returnCollectionItem(index: Int) -> ExpenseViewModel
@@ -31,13 +31,17 @@ class BankPresenter {
     var user: UserLocale?
     
     var fireBaseManager: IBankFireBaseManager
+    var router: IBankRouter
     
-    init(fireBaseManager: IBankFireBaseManager) {
+    
+    init(fireBaseManager: IBankFireBaseManager, router: IBankRouter) {
         self.fireBaseManager = fireBaseManager
+        self.router = router
     }
 }
 
 extension BankPresenter: IBankPresenter {
+    
     func getCurrentUser() {
         switch screenType {
         case .loggined:
@@ -90,6 +94,7 @@ extension BankPresenter: IBankPresenter {
     func getCurrentBankAccountFromFB() {
         self.fireBaseManager.currentBankAccountFromFB { value in
             self.account.currentValue = value
+            print(value)
             self.view?.interfaceWithData()
             self.refreshView()
         }
@@ -107,7 +112,7 @@ extension BankPresenter: IBankPresenter {
         self.fireBaseManager.addExpenseToFb(expense: expense)
     }
     
-    func plusButtonPressed() {
+    func plusButtonTapped() {
         print("pressed")
         self.view?.showAddExpenseAlert(expense: { expense in
             self.addExpense(expense: expense)

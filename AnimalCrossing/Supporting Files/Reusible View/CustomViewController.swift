@@ -9,7 +9,7 @@ import UIKit
 import SnapKit
 
 class CustomViewController: UIViewController {
-    var colors: ColorsSet?
+    var colors: ColorSet?
     var customView: CustomView?
     var screenType: ScreenTypes?
     var controllerTitle: String?
@@ -22,10 +22,10 @@ class CustomViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.colors = ColorsSet(for: screenType)
+        self.colors = ColorSet(for: screenType)
         self.customView = CustomView(colorSet: colors)
         self.setupTopBottomLayout()
-        self.setupView(forScreenType: screenType)
+        self.setupView()
         
         let tap = UITapGestureRecognizer(target: self, action: #selector(self.dissmissKeyboard))
         tap.cancelsTouchesInView = false
@@ -50,6 +50,7 @@ class CustomViewController: UIViewController {
         self.navigationController?.navigationBar.topItem?.title = ""
         self.navigationController?.navigationBar.barStyle = .default
         self.navigationController?.navigationBar.tintColor = colors?.mainViewColor.navigationItemColor
+        
         self.tabBarController?.tabBar.barTintColor = UIColor.clear
         self.tabBarController?.tabBar.backgroundImage = UIImage()
         self.tabBarController?.tabBar.shadowImage = UIImage()
@@ -73,19 +74,43 @@ class CustomViewController: UIViewController {
         contentView.backgroundColor = .clear
     }
     
-    private func setupView(forScreenType screenType: ScreenTypes?) {
+    private func setupView() {
         view.backgroundColor = colors?.mainViewColor.backgroundColor
         titleLabel.textColor = colors?.mainViewColor.textColor
         titleLabel.numberOfLines = 0
+        
+        
+        
         switch screenType {
         case .loggined:
             topImageView.image = UIImage(named: AppImage.TopBottomImage.logTop.rawValue)
             bottomImageView.image = UIImage(named: AppImage.TopBottomImage.logBottom.rawValue)
+
         case .unloggined:
+
             topImageView.image = UIImage(named: AppImage.TopBottomImage.unlogTop.rawValue)
             bottomImageView.image = UIImage(named: AppImage.TopBottomImage.unlogBottom.rawValue)
-        default:
-            view.backgroundColor = colors?.mainViewColor.backgroundColor
+//		case .none:
+//			navigationItem.setHidesBackButton(true, animated: true)
+//						view.backgroundColor = colors?.mainViewColor.backgroundColor
+//		case .loginScreen:
+//			let leftImage = UIImage(systemName: AppImage.Login.back.rawValue)
+//			let leftButton = UIButton()
+//			leftButton.setImage(leftImage, for: .normal)
+//			leftButton.addTarget(self, action: #selector(backButtonTapped), for: .touchUpInside)
+//			self.navigationItem.setLeftBarButton(UIBarButtonItem(customView: leftButton), animated: true)
+//			
+//			let rightImage = UIImage(systemName: AppImage.Login.iconForEmailTF.rawValue)
+//			let rightItem = UIBarButtonItem(image: rightImage, style: .plain, target: self, action: #selector(userSettingsButtonTapped))
+//			self.navigationItem.setRightBarButton(rightItem, animated: true)
+//			
+//			navigationItem.setHidesBackButton(true, animated: true)
+//			view.backgroundColor = colors?.mainViewColor.backgroundColor
+//		case .other:
+//			
+//           navigationItem.setHidesBackButton(true, animated: true)
+		default:
+			view.backgroundColor = colors?.mainViewColor.backgroundColor
         }
         if screenType != .loginScreen {
             view.addSubview(titleLabel)
@@ -95,7 +120,21 @@ class CustomViewController: UIViewController {
             }
             titleLabel.text = controllerTitle
             titleLabel.textAlignment = .center
-            titleLabel.font = UIFont(name: AppFont.fink.rawValue, size: 40)
+            titleLabel.font = UIFont(name: AppFont.fink.rawValue, size: AppContraints.FontsSize.controllerTitleFont)
         }
+        
+    }
+    
+    @objc func userSettingsButtonTapped() {
+        print("tapped")
+       // navDelegate?.userSettingsButtonTapped()
+    }
+    @objc func backButtonTapped() {
+        print("back tapped")
+       // navDelegate?.backButtonTapped()
+    }
+    @objc func logoutButtonTapped() {
+        print("back tapped")
+//navDelegate?.logoutButtonTapped()
     }
 }

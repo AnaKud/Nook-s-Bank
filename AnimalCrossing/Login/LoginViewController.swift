@@ -9,6 +9,8 @@ import UIKit
 import SnapKit
 
 protocol ILoginViewController {
+    func setupFullLoginView()
+    func setupSimpleLoginView()
     func showUserNameAlert(withEmail email: String, withPassword password: String)
     func showWarningLabel(withWarningText warningText: String)
     func showErrorAlert(withMessage message: FailureCases) 
@@ -25,6 +27,22 @@ class LoginViewController: CustomViewController {
     var freeEnterButton = UIButton()
     let warningLabel = UILabel()
     
+    var constrainView = UIView()
+    var pinView = PassCodeView()
+    var oneButton = UIButton()
+    var twoButton = UIButton()
+    var threeButton = UIButton()
+    var fourButton = UIButton()
+    var fiveButton = UIButton()
+    var sixButton = UIButton()
+    var sevenButton = UIButton()
+    var eightButton = UIButton()
+    var nineButton = UIButton()
+    var zeroButton = UIButton()
+    var backspaceButton = UIButton()
+    var faceIdButton = UIButton()
+    var forgetPasswordButton = UIButton()
+    
     init(presenter: ILoginPresenter) {
         self.presenter = presenter
         
@@ -38,29 +56,26 @@ class LoginViewController: CustomViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        self.controllerTitle = ""
         self.presenter.viewDidLoad(view: self)
-        self.setupInterface()
-        self.setupLayout()
-        self.addActionForButton()
+    }
+        
+    func setupFullLoginView() {
+        DispatchQueue.main.async {
+            self.view.backgroundColor = self.colors?.mainViewColor.backgroundColor
+            self.controllerTitle = ""
+            self.setupInterface()
+            self.setupLayout()
+            self.addActionForButton()
+        }
     }
     
-    @objc func registerButtonPressed(sender: UIButton) {
-        self.presenter.registerButtonTapped(email: emailTextField.text, password: passwordNameTextField.text)
-    }
-    
-    @objc func loginButtonPressed(sender: UIButton) {
-        self.presenter.loginButtonTapped(email: emailTextField.text, password: passwordNameTextField.text)
-    }
-    
-    @objc func continueButtonPressed(sender: UIButton) {
-        self.presenter.openWithoutLogin()
-    }
-    
-    @objc func passwordTextfieldEndEditing() {
-        self.passwordNameTextField.resignFirstResponder()
-        self.presenter.loginButtonTapped(email: emailTextField.text, password: passwordNameTextField.text)
+    func setupSimpleLoginView() {
+        DispatchQueue.main.async {
+            self.view.backgroundColor = self.colors?.mainViewColor.backgroundColor
+            self.titleLabel.text = AppTitle.nookBank
+            self.setupPinView()
+            self.setupPadView()
+        }
     }
     
     private func setupLayout() {
@@ -114,27 +129,149 @@ class LoginViewController: CustomViewController {
             make.leading.equalTo(view).offset(AppContraints.Login.loginHorizontelEdge)
             make.trailing.equalTo(view).offset(-AppContraints.Login.loginHorizontelEdge)
         }
+		// secretInfo
     }
     
     private func setupInterface() {
         welcomeLabel.textAlignment = .center
         welcomeLabel.textColor = #colorLiteral(red: 0.4470588235, green: 0.4039215686, blue: 0.3411764706, alpha: 1)
-        welcomeLabel.font = UIFont(name: AppFont.fink.rawValue, size: 36)
+        welcomeLabel.font = UIFont(name: AppFont.fink.rawValue, size: AppContraints.FontsSize.welcomeFont)
         welcomeLabel.text = AppTitle.welcome
         appNameLabel.textAlignment = .center
         appNameLabel.textColor = #colorLiteral(red: 0.4470588235, green: 0.4039215686, blue: 0.3411764706, alpha: 1)
-        appNameLabel.font = UIFont(name: AppFont.fink.rawValue, size: 40)
+        appNameLabel.font = UIFont(name: AppFont.fink.rawValue, size: AppContraints.FontsSize.appNameFont)
         appNameLabel.text = AppTitle.nookBank
         warningLabel.textColor = #colorLiteral(red: 0.4470588235, green: 0.4039215686, blue: 0.3411764706, alpha: 1)
-        warningLabel.font = UIFont(name: AppFont.maruBold.rawValue, size: 20)
+        warningLabel.font = UIFont(name: AppFont.maruBold.rawValue, size: AppContraints.FontsSize.defaultFont)
         warningLabel.numberOfLines = 0
         warningLabel.textAlignment = .center
     }
     
     private func addActionForButton() {
-        registerButton.addTarget(self, action: #selector(registerButtonPressed), for: .touchUpInside)
-        loginButton.addTarget(self, action: #selector(loginButtonPressed), for: .touchUpInside)
-        freeEnterButton.addTarget(self, action: #selector(continueButtonPressed), for: .touchUpInside)
+        registerButton.addTarget(self, action: #selector(registerButtonTapped), for: .touchUpInside)
+        loginButton.addTarget(self, action: #selector(loginButtonTapped), for: .touchUpInside)
+        freeEnterButton.addTarget(self, action: #selector(continueButtonTapped), for: .touchUpInside)
+    }
+    
+    private func setupPinView() {
+        contentView.addSubview(constrainView)
+        constrainView.snp.makeConstraints { make in
+            make.top.trailing.equalTo(contentView)
+            make.leading.equalTo(contentView).offset(AppContraints.midEdge)
+            make.width.equalTo(AppContraints.PinPadLogin.passCodeWidth)
+        }
+        constrainView.addSubview(pinView)
+        pinView.snp.makeConstraints { make in
+            make.top.equalTo(constrainView)
+            make.centerX.equalTo(constrainView)
+            make.width.equalTo(AppContraints.PinPadLogin.passCodeWidth)
+            make.height.equalTo(AppContraints.PinPadLogin.pinSize)
+        }
+        pinView.becomeFirstResponder()
+    }
+    private func setupPadView() {
+        twoButton = makePadButton(with: .two)
+        contentView.addSubview(twoButton)
+        twoButton.snp.makeConstraints { make in
+            make.top.equalTo(pinView.snp.bottom).offset(AppContraints.navTitle)
+            make.centerX.equalTo(contentView)
+        }
+		twoButton.addTarget(self, action: #selector(numberButtonTapped), for: .touchUpInside)
+        oneButton = makePadButton(with: .one)
+        contentView.addSubview(oneButton)
+        oneButton.snp.makeConstraints { make in
+            make.top.equalTo(pinView.snp.bottom).offset(AppContraints.navTitle)
+            make.trailing.equalTo(twoButton.snp.leading).offset(-AppContraints.standartEdge)
+        }
+        oneButton.addTarget(self, action: #selector(numberButtonTapped), for: .touchUpInside)
+        threeButton = makePadButton(with: .three)
+        contentView.addSubview(threeButton)
+        threeButton.snp.makeConstraints { make in
+            make.top.equalTo(pinView.snp.bottom).offset(AppContraints.navTitle)
+            make.leading.equalTo(twoButton.snp.trailing).offset(AppContraints.standartEdge)
+        }
+        threeButton.addTarget(self, action: #selector(numberButtonTapped), for: .touchUpInside)
+        fourButton = makePadButton(with: .four)
+        contentView.addSubview(fourButton)
+        fourButton.snp.makeConstraints { make in
+            make.leading.equalTo(oneButton)
+            make.top.equalTo(oneButton.snp.bottom).offset(AppContraints.standartEdge)
+        }
+        fourButton.addTarget(self, action: #selector(numberButtonTapped), for: .touchUpInside)
+        fiveButton = makePadButton(with: .five)
+        contentView.addSubview(fiveButton)
+        fiveButton.snp.makeConstraints { make in
+            make.leading.equalTo(twoButton)
+            make.top.equalTo(twoButton.snp.bottom).offset(AppContraints.standartEdge)
+        }
+        fiveButton.addTarget(self, action: #selector(numberButtonTapped), for: .touchUpInside)
+        sixButton = makePadButton(with: .six)
+        contentView.addSubview(sixButton)
+        sixButton.snp.makeConstraints { make in
+            make.leading.equalTo(threeButton)
+            make.top.equalTo(threeButton.snp.bottom).offset(AppContraints.standartEdge)
+        }
+        sixButton.addTarget(self, action: #selector(numberButtonTapped), for: .touchUpInside)
+        sevenButton = makePadButton(with: .seven)
+        contentView.addSubview(sevenButton)
+        sevenButton.snp.makeConstraints { make in
+            make.leading.equalTo(oneButton)
+            make.top.equalTo(fourButton.snp.bottom).offset(AppContraints.standartEdge)
+        }
+        sevenButton.addTarget(self, action: #selector(numberButtonTapped), for: .touchUpInside)
+        eightButton = makePadButton(with: .eight)
+        contentView.addSubview(eightButton)
+        eightButton.snp.makeConstraints { make in
+            make.leading.equalTo(fiveButton)
+            make.top.equalTo(fiveButton.snp.bottom).offset(AppContraints.standartEdge)
+        }
+        eightButton.addTarget(self, action: #selector(numberButtonTapped), for: .touchUpInside)
+        nineButton = makePadButton(with: .nine)
+        contentView.addSubview(nineButton)
+        nineButton.snp.makeConstraints { make in
+            make.leading.equalTo(sixButton)
+            make.top.equalTo(sixButton.snp.bottom).offset(AppContraints.standartEdge)
+        }
+        nineButton.addTarget(self, action: #selector(numberButtonTapped), for: .touchUpInside)
+        zeroButton = makePadButton(with: .zero)
+        contentView.addSubview(zeroButton)
+        zeroButton.snp.makeConstraints { make in
+            make.leading.equalTo(eightButton)
+            make.top.equalTo(eightButton.snp.bottom).offset(AppContraints.standartEdge)
+        }
+        zeroButton.addTarget(self, action: #selector(numberButtonTapped), for: .touchUpInside)
+        faceIdButton = makeAdditionalKeyboardButton(with: .faceId)
+        contentView.addSubview(faceIdButton)
+        faceIdButton.snp.makeConstraints { make in
+            make.leading.equalTo(sevenButton)
+            make.top.equalTo(sevenButton.snp.bottom).offset(AppContraints.standartEdge)
+        }
+        faceIdButton.addTarget(self, action: #selector(numberButtonTapped), for: .touchUpInside)
+        
+        backspaceButton = makeAdditionalKeyboardButton(with: .backspace)
+        contentView.addSubview(backspaceButton)
+        backspaceButton.snp.makeConstraints { make in
+            make.leading.equalTo(nineButton)
+            make.top.equalTo(nineButton.snp.bottom).offset(AppContraints.standartEdge)
+        }
+        backspaceButton.addAction(UIAction(handler: { _ in
+            self.pinView.deleteBackward()
+        }), for: .touchUpInside)
+        
+        bottomImageView.isHidden = true
+        view.addSubview(forgetPasswordButton)
+        
+        forgetPasswordButton.snp.makeConstraints { make in
+            make.centerX.equalTo(view)
+
+           make.top.equalTo(zeroButton.snp.bottom).offset(AppContraints.standartEdge)
+        }
+        forgetPasswordButton.addAction(UIAction(handler: { _ in
+            self.presenter.forgetButtonTapped()
+
+        }), for: .touchUpInside)
+        forgetPasswordButton.setTitle(AppTitle.PassCode.forgetTitle, for: .normal)
+        forgetPasswordButton.setTitleColor(colors?.passCodeColor.textColor, for: .normal)
     }
 }
 
@@ -173,5 +310,79 @@ extension LoginViewController: ILoginViewController {
         self.present(alert, animated: true)
     }
 }
+
+extension LoginViewController {
+    private func makePadButton(with title: PadKeyBoard) -> UIButton {
+        let button = UIButton()
+        button.snp.makeConstraints { make in
+            make.width.height.equalTo(AppContraints.PinPadLogin.padSize)
+        }
+        button.backgroundColor = colors?.passCodeColor.buttonBgColor
+        button.layer.cornerRadius = AppContraints.PinPadLogin.padCorner
+        button.layer.borderWidth = AppContraints.PinPadLogin.padBorder
+        button.layer.borderColor = colors?.passCodeColor.buttonBorderColor
+        button.layer.masksToBounds = true
+		button.tag = Int(title.rawValue) ?? -1
+        let label = UILabel()
+        button.addSubview(label)
+        label.snp.makeConstraints { make in
+            make.leading.top.equalTo(button).offset(-5)
+            make.trailing.bottom.equalTo(button)
+        }
+        label.text = title.rawValue
+        label.textAlignment = .center
+        label.font = UIFont(name: AppFont.maruBold.rawValue, size: AppContraints.FontsSize.padFont)
+        label.textColor = colors?.passCodeColor.buttonNumberColor
+        
+        return button
+    }
+    
+    private func makeAdditionalKeyboardButton(with imageName: AppImage.PinPad) -> UIButton {
+        let button = UIButton()
+        button.snp.makeConstraints { make in
+            make.width.height.equalTo(AppContraints.PinPadLogin.padSize)
+        }
+        button.backgroundColor = colors?.passCodeColor.buttonBgColor
+        
+        let imageView = UIImageView()
+        let image = UIImage(systemName: imageName.rawValue)
+        imageView.image = image
+        imageView.tintColor = colors?.passCodeColor.buttonNumberColor
+        button.addSubview(imageView)
+        imageView.snp.makeConstraints { make in
+            make.leading.top.equalTo(button).offset(AppContraints.standartEdge)
+            make.trailing.bottom.equalTo(button).offset(-AppContraints.standartEdge)
+        }
+        return button
+    }
+    
+    
+    
+}
+
+@objc extension LoginViewController {
+	func registerButtonTapped(sender: UIButton) {
+		self.presenter.registerButtonTapped(email: emailTextField.text, password: passwordNameTextField.text)
+	}
+	
+	func loginButtonTapped(sender: UIButton) {
+		self.presenter.loginButtonTapped(email: emailTextField.text, password: passwordNameTextField.text)
+	}
+	
+	func continueButtonTapped(sender: UIButton) {
+		self.presenter.openWithoutLogin()
+	}
+	
+	func passwordTextfieldEndEditing() {
+		self.passwordNameTextField.resignFirstResponder()
+		self.presenter.loginButtonTapped(email: emailTextField.text, password: passwordNameTextField.text)
+	}
+	func numberButtonTapped(sender: UIButton) {
+		guard sender.tag != -1 else { return }
+		self.pinView.insertText("\(sender.tag)")
+	}
+
+}
+
 
 // TO-DO GenericKeychain

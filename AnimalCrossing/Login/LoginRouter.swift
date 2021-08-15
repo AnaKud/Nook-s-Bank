@@ -10,6 +10,7 @@ import UIKit
 protocol ILoginRouter {
     func goToNextWithoutLogin(withScreenType screenType: ScreenTypes)
     func goToNextWithLogin(withScreenType screenType: ScreenTypes)
+    func reloadLoginView(withScreenType screenType: ScreenTypes) 
 }
 
 class LoginRouter: ILoginRouter{
@@ -26,5 +27,11 @@ class LoginRouter: ILoginRouter{
         mainRouter.screenType = screenType
         let nextVC = mainRouter.returnController()
         self.controller?.navigationController?.pushViewController(nextVC, animated: true)
+    }
+    
+    func reloadLoginView(withScreenType screenType: ScreenTypes) {
+        let nextVC = LoginAssebmly().build()
+        self.controller?.navigationController?.pushViewController(nextVC, animated: false)
+
     }
 }

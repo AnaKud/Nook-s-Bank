@@ -19,6 +19,9 @@ protocol ILoginPresenter {
     func viewDidLoad(view: LoginViewController)
     func showWarningLabel(withWarningText warningText: String)
     func presentError(error: FailureCases)
+    func forgetButtonTapped()
+    func touchIdButtonTapped()
+	func logout()
 }
 
 class LoginPresenter {
@@ -26,15 +29,22 @@ class LoginPresenter {
     var titleForViewContoller: String = ""
     var fireBaseManager: ILoginFireBaseManager
     var router: ILoginRouter
+    var keychainService: IKeychainService
     var view: ILoginViewController?
     
-    init(fireBaseManager: ILoginFireBaseManager, router: ILoginRouter) {
+    init(fireBaseManager: ILoginFireBaseManager, router: ILoginRouter, keychainService: IKeychainService) {
         self.fireBaseManager = fireBaseManager
         self.router = router
+        self.keychainService = keychainService
+        self.setupScreenType()
     }
 }
 
 extension LoginPresenter: ILoginPresenter {
+	func logout() {
+		print("log")
+	}
+	
     func loginButtonTapped(email: String?, password: String?) {
         self.checkEmail(email: email)
         guard let email = email, let password = password, password != "" else {
@@ -42,9 +52,11 @@ extension LoginPresenter: ILoginPresenter {
             return
         }
         self.fireBaseManager.login(withEmail: email, withPassword: password)
+        self.keychainService.savePassword(account: email, password: password)
     }
     
     func openWithoutLogin() {
+        UserDefaults.standard.setValue(true, forKey: "simpleLogin")
         self.screenType = .unloggined
         self.titleForViewContoller = AppTitle.nookBank
         self.router.goToNextWithoutLogin(withScreenType: screenType)
@@ -75,10 +87,52 @@ extension LoginPresenter: ILoginPresenter {
     
     func viewDidLoad(view: LoginViewController) {
         self.view = view
+        self.setupView()
     }
     
     func showWarningLabel(withWarningText warningText: String) {
         self.view?.showWarningLabel(withWarningText: warningText)
+    }
+    
+    func forgetButtonTapped() {
+        print("forgetButtonTapped")
+        UserDefaults.standard.setValue(false, forKey: "simpleLogin")
+        self.setupScreenType() 
+        self.router.reloadLoginView(withScreenType: screenType)
+    }
+    
+    func touchIdButtonTapped() {
+        
+        print("touchIdButtonTapped")
+        UserDefaults.standard.setValue(true, forKey: "simpleLogin")
+          //  .setValue("true", forKey: "simpleLogin")
+        print("userDef \(UserDefaults.standard.value(forKey: "simpleLogin"))")
+        DeviceOwnerAuthentication.shared.authenticationRequest { result in
+            print(result)
+        }
+    }
+    
+    private func setupScreenType() {
+        print("userDef \(UserDefaults.standard.value(forKey: "simpleLogin"))")
+        guard let value = UserDefaults.standard.value(forKey: "simpleLogin") as? Bool else {
+                                                      screenType = .loginScreen
+                                                      return
+        }
+        if value == true {
+            screenType = .other
+        } else {
+            screenType = .loginScreen
+        }
+        
+    }
+    
+    private func setupView() {
+        switch screenType {
+        case .loginScreen:
+            self.view?.setupFullLoginView()
+        default:
+            self.view?.setupSimpleLoginView()
+        }
     }
     
     private func checkEmail(email: String?) {

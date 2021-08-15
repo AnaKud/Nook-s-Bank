@@ -33,6 +33,7 @@ class BankViewController: CustomViewController {
         self.presenter = presenter
         self.currentAccount = presenter.account
         super.init(nibName: nil, bundle: nil)
+        self.presenter.getCurrentUser()
     }
     
     required init?(coder: NSCoder) {
@@ -102,7 +103,7 @@ class BankViewController: CustomViewController {
             make.top.equalTo(bankAccountView).offset(AppContraints.minEdge)
             make.trailing.equalTo(bankAccountView).offset(-AppContraints.minEdge)
         }
-        currentAccountTitleLabel.font = UIFont(name: AppFont.maruBold.rawValue, size: 20)
+        currentAccountTitleLabel.font = UIFont(name: AppFont.maruBold.rawValue, size: AppContraints.FontsSize.bankAccontFont)
         currentAccountTitleLabel.textColor = colors?.bankViewColor.titleTextColor
         
         bankAccountView.addSubview(currentAccountLabel)
@@ -111,7 +112,7 @@ class BankViewController: CustomViewController {
             make.top.equalTo(currentAccountTitleLabel.snp.bottom).offset(AppContraints.minEdge)
             make.trailing.bottom.equalTo(bankAccountView).offset(-AppContraints.minEdge)
         }
-        currentAccountLabel.font = UIFont(name: AppFont.maruLight.rawValue, size: 20)
+        currentAccountLabel.font = UIFont(name: AppFont.maruLight.rawValue, size: AppContraints.FontsSize.bankAccontFont)
         currentAccountLabel.textColor = colors?.bankViewColor.itemTextColor
         currentAccountLabel.text = self.presenter.returnCurrentAccountValue()
     }
@@ -125,9 +126,7 @@ class BankViewController: CustomViewController {
         }
         
         plusButton.setImage(plusImage, for: .normal)
-        plusButton.addAction(UIAction(handler: { _ in
-            self.presenter.plusButtonPressed()
-        }), for: .touchUpInside)
+		plusButton.addTarget(self, action: #selector(plusButtonTapped), for: .touchUpInside)
     }
     
     private func setupViewForCollection() {
@@ -148,7 +147,7 @@ class BankViewController: CustomViewController {
             make.top.equalTo(historyView).offset(AppContraints.minEdge)
             make.trailing.equalTo(historyView).offset(-AppContraints.midEdge)
         }
-        historyTitleLabel.font = UIFont(name: AppFont.maruBold.rawValue, size: 20)
+        historyTitleLabel.font = UIFont(name: AppFont.maruBold.rawValue, size: AppContraints.FontsSize.bankAccontFont)
         historyTitleLabel.textColor = colors?.bankViewColor.titleTextColor
         
         historyView.addSubview(expensesCollectionView)
@@ -198,7 +197,7 @@ extension BankViewController: IBankViewController {
         let alert = CustomAlertController(title: AppTitle.Bank.newExpense, message: nil, preferredStyle: .alert)
         alert.addTextField { (valueTextField) in
             valueTextField.placeholder = "Bells"
-            valueTextField.keyboardType = .numberPad
+            valueTextField.keyboardType = .decimalPad
             valueTextField.addAction(UIAction(handler: { _ in
                 let count: Int = valueTextField.text?.count ?? 0
                 if count != 0 {
@@ -260,4 +259,10 @@ extension BankViewController: UICollectionViewDelegate, UICollectionViewDataSour
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: AppContraints.Bank.collectionCellWidth, height: AppContraints.Bank.collectionCellHeight)
     }
+}
+
+@objc extension BankViewController {
+	func plusButtonTapped(sender: UIButton) {
+		self.presenter.plusButtonTapped()
+	}
 }

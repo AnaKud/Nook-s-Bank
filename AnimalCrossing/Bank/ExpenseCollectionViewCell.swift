@@ -8,7 +8,7 @@
 import UIKit
 
 class ExpenseCollectionViewCell: UICollectionViewCell {
-    var colors: ColorsSet?
+    var colors: ColorSet?
     var customView: CustomView?
     
     let expenseTypeImageView = UIImageView()
@@ -41,7 +41,7 @@ class ExpenseCollectionViewCell: UICollectionViewCell {
             make.leading.equalTo(contentView).offset(AppContraints.minEdge)
             make.trailing.equalTo(contentView).offset(-AppContraints.minEdge)
         }
-        valueLabel.font = UIFont(name: AppFont.maruBold.rawValue, size: 14)
+        valueLabel.font = UIFont(name: AppFont.maruBold.rawValue, size: AppContraints.FontsSize.bankValueFont)
         valueLabel.textAlignment = .center
         contentView.addSubview(dateLabel)
         dateLabel.snp.makeConstraints { make in
@@ -52,7 +52,7 @@ class ExpenseCollectionViewCell: UICollectionViewCell {
         dateLabel.textAlignment = .center
         dateLabel.numberOfLines = 0
         dateLabel.textColor = colors?.bankViewColor.itemTextColor
-        dateLabel.font = UIFont(name: AppFont.maruLight.rawValue, size: 10)
+        dateLabel.font = UIFont(name: AppFont.maruLight.rawValue, size: AppContraints.FontsSize.bankDateFont)
     }
     
     func config(item: ExpenseViewModel) {

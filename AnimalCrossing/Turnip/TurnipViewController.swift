@@ -89,17 +89,9 @@ class TurnipViewController: CustomViewController {
     }
     
     private func addActionsForButtons() {
-        buyCalculateButton.addAction(UIAction(handler: { _ in
-            self.buyCalculateButtonTapped()
-        }), for: .touchUpInside)
-        
-        turnipPriceCalculateButton.addAction(UIAction(handler: { _ in
-            self.turnipPriceCalculateButtonTapped()
-        }), for: .touchUpInside)
-        
-        sellCalculateButton.addAction(UIAction(handler: { _ in
-            self.sellCalculateButtonTapped()
-        }), for: .touchUpInside)
+		buyCalculateButton.addTarget(self, action: #selector(buyCalculateButtonTapped), for: .touchUpInside)
+		turnipPriceCalculateButton.addTarget(self, action: #selector(turnipPriceCalculateButtonTapped), for: .touchUpInside)
+		sellCalculateButton.addTarget(self, action: #selector(sellCalculateButtonTapped), for: .touchUpInside)
     }
 }
 
@@ -468,11 +460,11 @@ extension TurnipViewController: ITurnipViewController {
 }
 
 // Buttons Methods
-extension TurnipViewController {
-    func buyCalculateButtonTapped() {
+@objc extension TurnipViewController {
+	func buyCalculateButtonTapped(sender: UIButton) {
         self.presenter.buyCalculateButtonTapped(buyPrice: buyPriceTextField.text, turnipCount: buyCountTextField.text)
     }
-    func turnipPriceCalculateButtonTapped() {
+    func turnipPriceCalculateButtonTapped(sender: UIButton) {
         self.presenter.turnipPriceCalculateButtonTapped(mondayMorning: monMorTextField.text,
                                                         mondayEvening: monEveTextField.text,
                                                         tuesdayMorning: tueMorTextField.text,
@@ -487,7 +479,7 @@ extension TurnipViewController {
                                                         saturdayEvening: satEveTextField.text)
     }
     
-    func sellCalculateButtonTapped() {
+    func sellCalculateButtonTapped(sender: UIButton) {
         self.presenter.sellCalculateButtonTapped(sellPrice: sellPriceTextField.text, turnipCount: sellCountTextField.text)
     }
 }
@@ -497,9 +489,9 @@ fileprivate extension TurnipViewController {
     
     func makePurchaseTextField(with text: TurnipTextFieldText, withPlacehoder placeholder: String, withImageName imageName: String) -> UITextField {
         let textfield = UITextField()
-        textfield.keyboardType = .numberPad
+        textfield.keyboardType = .default
         textfield.placeholder = placeholder
-        textfield.font = UIFont(name: AppFont.maruLight.rawValue, size: 18)
+        textfield.font = UIFont(name: AppFont.maruLight.rawValue, size: AppContraints.FontsSize.purchaseFont)
         textfield.textColor = colors?.textfieldColor.textColor
         textfield.layer.cornerRadius = AppContraints.Turnip.cornerRadius
         textfield.backgroundColor = colors?.textfieldColor.backgroundColor
@@ -520,8 +512,8 @@ fileprivate extension TurnipViewController {
     
     func makeTurnipPriceTextField(with text: TurnipTextFieldText) -> UITextField {
         let textfield = UITextField()
-        textfield.keyboardType = .numberPad
-        textfield.font = UIFont(name: AppFont.maruLight.rawValue, size: 16)
+        textfield.keyboardType = .default
+        textfield.font = UIFont(name: AppFont.maruLight.rawValue, size: AppContraints.FontsSize.priceFont)
         textfield.textColor = colors?.textfieldColor.textColor
         textfield.layer.cornerRadius = AppContraints.Turnip.cornerRadius
         textfield.backgroundColor = colors?.textfieldColor.backgroundColor
@@ -545,7 +537,7 @@ fileprivate extension TurnipViewController {
        let label = UILabel()
         label.text = text
         label.textAlignment = .center
-        label.font = UIFont(name: AppFont.maruLight.rawValue, size: 16)
+        label.font = UIFont(name: AppFont.maruLight.rawValue, size: AppContraints.FontsSize.priceFont)
         label.textColor = colors?.cellColorSet.itemTextColor
         return label
     }

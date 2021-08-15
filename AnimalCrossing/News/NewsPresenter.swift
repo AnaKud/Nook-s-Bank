@@ -13,10 +13,10 @@ protocol INewsPresenter {
     func cellCount() -> Int
     func itemForCell(index: Int) -> NewsViewModel
     func cellPressed(index: Int)
+    
 }
 
 class NewsPresenter: INewsPresenter {
-    
     var networkManager: INewsNetworkManager
     var coreData: INewsCoreDataManager
     var router: INewsRouter
@@ -34,19 +34,22 @@ class NewsPresenter: INewsPresenter {
     }
     
     func makeRequest() {
-        self.view?.displayActivity()
+        //self.view?.displayActivity()
         self.networkManager.downloadNews(link: .events) { data in
             if let events = data {
                 self.newsFromInternet = events
                 self.cleanCoreData()
                 self.newsViewModel = self.convertFromInternetToVM(eventsFromInternet: events)
-                self.view?.displayTable()
-                self.refreshView()
+                DispatchQueue.main.async {
+                    self.view?.displayTable()
+                }
             } else {
                 self.newsFromCoreData = self.coreData.loadNews()
                 self.newsViewModel = self.sortEventsFromCoreDataByDay(events: self.newsFromCoreData)
+                DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1) {
+                    self.view?.displayTable()
+                }
             }
-            self.view?.displayTable()
             self.refreshView()
         }
     }
@@ -64,27 +67,29 @@ class NewsPresenter: INewsPresenter {
     }
     
     func cellPressed(index: Int) {
+        print("cell pressed")
         let event = self.itemForCell(index: index)
+        print(event.event)
         let url = event.url
+        print(url)
         self.router.routeToWebView(withUrl: url)
     }
 
     private func saveToCoreData(event: NewsViewModel) {
-        DispatchQueue.main.sync {
             self.coreData.addNews(news: event)
-        }
     }
     
     private func cleanCoreData() {
-        DispatchQueue.main.sync {
+        //DispatchQueue.main.sync {
             self.coreData.deleteAllNews()
-        }
+        //}
     }
 
     private func refreshView() {
         self.view?.refreshView()
     }
 }
+
 
 fileprivate extension NewsPresenter {
     private func sortEventsFromInternetByDay(events: [NewsResponse]) -> [NewsResponse] {
@@ -122,4 +127,3 @@ fileprivate extension NewsPresenter {
         return newsVM
     }
 }
-

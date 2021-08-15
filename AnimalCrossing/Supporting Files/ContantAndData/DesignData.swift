@@ -67,7 +67,7 @@ enum TabbarItems {
     }
 }
 
-struct ColorsSet {
+struct ColorSet {
     var cellColorSet: CellColor
     var textfieldColor: TextFieldColor
     var circleViewColor: CircleViewColor

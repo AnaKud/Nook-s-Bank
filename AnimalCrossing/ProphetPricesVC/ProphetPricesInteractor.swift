@@ -12,42 +12,38 @@
 
 import UIKit
 
-protocol IProphetPricesInteractorBusinessLogic: ProphetPricesDataStore
-{
-  func makeTurnipPricesRequest()
+typealias IProphetPricesInteractor = IProphetPricesInteractorBusinessLogic & IProphetPricesDataStore
+
+protocol IProphetPricesInteractorBusinessLogic: IProphetPricesDataStore {
+	func makeTurnipPricesRequest()
 }
 
-protocol ProphetPricesDataStore
-{
-  var dataForRequest: TurnipPrices? { get set }
+protocol IProphetPricesDataStore {
+	var dataForRequest: TurnipPrices? { get set }
 }
 
-class ProphetPricesInteractor: IProphetPricesInteractorBusinessLogic//, ProphetPricesDataStore
-{
-    var dataForRequest: TurnipPrices?
-    
-  var presenter: IProphetPricesPresenter
-  var worker: ProphetPricesWorker
-  //var name: String = ""
-  
-    init(presenter: IProphetPricesPresenter, worker: ProphetPricesWorker) {
-        self.presenter = presenter
-        self.worker = worker
-    }
-    
-  // MARK: Do something
-  
-  func makeTurnipPricesRequest(){
-     let request = ProphetPrices.Turnip.Request(from: dataForRequest)
-    worker.doSomeWork(with: request) { [ weak self ] result in
-        
-        let existingPrices = request.pricesArray()
-        let response = ProphetPrices.Turnip.Response(from: result, existingPrices: existingPrices)
-        print(response)
-        
-        self?.presenter.presentSomething(response: response)
-        print(response)
-    }
-    
-  }
+class ProphetPricesInteractor: IProphetPricesInteractor {
+	var dataForRequest: TurnipPrices?
+	
+	var presenter: IProphetPricesPresenter
+	var worker: ProphetPricesWorker
+	
+	init(presenter: IProphetPricesPresenter, worker: ProphetPricesWorker) {
+		self.presenter = presenter
+		self.worker = worker
+	}
+	
+	func makeTurnipPricesRequest(){
+		let request = ProphetPrices.Turnip.Request(from: dataForRequest)
+		worker.doSomeWork(with: request) { [ weak self ] result in
+			
+			let existingPrices = request.pricesArray()
+			let response = ProphetPrices.Turnip.Response(from: result, existingPrices: existingPrices)
+			print(response)
+			
+			self?.presenter.presentSomething(response: response)
+			print(response)
+		}
+		
+	}
 }

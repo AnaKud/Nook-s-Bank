@@ -21,7 +21,6 @@ protocol IProphetPricesPresenter {
 class ProphetPricesPresenter: IProphetPricesPresenter {
     weak var viewController: IProphetPricesViewController?
     var viewModel: ProphetPrices.Turnip.ViewModel?
-    // MARK: Do something
     
     func presentSomething(response: ProphetPrices.Turnip.Response?) {
         let dates = ProphetPrices.Turnip.ViewModel.Dates()
@@ -29,15 +28,14 @@ class ProphetPricesPresenter: IProphetPricesPresenter {
         guard let response = response,
               response.minWeekValue != 0
         else {
-            viewController?.displayEmptyScreen()
+			self.viewController?.displayEmptyScreen()
             return
         }
         let prices = ProphetPrices.Turnip.ViewModel.Prices(from: response)
         let minMaxPice = ProphetPrices.Turnip.ViewModel.PriceForGraph(prices: prices)
-        viewController?.displayDateViews(dates: dates)
-        viewController?.displayPrices(prices: prices)
-        viewController?.displayGraph(with: minMaxPice)
-        viewController?.displayAll()
-        
+		self.viewController?.displayDateViews(dates: dates)
+		self.viewController?.displayPrices(prices: prices)
+		self.viewController?.displayGraph(with: minMaxPice)
+		self.viewController?.displayAll()
     }
 }

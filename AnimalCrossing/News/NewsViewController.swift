@@ -22,6 +22,8 @@ class NewsViewController: CustomViewController {
     init(presenter: INewsPresenter) {
         self.presenter = presenter
         super.init(nibName: nil, bundle: nil)
+       // self.navDelegate = presenter
+        self.presenter.loadView(view: self)
     }
     
     required init?(coder: NSCoder) {
@@ -30,15 +32,15 @@ class NewsViewController: CustomViewController {
 
     override func loadView() {
         super.loadView()
-        self.presenter.loadView(view: self)
         self.setupTable()
+        self.displayActivity()
+        
     }
     
     private func setupTable(){
         self.tableView.dataSource = self
         self.tableView.delegate = self
         self.tableView.register(NewsTableViewCell.self, forCellReuseIdentifier: CellReusibleID.news.rawValue)
-        //self.tableView.allowsSelection = false
     }
     
     func displayActivity() {
@@ -55,7 +57,7 @@ class NewsViewController: CustomViewController {
     }
     
     func displayTable() {
-        DispatchQueue.main.async {
+       
             self.activityIndicator.stopAnimating()
             self.activityIndicator.isHidden = true
             self.contentView.addSubview(self.tableView)
@@ -65,7 +67,7 @@ class NewsViewController: CustomViewController {
             self.tableView.separatorStyle = .none
             self.tableView.backgroundColor = .clear
             self.tableView.isHidden = false
-        }
+        
     }
 }
 

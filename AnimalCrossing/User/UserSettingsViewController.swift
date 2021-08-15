@@ -25,15 +25,15 @@ class UserSettingsViewController: CustomViewController {
         self.screenType = .other
     }
     
+	@available(*, unavailable)
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupScrollView()
-        setupImageView()
-        
+		self.setupScrollView()
+		self.setupImageView()
     }
     
     func setupScrollView() {
@@ -54,10 +54,7 @@ class UserSettingsViewController: CustomViewController {
             make.height.width.equalTo(AppContraints.UserSettings.sizeImageView)
         }
         avatarImageView.layer.cornerRadius = AppContraints.UserSettings.cornerRadiusImageView
-        
     }
-
-
 }
 
 extension UserSettingsViewController {
@@ -79,11 +76,8 @@ extension UserSettingsViewController {
         }
         return button
     }
-    
 }
 
 extension UserSettingsViewController: UIScrollViewDelegate {}
 
-extension UserSettingsViewController: IUserSettingsViewController {
-    
-}
+extension UserSettingsViewController: IUserSettingsViewController {}

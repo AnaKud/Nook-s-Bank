@@ -13,7 +13,7 @@ class ProphetPricesAssembly {
         let networkManager: IProphetPricesNetworkManager = NetworkManager.shared
         let worker = ProphetPricesWorker(networkManager: networkManager)
         var presenter: IProphetPricesPresenter = ProphetPricesPresenter()
-        var interactor: IProphetPricesInteractorBusinessLogic = ProphetPricesInteractor(presenter: presenter, worker: worker)
+        var interactor: IProphetPricesInteractor = ProphetPricesInteractor(presenter: presenter, worker: worker)
         interactor.dataForRequest = prices
         let viewController = ProphetPricesViewController(interactor: interactor)
         presenter.viewController = viewController

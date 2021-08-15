@@ -9,7 +9,6 @@ import Foundation
 
 protocol ITurnipPresenter {
     var screenType: ScreenTypes? { get set }
-    //var dates: [String]? { get }
     func loadView(with view: ITurnipViewController)
     func dateForView(forDayWeek dayWeek: WeekDay) -> String?
     func dataForTextField(for textFiled: TurnipTextFieldText) -> String
@@ -73,7 +72,6 @@ class TurnipPresenter: ITurnipPresenter {
     
     func sellCalculateButtonTapped(sellPrice: String?, turnipCount: String?) {
         print("sellPrice")
-        
     }
     
     func dateForView(forDayWeek dayWeek: WeekDay) -> String? {

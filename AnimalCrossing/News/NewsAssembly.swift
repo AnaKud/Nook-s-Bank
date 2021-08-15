@@ -14,10 +14,10 @@ class NewsAssembly {
         var router: INewsRouter = NewsRouter()
         let presenter: INewsPresenter = NewsPresenter(networkManager: networkManager, coreData: coreData, router: router)
         let controller = NewsViewController(presenter: presenter)
+        router.controller = controller
         controller.screenType = screenType
         controller.controllerTitle = AppTitle.News.controllerTitle
         
-        router.controller = controller
         return controller
     }
 }

@@ -23,7 +23,7 @@ protocol IProphetPricesViewController: AnyObject {
 }
 
 class ProphetPricesViewController: CustomViewController {
-    var interactor: IProphetPricesInteractorBusinessLogic
+    var interactor: IProphetPricesInteractor
     
     // Views
     var emptyImageView = UIImageView()
@@ -68,9 +68,7 @@ class ProphetPricesViewController: CustomViewController {
     var graphView = UIView()
     var graphDataView: GraphView!
     
-    // MARK: Object lifecycle
-    
-    init(interactor: IProphetPricesInteractorBusinessLogic) {
+    init(interactor: IProphetPricesInteractor) {
         self.interactor = interactor
         
         super.init(nibName: nil, bundle: nil)
@@ -81,25 +79,16 @@ class ProphetPricesViewController: CustomViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    
     // MARK: View lifecycle
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // view.backgroundColor = .red
-        doSomething()
-        setupScrollView()
-        
+		self.makeTurnipRequest()
+		self.setupScrollView()
     }
     
-    // MARK: Do something
-    
-    func doSomething() {
-        interactor.makeTurnipPricesRequest()
-        
+    func makeTurnipRequest() {
+		self.interactor.makeTurnipPricesRequest()
     }
-    
-    
 }
 
 extension ProphetPricesViewController: IProphetPricesViewController {
@@ -142,7 +131,7 @@ extension ProphetPricesViewController: IProphetPricesViewController {
         emptyLabel.textColor = colors?.cellColorSet.topViewColor
         emptyLabel.textAlignment = .center
         emptyLabel.numberOfLines = 0
-        emptyLabel.font = UIFont(name: AppFont.maruBold.rawValue, size: 20)
+        emptyLabel.font = UIFont(name: AppFont.maruBold.rawValue, size: AppContraints.FontsSize.defaultFont)
         
         contentScrollView.addSubview(emptyImageView)
         emptyImageView.snp.makeConstraints { make in
@@ -170,8 +159,8 @@ extension ProphetPricesViewController: IProphetPricesViewController {
             self.satView = WeekView.setupWeekView(weekDayText: satText, colors: self.colors)
             self.setupPriceView()
         }
-        
     }
+	
     func displayPrices(prices: ProphetPrices.Turnip.ViewModel.Prices) {
         let monMorPrices = prices.getDayPrice(for: .mondayMorning)
         let monEvePrices = prices.getDayPrice(for: .mondayEvening)
@@ -218,7 +207,6 @@ extension ProphetPricesViewController: UIScrollViewDelegate {
         contentScrollView.delegate = self
         contentScrollView.alwaysBounceVertical = true
         contentScrollView.contentSize = CGSize(width: view.frame.width, height: view.frame.height)
-        
     }
 }
 
@@ -426,8 +414,9 @@ fileprivate extension ProphetPricesViewController {
         }
         priceMinValueLabel.textColor = colors?.cellColorSet.titleTextColor
         priceMinValueLabel.textAlignment = .center
-        priceMinValueLabel.font = UIFont(name: AppFont.maruBold.rawValue, size: 18)
+        priceMinValueLabel.font = UIFont(name: AppFont.maruBold.rawValue, size: AppContraints.FontsSize.purchaseFont)
     }
+	
     func setupGraphView() {
         contentScrollView.addSubview(graphBackgroundView)
         graphBackgroundView.snp.makeConstraints { make in
@@ -457,7 +446,6 @@ fileprivate extension ProphetPricesViewController {
         childView.view.snp.makeConstraints { make in
             make.edges.equalTo(graphView)
         }
-        
         childView.didMove(toParent: self)
     }
 }
@@ -481,7 +469,7 @@ fileprivate extension ProphetPricesViewController {
             label.textColor = colors?.cellColorSet.topViewColor
             label.text = "\(existingPrice)"
             label.textAlignment = .center
-            label.font = UIFont(name: AppFont.maruBold.rawValue, size: 20)
+            label.font = UIFont(name: AppFont.maruBold.rawValue, size: AppContraints.FontsSize.defaultFont)
         } else {
             let patternLabel = UILabel()
             view.addSubview(patternLabel)
@@ -492,7 +480,7 @@ fileprivate extension ProphetPricesViewController {
             patternLabel.textColor = colors?.cellColorSet.itemTextColor
             patternLabel.text = "\(prices.patternPrice.first ?? 0) to \(prices.patternPrice.last ?? 0)"
             patternLabel.textAlignment = .right
-            patternLabel.font = UIFont(name: AppFont.maruLight.rawValue, size: 14)
+            patternLabel.font = UIFont(name: AppFont.maruLight.rawValue, size: AppContraints.FontsSize.weekViewFont)
             
             let expectedPriceLabel = UILabel()
             view.addSubview(expectedPriceLabel)
@@ -504,10 +492,8 @@ fileprivate extension ProphetPricesViewController {
             expectedPriceLabel.textColor = colors?.cellColorSet.itemTextColor
             expectedPriceLabel.text = "Exp: \(prices.expectedPrice)"
             expectedPriceLabel.textAlignment = .left
-            expectedPriceLabel.font = UIFont(name: AppFont.maruBold.rawValue, size: 14)
+            expectedPriceLabel.font = UIFont(name: AppFont.maruBold.rawValue, size: AppContraints.FontsSize.weekViewFont)
         }
         return view
     }
-    
-    
 }

@@ -16,9 +16,10 @@ protocol ILoginFireBaseManager {
     var loginPresenter: ILoginPresenter? { get set }
     func login(withEmail email: String, withPassword password: String)
     func register(withUserName name: String, withEmail email: String, withPassword password: String)
+	func logout()
 }
 
-protocol IBankFireBaseManager: ILogoutFireBaseManager {
+protocol IBankFireBaseManager {
     var bankPresenter: IBankPresenter? { get set }
     func addExpenseToFb(expense: ExpenseFB)
     func getUser() -> UserLocale?
@@ -27,12 +28,8 @@ protocol IBankFireBaseManager: ILogoutFireBaseManager {
     func currentExpensesFromFB(completion: @escaping ([ExpenseViewModel]) -> ())
 }
 
-protocol ITurnipFireBaseManager: ILogoutFireBaseManager {
+protocol ITurnipFireBaseManager {
     func addExpenseToFb(expense: ExpenseFB)
-}
-
-protocol ILogoutFireBaseManager {
-    func logout()
 }
 
 protocol IUserSettingsFireBaseManager {
@@ -88,6 +85,14 @@ extension FireBaseManager: ILoginFireBaseManager {
             self?.loginPresenter?.openForRegister()
         }
     }
+	
+	func logout() {
+		do {
+			try Auth.auth().signOut()
+		} catch  {
+			print(error.localizedDescription)
+		}
+	}
 }
 
 extension FireBaseManager: IBankFireBaseManager {
@@ -155,14 +160,4 @@ extension FireBaseManager: IPresenterForFireBaseManager {
 extension FireBaseManager: IUserSettingsFireBaseManager {
     
     
-}
-
-extension FireBaseManager: ILogoutFireBaseManager {
-    func logout() {
-        do {
-            try Auth.auth().signOut()
-        } catch  {
-            print(error.localizedDescription)
-        }
-    }
 }
