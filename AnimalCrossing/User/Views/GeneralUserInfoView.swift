@@ -8,12 +8,11 @@
 import UIKit
 
 class GeneralUserInfoView: CustomView {
-	
 	var nameSectionView = UIView()
 	var avatarImageView = UIImageView()
 	var nameTextField = UITextField()
 	var saveNameButton = UIButton()
-	
+
 	var userEnterDataSectionView = UIView()
 	var emailLabel = UILabel()
 	var oldPasswordTextField = UITextField()
@@ -24,10 +23,4 @@ class GeneralUserInfoView: CustomView {
 	var balanceSectionView = UIView()
 	var savingBalanceTextField = UITextField()
 	var loanBalanceTextField = UITextField()
-	
-	
-	
-	
-	
-	
 }

@@ -5,10 +5,10 @@
 //  Created by Anastasiya Kudasheva on 10.06.2021.
 //
 
-import Foundation
 import Firebase
+import Foundation
 
-protocol IPresenterForFireBaseManager{
+protocol IPresenterForFireBaseManager {
     func presentError(error: FailureCases)
 }
 
@@ -24,8 +24,8 @@ protocol IBankFireBaseManager {
     func addExpenseToFb(expense: ExpenseFB)
     func getUser() -> UserLocale?
     func updateAccountValue(newValue: Int)
-    func currentBankAccountFromFB(completion: @escaping (Int) -> ())
-    func currentExpensesFromFB(completion: @escaping ([ExpenseViewModel]) -> ())
+    func currentBankAccountFromFB(completion: @escaping (Int) -> Void)
+    func currentExpensesFromFB(completion: @escaping ([ExpenseViewModel]) -> Void)
 }
 
 protocol ITurnipFireBaseManager {
@@ -33,12 +33,11 @@ protocol ITurnipFireBaseManager {
 }
 
 protocol IUserSettingsFireBaseManager {
-    
 }
 
 class FireBaseManager {
     static let shared = FireBaseManager()
-    
+
     var loginPresenter: ILoginPresenter?
     var bankPresenter: IBankPresenter?
     let refUser = Database.database().reference(withPath: "users")
@@ -48,15 +47,15 @@ class FireBaseManager {
 
 extension FireBaseManager: ILoginFireBaseManager {
     func auth() {
-        Auth.auth().addStateDidChangeListener { [weak self] (auth, user) in
+        Auth.auth().addStateDidChangeListener { [weak self] _, user in
             if user != nil {
                 self?.loginPresenter?.openWithLogin()
             }
         }
     }
-    
+
     func login(withEmail email: String, withPassword password: String) {
-        Auth.auth().signIn(withEmail: email, password: password, completion: { [weak self] (user, error) in
+        Auth.auth().signIn(withEmail: email, password: password, completion: { [weak self] user, error in
             if error != nil {
                 self?.loginPresenter?.showWarningLabel(withWarningText: LoginWarnings.unexpectedError.rawValue)
                 return
@@ -68,9 +67,9 @@ extension FireBaseManager: ILoginFireBaseManager {
             }
         })
     }
-    
+
     func register(withUserName name: String, withEmail email: String, withPassword password: String) {
-        Auth.auth().createUser(withEmail: email, password: password) { [weak self] (user, error) in
+        Auth.auth().createUser(withEmail: email, password: password) { [weak self] user, error in
             guard error == nil,
                   let user = user
             else {
@@ -85,11 +84,11 @@ extension FireBaseManager: ILoginFireBaseManager {
             self?.loginPresenter?.openForRegister()
         }
     }
-	
+
 	func logout() {
 		do {
 			try Auth.auth().signOut()
-		} catch  {
+		} catch {
 			print(error.localizedDescription)
 		}
 	}
@@ -104,16 +103,16 @@ extension FireBaseManager: IBankFireBaseManager {
         self.refExpenses = self.setupRefExpense()
         return user
     }
-    
-    func currentBankAccountFromFB(completion: @escaping (Int) -> ()) {
-        self.refBankAccount?.observe(.value, with: { (snapshot) in
+
+    func currentBankAccountFromFB(completion: @escaping (Int) -> Void) {
+        self.refBankAccount?.observe(.value, with: { snapshot in
             guard let bankAccount = snapshot.childSnapshot(forPath: "currentValue").value as? Int else { return }
             completion(bankAccount)
         })
     }
-    
-    func currentExpensesFromFB(completion: @escaping ([ExpenseViewModel]) -> ()) {
-        self.refExpenses?.observe(.value, with: { (snapshot) in
+
+    func currentExpensesFromFB(completion: @escaping ([ExpenseViewModel]) -> Void) {
+        self.refExpenses?.observe(.value, with: { snapshot in
             var expenses = [ExpenseViewModel]()
             for item in snapshot.children {
                 guard
@@ -125,11 +124,11 @@ extension FireBaseManager: IBankFireBaseManager {
             completion(expenses)
         })
     }
-    
+
     func updateAccountValue(newValue: Int) {
         self.refBankAccount?.updateChildValues(["currentValue": newValue])
     }
-    
+
     func addExpenseToFb(expense: ExpenseFB) {
         let refOnCurrentFb = self.refExpenses?.child(expense.uid)
         refOnCurrentFb?.setValue(expense.converToDictionary())
@@ -138,7 +137,7 @@ extension FireBaseManager: IBankFireBaseManager {
     func setupRefBankAccount(forUser user: User) -> DatabaseReference? {
         return Database.database().reference(withPath: "users").child(String(user.uid)).child("currentAcount")
     }
-     
+
     func setupRefExpense() -> DatabaseReference? {
         guard let bankRef = self.refBankAccount else { return nil }
         let expenseRef = bankRef.child("expenses")
@@ -147,9 +146,7 @@ extension FireBaseManager: IBankFireBaseManager {
 }
 
 extension FireBaseManager: ITurnipFireBaseManager {
-    
 }
-
 
 extension FireBaseManager: IPresenterForFireBaseManager {
     func presentError(error: FailureCases) {
@@ -158,6 +155,4 @@ extension FireBaseManager: IPresenterForFireBaseManager {
 }
 
 extension FireBaseManager: IUserSettingsFireBaseManager {
-    
-    
 }

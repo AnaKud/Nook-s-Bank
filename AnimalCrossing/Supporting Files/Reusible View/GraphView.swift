@@ -10,10 +10,15 @@ import SwiftUICharts
 
 struct GraphView: View {
     let data: [Double]
-    let valueSpecifier: String =  "%.0f"
+    let valueSpecifier: String = "%.0f"
 
     var body: some View {
-        LineView(data: self.data, title: nil, legend: nil, style: GraphChartStyle.style, valueSpecifier: valueSpecifier, legendSpecifier: "%.0f")
+        LineView(data: self.data,
+				 title: nil,
+				 legend: nil,
+				 style: GraphChartStyle.style,
+				 valueSpecifier: valueSpecifier,
+				 legendSpecifier: "%.0f")
             .frame(width: AppContraints.GraphPrices.width, height: AppContraints.GraphPrices.height, alignment: .center)
     }
 
@@ -23,5 +28,11 @@ struct GraphView: View {
 }
 
 struct GraphChartStyle {
-    static let style = ChartStyle(backgroundColor: GraphColors.backgroundColor, accentColor: .black, gradientColor: GradientColor(start: GraphColors.gradientStart, end: GraphColors.gradientStop), textColor: .black, legendTextColor: .black, dropShadowColor: .black)
+    static let style = ChartStyle(backgroundColor: GraphColors.backgroundColor,
+								  accentColor: .black,
+								  gradientColor: GradientColor(start: GraphColors.gradientStart,
+															   end: GraphColors.gradientStop),
+								  textColor: .black,
+								  legendTextColor: .black,
+								  dropShadowColor: .black)
 }

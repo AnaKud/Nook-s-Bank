@@ -13,6 +13,4 @@ protocol IUserSettingsPresenter {
 
 class UserSettingsPresenter: IUserSettingsPresenter {
     weak var viewController: IUserSettingsViewController?
-    
-    
 }

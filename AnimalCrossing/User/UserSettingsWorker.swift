@@ -9,10 +9,8 @@ import Foundation
 
 class UserSettingsWorker {
     var fireBaseManager: IUserSettingsFireBaseManager
-    
+
     init(fireBaseManager: IUserSettingsFireBaseManager) {
         self.fireBaseManager = fireBaseManager
     }
-    
-    
 }

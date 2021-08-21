@@ -5,15 +5,15 @@
 //  Created by Anastasiya Kudasheva on 10.06.2021.
 //
 
-import UIKit
 import SnapKit
+import UIKit
 
 protocol ILoginViewController {
     func setupFullLoginView()
     func setupSimpleLoginView()
     func showUserNameAlert(withEmail email: String, withPassword password: String)
     func showWarningLabel(withWarningText warningText: String)
-    func showErrorAlert(withMessage message: FailureCases) 
+    func showErrorAlert(withMessage message: FailureCases)
 }
 
 class LoginViewController: CustomViewController {
@@ -26,7 +26,7 @@ class LoginViewController: CustomViewController {
     var registerButton = UIButton()
     var freeEnterButton = UIButton()
     let warningLabel = UILabel()
-    
+
     var constrainView = UIView()
     var pinView = PassCodeView()
     var oneButton = UIButton()
@@ -42,23 +42,24 @@ class LoginViewController: CustomViewController {
     var backspaceButton = UIButton()
     var faceIdButton = UIButton()
     var forgetPasswordButton = UIButton()
-    
+
     init(presenter: ILoginPresenter) {
         self.presenter = presenter
-        
+
         super.init(nibName: nil, bundle: nil)
         self.screenType = .loginScreen
     }
-    
+
+	@available(*, unavailable)
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         self.presenter.viewDidLoad(view: self)
     }
-        
+
     func setupFullLoginView() {
         DispatchQueue.main.async {
             self.view.backgroundColor = self.colors?.mainViewColor.backgroundColor
@@ -68,7 +69,7 @@ class LoginViewController: CustomViewController {
             self.addActionForButton()
         }
     }
-    
+
     func setupSimpleLoginView() {
         DispatchQueue.main.async {
             self.view.backgroundColor = self.colors?.mainViewColor.backgroundColor
@@ -77,13 +78,27 @@ class LoginViewController: CustomViewController {
             self.setupPadView()
         }
     }
-    
+
     private func setupLayout() {
-        emailTextField = self.customView?.makeTextField(withPlacehoder: AppTitle.Login.emailTF, height: AppContraints.Login.heightTF, cornerRadius: AppContraints.Login.cornerRadiusTF, withImageName: AppImage.Login.iconForEmailTF.rawValue, isSecureTextEntry: false) ?? UITextField()
-        passwordNameTextField = self.customView?.makeTextField(withPlacehoder: AppTitle.Login.passwordTF, height: AppContraints.Login.heightTF, cornerRadius: AppContraints.Login.cornerRadiusTF, withImageName: AppImage.Login.iconForPasswordTF.rawValue, isSecureTextEntry: true) ?? UITextField()
-         loginButton = self.customView?.makeOvalButtonWithCircle(withTitle: AppTitle.Login.loginButton, buttonWidth: AppContraints.Login.widthLoginButton, buttonHeight: AppContraints.Login.heightButtons) ?? UIButton()
-         registerButton = self.customView?.makeOvalButtonWithCircle(withTitle: AppTitle.Login.registerButton, buttonWidth: AppContraints.Login.widthButton, buttonHeight: AppContraints.Login.heightButtons) ?? UIButton()
-         freeEnterButton = self.customView?.makeOvalButtonWithCircle(withTitle: AppTitle.Login.freeButton, buttonWidth: AppContraints.Login.widthButton, buttonHeight: AppContraints.Login.heightButtons) ?? UIButton()
+        emailTextField = self.customView?.makeTextField(withPlacehoder: AppTitle.Login.emailTF,
+														height: AppContraints.Login.heightTF,
+														cornerRadius: AppContraints.Login.cornerRadiusTF,
+														withImageName: AppImage.Login.iconForEmailTF.rawValue,
+														isSecureTextEntry: false) ?? UITextField()
+        passwordNameTextField = self.customView?.makeTextField(withPlacehoder: AppTitle.Login.passwordTF,
+															   height: AppContraints.Login.heightTF,
+															   cornerRadius: AppContraints.Login.cornerRadiusTF,
+															   withImageName: AppImage.Login.iconForPasswordTF.rawValue,
+															   isSecureTextEntry: true) ?? UITextField()
+         loginButton = self.customView?.makeOvalButtonWithCircle(withTitle: AppTitle.Login.loginButton,
+																 buttonWidth: AppContraints.Login.widthLoginButton,
+																 buttonHeight: AppContraints.Login.heightButtons) ?? UIButton()
+         registerButton = self.customView?.makeOvalButtonWithCircle(withTitle: AppTitle.Login.registerButton,
+																	buttonWidth: AppContraints.Login.widthButton,
+																	buttonHeight: AppContraints.Login.heightButtons) ?? UIButton()
+         freeEnterButton = self.customView?.makeOvalButtonWithCircle(withTitle: AppTitle.Login.freeButton,
+																	 buttonWidth: AppContraints.Login.widthButton,
+																	 buttonHeight: AppContraints.Login.heightButtons) ?? UIButton()
         view.addSubview(welcomeLabel)
         welcomeLabel.snp.makeConstraints { make in
             make.top.equalTo(view).offset(AppContraints.Login.loginVerticalEdge)
@@ -107,7 +122,7 @@ class LoginViewController: CustomViewController {
             make.trailing.equalTo(view).offset(-AppContraints.Login.loginHorizontelEdge)
         }
         passwordNameTextField.addTarget(self, action: #selector(passwordTextfieldEndEditing), for: .editingDidEndOnExit)
-        
+
         view.addSubview(loginButton)
         loginButton.snp.makeConstraints { make in
             make.top.equalTo(passwordNameTextField.snp.bottom).offset(AppContraints.standartEdge)
@@ -129,9 +144,11 @@ class LoginViewController: CustomViewController {
             make.leading.equalTo(view).offset(AppContraints.Login.loginHorizontelEdge)
             make.trailing.equalTo(view).offset(-AppContraints.Login.loginHorizontelEdge)
         }
-		// secretInfo
+		// secretInfo DELETE THIS
+			emailTextField.text = "TestNB@test.ru"
+			passwordNameTextField.text = "123456"
     }
-    
+
     private func setupInterface() {
         welcomeLabel.textAlignment = .center
         welcomeLabel.textColor = #colorLiteral(red: 0.4470588235, green: 0.4039215686, blue: 0.3411764706, alpha: 1)
@@ -146,13 +163,13 @@ class LoginViewController: CustomViewController {
         warningLabel.numberOfLines = 0
         warningLabel.textAlignment = .center
     }
-    
+
     private func addActionForButton() {
         registerButton.addTarget(self, action: #selector(registerButtonTapped), for: .touchUpInside)
         loginButton.addTarget(self, action: #selector(loginButtonTapped), for: .touchUpInside)
         freeEnterButton.addTarget(self, action: #selector(continueButtonTapped), for: .touchUpInside)
     }
-    
+
     private func setupPinView() {
         contentView.addSubview(constrainView)
         constrainView.snp.makeConstraints { make in
@@ -247,7 +264,7 @@ class LoginViewController: CustomViewController {
             make.top.equalTo(sevenButton.snp.bottom).offset(AppContraints.standartEdge)
         }
         faceIdButton.addTarget(self, action: #selector(numberButtonTapped), for: .touchUpInside)
-        
+
         backspaceButton = makeAdditionalKeyboardButton(with: .backspace)
         contentView.addSubview(backspaceButton)
         backspaceButton.snp.makeConstraints { make in
@@ -257,10 +274,10 @@ class LoginViewController: CustomViewController {
         backspaceButton.addAction(UIAction(handler: { _ in
             self.pinView.deleteBackward()
         }), for: .touchUpInside)
-        
+
         bottomImageView.isHidden = true
         view.addSubview(forgetPasswordButton)
-        
+
         forgetPasswordButton.snp.makeConstraints { make in
             make.centerX.equalTo(view)
 
@@ -268,7 +285,6 @@ class LoginViewController: CustomViewController {
         }
         forgetPasswordButton.addAction(UIAction(handler: { _ in
             self.presenter.forgetButtonTapped()
-
         }), for: .touchUpInside)
         forgetPasswordButton.setTitle(AppTitle.PassCode.forgetTitle, for: .normal)
         forgetPasswordButton.setTitleColor(colors?.passCodeColor.textColor, for: .normal)
@@ -280,20 +296,19 @@ extension LoginViewController: ILoginViewController {
         warningLabel.text = warningText
         UIView.animate(withDuration: 5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseInOut, animations: { [weak self] in
             self?.warningLabel.alpha = 1
-        }) { [weak self] complete in
+        }) { [weak self] _ in
             self?.warningLabel.alpha = 0
         }
     }
-    
+
     func showUserNameAlert(withEmail email: String, withPassword password: String) {
         let alert = CustomAlertController(title: AppTitle.Login.hello, message: AppTitle.Login.nameMessage, preferredStyle: .alert)
-        alert.addTextField { (nameTextField) in
+        alert.addTextField { nameTextField in
             nameTextField.addAction(UIAction(handler: { _ in
-                let count: Int = nameTextField.text?.count ?? 0
-                if alert.textFields?[0].text?.count != 0  {
+                if alert.textFields?[0].text?.isEmpty == false {
                     alert.actions[0].isEnabled = true
                 }
-                if count == 0 {
+				if nameTextField.text?.isEmpty ?? true {
                     alert.actions[0].isEnabled = false
                 }
             }), for: .editingChanged)
@@ -333,17 +348,17 @@ extension LoginViewController {
         label.textAlignment = .center
         label.font = UIFont(name: AppFont.maruBold.rawValue, size: AppContraints.FontsSize.padFont)
         label.textColor = colors?.passCodeColor.buttonNumberColor
-        
+
         return button
     }
-    
+
     private func makeAdditionalKeyboardButton(with imageName: AppImage.PinPad) -> UIButton {
         let button = UIButton()
         button.snp.makeConstraints { make in
             make.width.height.equalTo(AppContraints.PinPadLogin.padSize)
         }
         button.backgroundColor = colors?.passCodeColor.buttonBgColor
-        
+
         let imageView = UIImageView()
         let image = UIImage(systemName: imageName.rawValue)
         imageView.image = image
@@ -355,24 +370,21 @@ extension LoginViewController {
         }
         return button
     }
-    
-    
-    
 }
 
 @objc extension LoginViewController {
 	func registerButtonTapped(sender: UIButton) {
 		self.presenter.registerButtonTapped(email: emailTextField.text, password: passwordNameTextField.text)
 	}
-	
+
 	func loginButtonTapped(sender: UIButton) {
 		self.presenter.loginButtonTapped(email: emailTextField.text, password: passwordNameTextField.text)
 	}
-	
+
 	func continueButtonTapped(sender: UIButton) {
 		self.presenter.openWithoutLogin()
 	}
-	
+
 	func passwordTextfieldEndEditing() {
 		self.passwordNameTextField.resignFirstResponder()
 		self.presenter.loginButtonTapped(email: emailTextField.text, password: passwordNameTextField.text)
@@ -381,8 +393,6 @@ extension LoginViewController {
 		guard sender.tag != -1 else { return }
 		self.pinView.insertText("\(sender.tag)")
 	}
-
 }
-
 
 // TO-DO GenericKeychain

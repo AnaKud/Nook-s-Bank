@@ -9,7 +9,6 @@ import UIKit
 
 class UserSettingsAssemly {
     func build() -> UserSettingsViewController {
-       
         let fireBaseManager: IUserSettingsFireBaseManager = FireBaseManager.shared
         let worker = UserSettingsWorker(fireBaseManager: fireBaseManager)
         var presenter: IUserSettingsPresenter = UserSettingsPresenter()

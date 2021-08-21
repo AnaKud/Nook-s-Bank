@@ -5,8 +5,8 @@
 //  Created by Anastasiya Kudasheva on 05.07.2021.
 //
 
-import UIKit
 import SwiftUI
+import UIKit
 
 enum AppFont: String {
     case maruLight = "IwataMaruGothicW55-L"
@@ -20,26 +20,26 @@ enum AppImage {
         case logTop = "LoginedTop"
         case logBottom = "LoginedBottom"
         case unlogTop = "UnLoginedTop"
-        case unlogBottom  = "UnLoginedBottom"
+        case unlogBottom = "UnLoginedBottom"
     }
-    
+
     enum UserSettings: String {
         case pensil = "pensil"
     }
-    
+
     enum Login: String {
         case back = "chevron.backward"
         case iconForEmailTF = "person.fill"
         case iconForPasswordTF = "key.fill"
     }
-    
+
     enum Bank: String {
         case coinLogin = "CoinLog"
         case coinUnLogin = "CoinUnlog"
         case plusLogin = "plusLog"
         case plusUnlogin = "plusUnlog"
     }
-    
+
     enum Turnip: String {
         case morning = "sun.max"
         case evening = "moon.stars"
@@ -47,11 +47,11 @@ enum AppImage {
         case count = "multiply.circle"
         case sell = "s.circle"
     }
-    
+
     enum Prices: String {
         case daisyMae = "DaisyMae"
     }
-    
+
     enum PinPad: String {
         case backspace = "chevron.backward.square"
         case faceId = "faceid"
@@ -76,9 +76,8 @@ struct ColorSet {
     var activityIndicatorColor: ActivityIndicatorColor
     var bankViewColor: BankViewColor
     var passCodeColor: PassCodeViewColor
-    
-    
-    init(for screenType: ScreenTypes?){
+
+    init(for screenType: ScreenTypes?) {
         self.cellColorSet = CellColor(for: screenType)
         self.textfieldColor = TextFieldColor(for: screenType)
         self.circleViewColor = CircleViewColor(for: screenType)
@@ -88,14 +87,14 @@ struct ColorSet {
         self.bankViewColor = BankViewColor(for: screenType)
         self.passCodeColor = PassCodeViewColor(for: screenType)
     }
-    
+
     struct BankViewColor {
         let backgroundViewColor: UIColor?
         let titleTextColor: UIColor?
         let itemTextColor: UIColor?
         let expenseLabelColor: UIColor?
         let incomeLabelColor: UIColor?
-        
+
         init(for screenType: ScreenTypes?) {
             switch screenType {
             case .unloggined:
@@ -113,7 +112,7 @@ struct ColorSet {
             }
         }
     }
-    
+
     struct ActivityIndicatorColor {
         let activityColor: UIColor?
         init(for screenType: ScreenTypes?) {
@@ -125,7 +124,7 @@ struct ColorSet {
             }
         }
     }
-    
+
     struct PassCodeViewColor {
         let backgroundColor: UIColor?
         let textColor: UIColor?
@@ -134,7 +133,7 @@ struct ColorSet {
         let buttonBorderColor: CGColor?
         let buttonBgColor: UIColor?
         let buttonNumberColor: UIColor?
-        
+
         init(for screenType: ScreenTypes?) {
             switch screenType {
             case .other:
@@ -156,9 +155,9 @@ struct ColorSet {
             }
         }
     }
-    
+
     struct MainViewColor {
-        let backgroundColor:  UIColor?
+        let backgroundColor: UIColor?
         let textColor: UIColor?
         let navigationItemColor: UIColor?
         init(for screenType: ScreenTypes?) {
@@ -178,7 +177,7 @@ struct ColorSet {
             }
         }
     }
-    
+
     struct TextFieldColor {
         let backgroundColor: UIColor?
         let borderColor: CGColor?
@@ -209,7 +208,7 @@ struct ColorSet {
             }
         }
     }
-    
+
     struct CircleViewColor {
         let circleColor: UIColor?
         let circleTextColor: UIColor?
@@ -227,7 +226,7 @@ struct ColorSet {
             }
         }
     }
-    
+
     struct OvalButtonColor {
         let buttonColor: UIColor?
         let buttonTextColor: UIColor?
@@ -245,14 +244,14 @@ struct ColorSet {
             }
         }
     }
-    
+
     struct CellColor {
         let backgroundViewColor: UIColor?
         let topViewColor: UIColor?
         let accentColor: UIColor?
         let titleTextColor: UIColor?
         let itemTextColor: UIColor?
-        
+
         init(for screenType: ScreenTypes?) {
             switch screenType {
             case .unloggined:

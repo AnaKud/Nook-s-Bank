@@ -17,7 +17,7 @@ class NewsAssembly {
         router.controller = controller
         controller.screenType = screenType
         controller.controllerTitle = AppTitle.News.controllerTitle
-        
+
         return controller
     }
 }

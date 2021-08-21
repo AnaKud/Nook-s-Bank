@@ -24,26 +24,24 @@ protocol IProphetPricesDataStore {
 
 class ProphetPricesInteractor: IProphetPricesInteractor {
 	var dataForRequest: TurnipPrices?
-	
+
 	var presenter: IProphetPricesPresenter
 	var worker: ProphetPricesWorker
-	
+
 	init(presenter: IProphetPricesPresenter, worker: ProphetPricesWorker) {
 		self.presenter = presenter
 		self.worker = worker
 	}
-	
-	func makeTurnipPricesRequest(){
+
+	func makeTurnipPricesRequest() {
 		let request = ProphetPrices.Turnip.Request(from: dataForRequest)
 		worker.doSomeWork(with: request) { [ weak self ] result in
-			
 			let existingPrices = request.pricesArray()
 			let response = ProphetPrices.Turnip.Response(from: result, existingPrices: existingPrices)
 			print(response)
-			
+
 			self?.presenter.presentSomething(response: response)
 			print(response)
 		}
-		
 	}
 }

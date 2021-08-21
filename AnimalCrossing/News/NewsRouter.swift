@@ -21,7 +21,7 @@ class NewsRouter: INewsRouter {
         nextVC.modalPresentationStyle = .pageSheet
         self.controller?.present(nextVC, animated: true)
     }
-    
+
     func popToViewController() {
 		self.controller?.navigationController?.popToRootViewController(animated: true)
     }

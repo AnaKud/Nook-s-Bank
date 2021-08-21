@@ -13,7 +13,7 @@ protocol ITurnipViewController {
 
 class TurnipViewController: CustomViewController {
     var presenter: ITurnipPresenter
-    
+
     var contentScrollView = UIScrollView()
     // Views for buy area
     var buyBackgroundView = UIView()
@@ -23,7 +23,7 @@ class TurnipViewController: CustomViewController {
     var buyCountLabel = UILabel()
     var buyCountTextField = UITextField()
     var buyCalculateButton = UIButton()
-    
+
     //  Views for turnip calculation area
     var turnipBackgroundView = UIView()
     var turnipTopView = UIView()
@@ -35,7 +35,7 @@ class TurnipViewController: CustomViewController {
     var secondTurnipColumn = UIView()
     var thirdTurnipColumn = UIView()
     var turnipPriceCalculateButton = UIButton()
-    
+
     // Views for week prices
     var monView = UIView()
     var monMorTextField = UITextField()
@@ -55,7 +55,7 @@ class TurnipViewController: CustomViewController {
     var satView = UIView()
     var satMorTextField = UITextField()
     var satEveTextField = UITextField()
-    
+
     // Views for Sell
     var sellBackgroundView = UIView()
     var sellTopView = UIView()
@@ -64,21 +64,22 @@ class TurnipViewController: CustomViewController {
     var sellPriceTextField = UITextField()
     var sellCountTextField = UITextField()
     var sellCalculateButton = UIButton()
-    
+
     init(presenter: ITurnipPresenter) {
         self.presenter = presenter
         super.init(nibName: nil, bundle: nil)
     }
-    
+
+	@available(*, unavailable)
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+	// swiftlint:disable:next prohibited_super_call
     override func loadView() {
         super.loadView()
         self.presenter.loadView(with: self)
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setupScrollView()
@@ -87,7 +88,7 @@ class TurnipViewController: CustomViewController {
         self.setupSellArea()
         self.addActionsForButtons()
     }
-    
+
     private func addActionsForButtons() {
 		buyCalculateButton.addTarget(self, action: #selector(buyCalculateButtonTapped), for: .touchUpInside)
 		turnipPriceCalculateButton.addTarget(self, action: #selector(turnipPriceCalculateButtonTapped), for: .touchUpInside)
@@ -131,14 +132,13 @@ extension TurnipViewController: UIScrollViewDelegate {
             make.leading.equalTo(buyBackgroundView).offset(AppContraints.CellSizes.cellBgEdge)
             make.trailing.equalTo(buyBackgroundView.snp.centerX).offset(-AppContraints.CellSizes.cellBgEdge)
         }
-        
+
         buyPriceTextField = self.makePurchaseTextField(with: .buyPrice, withPlacehoder: AppTitle.Turnip.price, withImageName: AppImage.Turnip.price.rawValue)
         buyBackgroundView.addSubview(buyPriceTextField)
         buyPriceTextField.snp.makeConstraints { make in
             make.top.equalTo(buyPriceLabel.snp.bottom).offset(AppContraints.minEdge)
             make.leading.equalTo(buyBackgroundView).offset(AppContraints.CellSizes.cellBgEdge)
             make.trailing.equalTo(buyBackgroundView.snp.centerX).offset(-AppContraints.CellSizes.cellBgEdge)
-            
         }
         buyCountLabel = titlePriceCountLabel(with: AppTitle.Turnip.count)
         buyBackgroundView.addSubview(buyCountLabel)
@@ -147,7 +147,7 @@ extension TurnipViewController: UIScrollViewDelegate {
             make.trailing.equalTo(buyBackgroundView).offset(-AppContraints.CellSizes.cellBgEdge)
             make.leading.equalTo(buyBackgroundView.snp.centerX).offset(AppContraints.CellSizes.cellBgEdge)
         }
-        
+
         buyCountTextField = self.makePurchaseTextField(with: .buyCount, withPlacehoder: AppTitle.Turnip.count, withImageName: AppImage.Turnip.count.rawValue)
         buyBackgroundView.addSubview(buyCountTextField)
         buyCountTextField.snp.makeConstraints { make in
@@ -155,7 +155,7 @@ extension TurnipViewController: UIScrollViewDelegate {
             make.trailing.equalTo(buyBackgroundView).offset(-AppContraints.CellSizes.cellBgEdge)
             make.leading.equalTo(buyBackgroundView.snp.centerX).offset(AppContraints.CellSizes.cellBgEdge)
         }
-        
+
         buyCalculateButton = customView?.makeOvalButtonWithCircle(withTitle: AppTitle.Turnip.expense, buttonWidth: 0, buttonHeight: AppContraints.Turnip.heightButton) ?? UIButton()
         buyBackgroundView.addSubview(buyCalculateButton)
         buyCalculateButton.snp.makeConstraints { make in
@@ -172,7 +172,7 @@ extension TurnipViewController: UIScrollViewDelegate {
         self.makeSecondColumnViews()
         self.makeThirdColumnViews()
     }
-    
+
     func setupTopTurnipView() {
         contentScrollView.addSubview(turnipBackgroundView)
         turnipBackgroundView.snp.makeConstraints { make in
@@ -190,7 +190,7 @@ extension TurnipViewController: UIScrollViewDelegate {
             make.top.leading.trailing.equalTo(turnipBackgroundView)
         }
     }
-    
+
     func setupBackgroungTurnipView() {
         turnipBackgroundView.addSubview(firstTurnipColumn)
         firstTurnipColumn.snp.makeConstraints { make in
@@ -221,7 +221,7 @@ extension TurnipViewController: UIScrollViewDelegate {
         morningView.backgroundColor = colors?.cellColorSet.topViewColor
         morningView.layer.cornerRadius = AppContraints.Turnip.cornerRadius
         morningView.layer.masksToBounds = true
-        
+
         morningView.addSubview(morningImageView)
         morningImageView.snp.makeConstraints { make in
             make.centerX.centerY.equalTo(morningView)
@@ -229,7 +229,7 @@ extension TurnipViewController: UIScrollViewDelegate {
         }
         morningImageView.image = UIImage(systemName: AppImage.Turnip.morning.rawValue)
         morningImageView.tintColor = colors?.cellColorSet.titleTextColor
-        
+
         thirdTurnipColumn.addSubview(eveningView)
         eveningView.snp.makeConstraints { make in
             make.centerX.equalTo(thirdTurnipColumn)
@@ -240,7 +240,7 @@ extension TurnipViewController: UIScrollViewDelegate {
         eveningView.backgroundColor = colors?.cellColorSet.topViewColor
         eveningView.layer.cornerRadius = AppContraints.Turnip.cornerRadius
         eveningView.layer.masksToBounds = true
-        
+
         eveningView.addSubview(eveningImageView)
         eveningImageView.snp.makeConstraints { make in
             make.centerX.centerY.equalTo(eveningView)
@@ -248,7 +248,7 @@ extension TurnipViewController: UIScrollViewDelegate {
         }
         eveningImageView.image = UIImage(systemName: AppImage.Turnip.evening.rawValue)
         eveningImageView.tintColor = colors?.cellColorSet.titleTextColor
-        
+
         turnipPriceCalculateButton = customView?.makeOvalButtonWithCircle(withTitle: AppTitle.Turnip.turnipPrice, buttonWidth: 0, buttonHeight: AppContraints.Turnip.heightButton) ?? UIButton()
         turnipBackgroundView.addSubview(turnipPriceCalculateButton)
         turnipPriceCalculateButton.snp.makeConstraints { make in
@@ -259,7 +259,7 @@ extension TurnipViewController: UIScrollViewDelegate {
             make.bottom.equalTo(turnipBackgroundView).offset(-AppContraints.midEdge)
         }
     }
-    
+
     func makeFirstColumnViews() {
         let monText = self.presenter.dateForView(forDayWeek: .monday)
         monView = WeekView.setupWeekView(weekDayText: monText, colors: colors)
@@ -317,7 +317,7 @@ extension TurnipViewController: UIScrollViewDelegate {
             make.bottom.equalTo(firstTurnipColumn).offset(-AppContraints.midEdge)
         }
     }
-    
+
     func makeSecondColumnViews() {
         monMorTextField = self.makeTurnipPriceTextField(with: .mondayMorning)
         secondTurnipColumn.addSubview(monMorTextField)
@@ -357,7 +357,7 @@ extension TurnipViewController: UIScrollViewDelegate {
             make.bottom.equalTo(secondTurnipColumn).offset(-AppContraints.midEdge)
         }
     }
-    
+
     func makeThirdColumnViews() {
         monEveTextField = self.makeTurnipPriceTextField(with: .mondayEvening)
         thirdTurnipColumn.addSubview(monEveTextField)
@@ -442,7 +442,6 @@ extension TurnipViewController: UIScrollViewDelegate {
             make.top.equalTo(sellCountLabel.snp.bottom).offset(AppContraints.CellSizes.cellBgEdge)
             make.trailing.equalTo(sellBackgroundView).offset(-AppContraints.CellSizes.cellBgEdge)
             make.leading.equalTo(sellBackgroundView.snp.centerX).offset(AppContraints.CellSizes.cellBgEdge)
-            
         }
         sellCalculateButton = customView?.makeOvalButtonWithCircle(withTitle: AppTitle.Turnip.income, buttonWidth: 0, buttonHeight: AppContraints.Turnip.heightButton) ?? UIButton()
         sellBackgroundView.addSubview(sellCalculateButton)
@@ -456,7 +455,6 @@ extension TurnipViewController: UIScrollViewDelegate {
 }
 // ITurnipViewController protocol
 extension TurnipViewController: ITurnipViewController {
-    
 }
 
 // Buttons Methods
@@ -478,15 +476,14 @@ extension TurnipViewController: ITurnipViewController {
                                                         saturdayMorning: satMorTextField.text,
                                                         saturdayEvening: satEveTextField.text)
     }
-    
+
     func sellCalculateButtonTapped(sender: UIButton) {
         self.presenter.sellCalculateButtonTapped(sellPrice: sellPriceTextField.text, turnipCount: sellCountTextField.text)
     }
 }
 
-// MARK: -  Reusible View
+// MARK: - Reusible View
 fileprivate extension TurnipViewController {
-    
     func makePurchaseTextField(with text: TurnipTextFieldText, withPlacehoder placeholder: String, withImageName imageName: String) -> UITextField {
         let textfield = UITextField()
         textfield.keyboardType = .default
@@ -509,7 +506,7 @@ fileprivate extension TurnipViewController {
         textfield.text = textTF
         return textfield
     }
-    
+
     func makeTurnipPriceTextField(with text: TurnipTextFieldText) -> UITextField {
         let textfield = UITextField()
         textfield.keyboardType = .default
@@ -532,7 +529,7 @@ fileprivate extension TurnipViewController {
         textfield.text = textTF
         return textfield
     }
-    
+
     func titlePriceCountLabel(with text: String) -> UILabel {
        let label = UILabel()
         label.text = text

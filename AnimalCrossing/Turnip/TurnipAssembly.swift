@@ -12,8 +12,10 @@ class TurnipAssembly {
         let firebaseManager: ITurnipFireBaseManager = FireBaseManager.shared
         let coreDataManger: ITurnipCoreDataManager = CoreDataManager.shared
         var router: ITurnipRouter = TurnipRouter()
-        
-        var presenter: ITurnipPresenter = TurnipPresenter(firebaseManager: firebaseManager, coreDataManger: coreDataManger, router: router)
+
+        var presenter: ITurnipPresenter = TurnipPresenter(firebaseManager: firebaseManager,
+														  coreDataManger: coreDataManger,
+														  router: router)
         presenter.screenType = screenType
         let controller = TurnipViewController(presenter: presenter)
         controller.screenType = screenType

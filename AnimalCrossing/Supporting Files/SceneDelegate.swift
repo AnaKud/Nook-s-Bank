@@ -10,7 +10,7 @@ import UIKit
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 	let coreDataManager = CoreDataManager.shared
 	var window: UIWindow?
-	
+
 	func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
 		guard let scene = (scene as? UIWindowScene) else { return }
 		let window = UIWindow(windowScene: scene)
@@ -19,9 +19,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 		self.window = window
 		window.makeKeyAndVisible()
 	}
-	
+
 	func sceneDidEnterBackground(_ scene: UIScene) {
 		self.coreDataManager.saveContext()
 	}
 }
-

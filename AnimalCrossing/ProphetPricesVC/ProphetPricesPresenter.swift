@@ -21,10 +21,10 @@ protocol IProphetPricesPresenter {
 class ProphetPricesPresenter: IProphetPricesPresenter {
     weak var viewController: IProphetPricesViewController?
     var viewModel: ProphetPrices.Turnip.ViewModel?
-    
+
     func presentSomething(response: ProphetPrices.Turnip.Response?) {
         let dates = ProphetPrices.Turnip.ViewModel.Dates()
-        
+
         guard let response = response,
               response.minWeekValue != 0
         else {

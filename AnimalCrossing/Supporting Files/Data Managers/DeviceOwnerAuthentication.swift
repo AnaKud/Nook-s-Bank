@@ -9,17 +9,17 @@ import Foundation
 import LocalAuthentication
 
 protocol IDeviceOwnerAuthentication {
-    func authenticationRequest(completion: @escaping (Bool) -> ())
+    func authenticationRequest(completion: @escaping (Bool) -> Void)
 }
 
 class DeviceOwnerAuthentication: IDeviceOwnerAuthentication {
     static let shared = DeviceOwnerAuthentication()
-    
+
     private let context = LAContext()
-    
-    func authenticationRequest(completion: @escaping (Bool) -> ()) {
+
+    func authenticationRequest(completion: @escaping (Bool) -> Void) {
         if context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: nil) {
-            context.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: "Please") { (success, error) in
+            context.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: "Please") { success, error in
                 if success {
                     completion(true)
                 } else {
@@ -27,11 +27,8 @@ class DeviceOwnerAuthentication: IDeviceOwnerAuthentication {
                         print(error.localizedDescription)
                     }
                     completion(false)
-                    
                 }
             }
         }
-        
     }
-    
 }

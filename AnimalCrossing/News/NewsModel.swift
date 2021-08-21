@@ -29,7 +29,7 @@ class NewsViewModel {
         self.url = url
         self.type = returnType(data: event)
     }
-    
+
     init(fromInternet model: NewsResponse) {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "yyyy-MM-dd"
@@ -40,7 +40,7 @@ class NewsViewModel {
         self.url = model.url
         self.type = returnType(data: event)
     }
-    
+
 //    init(fromCoreData model: NewsCoreData) {
 //        self.date = model.date
 //        self.event = model.event
@@ -51,7 +51,7 @@ class NewsViewModel {
         guard let modelDate = model.date,
               let modelEvent = model.event,
               let modelUrl = model.url,
-              let modelType =  model.type
+              let modelType = model.type
         else { return nil }
         self.date = modelDate
         self.event = modelEvent
@@ -60,7 +60,7 @@ class NewsViewModel {
     }
 }
 
-fileprivate func returnType(data: String) -> String {
+private func returnType(data: String) -> String {
     if data.contains("Shopping") {
         return "Shopping"
     } else if data.contains("birthday") {
@@ -72,7 +72,7 @@ fileprivate func returnType(data: String) -> String {
 class NewsFireBase {
     var date: String
     var event: String
-    
+
     var url: String
     init(date: String, event: String, url: String) {
         self.date = date

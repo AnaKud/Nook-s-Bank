@@ -10,14 +10,13 @@ import UIKit
 class NewsTableViewCell: UITableViewCell {
     var colors: ColorSet?
     var customView: CustomView?
-    
+
     let backView = UIView()
     let dateView = UIView()
     let eventLabel = UILabel()
     var eventCircleView = UIView()
     let dateLabel = UILabel()
-    
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
     }
@@ -75,6 +74,6 @@ class NewsTableViewCell: UITableViewCell {
         }
         eventLabel.numberOfLines = 0
         eventLabel.font = UIFont(name: AppFont.maruLight.rawValue, size: AppContraints.FontsSize.newsFont)
-        eventLabel.textColor =  colors?.cellColorSet.itemTextColor
+        eventLabel.textColor = colors?.cellColorSet.itemTextColor
     }
 }

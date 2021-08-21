@@ -5,14 +5,14 @@
 //  Created by Anastasiya Kudasheva on 13.06.2021.
 //
 
-import Foundation
 import Firebase
+import Foundation
 
 class BankViewModel {
     var currentValue: Int
     var expenses: [ExpenseViewModel]?
     var refBank: DatabaseReference?
-    
+
     init(currentValue: Int, expenses: [ExpenseViewModel]?) {
         self.currentValue = currentValue
         self.expenses = expenses
@@ -28,7 +28,7 @@ class BankViewModel {
         self.expenses = expensesFB
         self.refBank = snapshot.ref
     }
-    
+
     func converToDictionary() -> Any {
         return["currentValue": currentValue, "expenses": expenses]
     }
@@ -43,7 +43,7 @@ class ExpenseViewModel {
     var expenseType: ExpenseType
     var imageName: String
     var refExpense: DatabaseReference?
-    init(value: Int, operationType: OperationType, expenseType: ExpenseType){
+    init(value: Int, operationType: OperationType, expenseType: ExpenseType) {
         self.uid = UUID().uuidString
         let creationDate = Date()
         self.dateString = {
@@ -70,7 +70,7 @@ class ExpenseViewModel {
         self.expenseType = ExpenseType.allCases[.random(in: 0...11)]
         self.imageName = expenseType.rawValue
     }
-    
+
     init?(snapshot: DataSnapshot) {
         guard
             let snapshotValue = snapshot.value as? [String: AnyObject],
@@ -94,7 +94,7 @@ class ExpenseViewModel {
 
         self.refExpense = snapshot.ref
     }
-    
+
     func converToDictionary() -> Any {
         return["uid": uid, "dateString": dateString, "value": value, "operationType": operationType, "expenseType": expenseType]
     }
@@ -106,7 +106,7 @@ class ExpenseFB {
     var value: Int
     var operationType: String
     var expenseType: String
-   
+
     init(fromVM model: ExpenseViewModel) {
         self.uid = model.uid
         self.dateString = model.dateString
@@ -126,56 +126,57 @@ class ExpenseFB {
         self.operationType = operationType.rawValue
         self.expenseType = expenseType.rawValue
     }
-    
+
     func converToDictionary() -> Any {
         return["uid": uid, "dateString": dateString, "value": value, "operationType": operationType, "expenseType": expenseType]
     }
 }
 
 enum ExpenseType: String, CaseIterable {
-    case Furniture = "Furniture"
-    case Clothing = "Clothing"
-    case Bugs = "Bugs"
-    case Fish = "Fish"
-    case SeaCreatures = "SeaCreatures"
-    case Tools = "Tools"
-    case Fossils = "Fossils"
-    case Artwork = "Artwork"
-    case Music = "Music"
-    case Garden = "Garden"
-    case Turnip = "Turnip"
-    case Other = "Other"
-    
+    case furniture = "Furniture"
+    case clothing = "Clothing"
+    case bugs = "Bugs"
+    case fish = "Fish"
+    case seaCreatures = "SeaCreatures"
+    case tools = "Tools"
+    case fossils = "Fossils"
+    case artwork = "Artwork"
+    case music = "Music"
+    case garden = "Garden"
+    case turnip = "Turnip"
+    case other = "Other"
+
     static let allValue: [String] = [ExpenseType.RawValue]()
-    
-    init?(id : Int) {
+
+	// swiftlint:disable:next cyclomatic_complexit
+    init?(id: Int) {
         switch id {
         case 0:
-            self = .Furniture
+            self = .furniture
         case 1:
-            self = .Clothing
+            self = .clothing
         case 2:
-            self = .Bugs
+            self = .bugs
         case 3:
-            self = .Fish
+            self = .fish
         case 4:
-            self = .SeaCreatures
+            self = .seaCreatures
         case 5:
-            self = .Tools
+            self = .tools
         case 6:
-            self = .Fossils
+            self = .fossils
         case 7:
-            self = .Artwork
+            self = .artwork
         case 8:
-            self = .Music
+            self = .music
         case 9:
-            self = .Garden
+            self = .garden
         case 10:
-            self = .Turnip
+            self = .turnip
         case 11:
-            self = .Other
+            self = .other
         default:
-            self = .Other
+            self = .other
         }
     }
 }
@@ -199,30 +200,30 @@ func convertToOperationEnum(stringFromFB: String) -> OperationType {
 func convertToExpenseEnum(stringFromFB: String) -> ExpenseType {
     switch stringFromFB {
     case "Furniture":
-        return .Furniture
+        return .furniture
     case "Clothing":
-        return.Clothing
+        return.clothing
     case "Bugs":
-        return .Bugs
+        return .bugs
     case "Fish":
-        return .Fish
+        return .fish
     case "SeaCreatures":
-        return .SeaCreatures
+        return .seaCreatures
     case "Tools":
-        return .Tools
+        return .tools
     case "Fossils":
-        return .Fossils
+        return .fossils
     case"Artwork":
-        return .Artwork
+        return .artwork
     case "Music":
-        return .Music
+        return .music
     case "Garden":
-        return .Garden
+        return .garden
     case "Turnip":
-        return .Turnip
+        return .turnip
     case "Other":
-        return .Other
+        return .other
     default:
-        return .Other
+        return .other
     }
 }

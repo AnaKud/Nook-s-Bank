@@ -10,9 +10,9 @@
 //  see http://clean-swift.com
 //
 
-import UIKit
 import SwiftUI
 import SwiftUICharts
+import UIKit
 
 protocol IProphetPricesViewController: AnyObject {
     func displayDateViews(dates: ProphetPrices.Turnip.ViewModel.Dates)
@@ -24,15 +24,15 @@ protocol IProphetPricesViewController: AnyObject {
 
 class ProphetPricesViewController: CustomViewController {
     var interactor: IProphetPricesInteractor
-    
+
     // Views
     var emptyImageView = UIImageView()
     var emptyLabel = UILabel()
-    
+
     var contentScrollView = UIScrollView()
     var priceBackgroundView = UIView()
     var priceTopView = UIView()
-    
+
     var morningView = UIView()
     var eveningView = UIView()
     var morningImageView = UIImageView()
@@ -40,7 +40,7 @@ class ProphetPricesViewController: CustomViewController {
     var firstTurnipColumn = UIView()
     var secondTurnipColumn = UIView()
     var thirdTurnipColumn = UIView()
-    
+
     var monView = UIView()
     var monMorPriceView = UIView()
     var monEvePriceView = UIView()
@@ -59,33 +59,34 @@ class ProphetPricesViewController: CustomViewController {
     var satView = UIView()
     var satMorPriceView = UIView()
     var satEvePriceView = UIView()
-    
+
     var priceMinValueView = UIView()
     var priceMinValueLabel = UILabel()
-    
+
     var graphBackgroundView = UIView()
     var graphTopView = UIView()
     var graphView = UIView()
     var graphDataView: GraphView!
-    
+
     init(interactor: IProphetPricesInteractor) {
         self.interactor = interactor
-        
+
         super.init(nibName: nil, bundle: nil)
         self.screenType = .other
     }
-    
+
+	@available(*, unavailable)
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
     // MARK: View lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
 		self.makeTurnipRequest()
 		self.setupScrollView()
     }
-    
+
     func makeTurnipRequest() {
 		self.interactor.makeTurnipPricesRequest()
     }
@@ -95,7 +96,7 @@ extension ProphetPricesViewController: IProphetPricesViewController {
     func displayGraph(with data: ProphetPrices.Turnip.ViewModel.PriceForGraph) {
         graphDataView = GraphView(data: data.pricesData)
     }
-    
+
     func displayAll() {
         DispatchQueue.main.async {
             self.emptyLabel.isHidden = true
@@ -109,7 +110,7 @@ extension ProphetPricesViewController: IProphetPricesViewController {
             self.setupGraphView()
         }
     }
-    
+
     func displayEmptyScreen() {
         DispatchQueue.main.async {
             self.emptyLabel.isHidden = false
@@ -119,7 +120,7 @@ extension ProphetPricesViewController: IProphetPricesViewController {
             self.setupEmptyScreen()
         }
     }
-    
+
     private func setupEmptyScreen() {
         contentScrollView.isScrollEnabled = false
         contentScrollView.addSubview(emptyLabel)
@@ -132,7 +133,7 @@ extension ProphetPricesViewController: IProphetPricesViewController {
         emptyLabel.textAlignment = .center
         emptyLabel.numberOfLines = 0
         emptyLabel.font = UIFont(name: AppFont.maruBold.rawValue, size: AppContraints.FontsSize.defaultFont)
-        
+
         contentScrollView.addSubview(emptyImageView)
         emptyImageView.snp.makeConstraints { make in
             make.bottom.equalTo(emptyLabel.snp.top).offset(-AppContraints.midEdge)
@@ -141,7 +142,7 @@ extension ProphetPricesViewController: IProphetPricesViewController {
         }
         emptyImageView.image = UIImage(named: AppImage.Prices.daisyMae.rawValue)
     }
-    
+
     func displayDateViews(dates: ProphetPrices.Turnip.ViewModel.Dates) {
         let monText = dates.dateForView(forDayWeek: .monday)
         let tueText = dates.dateForView(forDayWeek: .tuesday)
@@ -149,7 +150,7 @@ extension ProphetPricesViewController: IProphetPricesViewController {
         let thuText = dates.dateForView(forDayWeek: .thursday)
         let friText = dates.dateForView(forDayWeek: .friday)
         let satText = dates.dateForView(forDayWeek: .saturday)
-        
+
         DispatchQueue.main.async {
             self.monView = WeekView.setupWeekView(weekDayText: monText, colors: self.colors)
             self.tueView = WeekView.setupWeekView(weekDayText: tueText, colors: self.colors)
@@ -160,7 +161,7 @@ extension ProphetPricesViewController: IProphetPricesViewController {
             self.setupPriceView()
         }
     }
-	
+
     func displayPrices(prices: ProphetPrices.Turnip.ViewModel.Prices) {
         let monMorPrices = prices.getDayPrice(for: .mondayMorning)
         let monEvePrices = prices.getDayPrice(for: .mondayEvening)
@@ -174,23 +175,23 @@ extension ProphetPricesViewController: IProphetPricesViewController {
         let friEvePrices = prices.getDayPrice(for: .fridayEvening)
         let satMorPrices = prices.getDayPrice(for: .saturdayMorning)
         let satEvePrices = prices.getDayPrice(for: .saturdayEvening)
-        
+
         DispatchQueue.main.async {
             self.monMorPriceView = self.makePriceView(prices: monMorPrices)
             self.monEvePriceView = self.makePriceView(prices: monEvePrices)
-            
+
             self.tueMorPriceView = self.makePriceView(prices: tueMorPrices)
             self.tueEvePriceView = self.makePriceView(prices: tueEvePrices)
-            
+
             self.wedMorPriceView = self.makePriceView(prices: wedMorPrices)
             self.wedEvePriceView = self.makePriceView(prices: wedEvePrices)
-            
+
             self.thuMorPriceView = self.makePriceView(prices: thuMorPrices)
             self.thuEvePriceView = self.makePriceView(prices: thuEvePrices)
-            
+
             self.friMorPriceView = self.makePriceView(prices: friMorPrices)
             self.friEvePriceView = self.makePriceView(prices: friEvePrices)
-            
+
             self.satMorPriceView = self.makePriceView(prices: satMorPrices)
             self.satEvePriceView = self.makePriceView(prices: satEvePrices)
             self.priceMinValueLabel.text = AppTitle.Prophet.priceMinValue + "\( prices.minimumPrice)"
@@ -222,7 +223,8 @@ fileprivate extension ProphetPricesViewController {
         priceBackgroundView.backgroundColor = colors?.cellColorSet.backgroundViewColor
         priceBackgroundView.layer.cornerRadius = AppContraints.CellSizes.cellCornerRadius
         priceBackgroundView.layer.masksToBounds = true
-        priceTopView = customView?.setupTopView(text: AppTitle.Prophet.priceTitle, AppTitle.Prophet.priceForOval) ?? UIView()
+        priceTopView = customView?.setupTopView(text: AppTitle.Prophet.priceTitle,
+												AppTitle.Prophet.priceForOval) ?? UIView()
         priceBackgroundView.addSubview(priceTopView)
         priceTopView.snp.makeConstraints { make in
             make.top.leading.trailing.equalTo(priceBackgroundView)
@@ -256,7 +258,7 @@ fileprivate extension ProphetPricesViewController {
         morningView.backgroundColor = colors?.cellColorSet.topViewColor
         morningView.layer.cornerRadius = AppContraints.ProphetPrices.cornerRadius
         morningView.layer.masksToBounds = true
-        
+
         morningView.addSubview(morningImageView)
         morningImageView.snp.makeConstraints { make in
             make.centerX.centerY.equalTo(morningView)
@@ -264,7 +266,7 @@ fileprivate extension ProphetPricesViewController {
         }
         morningImageView.image = UIImage(systemName: AppImage.Turnip.morning.rawValue)
         morningImageView.tintColor = colors?.cellColorSet.titleTextColor
-        
+
         thirdTurnipColumn.addSubview(eveningView)
         eveningView.snp.makeConstraints { make in
             make.centerX.equalTo(thirdTurnipColumn)
@@ -275,7 +277,7 @@ fileprivate extension ProphetPricesViewController {
         eveningView.backgroundColor = colors?.cellColorSet.topViewColor
         eveningView.layer.cornerRadius = AppContraints.ProphetPrices.cornerRadius
         eveningView.layer.masksToBounds = true
-        
+
         eveningView.addSubview(eveningImageView)
         eveningImageView.snp.makeConstraints { make in
             make.centerX.centerY.equalTo(eveningView)
@@ -284,7 +286,7 @@ fileprivate extension ProphetPricesViewController {
         eveningImageView.image = UIImage(systemName: AppImage.Turnip.evening.rawValue)
         eveningImageView.tintColor = colors?.cellColorSet.titleTextColor
     }
-    
+
     func makeFirstColumnViews() {
         firstTurnipColumn.addSubview(monView)
         monView.snp.makeConstraints { make in
@@ -330,7 +332,7 @@ fileprivate extension ProphetPricesViewController {
             make.bottom.equalTo(firstTurnipColumn).offset(-AppContraints.midEdge)
         }
     }
-    
+
     func makeSecondColumnViews() {
         secondTurnipColumn.addSubview(monMorPriceView)
         monMorPriceView.snp.makeConstraints { make in
@@ -416,7 +418,7 @@ fileprivate extension ProphetPricesViewController {
         priceMinValueLabel.textAlignment = .center
         priceMinValueLabel.font = UIFont(name: AppFont.maruBold.rawValue, size: AppContraints.FontsSize.purchaseFont)
     }
-	
+
     func setupGraphView() {
         contentScrollView.addSubview(graphBackgroundView)
         graphBackgroundView.snp.makeConstraints { make in
@@ -429,7 +431,9 @@ fileprivate extension ProphetPricesViewController {
         graphBackgroundView.backgroundColor = colors?.cellColorSet.backgroundViewColor
         graphBackgroundView.layer.cornerRadius = AppContraints.CellSizes.cellCornerRadius
         graphBackgroundView.layer.masksToBounds = true
-        graphTopView = customView?.setupTopView(text: AppTitle.Prophet.graphTitle, AppTitle.Prophet.graphForOval) ?? UIView()
+        graphTopView = customView?.setupTopView(text: AppTitle.Prophet.graphTitle,
+												AppTitle.Prophet.graphForOval)
+			?? UIView()
         graphBackgroundView.addSubview(graphTopView)
         graphTopView.snp.makeConstraints { make in
             make.top.leading.trailing.equalTo(graphBackgroundView)
@@ -450,7 +454,7 @@ fileprivate extension ProphetPricesViewController {
     }
 }
 
-// MARK: -  Reusible View
+// MARK: - Reusible View
 fileprivate extension ProphetPricesViewController {
     func makePriceView(prices: ProphetPrices.Turnip.ViewModel.DayPrices) -> UIView {
         let view = UIView()
@@ -481,7 +485,7 @@ fileprivate extension ProphetPricesViewController {
             patternLabel.text = "\(prices.patternPrice.first ?? 0) to \(prices.patternPrice.last ?? 0)"
             patternLabel.textAlignment = .right
             patternLabel.font = UIFont(name: AppFont.maruLight.rawValue, size: AppContraints.FontsSize.weekViewFont)
-            
+
             let expectedPriceLabel = UILabel()
             view.addSubview(expectedPriceLabel)
             expectedPriceLabel.snp.makeConstraints { make in
@@ -492,7 +496,8 @@ fileprivate extension ProphetPricesViewController {
             expectedPriceLabel.textColor = colors?.cellColorSet.itemTextColor
             expectedPriceLabel.text = "Exp: \(prices.expectedPrice)"
             expectedPriceLabel.textAlignment = .left
-            expectedPriceLabel.font = UIFont(name: AppFont.maruBold.rawValue, size: AppContraints.FontsSize.weekViewFont)
+            expectedPriceLabel.font = UIFont(name: AppFont.maruBold.rawValue,
+											 size: AppContraints.FontsSize.weekViewFont)
         }
         return view
     }

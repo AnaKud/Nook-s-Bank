@@ -50,13 +50,13 @@ struct AppTitle {
     struct Prophet {
         static let priceForOval = "P"
         static let priceTitle = "Prophet Turnips' Prices"
-        
+
         static let graphForOval = "G"
         static let graphTitle = "Graph of price changing"
         static let emptyLabel = "Your response was empty. \nNo data to display"
         static let priceMinValue = "Garanted minimum price: "
     }
-    
+
     struct PassCode {
         static let forgetTitle = "Forget Password?"
     }

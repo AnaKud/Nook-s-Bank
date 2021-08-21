@@ -13,34 +13,39 @@ protocol ITurnipPresenter {
     func dateForView(forDayWeek dayWeek: WeekDay) -> String?
     func dataForTextField(for textFiled: TurnipTextFieldText) -> String
     func buyCalculateButtonTapped(buyPrice: String?, turnipCount: String?)
-    func turnipPriceCalculateButtonTapped(mondayMorning: String?, mondayEvening: String?, tuesdayMorning: String?, tuesdayEvening: String?, wednesdayMorning: String?, wednesdayEvening: String?, thursdayMorning: String?, thursdayEvening: String?, fridayMorning: String?, fridayEvening: String?, saturdayMorning: String?, saturdayEvening: String?)
+	// swiftlint:disable:next function_parameter_count
+    func turnipPriceCalculateButtonTapped(mondayMorning: String?, mondayEvening: String?,
+										  tuesdayMorning: String?, tuesdayEvening: String?,
+										  wednesdayMorning: String?, wednesdayEvening: String?,
+										  thursdayMorning: String?, thursdayEvening: String?,
+										  fridayMorning: String?, fridayEvening: String?,
+										  saturdayMorning: String?, saturdayEvening: String?)
     func sellCalculateButtonTapped(sellPrice: String?, turnipCount: String?)
 }
 
 class TurnipPresenter: ITurnipPresenter {
-    
     var firebaseManager: ITurnipFireBaseManager
     var coreDataManger: ITurnipCoreDataManager
     var router: ITurnipRouter
-    
+
     var screenType: ScreenTypes?
     var turnipPrices: TurnipPrices?
     var turnipCoreData: TurnipPrices?
     var lastSunday = DatesOfCurrentWeek().getLastSunday()
     var dates = DatesOfCurrentWeek().getWeekDates()
     var view: ITurnipViewController?
-    
+
     init(firebaseManager: ITurnipFireBaseManager, coreDataManger: ITurnipCoreDataManager, router: ITurnipRouter) {
         self.firebaseManager = firebaseManager
         self.coreDataManger = coreDataManger
         self.router = router
         self.checkToCleanCoreData()
     }
-    
-    func loadView(with view: ITurnipViewController){
+
+    func loadView(with view: ITurnipViewController) {
         self.view = view
     }
-    
+
     func buyCalculateButtonTapped(buyPrice: String?, turnipCount: String?) {
         guard let buyPrice = buyPrice,
               let price = Int(buyPrice)
@@ -54,26 +59,67 @@ class TurnipPresenter: ITurnipPresenter {
             self.turnipPrices = turnip
             self.addToCoreData()
             self.addDataToFireBase(price: price, count: turnipCount, operationType: .minus)
-            
         } else {
-            let turnip = TurnipPrices(sunday: self.turnipPrices?.sundayDate, buyPrice: price, turnipCount: turnipCount, mondayMorning: self.turnipPrices?.mondayMorning, mondayEvening: self.turnipPrices?.mondayEvening, tuesdayMorning: self.turnipPrices?.tuesdayMorning, tuesdayEvening: self.turnipPrices?.tuesdayEvening, wednesdayMorning: self.turnipPrices?.wednesdayMorning, wednesdayEvening: self.turnipPrices?.wednesdayEvening, thursdayMorning: self.turnipPrices?.thursdayMorning, thursdayEvening: self.turnipPrices?.thursdayEvening, fridayMorning: self.turnipPrices?.fridayMorning, fridayEvening: self.turnipPrices?.fridayEvening, saturdayMorning: self.turnipPrices?.saturdayMorning, saturdayEvening: self.turnipPrices?.saturdayEvening, sellPrice: self.turnipPrices?.sellPrice)
+            let turnip = TurnipPrices(sunday: self.turnipPrices?.sundayDate,
+									  buyPrice: price,
+									  turnipCount: turnipCount,
+									  mondayMorning: self.turnipPrices?.mondayMorning,
+									  mondayEvening: self.turnipPrices?.mondayEvening,
+									  tuesdayMorning: self.turnipPrices?.tuesdayMorning,
+									  tuesdayEvening: self.turnipPrices?.tuesdayEvening,
+									  wednesdayMorning: self.turnipPrices?.wednesdayMorning,
+									  wednesdayEvening: self.turnipPrices?.wednesdayEvening,
+									  thursdayMorning: self.turnipPrices?.thursdayMorning,
+									  thursdayEvening: self.turnipPrices?.thursdayEvening,
+									  fridayMorning: self.turnipPrices?.fridayMorning,
+									  fridayEvening: self.turnipPrices?.fridayEvening,
+									  saturdayMorning: self.turnipPrices?.saturdayMorning,
+									  saturdayEvening: self.turnipPrices?.saturdayEvening,
+									  sellPrice: self.turnipPrices?.sellPrice)
             self.turnipPrices = turnip
             self.updateToCoreData()
         }
     }
-    
-    func turnipPriceCalculateButtonTapped(mondayMorning: String?, mondayEvening: String?, tuesdayMorning: String?, tuesdayEvening: String?, wednesdayMorning: String?, wednesdayEvening: String?, thursdayMorning: String?, thursdayEvening: String?, fridayMorning: String?, fridayEvening: String?, saturdayMorning: String?, saturdayEvening: String?) {
-        let prices = TurnipPrices(sundayDate: self.turnipPrices?.sundayDate, buyPrice: self.turnipPrices?.buyPrice ?? 0, turnipCount: self.turnipPrices?.buyPrice, mondayMorning: mondayMorning, mondayEvening: mondayEvening, tuesdayMorning: tuesdayMorning, tuesdayEvening: tuesdayEvening, wednesdayMorning: wednesdayMorning, wednesdayEvening: wednesdayEvening, thursdayMorning: thursdayMorning, thursdayEvening: thursdayEvening, fridayMorning: fridayMorning, fridayEvening: fridayEvening, saturdayMorning: saturdayMorning, saturdayEvening: saturdayEvening, sellPrice: self.turnipPrices?.sellPrice)
-        
+	// swiftlint:disable:next function_parameter_count 
+    func turnipPriceCalculateButtonTapped(mondayMorning: String?,
+										  mondayEvening: String?,
+										  tuesdayMorning: String?,
+										  tuesdayEvening: String?,
+										  wednesdayMorning: String?,
+										  wednesdayEvening: String?,
+										  thursdayMorning: String?,
+										  thursdayEvening: String?,
+										  fridayMorning: String?,
+										  fridayEvening: String?,
+										  saturdayMorning: String?,
+										  saturdayEvening: String?) 
+	{
+        let prices = TurnipPrices(sundayDate: self.turnipPrices?.sundayDate,
+								  buyPrice: self.turnipPrices?.buyPrice ?? 0,
+								  turnipCount: self.turnipPrices?.buyPrice,
+								  mondayMorning: mondayMorning,
+								  mondayEvening: mondayEvening,
+								  tuesdayMorning: tuesdayMorning,
+								  tuesdayEvening: tuesdayEvening,
+								  wednesdayMorning: wednesdayMorning,
+								  wednesdayEvening: wednesdayEvening,
+								  thursdayMorning: thursdayMorning,
+								  thursdayEvening: thursdayEvening,
+								  fridayMorning: fridayMorning,
+								  fridayEvening: fridayEvening,
+								  saturdayMorning: saturdayMorning,
+								  saturdayEvening: saturdayEvening,
+								  sellPrice: self.turnipPrices?.sellPrice)
+
         self.turnipPrices = prices
         self.updateToCoreData()
         self.router.routeToProphetPricesVC(with: prices)
     }
-    
+
     func sellCalculateButtonTapped(sellPrice: String?, turnipCount: String?) {
         print("sellPrice")
     }
-    
+
     func dateForView(forDayWeek dayWeek: WeekDay) -> String? {
         switch dayWeek {
         case .monday:
@@ -90,7 +136,7 @@ class TurnipPresenter: ITurnipPresenter {
             return dates?[dayWeek.rawValue]
         }
     }
-    
+
     func dataForTextField(for textFiled: TurnipTextFieldText) -> String {
         var number: Int?
         switch textFiled {
@@ -133,11 +179,11 @@ class TurnipPresenter: ITurnipPresenter {
             return ""
         }
     }
-    
+
     private func addDataToFireBase(price: Int, count: Int?, operationType: OperationType) {
-        guard let count = count, count > 0 else { return }
-        let value = price * count
-        let expense = ExpenseFB(value: value, operationType: operationType, expenseType: .Turnip)
+        guard let countInt = count, countInt > 0 else { return }
+        let value = price * countInt
+        let expense = ExpenseFB(value: value, operationType: operationType, expenseType: .turnip)
         switch screenType {
         case .loggined:
             self.firebaseManager.addExpenseToFb(expense: expense)
@@ -146,15 +192,19 @@ class TurnipPresenter: ITurnipPresenter {
             case .plus:
                 let currentValue = DemoBankData.account.currentValue + value
                 DemoBankData.account.currentValue = currentValue
-                DemoBankData.account.expenses?.append(ExpenseViewModel(value: value, operationType: operationType, expenseType: .Turnip))
+                DemoBankData.account.expenses?.append(ExpenseViewModel(value: value,
+																	   operationType: operationType,
+																	   expenseType: .turnip))
             case .minus:
                 let currentValue = DemoBankData.account.currentValue - value
                 DemoBankData.account.currentValue = currentValue
-                DemoBankData.account.expenses?.append(ExpenseViewModel(value: value, operationType: operationType, expenseType: .Turnip))
+                DemoBankData.account.expenses?.append(ExpenseViewModel(value: value,
+																	   operationType: operationType,
+																	   expenseType: .turnip))
             }
         }
     }
-    
+
     private func addToCoreData() {
         guard let turnipPrices = self.turnipPrices else {
             print(" core data error")
@@ -162,7 +212,7 @@ class TurnipPresenter: ITurnipPresenter {
         }
         self.coreDataManger.addTurnip(turnip: turnipPrices)
     }
-    
+
     private func updateToCoreData() {
         guard let turnipPrices = self.turnipPrices else {
             print(" core data error")
@@ -170,11 +220,11 @@ class TurnipPresenter: ITurnipPresenter {
         }
         self.coreDataManger.updateTurnip(turnip: turnipPrices)
     }
-    
+
     private func fetchTurnipFromCoreData() {
         self.turnipCoreData = self.coreDataManger.loadTurnip()
     }
-    
+
     private func checkToCleanCoreData() {
         self.fetchTurnipFromCoreData()
         if turnipCoreData?.sundayDate != lastSunday {

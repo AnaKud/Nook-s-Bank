@@ -42,10 +42,21 @@ enum ProphetPrices {
                 self.fridayEvening = model?.fridayEvening
                 self.saturdayMorning = model?.saturdayMorning
                 self.saturdayEvening = model?.saturdayEvening
-                
             }
             func pricesArray() -> [Int?] {
-                return [self.mondayMorning, self.mondayEvening, self.tuesdayMorning, self.tuesdayEvening, self.wednesdayMorning, self.wednesdayEvening, self.thursdayMorning, self.thursdayEvening, self.fridayMorning, self.fridayEvening, self.saturdayMorning, self.saturdayEvening]
+                return [self.mondayMorning,
+						self.mondayEvening,
+						self.tuesdayMorning,
+						self.tuesdayEvening,
+						self.wednesdayMorning,
+						self.wednesdayEvening,
+						self.thursdayMorning,
+						self.thursdayEvening,
+						self.fridayMorning,
+						self.fridayEvening,
+						self.saturdayMorning,
+						self.saturdayEvening,
+				]
             }
         }
         struct Response {
@@ -89,8 +100,8 @@ enum ProphetPrices {
                     } else {
                         var result = [Double]()
                         var index = 0
-                        for i in prices.existingPrices {
-                            if let item = i {
+                        for item in prices.existingPrices {
+                            if let item = item {
                                 result.append(Double(item))
                             } else {
                                 result.append(Double(prices.expectedPrices[index]))
@@ -101,17 +112,17 @@ enum ProphetPrices {
                     }
                 }
             }
-            
+
             struct DayPrices {
                 let priceType: PriceType
                 let existingPrice: Int?
                 let patternPrice: [Int]
                 let expectedPrice: Int
             }
-            
+
             struct Dates {
                 let dates: [String]? = DatesOfCurrentWeek().getWeekDates()
-                
+
                 func dateForView(forDayWeek dayWeek: WeekDay) -> String? {
                     let index = dayWeek.rawValue
                     return dates?[index]
@@ -122,19 +133,19 @@ enum ProphetPrices {
     enum PriceType: Int {
         case mondayMorning
         case mondayEvening
-        
+
         case tuesdayMorning
         case tuesdayEvening
-        
+
         case wednesdayMorning
         case wednesdayEvening
-        
+
         case thursdayMorning
         case thursdayEvening
-        
+
         case fridayMorning
         case fridayEvening
-        
+
         case saturdayMorning
         case saturdayEvening
     }

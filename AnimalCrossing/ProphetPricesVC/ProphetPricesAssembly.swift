@@ -9,7 +9,6 @@ import UIKit
 
 class ProphetPricesAssembly {
     func build(with prices: TurnipPrices) -> ProphetPricesViewController {
-       
         let networkManager: IProphetPricesNetworkManager = NetworkManager.shared
         let worker = ProphetPricesWorker(networkManager: networkManager)
         var presenter: IProphetPricesPresenter = ProphetPricesPresenter()

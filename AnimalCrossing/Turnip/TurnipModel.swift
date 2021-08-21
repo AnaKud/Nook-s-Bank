@@ -9,10 +9,10 @@ import Foundation
 
 class TurnipPrices {
     var sundayDate: Date?
-    
+
     var buyPrice: Int
     var turnipCount: Int?
-    
+
     var mondayMorning: Int?
     var mondayEvening: Int?
     var tuesdayMorning: Int?
@@ -25,15 +25,22 @@ class TurnipPrices {
     var fridayEvening: Int?
     var saturdayMorning: Int?
     var saturdayEvening: Int?
-    
+
     var sellPrice: Int?
-    
+
     init(sundayDate: Date?, buyPrice: Int, turnipCount: Int?) {
         self.sundayDate = sundayDate
         self.buyPrice = buyPrice
         self.turnipCount = turnipCount
     }
-    init(sundayDate: Date?, buyPrice: Int, turnipCount: Int?, mondayMorning: String?, mondayEvening: String?, tuesdayMorning: String?, tuesdayEvening: String?, wednesdayMorning: String?, wednesdayEvening: String?, thursdayMorning: String?, thursdayEvening: String?, fridayMorning: String?, fridayEvening: String?, saturdayMorning: String?, saturdayEvening: String?, sellPrice: Int?) {
+    init(sundayDate: Date?, buyPrice: Int, turnipCount: Int?,
+		 mondayMorning: String?, mondayEvening: String?,
+		 tuesdayMorning: String?, tuesdayEvening: String?,
+		 wednesdayMorning: String?, wednesdayEvening: String?,
+		 thursdayMorning: String?, thursdayEvening: String?,
+		 fridayMorning: String?, fridayEvening: String?,
+		 saturdayMorning: String?, saturdayEvening: String?,
+		 sellPrice: Int?) {
         self.sundayDate = sundayDate
         self.buyPrice = buyPrice
         self.turnipCount = turnipCount
@@ -51,7 +58,14 @@ class TurnipPrices {
         self.saturdayEvening = Int(saturdayEvening ?? "0")
         self.sellPrice = sellPrice
     }
-    init(sunday: Date?, buyPrice: Int, turnipCount: Int?, mondayMorning: Int?, mondayEvening: Int?, tuesdayMorning: Int?, tuesdayEvening: Int?, wednesdayMorning: Int?, wednesdayEvening: Int?, thursdayMorning: Int?, thursdayEvening: Int?, fridayMorning: Int?, fridayEvening: Int?, saturdayMorning: Int?, saturdayEvening: Int?, sellPrice: Int?) {
+    init(sunday: Date?, buyPrice: Int, turnipCount: Int?,
+		 mondayMorning: Int?, mondayEvening: Int?,
+		 tuesdayMorning: Int?, tuesdayEvening: Int?,
+		 wednesdayMorning: Int?, wednesdayEvening: Int?,
+		 thursdayMorning: Int?, thursdayEvening: Int?,
+		 fridayMorning: Int?, fridayEvening: Int?,
+		 saturdayMorning: Int?, saturdayEvening: Int?,
+		 sellPrice: Int?) {
         self.sundayDate = sunday
         self.buyPrice = buyPrice
         self.turnipCount = turnipCount
@@ -86,12 +100,21 @@ class TurnipPrices {
         self.saturdayMorning = Int(model.saturdayMorning)
         self.saturdayEvening = Int(model.saturdayEvening)
     }
-    
+
     func pricesArray() -> [Int?] {
-        return [self.mondayMorning, self.mondayEvening, self.tuesdayMorning, self.tuesdayEvening, self.wednesdayMorning, self.wednesdayEvening, self.thursdayMorning, self.thursdayEvening, self.fridayMorning, self.fridayEvening, self.saturdayMorning, self.saturdayEvening]
+        return [self.mondayMorning,
+				self.mondayEvening,
+				self.tuesdayMorning,
+				self.tuesdayEvening,
+				self.wednesdayMorning,
+				self.wednesdayEvening,
+				self.thursdayMorning,
+				self.thursdayEvening,
+				self.fridayMorning,
+				self.fridayEvening,
+				self.saturdayMorning,
+				self.saturdayEvening]
     }
-    
-    
 }
 
 struct TurnipResponse: Codable {

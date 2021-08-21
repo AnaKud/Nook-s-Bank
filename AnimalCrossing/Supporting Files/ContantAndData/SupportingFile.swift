@@ -27,7 +27,7 @@ enum WeekDay: Int {
 enum TurnipTextFieldText {
     case buyPrice
     case buyCount
-    
+
     case mondayMorning
     case mondayEvening
 
@@ -45,7 +45,7 @@ enum TurnipTextFieldText {
 
     case saturdayMorning
     case saturdayEvening
-    
+
     case sellPrice
     case sellCount
 }
@@ -73,10 +73,10 @@ enum CellReusibleID: String {
 }
 
 struct DemoBankData {
-    static var account = BankViewModel(currentValue: 100500,
+    static var account = BankViewModel(currentValue: 100_500,
                                        expenses: [ExpenseViewModel(value: 1452, operationType: .plus),
                                                   ExpenseViewModel(value: 1248, operationType: .minus),
                                                   ExpenseViewModel(value: 3248, operationType: .minus),
-                                                  ExpenseViewModel(value: 74532, operationType: .plus),
-                                                  ExpenseViewModel(value: 29012, operationType: .plus, expenseType: .Other)])
+                                                  ExpenseViewModel(value: 74_532, operationType: .plus),
+                                                  ExpenseViewModel(value: 29_012, operationType: .plus, expenseType: .other)])
 }

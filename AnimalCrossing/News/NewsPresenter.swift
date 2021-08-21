@@ -13,7 +13,6 @@ protocol INewsPresenter {
     func cellCount() -> Int
     func itemForCell(index: Int) -> NewsViewModel
     func cellPressed(index: Int)
-    
 }
 
 class NewsPresenter: INewsPresenter {
@@ -21,20 +20,20 @@ class NewsPresenter: INewsPresenter {
     var coreData: INewsCoreDataManager
     var router: INewsRouter
     private var view: INewsViewController?
-    
+
     var newsFromInternet = [NewsResponse]()
     var newsViewModel = [NewsViewModel]()
     var newsFromCoreData = [NewsViewModel]()
-    
+
     init(networkManager: INewsNetworkManager, coreData: INewsCoreDataManager, router: INewsRouter) {
         self.networkManager = networkManager
         self.coreData = coreData
         self.router = router
         self.makeRequest()
     }
-    
+
     func makeRequest() {
-        //self.view?.displayActivity()
+        // self.view?.displayActivity()
         self.networkManager.downloadNews(link: .events) { data in
             if let events = data {
                 self.newsFromInternet = events
@@ -53,19 +52,19 @@ class NewsPresenter: INewsPresenter {
             self.refreshView()
         }
     }
-    
+
     func loadView(view: INewsViewController) {
         self.view = view
     }
-    
+
     func cellCount() -> Int {
         return self.newsViewModel.count
     }
-    
+
     func itemForCell(index: Int) -> NewsViewModel {
         return newsViewModel[index]
     }
-    
+
     func cellPressed(index: Int) {
         print("cell pressed")
         let event = self.itemForCell(index: index)
@@ -78,18 +77,17 @@ class NewsPresenter: INewsPresenter {
     private func saveToCoreData(event: NewsViewModel) {
             self.coreData.addNews(news: event)
     }
-    
+
     private func cleanCoreData() {
-        //DispatchQueue.main.sync {
+        // DispatchQueue.main.sync {
             self.coreData.deleteAllNews()
-        //}
+        // }
     }
 
     private func refreshView() {
         self.view?.refreshView()
     }
 }
-
 
 fileprivate extension NewsPresenter {
     private func sortEventsFromInternetByDay(events: [NewsResponse]) -> [NewsResponse] {
@@ -103,11 +101,11 @@ fileprivate extension NewsPresenter {
         }
         return Array(subArray)
     }
-    
+
     private func sortEventsFromCoreDataByDay(events: [NewsViewModel]) -> [NewsViewModel] {
         let today = Date()
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "dd MMM yyyy" //"yyyy-MM-dd" //
+        dateFormatter.dateFormat = "dd MMM yyyy" // "yyyy-MM-dd" //
         let todayString = dateFormatter.string(from: today)
         print(todayString)
         let subArray = events.drop { event in
@@ -115,14 +113,14 @@ fileprivate extension NewsPresenter {
         }
         return Array(subArray)
     }
-    
+
     private func convertFromInternetToVM(eventsFromInternet: [NewsResponse]) -> [NewsViewModel] {
         var newsVM = [NewsViewModel]()
         let subArray = self.sortEventsFromInternetByDay(events: eventsFromInternet)
         for item in subArray {
             let newItemVM = NewsViewModel(fromInternet: item)
             newsVM.append(newItemVM)
-            self.saveToCoreData (event: newItemVM)
+            self.saveToCoreData(event: newItemVM)
         }
         return newsVM
     }

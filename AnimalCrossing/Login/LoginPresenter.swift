@@ -31,7 +31,7 @@ class LoginPresenter {
     var router: ILoginRouter
     var keychainService: IKeychainService
     var view: ILoginViewController?
-    
+
     init(fireBaseManager: ILoginFireBaseManager, router: ILoginRouter, keychainService: IKeychainService) {
         self.fireBaseManager = fireBaseManager
         self.router = router
@@ -44,7 +44,7 @@ extension LoginPresenter: ILoginPresenter {
 	func logout() {
 		print("log")
 	}
-	
+
     func loginButtonTapped(email: String?, password: String?) {
         self.checkEmail(email: email)
         guard let email = email, let password = password, password != "" else {
@@ -54,20 +54,20 @@ extension LoginPresenter: ILoginPresenter {
         self.fireBaseManager.login(withEmail: email, withPassword: password)
         self.keychainService.savePassword(account: email, password: password)
     }
-    
+
     func openWithoutLogin() {
         UserDefaults.standard.setValue(true, forKey: "simpleLogin")
         self.screenType = .unloggined
         self.titleForViewContoller = AppTitle.nookBank
         self.router.goToNextWithoutLogin(withScreenType: screenType)
     }
-    
+
     func openWithLogin() {
         self.screenType = .loggined
         self.titleForViewContoller = AppTitle.nookBank
         self.router.goToNextWithLogin(withScreenType: screenType)
     }
-    
+
     func registerButtonTapped(email: String?, password: String?) {
         self.checkEmail(email: email)
         guard let email = email, let password = password, password != "" else {
@@ -76,33 +76,32 @@ extension LoginPresenter: ILoginPresenter {
         }
         self.view?.showUserNameAlert(withEmail: email, withPassword: password)
     }
-    
+
     func registerUser(withUserName name: String, withEmail email: String, withPassword password: String) {
         self.fireBaseManager.register(withUserName: name, withEmail: email, withPassword: password)
     }
-    
+
     func openForRegister() {
         self.showWarningLabel(withWarningText: LoginWarnings.sucssessRegister.rawValue)
     }
-    
+
     func viewDidLoad(view: LoginViewController) {
         self.view = view
         self.setupView()
     }
-    
+
     func showWarningLabel(withWarningText warningText: String) {
         self.view?.showWarningLabel(withWarningText: warningText)
     }
-    
+
     func forgetButtonTapped() {
         print("forgetButtonTapped")
         UserDefaults.standard.setValue(false, forKey: "simpleLogin")
-        self.setupScreenType() 
+        self.setupScreenType()
         self.router.reloadLoginView(withScreenType: screenType)
     }
-    
+
     func touchIdButtonTapped() {
-        
         print("touchIdButtonTapped")
         UserDefaults.standard.setValue(true, forKey: "simpleLogin")
           //  .setValue("true", forKey: "simpleLogin")
@@ -111,7 +110,7 @@ extension LoginPresenter: ILoginPresenter {
             print(result)
         }
     }
-    
+
     private func setupScreenType() {
         print("userDef \(UserDefaults.standard.value(forKey: "simpleLogin"))")
         guard let value = UserDefaults.standard.value(forKey: "simpleLogin") as? Bool else {
@@ -123,9 +122,8 @@ extension LoginPresenter: ILoginPresenter {
         } else {
             screenType = .loginScreen
         }
-        
     }
-    
+
     private func setupView() {
         switch screenType {
         case .loginScreen:
@@ -134,7 +132,7 @@ extension LoginPresenter: ILoginPresenter {
             self.view?.setupSimpleLoginView()
         }
     }
-    
+
     private func checkEmail(email: String?) {
         guard let email = email,
               email != "",
@@ -152,4 +150,3 @@ extension LoginPresenter: IPresenterForFireBaseManager {
         self.view?.showErrorAlert(withMessage: error)
     }
 }
-

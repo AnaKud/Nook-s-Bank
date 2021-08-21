@@ -8,22 +8,17 @@
 import Foundation
 
 protocol IUserSettingsInteractor {
-    
 }
 
 class UserSettingsInteractor {
     var presenter: IUserSettingsPresenter
     var worker: UserSettingsWorker
-   
-    
+
       init(presenter: IUserSettingsPresenter, worker: UserSettingsWorker) {
           self.presenter = presenter
           self.worker = worker
       }
-    
 }
 
 extension UserSettingsInteractor: IUserSettingsInteractor {
-    
-    
 }

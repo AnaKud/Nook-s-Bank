@@ -5,9 +5,9 @@
 //  Created by Anastasiya Kudasheva on 06.06.2021.
 //
 
-import UIKit
 import CoreData
 import Firebase
+import UIKit
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -23,7 +23,5 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func application(_ application: UIApplication, didDiscardSceneSessions sceneSessions: Set<UISceneSession>) {
-
     }
 }
-

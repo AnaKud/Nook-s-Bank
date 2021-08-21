@@ -9,23 +9,23 @@ import UIKit
 
 class CustomView {
     var colorSet: ColorSet?
-    
+
     init(for screenType: ScreenTypes?) {
         self.colorSet = ColorSet(for: screenType)
     }
-    
+
     init(colorSet: ColorSet?) {
         self.colorSet = colorSet
     }
-    
+
     func setupTopView(text: String, _ firstCharacter: String) -> UIView {
         let topView = UIView()
         topView.snp.makeConstraints { make in
             make.height.equalTo(AppContraints.CellSizes.topViewHeight)
         }
         topView.backgroundColor = colorSet?.cellColorSet.topViewColor
-        
-        let circleView = self.makeCircleView(circleViewSize: AppContraints.CellSizes.circleViewSize, firstCharacter: firstCharacter) 
+
+        let circleView = self.makeCircleView(circleViewSize: AppContraints.CellSizes.circleViewSize, firstCharacter: firstCharacter)
         topView.addSubview(circleView)
         circleView.snp.makeConstraints { make in
             make.leading.equalTo(topView).offset(AppContraints.CellSizes.cellBgEdge)
@@ -45,7 +45,7 @@ class CustomView {
         label.textColor = colorSet?.cellColorSet.titleTextColor
         return topView
     }
-    
+
     func makeTextField(height: CGFloat, cornerRadius: CGFloat, editable: Bool) -> UITextField {
         let textfield = UITextField()
         textfield.font = UIFont(name: AppFont.maruLight.rawValue, size: AppContraints.FontsSize.defaultFont)
@@ -60,7 +60,7 @@ class CustomView {
         textfield.rightView = UIView(frame: CGRect(x: 0, y: 0, width: AppContraints.minEdge, height: textfield.frame.height))
         return textfield
     }
-    
+
     func makeTextField(withPlacehoder placeholder: String, height: CGFloat, cornerRadius: CGFloat, withImageName imageName: String, isSecureTextEntry: Bool) -> UITextField {
         let textfield = UITextField()
         textfield.placeholder = placeholder
@@ -79,11 +79,11 @@ class CustomView {
         textfield.rightView = UIView(frame: CGRect(x: 0, y: 0, width: AppContraints.midEdge, height: textfield.frame.height))
         return textfield
     }
-    
+
     func makeImageLeftViewTF(withImageName imageName: String) -> UIView {
         let viewWithImage = UIView()
         guard let image = UIImage(systemName: imageName) else { return viewWithImage }
-        
+
         let imageView = UIImageView(image: image)
         imageView.image = imageView.image?.withRenderingMode(.alwaysTemplate)
         imageView.tintColor = colorSet?.textfieldColor.imageColor
@@ -94,7 +94,7 @@ class CustomView {
         }
         return viewWithImage
     }
-    
+
     func makeOvalButtonWithCircle(withTitle buttonTitle: String, buttonWidth: CGFloat, buttonHeight: CGFloat) -> UIButton {
         let button = UIButton()
         button.snp.makeConstraints { make in
@@ -106,7 +106,7 @@ class CustomView {
         let buttonCornerRadius = buttonHeight / 2
         button.layer.cornerRadius = buttonCornerRadius
         button.backgroundColor = colorSet?.ovalButtonColor.buttonColor
-        
+
         let firstCharacter: String = "\(buttonTitle.first ?? "+")"
         let circleViewSize = buttonHeight * 0.7
         let circleEdges = (buttonHeight - circleViewSize) / 2
@@ -131,7 +131,7 @@ class CustomView {
         titleLabel.font = UIFont(name: AppFont.maruBold.rawValue, size: AppContraints.FontsSize.loginButtonFont)
         return button
     }
-    
+
     func makeCircleView(circleViewSize: CGFloat, firstCharacter: String) -> UIView {
         let circleView = UIView()
         let circleViewCornerRadius = circleViewSize / 2

@@ -5,15 +5,15 @@
 //  Created by Anastasiya Kudasheva on 10.06.2021.
 //
 
-import Foundation
 import CoreData
+import Foundation
 
 protocol IPresenterForCoreDataError {
     func presentError(error: FailureCases)
 }
 
 protocol INewsCoreDataManager {
-    func loadNews()-> [NewsViewModel]
+    func loadNews() -> [NewsViewModel]
     func addNews(news: NewsViewModel)
     func deleteAllNews()
     func initErrorPresenterForNews(errorPresenter: IPresenterForCoreDataError)
@@ -28,27 +28,27 @@ protocol ITurnipCoreDataManager {
 
 class CoreDataManager {
     static let shared = CoreDataManager()
-    
+
     var errorPresenter: IPresenterForCoreDataError?
-    
+
     private enum Constant {
         static let containerName = "AnimalCrossing"
         static let news = "News"
         static let turnip = "Turnip"
     }
-    
+
     lazy var container: NSPersistentContainer = {
         let container = NSPersistentContainer(name: Constant.containerName)
-        container.loadPersistentStores(completionHandler: { (_, error) in
+        container.loadPersistentStores(completionHandler: { _, error in
             if let error = error as NSError? {
                 fatalError("Unresolved error \(error), \(error.userInfo)")
             }
         })
         return container
     }()
-    
+
     lazy var context: NSManagedObjectContext = container.viewContext
-    
+
     func saveContext () {
         if context.hasChanges {
             do {
@@ -68,13 +68,13 @@ extension CoreDataManager: INewsCoreDataManager {
             let data = try context.fetch(fetchRequest)
             print(data.count)
             return convertToNewsFromCoreData(news: data)
-        } catch let error {
+        } catch {
             self.errorPresenter?.presentError(error: .fetchError)
             print(error.localizedDescription)
         }
         return [NewsViewModel]()
     }
-    
+
     func addNews(news: NewsViewModel) {
 		let newsContext = News(context: context)
 		newsContext.date = news.date
@@ -83,12 +83,12 @@ extension CoreDataManager: INewsCoreDataManager {
 		newsContext.type = news.type
 		do {
 			try context.save()
-		} catch let error {
+		} catch {
 			self.errorPresenter?.presentError(error: .saveError)
 			print(error.localizedDescription)
 		}
     }
-    
+
     func deleteAllNews() {
         let fetchRequest: NSFetchRequest<News> = News.fetchRequest()
         if let objects = try? context.fetch(fetchRequest) {
@@ -98,12 +98,12 @@ extension CoreDataManager: INewsCoreDataManager {
         }
         do {
             try context.save()
-        } catch let error {
+        } catch {
             self.errorPresenter?.presentError(error: .deleteAllError)
             print(error.localizedDescription)
         }
     }
-    
+
     func initErrorPresenterForNews(errorPresenter: IPresenterForCoreDataError) {
         self.errorPresenter = errorPresenter
     }
@@ -116,13 +116,13 @@ extension CoreDataManager: ITurnipCoreDataManager {
             let dataArray = try context.fetch(fetchRequest)
             guard let data = dataArray.first else { return nil }
             return TurnipPrices(fromCoreData: data)
-        } catch let error {
+        } catch {
             self.errorPresenter?.presentError(error: .fetchError)
             print(error.localizedDescription)
         }
         return nil
     }
-    
+
     func addTurnip(turnip: TurnipPrices) {
         let turnipContext = Turnip(context: context)
         turnipContext.sundayDate = turnip.sundayDate
@@ -142,12 +142,12 @@ extension CoreDataManager: ITurnipCoreDataManager {
         turnipContext.saturdayEvening = Int32(turnip.saturdayEvening ?? 0)
         do {
             try context.save()
-        } catch let error {
+        } catch {
             self.errorPresenter?.presentError(error: .saveError)
             print(error.localizedDescription)
         }
     }
-    
+
     func updateTurnip(turnip: TurnipPrices) {
         let fetchRequest: NSFetchRequest<Turnip> = Turnip.fetchRequest()
         if let object = try? context.fetch(fetchRequest).first {
@@ -169,18 +169,18 @@ extension CoreDataManager: ITurnipCoreDataManager {
         }
         do {
             try context.save()
-        } catch let error {
+        } catch {
             self.errorPresenter?.presentError(error: .saveError)
             print(error.localizedDescription)
         }
     }
-    
+
     func deleteTurnip() {
         let fetchRequest: NSFetchRequest<Turnip> = Turnip.fetchRequest()
         if let object = try? context.fetch(fetchRequest).first { context.delete(object) }
         do {
             try context.save()
-        } catch let error {
+        } catch {
             self.errorPresenter?.presentError(error: .deleteAllError)
             print(error.localizedDescription)
         }
@@ -193,6 +193,4 @@ fileprivate extension CoreDataManager {
             NewsViewModel(fromCoreData: event)
         }
     }
-    
-  
 }

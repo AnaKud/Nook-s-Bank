@@ -10,23 +10,24 @@ import UIKit
 class ExpenseCollectionViewCell: UICollectionViewCell {
     var colors: ColorSet?
     var customView: CustomView?
-    
+
     let expenseTypeImageView = UIImageView()
     let valueLabel = UILabel()
     let dateLabel = UILabel()
-    
+
     private let circleWidth = AppContraints.Bank.collectionCellWidth / 2
-    
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         contentView.backgroundColor = .clear
         self.setUpLayout()
     }
-    
+
+	@available(*, unavailable)
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
+
     private func setUpLayout() {
         contentView.addSubview(expenseTypeImageView)
         expenseTypeImageView.snp.makeConstraints { make in
@@ -54,7 +55,7 @@ class ExpenseCollectionViewCell: UICollectionViewCell {
         dateLabel.textColor = colors?.bankViewColor.itemTextColor
         dateLabel.font = UIFont(name: AppFont.maruLight.rawValue, size: AppContraints.FontsSize.bankDateFont)
     }
-    
+
     func config(item: ExpenseViewModel) {
         switch item.operationType {
         case .plus:
