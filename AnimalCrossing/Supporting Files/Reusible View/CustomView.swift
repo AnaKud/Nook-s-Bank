@@ -152,3 +152,138 @@ class CustomView {
         return circleView
     }
 }
+
+final class CircleView: UIView {
+	private var circleViewSize: CGFloat
+	private var firstCharacter: String
+	private var colorSet: ColorSet
+
+	private lazy var circleViewCornerRadius = self.circleViewSize / 2
+
+	private let circleView = UIView()
+	private let circleLabel = UILabel()
+
+	init(size: CGFloat, firstCharacter: String, screenType: ScreenTypes = .other) {
+		self.circleViewSize = size
+		self.firstCharacter = firstCharacter
+		self.colorSet = ColorSet(for: screenType)
+		super.init(frame: CGRect(x: 0, y: 0, width: size, height: size))
+		self.setupLayouts()
+	}
+
+	@available(*, unavailable)
+	required init?(coder: NSCoder) {
+		fatalError("init(coder:) has not been implemented")
+	}
+
+	private func setupLayouts() {
+		self.circleView.layer.cornerRadius = circleViewCornerRadius
+		self.circleView.layer.masksToBounds = true
+		self.circleView.backgroundColor = colorSet.circleViewColor.circleColor
+		self.circleView.addSubview(circleLabel)
+		self.circleLabel.snp.makeConstraints { make in
+			make.leading.top.equalTo(circleView).offset(-1)
+			make.trailing.bottom.equalTo(circleView)
+		}
+		self.circleLabel.text = firstCharacter
+		self.circleLabel.font = UIFont(name: AppFont.maruBold.rawValue, size: 18)
+		self.circleLabel.textColor = colorSet.circleViewColor.circleTextColor
+		self.circleLabel.textAlignment = .center
+		self.circleView.layer.masksToBounds = true
+		addSubview(self.circleView)
+	}
+}
+
+class DefaultView: UIView {
+	private var screenType: ScreenTypes
+	private var controllerTitle: String?
+	lazy var colors: ColorSet = {
+		ColorSet(for: screenType)
+	}()
+
+	let mainView = UIView()
+	let topView = UIView()
+	let bottomView = UIView()
+	let titleLabel = UILabel()
+	let contentView = UIView()
+	let topImageView = UIImageView()
+	let bottomImageView = UIImageView()
+
+	init(controllerTitle: String? = nil, screenType: ScreenTypes = .other) {
+		self.controllerTitle = controllerTitle
+		self.screenType = screenType
+		super.init(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
+		self.setupMainView()
+		self.setupTopBottomLayout()
+		self.setupView()
+	}
+
+	@available(*, unavailable)
+	required init?(coder: NSCoder) {
+		fatalError("init(coder:) has not been implemented")
+	}
+
+	private func setupMainView() {
+		self.addSubview(self.mainView)
+		self.mainView.snp.makeConstraints {  make in
+			make.top.trailing.leading.bottom.equalToSuperview()
+		}
+		self.mainView.backgroundColor = self.colors.mainViewColor.backgroundColor
+	}
+
+	private func setupTopBottomLayout() {
+		self.mainView.addSubview(self.topView)
+		self.topView.snp.makeConstraints { make in
+			make.top.trailing.leading.equalTo(self.mainView)
+			make.height.equalTo(AppContraints.navAndTabHeight)
+		}
+		self.topView.addSubview(self.topImageView)
+		self.topImageView.snp.makeConstraints { make in
+			make.top.trailing.leading.bottom.equalTo(self.topView)
+		}
+		self.mainView.addSubview(self.bottomView)
+		self.bottomView.snp.makeConstraints { make in
+			make.bottom.trailing.leading.equalTo(self.mainView)
+			make.height.equalTo(AppContraints.navAndTabHeight)
+		}
+		self.bottomView.addSubview(self.bottomImageView)
+		self.bottomImageView.snp.makeConstraints { make in
+			make.top.trailing.leading.bottom.equalTo(self.bottomView)
+		}
+		self.mainView.addSubview(self.contentView)
+		self.contentView.snp.makeConstraints { make in
+			make.trailing.leading.equalTo(self.mainView)
+			make.top.equalTo(topView.snp.bottom).offset(AppContraints.minEdge)
+			make.bottom.equalTo(bottomView.snp.top).offset(-AppContraints.minEdge)
+		}
+		self.contentView.backgroundColor = .clear
+	}
+
+	private func setupView() {
+		self.mainView.backgroundColor = self.colors.mainViewColor.backgroundColor
+		self.titleLabel.textColor = self.colors.mainViewColor.textColor
+		self.titleLabel.numberOfLines = 0
+
+		switch self.screenType {
+		case .loggined:
+			self.topImageView.image = UIImage(named: AppImage.TopBottomImage.logTop.rawValue)
+			self.bottomImageView.image = UIImage(named: AppImage.TopBottomImage.logBottom.rawValue)
+
+		case .unloggined:
+			self.topImageView.image = UIImage(named: AppImage.TopBottomImage.unlogTop.rawValue)
+			self.bottomImageView.image = UIImage(named: AppImage.TopBottomImage.unlogBottom.rawValue)
+		default:
+			self.mainView.backgroundColor = self.colors.mainViewColor.backgroundColor
+		}
+		if self.screenType != .loginScreen {
+			self.mainView.addSubview(self.titleLabel)
+			self.titleLabel.snp.makeConstraints { make in
+				make.top.equalTo(self.mainView).offset(AppContraints.navTitle)
+				make.leading.trailing.equalTo(self.mainView)
+			}
+			self.titleLabel.text = controllerTitle
+			self.titleLabel.textAlignment = .center
+			self.titleLabel.font = UIFont(name: AppFont.fink.rawValue, size: AppContraints.FontsSize.controllerTitleFont)
+		}
+	}
+}

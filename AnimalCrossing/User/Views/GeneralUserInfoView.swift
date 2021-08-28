@@ -7,7 +7,7 @@
 
 import UIKit
 
-class GeneralUserInfoView: CustomView {
+class GeneralUserInfoView: UIView {
 	var nameSectionView = UIView()
 	var avatarImageView = UIImageView()
 	var nameTextField = UITextField()

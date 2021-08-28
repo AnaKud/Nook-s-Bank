@@ -24,7 +24,7 @@ enum AppImage {
     }
 
     enum UserSettings: String {
-        case pensil = "pensil"
+        case pensil
     }
 
     enum Login: String {
@@ -54,8 +54,19 @@ enum AppImage {
 
     enum PinPad: String {
         case backspace = "chevron.backward.square"
-        case faceId = "faceid"
         case person = "person.fill.questionmark"
+		
+		static var authImage: String = {
+			let type = CurrentModel.biometricType()
+			switch CurrentModel.biometricType() {
+			case .face:
+				return "faceid"
+			case .touch:
+				return "touchid"
+			default:
+				return "circle"
+			}
+		}()
     }
 }
 

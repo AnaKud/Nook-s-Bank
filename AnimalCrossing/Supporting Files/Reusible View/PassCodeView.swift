@@ -8,15 +8,16 @@
 import UIKit
 
 class PassCodeView: UIView, UITextInputTraits {
-    var code: String = "" {
+	var endEditing = false
+	var code: String = "" {
         didSet {
-            updateStack(by: code)
+			self.updateStack(by: code)
         }
     }
 
-    let maxLength = AppContraints.PinPadLogin.maxPasswordLength
-    let colorSet = ColorSet.PassCodeViewColor(for: .other)
-    let stack = UIStackView()
+	let maxLength = AppContraints.PinPadLogin.maxPasswordLength
+	private let colorSet = ColorSet.PassCodeViewColor(for: .other)
+	private let stack = UIStackView()
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -33,15 +34,15 @@ class PassCodeView: UIView, UITextInputTraits {
     }
 
     private func setupPins() {
-        addSubview(stack)
+		self.addSubview(self.stack)
 
-        stack.snp.makeConstraints { make in
-            make.width.equalTo(AppContraints.PinPadLogin.passCodeWidth)
-        }
-        self.backgroundColor = colorSet.backgroundColor
-        stack.axis = .horizontal
-        stack.distribution = .fillProportionally
-        updateStack(by: code)
+		self.stack.snp.makeConstraints { make in
+			make.width.equalTo(AppContraints.PinPadLogin.passCodeWidth)
+		}
+		self.backgroundColor = self.colorSet.backgroundColor
+		self.stack.axis = .horizontal
+		self.stack.distribution = .fillProportionally
+		self.updateStack(by: self.code)
     }
 
     private func updateStack(by code: String) {
@@ -52,15 +53,14 @@ class PassCodeView: UIView, UITextInputTraits {
         for (index, element) in pins.enumerated() {
             emptyPins[index] = element
         }
-        stack.removeAllArrangedSubViews()
+		self.stack.removeAllArrangedSubViews()
         for view in emptyPins {
-            stack.addArrangedSubview(view)
+			self.stack.addArrangedSubview(view)
         }
     }
 
     private func emptyPin() -> UIView {
-        let pin = Pin()
-        return pin
+        return Pin()
     }
 
     private func pin() -> UIView {
@@ -72,28 +72,34 @@ class PassCodeView: UIView, UITextInputTraits {
 
 extension PassCodeView: UIKeyInput {
     var hasText: Bool {
-        return code.isEmpty
+		return !self.code.isEmpty
     }
 
     func insertText(_ text: String) {
-        if code.count == maxLength {
+		if self.code.count == self.maxLength {
             return
         }
-        code.append(contentsOf: text)
+		self.code.append(contentsOf: text)
+		if self.code.count == self.maxLength {
+			self.endEditing = true
+		}
         print(text)
     }
 
     func deleteBackward() {
-        if hasText {
-            code.removeLast()
+		if self.hasText {
+			self.code.removeLast()
+			if self.endEditing == true {
+				self.endEditing = false
+			}
             print("text deleted")
         }
     }
 }
 
 class Pin: UIView {
-    let pin = UIView()
-    let colorSet = ColorSet.PassCodeViewColor(for: .other)
+	let pin = UIView()
+	private let colorSet = ColorSet.PassCodeViewColor(for: .other)
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -106,14 +112,14 @@ class Pin: UIView {
     }
 
     private func setupPin() {
-        addSubview(pin)
-        pin.snp.makeConstraints { make in
+		self.addSubview(self.pin)
+		self.pin.snp.makeConstraints { make in
             make.height.width.equalTo(AppContraints.PinPadLogin.pinSize)
         }
-        pin.layer.cornerRadius = AppContraints.PinPadLogin.pinCorner
-        pin.layer.borderWidth = AppContraints.PinPadLogin.pinBorder
-        pin.layer.borderColor = colorSet.pinBorderColor
-        pin.layer.masksToBounds = true
+		self.pin.layer.cornerRadius = AppContraints.PinPadLogin.pinCorner
+		self.pin.layer.borderWidth = AppContraints.PinPadLogin.pinBorder
+		self.pin.layer.borderColor = colorSet.pinBorderColor
+		self.pin.layer.masksToBounds = true
     }
 }
 

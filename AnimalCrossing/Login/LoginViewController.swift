@@ -72,10 +72,11 @@ class LoginViewController: CustomViewController {
 
     func setupSimpleLoginView() {
         DispatchQueue.main.async {
-            self.view.backgroundColor = self.colors?.mainViewColor.backgroundColor
-            self.titleLabel.text = AppTitle.nookBank
-            self.setupPinView()
-            self.setupPadView()
+			self.view = SimpleLoginView(controllerTitle: AppTitle.nookBank, screenType: .other)
+//            self.view.backgroundColor = self.colors?.mainViewColor.backgroundColor
+//            self.titleLabel.text = AppTitle.nookBank
+//            self.setupPinView()
+//            self.setupPadView()
         }
     }
 
@@ -186,109 +187,109 @@ class LoginViewController: CustomViewController {
         }
         pinView.becomeFirstResponder()
     }
-    private func setupPadView() {
-        twoButton = makePadButton(with: .two)
-        contentView.addSubview(twoButton)
-        twoButton.snp.makeConstraints { make in
-            make.top.equalTo(pinView.snp.bottom).offset(AppContraints.navTitle)
-            make.centerX.equalTo(contentView)
-        }
-		twoButton.addTarget(self, action: #selector(numberButtonTapped), for: .touchUpInside)
-        oneButton = makePadButton(with: .one)
-        contentView.addSubview(oneButton)
-        oneButton.snp.makeConstraints { make in
-            make.top.equalTo(pinView.snp.bottom).offset(AppContraints.navTitle)
-            make.trailing.equalTo(twoButton.snp.leading).offset(-AppContraints.standartEdge)
-        }
-        oneButton.addTarget(self, action: #selector(numberButtonTapped), for: .touchUpInside)
-        threeButton = makePadButton(with: .three)
-        contentView.addSubview(threeButton)
-        threeButton.snp.makeConstraints { make in
-            make.top.equalTo(pinView.snp.bottom).offset(AppContraints.navTitle)
-            make.leading.equalTo(twoButton.snp.trailing).offset(AppContraints.standartEdge)
-        }
-        threeButton.addTarget(self, action: #selector(numberButtonTapped), for: .touchUpInside)
-        fourButton = makePadButton(with: .four)
-        contentView.addSubview(fourButton)
-        fourButton.snp.makeConstraints { make in
-            make.leading.equalTo(oneButton)
-            make.top.equalTo(oneButton.snp.bottom).offset(AppContraints.standartEdge)
-        }
-        fourButton.addTarget(self, action: #selector(numberButtonTapped), for: .touchUpInside)
-        fiveButton = makePadButton(with: .five)
-        contentView.addSubview(fiveButton)
-        fiveButton.snp.makeConstraints { make in
-            make.leading.equalTo(twoButton)
-            make.top.equalTo(twoButton.snp.bottom).offset(AppContraints.standartEdge)
-        }
-        fiveButton.addTarget(self, action: #selector(numberButtonTapped), for: .touchUpInside)
-        sixButton = makePadButton(with: .six)
-        contentView.addSubview(sixButton)
-        sixButton.snp.makeConstraints { make in
-            make.leading.equalTo(threeButton)
-            make.top.equalTo(threeButton.snp.bottom).offset(AppContraints.standartEdge)
-        }
-        sixButton.addTarget(self, action: #selector(numberButtonTapped), for: .touchUpInside)
-        sevenButton = makePadButton(with: .seven)
-        contentView.addSubview(sevenButton)
-        sevenButton.snp.makeConstraints { make in
-            make.leading.equalTo(oneButton)
-            make.top.equalTo(fourButton.snp.bottom).offset(AppContraints.standartEdge)
-        }
-        sevenButton.addTarget(self, action: #selector(numberButtonTapped), for: .touchUpInside)
-        eightButton = makePadButton(with: .eight)
-        contentView.addSubview(eightButton)
-        eightButton.snp.makeConstraints { make in
-            make.leading.equalTo(fiveButton)
-            make.top.equalTo(fiveButton.snp.bottom).offset(AppContraints.standartEdge)
-        }
-        eightButton.addTarget(self, action: #selector(numberButtonTapped), for: .touchUpInside)
-        nineButton = makePadButton(with: .nine)
-        contentView.addSubview(nineButton)
-        nineButton.snp.makeConstraints { make in
-            make.leading.equalTo(sixButton)
-            make.top.equalTo(sixButton.snp.bottom).offset(AppContraints.standartEdge)
-        }
-        nineButton.addTarget(self, action: #selector(numberButtonTapped), for: .touchUpInside)
-        zeroButton = makePadButton(with: .zero)
-        contentView.addSubview(zeroButton)
-        zeroButton.snp.makeConstraints { make in
-            make.leading.equalTo(eightButton)
-            make.top.equalTo(eightButton.snp.bottom).offset(AppContraints.standartEdge)
-        }
-        zeroButton.addTarget(self, action: #selector(numberButtonTapped), for: .touchUpInside)
-        faceIdButton = makeAdditionalKeyboardButton(with: .faceId)
-        contentView.addSubview(faceIdButton)
-        faceIdButton.snp.makeConstraints { make in
-            make.leading.equalTo(sevenButton)
-            make.top.equalTo(sevenButton.snp.bottom).offset(AppContraints.standartEdge)
-        }
-        faceIdButton.addTarget(self, action: #selector(numberButtonTapped), for: .touchUpInside)
-
-        backspaceButton = makeAdditionalKeyboardButton(with: .backspace)
-        contentView.addSubview(backspaceButton)
-        backspaceButton.snp.makeConstraints { make in
-            make.leading.equalTo(nineButton)
-            make.top.equalTo(nineButton.snp.bottom).offset(AppContraints.standartEdge)
-        }
-        backspaceButton.addAction(UIAction(handler: { _ in
-            self.pinView.deleteBackward()
-        }), for: .touchUpInside)
-
-        bottomImageView.isHidden = true
-        view.addSubview(forgetPasswordButton)
-
-        forgetPasswordButton.snp.makeConstraints { make in
-            make.centerX.equalTo(view)
-
-           make.top.equalTo(zeroButton.snp.bottom).offset(AppContraints.standartEdge)
-        }
-        forgetPasswordButton.addAction(UIAction(handler: { _ in
-            self.presenter.forgetButtonTapped()
-        }), for: .touchUpInside)
-        forgetPasswordButton.setTitle(AppTitle.PassCode.forgetTitle, for: .normal)
-        forgetPasswordButton.setTitleColor(colors?.passCodeColor.textColor, for: .normal)
-    }
+//    private func setupPadView() {
+//        twoButton = makePadButton(with: .two)
+//        contentView.addSubview(twoButton)
+//        twoButton.snp.makeConstraints { make in
+//            make.top.equalTo(pinView.snp.bottom).offset(AppContraints.navTitle)
+//            make.centerX.equalTo(contentView)
+//        }
+//		twoButton.addTarget(self, action: #selector(numberButtonTapped), for: .touchUpInside)
+//        oneButton = makePadButton(with: .one)
+//        contentView.addSubview(oneButton)
+//        oneButton.snp.makeConstraints { make in
+//            make.top.equalTo(pinView.snp.bottom).offset(AppContraints.navTitle)
+//            make.trailing.equalTo(twoButton.snp.leading).offset(-AppContraints.standartEdge)
+//        }
+//        oneButton.addTarget(self, action: #selector(numberButtonTapped), for: .touchUpInside)
+//        threeButton = makePadButton(with: .three)
+//        contentView.addSubview(threeButton)
+//        threeButton.snp.makeConstraints { make in
+//            make.top.equalTo(pinView.snp.bottom).offset(AppContraints.navTitle)
+//            make.leading.equalTo(twoButton.snp.trailing).offset(AppContraints.standartEdge)
+//        }
+//        threeButton.addTarget(self, action: #selector(numberButtonTapped), for: .touchUpInside)
+//        fourButton = makePadButton(with: .four)
+//        contentView.addSubview(fourButton)
+//        fourButton.snp.makeConstraints { make in
+//            make.leading.equalTo(oneButton)
+//            make.top.equalTo(oneButton.snp.bottom).offset(AppContraints.standartEdge)
+//        }
+//        fourButton.addTarget(self, action: #selector(numberButtonTapped), for: .touchUpInside)
+//        fiveButton = makePadButton(with: .five)
+//        contentView.addSubview(fiveButton)
+//        fiveButton.snp.makeConstraints { make in
+//            make.leading.equalTo(twoButton)
+//            make.top.equalTo(twoButton.snp.bottom).offset(AppContraints.standartEdge)
+//        }
+//        fiveButton.addTarget(self, action: #selector(numberButtonTapped), for: .touchUpInside)
+//        sixButton = makePadButton(with: .six)
+//        contentView.addSubview(sixButton)
+//        sixButton.snp.makeConstraints { make in
+//            make.leading.equalTo(threeButton)
+//            make.top.equalTo(threeButton.snp.bottom).offset(AppContraints.standartEdge)
+//        }
+//        sixButton.addTarget(self, action: #selector(numberButtonTapped), for: .touchUpInside)
+//        sevenButton = makePadButton(with: .seven)
+//        contentView.addSubview(sevenButton)
+//        sevenButton.snp.makeConstraints { make in
+//            make.leading.equalTo(oneButton)
+//            make.top.equalTo(fourButton.snp.bottom).offset(AppContraints.standartEdge)
+//        }
+//        sevenButton.addTarget(self, action: #selector(numberButtonTapped), for: .touchUpInside)
+//        eightButton = makePadButton(with: .eight)
+//        contentView.addSubview(eightButton)
+//        eightButton.snp.makeConstraints { make in
+//            make.leading.equalTo(fiveButton)
+//            make.top.equalTo(fiveButton.snp.bottom).offset(AppContraints.standartEdge)
+//        }
+//        eightButton.addTarget(self, action: #selector(numberButtonTapped), for: .touchUpInside)
+//        nineButton = makePadButton(with: .nine)
+//        contentView.addSubview(nineButton)
+//        nineButton.snp.makeConstraints { make in
+//            make.leading.equalTo(sixButton)
+//            make.top.equalTo(sixButton.snp.bottom).offset(AppContraints.standartEdge)
+//        }
+//        nineButton.addTarget(self, action: #selector(numberButtonTapped), for: .touchUpInside)
+//        zeroButton = makePadButton(with: .zero)
+//        contentView.addSubview(zeroButton)
+//        zeroButton.snp.makeConstraints { make in
+//            make.leading.equalTo(eightButton)
+//            make.top.equalTo(eightButton.snp.bottom).offset(AppContraints.standartEdge)
+//        }
+//        zeroButton.addTarget(self, action: #selector(numberButtonTapped), for: .touchUpInside)
+//        faceIdButton = makeAdditionalKeyboardButton(with: .faceId)
+//        contentView.addSubview(faceIdButton)
+//        faceIdButton.snp.makeConstraints { make in
+//            make.leading.equalTo(sevenButton)
+//            make.top.equalTo(sevenButton.snp.bottom).offset(AppContraints.standartEdge)
+//        }
+//        faceIdButton.addTarget(self, action: #selector(numberButtonTapped), for: .touchUpInside)
+//
+//        backspaceButton = makeAdditionalKeyboardButton(with: .backspace)
+//        contentView.addSubview(backspaceButton)
+//        backspaceButton.snp.makeConstraints { make in
+//            make.leading.equalTo(nineButton)
+//            make.top.equalTo(nineButton.snp.bottom).offset(AppContraints.standartEdge)
+//        }
+//        backspaceButton.addAction(UIAction(handler: { _ in
+//            self.pinView.deleteBackward()
+//        }), for: .touchUpInside)
+//
+//        bottomImageView.isHidden = true
+//        view.addSubview(forgetPasswordButton)
+//
+//        forgetPasswordButton.snp.makeConstraints { make in
+//            make.centerX.equalTo(view)
+//
+//           make.top.equalTo(zeroButton.snp.bottom).offset(AppContraints.standartEdge)
+//        }
+//        forgetPasswordButton.addAction(UIAction(handler: { _ in
+//            self.presenter.forgetButtonTapped()
+//        }), for: .touchUpInside)
+//        forgetPasswordButton.setTitle(AppTitle.PassCode.forgetTitle, for: .normal)
+//        forgetPasswordButton.setTitleColor(colors?.passCodeColor.textColor, for: .normal)
+//    }
 }
 
 extension LoginViewController: ILoginViewController {

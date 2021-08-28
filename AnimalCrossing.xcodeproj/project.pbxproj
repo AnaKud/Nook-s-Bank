@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		E30B5E6826C6D6C300E4D02E /* GeneralUserInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E30B5E6726C6D6C300E4D02E /* GeneralUserInfoView.swift */; };
+		E372B38826D82B580046C4FA /* SimpleLoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E372B38726D82B580046C4FA /* SimpleLoginView.swift */; };
+		E372B38A26DABE410046C4FA /* CurrentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E372B38926DABE410046C4FA /* CurrentModel.swift */; };
 		E38D44F0269F46DB001E87EE /* PassCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E38D44EF269F46DB001E87EE /* PassCodeView.swift */; };
 		E3A2E9D82689C3A600297E51 /* LoginAssebmly.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A2E9882689C3A500297E51 /* LoginAssebmly.swift */; };
 		E3A2E9D92689C3A600297E51 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A2E9892689C3A500297E51 /* LoginViewController.swift */; };
@@ -79,6 +81,8 @@
 
 /* Begin PBXFileReference section */
 		E30B5E6726C6D6C300E4D02E /* GeneralUserInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralUserInfoView.swift; sourceTree = "<group>"; };
+		E372B38726D82B580046C4FA /* SimpleLoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleLoginView.swift; sourceTree = "<group>"; };
+		E372B38926DABE410046C4FA /* CurrentModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentModel.swift; sourceTree = "<group>"; };
 		E38D44EF269F46DB001E87EE /* PassCodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassCodeView.swift; sourceTree = "<group>"; };
 		E3A2E9882689C3A500297E51 /* LoginAssebmly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginAssebmly.swift; sourceTree = "<group>"; };
 		E3A2E9892689C3A500297E51 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -176,6 +180,7 @@
 			children = (
 				E3A2E9B42689C3A600297E51 /* MainRouter.swift */,
 				E3A2E9932689C3A600297E51 /* DatesOfCurrentWeek.swift */,
+				E372B38926DABE410046C4FA /* CurrentModel.swift */,
 			);
 			path = Other;
 			sourceTree = "<group>";
@@ -188,9 +193,18 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		E372B38626D82B3B0046C4FA /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				E372B38726D82B580046C4FA /* SimpleLoginView.swift */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
 		E3A2E9872689C3A500297E51 /* Login */ = {
 			isa = PBXGroup;
 			children = (
+				E372B38626D82B3B0046C4FA /* UI */,
 				E3A2E9BE2689C3A600297E51 /* UserLocale.swift */,
 				E3A2E9882689C3A500297E51 /* LoginAssebmly.swift */,
 				E3B9329426A16AEA003AFE7F /* LoginWorker.swift */,
@@ -493,6 +507,7 @@
 				E3A2E9DA2689C3A600297E51 /* LoginPresenter.swift in Sources */,
 				E3A2E9FB2689C3A600297E51 /* NewsRouter.swift in Sources */,
 				E30B5E6826C6D6C300E4D02E /* GeneralUserInfoView.swift in Sources */,
+				E372B38A26DABE410046C4FA /* CurrentModel.swift in Sources */,
 				E3CF43F926975FA500BFDAB8 /* GraphView.swift in Sources */,
 				E3A2E9FC2689C3A600297E51 /* NewsPresenter.swift in Sources */,
 				E3A2EA002689C3A600297E51 /* EventWebView.swift in Sources */,
@@ -523,6 +538,7 @@
 				E3A2E9F02689C3A600297E51 /* SceneDelegate.swift in Sources */,
 				E3A2E9F42689C3A600297E51 /* TurnipModel.swift in Sources */,
 				E3CC11462696F8DA0080FD88 /* ProphetPricesViewController.swift in Sources */,
+				E372B38826D82B580046C4FA /* SimpleLoginView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
