@@ -12,11 +12,19 @@ final class LoginAssebmly {
         var fireBaseManager: ILoginFireBaseManager = FireBaseManager.shared
         let keychainService: IKeychainService = KeychainService.shared
         let authenticationService: IDeviceOwnerAuthentication = DeviceOwnerAuthentication.shared
+		let worker = LoginWorker(fireBaseManager: fireBaseManager,
+								 keychainService: keychainService,
+								 authenticationService: authenticationService)
         let router = LoginRouter()
-        let presenter = LoginPresenter(fireBaseManager: fireBaseManager, router: router, keychainService: keychainService)
-        fireBaseManager.loginPresenter = presenter
-        let controller = LoginViewController(presenter: presenter)
-        controller.screenType = presenter.screenType
+		let presenter: ILoginPresenter = LoginPresenter()
+
+		let interactor: ILoginInteractor = LoginInteractor(presenter: presenter,
+														  worker: worker,
+														  router: router)
+        let controller = LoginViewController(interactor: interactor)
+// check for firebase
+		fireBaseManager.loginPresenter = presenter
+		presenter.viewController = controller
         router.controller = controller
         return controller
     }

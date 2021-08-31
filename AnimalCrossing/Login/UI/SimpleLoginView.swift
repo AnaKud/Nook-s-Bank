@@ -8,6 +8,8 @@
 import UIKit
 
 class SimpleLoginView: DefaultView {
+	var callBack: UISimpleLoginViewCallBack?
+	
 	var constrainView = UIView()
 	var pinView = PassCodeView()
 	lazy var oneButton = self.makePadButton(with: .one)
@@ -158,7 +160,7 @@ private extension SimpleLoginView {
 		button.snp.makeConstraints { make in
 			make.width.height.equalTo(AppContraints.PinPadLogin.padSize)
 		}
-		button.backgroundColor = self.colors.passCodeColor.buttonBgColor
+		button.layer.backgroundColor = self.colors.passCodeColor.buttonBgColor
 		button.layer.cornerRadius = AppContraints.PinPadLogin.padCorner
 		button.layer.borderWidth = AppContraints.PinPadLogin.padBorder
 		button.layer.borderColor = self.colors.passCodeColor.buttonBorderColor
@@ -183,7 +185,7 @@ private extension SimpleLoginView {
 		button.snp.makeConstraints { make in
 			make.width.height.equalTo(AppContraints.PinPadLogin.padSize)
 		}
-		button.backgroundColor = self.colors.passCodeColor.buttonBgColor
+		button.layer.backgroundColor = self.colors.passCodeColor.buttonBgColor
 
 		let imageView = UIImageView()
 		let image = UIImage(systemName: imageName)
@@ -196,24 +198,50 @@ private extension SimpleLoginView {
 		}
 		return button
 	}
+
+	func buttonsAnimation(for button: UIButton) {
+		DispatchQueue.main.async {
+			UIButton.animate(withDuration: 0.01,
+							 delay: 0,
+							 usingSpringWithDamping: 1,
+							 initialSpringVelocity: 1,
+							 options: .curveEaseInOut) { [ weak self ] in
+				button.layer.backgroundColor = self?.colors.passCodeColor.buttonTappedBgColor
+			}
+			UIButton.animate(withDuration: 0.01,
+							 delay: 0.01,
+							 usingSpringWithDamping: 1,
+							 initialSpringVelocity: 1,
+							 options: .curveEaseInOut) { [ weak self ] in
+				button.layer.backgroundColor = self?.colors.passCodeColor.buttonBgColor
+			}
+		}
+	}
 }
 
 @objc
 private extension SimpleLoginView {
 	func numberButtonTapped(sender: UIButton) {
+		self.buttonsAnimation(for: sender)
 		guard sender.tag != -1 else { return }
 		self.pinView.insertText("\(sender.tag)")
 		if self.pinView.endEditing == true {
 			print("send to ")
+			self.callBack?.pinEndEditing(pin: self.pinView.code)
 		}
 	}
+
 	func faceIdButtonTapped(sender: UIButton) {
 		print("touchId touched")
+		self.callBack?.touchIdButtonTapped()
 	}
+
 	func backspaceButtonTapped(sender: UIButton) {
 		self.pinView.deleteBackward()
 	}
+
 	func forgetPasswordButtonTapped(sender: UIButton) {
 		print("send it to presenter0 self.presenter.forgetButtonTapped()")
+		self.callBack?.forgetButtonTapped()
 	}
 }
