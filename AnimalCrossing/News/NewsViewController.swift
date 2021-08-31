@@ -75,7 +75,9 @@ extension NewsViewController: UITableViewDelegate, UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: CellReusibleID.news.rawValue) as? NewsTableViewCell else { return UITableViewCell() }
+        guard let cell = tableView.dequeueReusableCell(withIdentifier:
+														CellReusibleID.news.rawValue)
+				as? NewsTableViewCell else { return UITableViewCell() }
         let event = self.presenter.itemForCell(index: indexPath.row)
         cell.colors = self.colors
         cell.customView = self.customView

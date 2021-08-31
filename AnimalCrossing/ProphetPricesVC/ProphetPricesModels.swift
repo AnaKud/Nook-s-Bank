@@ -55,7 +55,7 @@ enum ProphetPrices {
 						self.fridayMorning,
 						self.fridayEvening,
 						self.saturdayMorning,
-						self.saturdayEvening,
+						self.saturdayEvening
 				]
             }
         }

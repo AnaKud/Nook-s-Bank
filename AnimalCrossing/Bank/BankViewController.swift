@@ -104,7 +104,8 @@ class BankViewController: CustomViewController {
             make.top.equalTo(bankAccountView).offset(AppContraints.minEdge)
             make.trailing.equalTo(bankAccountView).offset(-AppContraints.minEdge)
         }
-        currentAccountTitleLabel.font = UIFont(name: AppFont.maruBold.rawValue, size: AppContraints.FontsSize.bankAccontFont)
+        currentAccountTitleLabel.font = UIFont(name: AppFont.maruBold.rawValue,
+											   size: AppContraints.FontsSize.bankAccontFont)
         currentAccountTitleLabel.textColor = colors?.bankViewColor.titleTextColor
 
         bankAccountView.addSubview(currentAccountLabel)
@@ -113,7 +114,8 @@ class BankViewController: CustomViewController {
             make.top.equalTo(currentAccountTitleLabel.snp.bottom).offset(AppContraints.minEdge)
             make.trailing.bottom.equalTo(bankAccountView).offset(-AppContraints.minEdge)
         }
-        currentAccountLabel.font = UIFont(name: AppFont.maruLight.rawValue, size: AppContraints.FontsSize.bankAccontFont)
+        currentAccountLabel.font = UIFont(name: AppFont.maruLight.rawValue,
+										  size: AppContraints.FontsSize.bankAccontFont)
         currentAccountLabel.textColor = colors?.bankViewColor.itemTextColor
         currentAccountLabel.text = self.presenter.returnCurrentAccountValue()
     }
@@ -166,7 +168,8 @@ class BankViewController: CustomViewController {
         expensesCollectionView.collectionViewLayout = layout
         self.expensesCollectionView.delegate = self
         self.expensesCollectionView.dataSource = self
-        expensesCollectionView.register(ExpenseCollectionViewCell.self, forCellWithReuseIdentifier: CellReusibleID.expense.rawValue)
+        expensesCollectionView.register(ExpenseCollectionViewCell.self,
+										forCellWithReuseIdentifier: CellReusibleID.expense.rawValue)
     }
 }
 
@@ -207,7 +210,6 @@ extension BankViewController: IBankViewController {
                     alert.actions[0].isEnabled = true
                     alert.actions[1].isEnabled = true
                 }
-                
             }), for: .editingChanged)
         }
 

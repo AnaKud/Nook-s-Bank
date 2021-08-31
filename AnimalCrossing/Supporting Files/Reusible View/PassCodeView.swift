@@ -115,7 +115,7 @@ class Pin: UIView {
 		self.addSubview(self.pin)
 		self.pin.snp.makeConstraints { make in
             make.height.width.equalTo(AppContraints.PinPadLogin.pinSize)
-        }
+		}
 		self.pin.layer.cornerRadius = AppContraints.PinPadLogin.pinCorner
 		self.pin.layer.borderWidth = AppContraints.PinPadLogin.pinBorder
 		self.pin.layer.borderColor = colorSet.pinBorderColor

@@ -92,8 +92,7 @@ class TurnipPresenter: ITurnipPresenter {
 										  fridayMorning: String?,
 										  fridayEvening: String?,
 										  saturdayMorning: String?,
-										  saturdayEvening: String?) 
-	{
+										  saturdayEvening: String?) {
         let prices = TurnipPrices(sundayDate: self.turnipPrices?.sundayDate,
 								  buyPrice: self.turnipPrices?.buyPrice ?? 0,
 								  turnipCount: self.turnipPrices?.buyPrice,
