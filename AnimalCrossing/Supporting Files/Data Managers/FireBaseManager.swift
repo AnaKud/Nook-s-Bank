@@ -49,7 +49,7 @@ extension FireBaseManager: ILoginFireBaseManager {
     func auth() {
         Auth.auth().addStateDidChangeListener { [weak self] _, user in
             if user != nil {
-                self?.loginPresenter?.openWithLogin()
+              //  self?.loginPresenter?.openWithLogin()
             }
         }
     }
@@ -57,13 +57,13 @@ extension FireBaseManager: ILoginFireBaseManager {
     func login(withEmail email: String, withPassword password: String) {
         Auth.auth().signIn(withEmail: email, password: password, completion: { [weak self] user, error in
             if error != nil {
-                self?.loginPresenter?.showWarningLabel(withWarningText: LoginWarnings.unexpectedError.rawValue)
+                // self?.loginPresenter?.showWarningLabel(withWarningText: LoginWarnings.unexpectedError.rawValue)
                 return
             }
             if user != nil {
-                self?.loginPresenter?.openWithLogin()
+                // self?.loginPresenter?.openWithLogin()
             } else {
-                self?.loginPresenter?.showWarningLabel(withWarningText: LoginWarnings.notRegister.rawValue)
+                // self?.loginPresenter?.showWarningLabel(withWarningText: LoginWarnings.notRegister.rawValue)
             }
         })
     }
@@ -73,7 +73,7 @@ extension FireBaseManager: ILoginFireBaseManager {
             guard error == nil,
                   let user = user
             else {
-                self?.loginPresenter?.showWarningLabel(withWarningText: error!.localizedDescription)
+                // self?.loginPresenter?.showWarningLabel(withWarningText: error!.localizedDescription)
                 print(error!.localizedDescription)
                 return
             }
@@ -81,7 +81,7 @@ extension FireBaseManager: ILoginFireBaseManager {
             userRef?.setValue(["email": user.user.email])
             userRef?.setValue(["userName": name])
             userRef?.child("currentAcount").setValue(["currentValue": 0])
-            self?.loginPresenter?.openForRegister()
+            // self?.loginPresenter?.openForRegister()
         }
     }
 
@@ -150,7 +150,7 @@ extension FireBaseManager: ITurnipFireBaseManager {
 
 extension FireBaseManager: IPresenterForFireBaseManager {
     func presentError(error: FailureCases) {
-        self.loginPresenter?.presentError(error: error)
+        // self.loginPresenter?.presentError(error: error)
     }
 }
 

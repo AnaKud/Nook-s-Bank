@@ -196,10 +196,14 @@ final class CircleView: UIView {
 
 class DefaultView: UIView {
 	private var screenType: ScreenTypes
-	private var controllerTitle: String?
+	var controllerTitle: String?
 	lazy var colors: ColorSet = {
 		ColorSet(for: screenType)
 	}()
+	
+	var customView: CustomView {
+		CustomView(colorSet: colors)
+	}
 
 	let mainView = UIView()
 	let topView = UIView()

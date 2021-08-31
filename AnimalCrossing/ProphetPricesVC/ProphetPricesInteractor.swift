@@ -14,7 +14,7 @@ import UIKit
 
 typealias IProphetPricesInteractor = IProphetPricesInteractorBusinessLogic & IProphetPricesDataStore
 
-protocol IProphetPricesInteractorBusinessLogic: IProphetPricesDataStore {
+protocol IProphetPricesInteractorBusinessLogic {
 	func makeTurnipPricesRequest()
 }
 

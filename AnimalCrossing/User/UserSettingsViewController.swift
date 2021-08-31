@@ -62,7 +62,7 @@ extension UserSettingsViewController {
         button.snp.makeConstraints { make in
             make.width.height.equalTo(AppContraints.PinPadLogin.padSize)
         }
-        button.backgroundColor = colors?.passCodeColor.buttonBgColor
+		button.layer.backgroundColor = colors?.passCodeColor.buttonBgColor
 
         let imageView = UIImageView()
         let image = UIImage(systemName: AppImage.UserSettings.pensil.rawValue)

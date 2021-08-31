@@ -129,7 +129,7 @@ struct AppContraints {
         static let pinBorder: CGFloat = 2
 
         static let maxPasswordLength = 6
-        static let passCodeWidth: CGFloat = AppContraints.iphoneWidth / 2
+		static let passCodeWidth: CGFloat = AppContraints.iphoneWidth / 1.5
 
         static let padSize: CGFloat = AppContraints.iphoneWidth / 4
         static let padCorner = padSize / 2
