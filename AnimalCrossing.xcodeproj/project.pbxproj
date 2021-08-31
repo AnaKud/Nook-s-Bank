@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		E30B5E6826C6D6C300E4D02E /* GeneralUserInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E30B5E6726C6D6C300E4D02E /* GeneralUserInfoView.swift */; };
 		E372B38826D82B580046C4FA /* SimpleLoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E372B38726D82B580046C4FA /* SimpleLoginView.swift */; };
-		E372B38A26DABE410046C4FA /* CurrentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E372B38926DABE410046C4FA /* CurrentModel.swift */; };
+		E372B38A26DABE410046C4FA /* Biometric.swift in Sources */ = {isa = PBXBuildFile; fileRef = E372B38926DABE410046C4FA /* Biometric.swift */; };
 		E38D44F0269F46DB001E87EE /* PassCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E38D44EF269F46DB001E87EE /* PassCodeView.swift */; };
 		E3A2E9D82689C3A600297E51 /* LoginAssebmly.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A2E9882689C3A500297E51 /* LoginAssebmly.swift */; };
 		E3A2E9D92689C3A600297E51 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A2E9892689C3A500297E51 /* LoginViewController.swift */; };
@@ -54,6 +54,7 @@
 		E3A927F526A96F94002323F0 /* UserSettingsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A927F426A96F94002323F0 /* UserSettingsPresenter.swift */; };
 		E3A927F726A96FCD002323F0 /* UserSettingsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A927F626A96FCD002323F0 /* UserSettingsInteractor.swift */; };
 		E3A927F926A9A01A002323F0 /* BankRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A927F826A9A01A002323F0 /* BankRouter.swift */; };
+		E3AE603326DD765500681A79 /* FullLoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3AE603226DD765500681A79 /* FullLoginView.swift */; };
 		E3B9329126A05A03003AFE7F /* SwiftUICharts in Frameworks */ = {isa = PBXBuildFile; productRef = E3B9329026A05A03003AFE7F /* SwiftUICharts */; };
 		E3B9329326A079DD003AFE7F /* DeviceOwnerAuthentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3B9329226A079DD003AFE7F /* DeviceOwnerAuthentication.swift */; };
 		E3B9329526A16AEA003AFE7F /* LoginWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3B9329426A16AEA003AFE7F /* LoginWorker.swift */; };
@@ -82,7 +83,7 @@
 /* Begin PBXFileReference section */
 		E30B5E6726C6D6C300E4D02E /* GeneralUserInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralUserInfoView.swift; sourceTree = "<group>"; };
 		E372B38726D82B580046C4FA /* SimpleLoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleLoginView.swift; sourceTree = "<group>"; };
-		E372B38926DABE410046C4FA /* CurrentModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentModel.swift; sourceTree = "<group>"; };
+		E372B38926DABE410046C4FA /* Biometric.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Biometric.swift; sourceTree = "<group>"; };
 		E38D44EF269F46DB001E87EE /* PassCodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassCodeView.swift; sourceTree = "<group>"; };
 		E3A2E9882689C3A500297E51 /* LoginAssebmly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginAssebmly.swift; sourceTree = "<group>"; };
 		E3A2E9892689C3A500297E51 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -128,6 +129,7 @@
 		E3A927F426A96F94002323F0 /* UserSettingsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettingsPresenter.swift; sourceTree = "<group>"; };
 		E3A927F626A96FCD002323F0 /* UserSettingsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettingsInteractor.swift; sourceTree = "<group>"; };
 		E3A927F826A9A01A002323F0 /* BankRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankRouter.swift; sourceTree = "<group>"; };
+		E3AE603226DD765500681A79 /* FullLoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullLoginView.swift; sourceTree = "<group>"; };
 		E3B9329226A079DD003AFE7F /* DeviceOwnerAuthentication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceOwnerAuthentication.swift; sourceTree = "<group>"; };
 		E3B9329426A16AEA003AFE7F /* LoginWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginWorker.swift; sourceTree = "<group>"; };
 		E3B9329626A16B0B003AFE7F /* LoginInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginInteractor.swift; sourceTree = "<group>"; };
@@ -180,7 +182,7 @@
 			children = (
 				E3A2E9B42689C3A600297E51 /* MainRouter.swift */,
 				E3A2E9932689C3A600297E51 /* DatesOfCurrentWeek.swift */,
-				E372B38926DABE410046C4FA /* CurrentModel.swift */,
+				E372B38926DABE410046C4FA /* Biometric.swift */,
 			);
 			path = Other;
 			sourceTree = "<group>";
@@ -197,6 +199,7 @@
 			isa = PBXGroup;
 			children = (
 				E372B38726D82B580046C4FA /* SimpleLoginView.swift */,
+				E3AE603226DD765500681A79 /* FullLoginView.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -507,7 +510,7 @@
 				E3A2E9DA2689C3A600297E51 /* LoginPresenter.swift in Sources */,
 				E3A2E9FB2689C3A600297E51 /* NewsRouter.swift in Sources */,
 				E30B5E6826C6D6C300E4D02E /* GeneralUserInfoView.swift in Sources */,
-				E372B38A26DABE410046C4FA /* CurrentModel.swift in Sources */,
+				E372B38A26DABE410046C4FA /* Biometric.swift in Sources */,
 				E3CF43F926975FA500BFDAB8 /* GraphView.swift in Sources */,
 				E3A2E9FC2689C3A600297E51 /* NewsPresenter.swift in Sources */,
 				E3A2EA002689C3A600297E51 /* EventWebView.swift in Sources */,
@@ -519,6 +522,7 @@
 				E3A2E9F12689C3A600297E51 /* SupportingFile.swift in Sources */,
 				E3A2E9FD2689C3A600297E51 /* NewsViewController.swift in Sources */,
 				E3CC11492696FAC30080FD88 /* ProphetPricesAssembly.swift in Sources */,
+				E3AE603326DD765500681A79 /* FullLoginView.swift in Sources */,
 				E3FC7E842692EA510078A7E8 /* DesignData.swift in Sources */,
 				E3A2E9D92689C3A600297E51 /* LoginViewController.swift in Sources */,
 				E3A2E9ED2689C3A600297E51 /* MainRouter.swift in Sources */,

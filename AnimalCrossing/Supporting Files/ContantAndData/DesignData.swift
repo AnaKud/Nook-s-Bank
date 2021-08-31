@@ -57,8 +57,7 @@ enum AppImage {
         case person = "person.fill.questionmark"
 
 		static var authImage: String = {
-			let type = CurrentModel.biometricType()
-			switch CurrentModel.biometricType() {
+			switch Biometric.biometricType {
 			case .face:
 				return "faceid"
 			case .touch:
