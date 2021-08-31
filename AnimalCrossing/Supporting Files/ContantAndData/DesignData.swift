@@ -55,7 +55,7 @@ enum AppImage {
     enum PinPad: String {
         case backspace = "chevron.backward.square"
         case person = "person.fill.questionmark"
-		
+
 		static var authImage: String = {
 			let type = CurrentModel.biometricType()
 			switch CurrentModel.biometricType() {
@@ -96,7 +96,7 @@ struct ColorSet {
         self.mainViewColor = MainViewColor(for: screenType)
         self.activityIndicatorColor = ActivityIndicatorColor(for: screenType)
         self.bankViewColor = BankViewColor(for: screenType)
-        self.passCodeColor = PassCodeViewColor(for: screenType)
+        self.passCodeColor = PassCodeViewColor()
     }
 
     struct BankViewColor {
@@ -142,10 +142,11 @@ struct ColorSet {
         let pinColor: UIColor?
         let pinBorderColor: CGColor?
         let buttonBorderColor: CGColor?
-        let buttonBgColor: UIColor?
+		let buttonTappedBgColor: CGColor?
+        let buttonBgColor: CGColor?
         let buttonNumberColor: UIColor?
 
-        init(for screenType: ScreenTypes?) {
+		init(for screenType: ScreenTypes = .other) {
             switch screenType {
             case .other:
                 self.backgroundColor = #colorLiteral(red: 0.8745098039, green: 0.9803921569, blue: 0.6, alpha: 1)
@@ -153,16 +154,18 @@ struct ColorSet {
                 self.pinColor = #colorLiteral(red: 0.1948110163, green: 0.388961494, blue: 0.01023789216, alpha: 1)
                 self.pinBorderColor = #colorLiteral(red: 0.1948110163, green: 0.388961494, blue: 0.01023789216, alpha: 1)
                 self.buttonBorderColor = #colorLiteral(red: 0.1948110163, green: 0.388961494, blue: 0.01023789216, alpha: 1)
+				self.buttonTappedBgColor = #colorLiteral(red: 0.1948110163, green: 0.388961494, blue: 0.01023789216, alpha: 0.1942777318)
                 self.buttonBgColor = #colorLiteral(red: 0.8745098039, green: 0.9803921569, blue: 0.6, alpha: 1)
                 self.buttonNumberColor = #colorLiteral(red: 0.1948110163, green: 0.388961494, blue: 0.01023789216, alpha: 1)
             default:
-                self.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-                self.textColor = #colorLiteral(red: 0.2605174184, green: 0.2605243921, blue: 0.260520637, alpha: 1)
-                self.pinColor = #colorLiteral(red: 0.1948110163, green: 0.388961494, blue: 0.01023789216, alpha: 1)
-                self.pinBorderColor = #colorLiteral(red: 0.1948110163, green: 0.388961494, blue: 0.01023789216, alpha: 1)
-                self.buttonBorderColor = #colorLiteral(red: 0.2605174184, green: 0.2605243921, blue: 0.260520637, alpha: 1)
-                self.buttonBgColor = #colorLiteral(red: 0.1948110163, green: 0.388961494, blue: 0.01023789216, alpha: 1)
-                self.buttonNumberColor = #colorLiteral(red: 0.2605174184, green: 0.2605243921, blue: 0.260520637, alpha: 1)
+				self.backgroundColor = #colorLiteral(red: 0.8745098039, green: 0.9803921569, blue: 0.6, alpha: 1)
+				self.textColor = #colorLiteral(red: 0.303658396, green: 0.2938010395, blue: 0.03124490753, alpha: 1)
+				self.pinColor = #colorLiteral(red: 0.1948110163, green: 0.388961494, blue: 0.01023789216, alpha: 1)
+				self.pinBorderColor = #colorLiteral(red: 0.1948110163, green: 0.388961494, blue: 0.01023789216, alpha: 1)
+				self.buttonBorderColor = #colorLiteral(red: 0.1948110163, green: 0.388961494, blue: 0.01023789216, alpha: 1)
+				self.buttonTappedBgColor = #colorLiteral(red: 0.1948110163, green: 0.388961494, blue: 0.01023789216, alpha: 0.1942777318)
+				self.buttonBgColor = #colorLiteral(red: 0.8745098039, green: 0.9803921569, blue: 0.6, alpha: 1)
+				self.buttonNumberColor = #colorLiteral(red: 0.1948110163, green: 0.388961494, blue: 0.01023789216, alpha: 1)
             }
         }
     }
