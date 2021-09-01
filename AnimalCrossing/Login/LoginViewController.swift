@@ -56,11 +56,6 @@ class LoginViewController: CustomViewController {
 		self.fullLoginView.callBack = self.interactor
         DispatchQueue.main.async {
 			self.view = self.fullLoginView
-//            self.view.backgroundColor = self.colors?.mainViewColor.backgroundColor
-//            self.controllerTitle = ""
-//            self.setupInterface()
-//            self.setupLayout()
-//            self.addActionForButton()
         }
     }
 
@@ -68,10 +63,6 @@ class LoginViewController: CustomViewController {
 		self.simpleLoginView.callBack = self.interactor
         DispatchQueue.main.async {
 			self.view = self.simpleLoginView
-//            self.view.backgroundColor = self.colors?.mainViewColor.backgroundColor
-//            self.titleLabel.text = AppTitle.nookBank
-//            self.setupPinView()
-//            self.setupPadView()
         }
     }
 }
@@ -110,5 +101,3 @@ extension LoginViewController: ILoginViewController {
         self.present(alert, animated: true)
     }
 }
-
-// TO-DO GenericKeychain

@@ -11,6 +11,7 @@ protocol ILoginRouter {
     func goToNextWithoutLogin(withScreenType screenType: ScreenTypes)
     func goToNextWithLogin(withScreenType screenType: ScreenTypes)
     func reloadLoginView(withScreenType screenType: ScreenTypes)
+	func goToRegisterView()
 }
 
 class LoginRouter: ILoginRouter {
@@ -31,6 +32,16 @@ class LoginRouter: ILoginRouter {
 
     func reloadLoginView(withScreenType screenType: ScreenTypes) {
         let nextVC = LoginAssebmly().build()
-        self.controller?.navigationController?.pushViewController(nextVC, animated: false)
+		let nextVCNavigationController = UINavigationController(rootViewController: nextVC)
+		nextVCNavigationController.modalPresentationStyle = .fullScreen
+		self.controller?.present(nextVCNavigationController, animated: false)
+    //    self.controller?.navigationController?.pushViewController(nextVC, animated: false)
     }
+
+	func goToRegisterView() {
+		let nextVC = UserSettingsAssemly().build()
+		let nextVCNavigationController = UINavigationController(rootViewController: nextVC)
+		nextVCNavigationController.modalPresentationStyle = .fullScreen
+		self.controller?.present(nextVCNavigationController, animated: false)
+	}
 }

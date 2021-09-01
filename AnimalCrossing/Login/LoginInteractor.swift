@@ -7,7 +7,8 @@
 
 import Foundation
 
-typealias ILoginInteractor = ILoginInteractorBusinessLogic & ILoginDataStore & UIFullLoginViewCallBack & UISimpleLoginViewCallBack
+typealias ILoginInteractor = ILoginInteractorBusinessLogic & ILoginDataStore &
+	UIFullLoginViewCallBack & UISimpleLoginViewCallBack
 
 protocol ILoginInteractorBusinessLogic {
 	func logout()
@@ -24,7 +25,7 @@ protocol UISimpleLoginViewCallBack {
 	func forgetButtonTapped()
 	func touchIdButtonTapped()
 }
-	
+
 protocol UIFullLoginViewCallBack {
 	func loginButtonTapped(email: String?, password: String?)
 	func continueButtonTapped()
@@ -32,7 +33,7 @@ protocol UIFullLoginViewCallBack {
 }
 
 class LoginInteractor: ILoginInteractor {
-	
+
 	var presenter: ILoginPresenter
 	var worker: LoginWorker
 	var router: ILoginRouter
@@ -52,12 +53,14 @@ class LoginInteractor: ILoginInteractor {
 	}
 
 	func continueButtonTapped() {
+		print("UserDefaults.standard.setValue(true, forKey: simpleLogin)")
 		UserDefaults.standard.setValue(true, forKey: "simpleLogin")
 		self.router.goToNextWithoutLogin(withScreenType: .unloggined)
 	}
 
 	func registerButtonTapped(withUserName name: String?, email: String?, password: String?) {
-		self.worker.registerUser(withUserName: name, withEmail: email, withPassword: password)
+		self.router.goToRegisterView()
+		//self.worker.registerUser(withUserName: name, withEmail: email, withPassword: password)
 	}
 
 	func forgetButtonTapped() {
@@ -66,7 +69,7 @@ class LoginInteractor: ILoginInteractor {
 		let screenType = self.setupScreenType()
 		self.router.reloadLoginView(withScreenType: screenType)
 	}
-	
+
 	func pinEndEditing(pin: String) {
 		print(pin)
 		if pin == "000000" {
