@@ -59,12 +59,12 @@ private extension SimpleLoginView {
 		self.setupFourthPadRow()
 
 		self.forgetPasswordButton.snp.makeConstraints { make in
-			make.centerX.equalTo(self.bottomView)
+			make.centerX.equalTo(self.contentView)
 			make.top.equalTo(self.zeroButton.snp.bottom).offset(AppContraints.standartEdge)
 		}
-		self.forgetPasswordButton.addTarget(self, action: #selector(forgetPasswordButtonTapped), for: .touchUpInside)
 		self.forgetPasswordButton.setTitle(AppTitle.PassCode.forgetTitle, for: .normal)
 		self.forgetPasswordButton.setTitleColor(self.colors.passCodeColor.textColor, for: .normal)
+		self.forgetPasswordButton.addTarget(self, action: #selector(forgetPasswordButtonTapped), for: .touchUpInside)
 	}
 
 	func setupFirstPadRow() {
@@ -151,8 +151,7 @@ private extension SimpleLoginView {
 		}
 		self.backspaceButton.addTarget(self, action: #selector(backspaceButtonTapped), for: .touchUpInside)
 
-		self.bottomImageView.isHidden = true
-		self.bottomView.addSubview(self.forgetPasswordButton)
+		self.contentView.addSubview(self.forgetPasswordButton)
 	}
 
 	func makePadButton(with title: PadKeyBoard) -> UIButton {
