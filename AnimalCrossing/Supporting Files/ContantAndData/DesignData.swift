@@ -67,6 +67,24 @@ enum AppImage {
 			}
 		}()
     }
+
+	enum AvatarIcon: String, CaseIterable {
+		case blathers = "Blathers"
+		case celeste = "Celeste"
+		case daisyMae = "DaisyMae"
+		case isabelle = "Isabelle"
+		case kkSlider = "KKSlider"
+		case orville = "Orville"
+		case redd = "Redd"
+		case timmyNook = "TimmyNook"
+		case tommyNook = "TommyNook"
+		case tomNook = "TomNook"
+		case wilbur = "Wilbur"
+		case wisp = "Wisp"
+		static func getImage(_ icon: AvatarIcon) -> String {
+			return icon.rawValue
+		}
+	}
 }
 
 enum TabbarItems {
