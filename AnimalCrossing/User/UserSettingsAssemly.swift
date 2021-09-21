@@ -14,6 +14,7 @@ class UserSettingsAssemly {
         var presenter: IUserSettingsPresenter = UserSettingsPresenter()
         let interactor: IUserSettingsInteractor = UserSettingsInteractor(presenter: presenter, worker: worker)
         let viewController = UserSettingsViewController(interactor: interactor)
+		viewController.controllerTitle = "UserSettingsViewController"
         presenter.viewController = viewController
         return viewController
     }

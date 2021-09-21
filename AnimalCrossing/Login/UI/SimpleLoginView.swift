@@ -173,7 +173,7 @@ private extension SimpleLoginView {
 		}
 		label.text = title.rawValue
 		label.textAlignment = .center
-		label.font = UIFont(name: AppFont.maruBold.rawValue, size: AppContraints.FontsSize.padFont)
+		label.font = ACFont.padFont.font 
 		label.textColor = self.colors.passCodeColor.buttonNumberColor
 
 		return button

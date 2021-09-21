@@ -65,6 +65,7 @@ enum PadKeyBoard: String {
 
 enum AdditionalLink: String {
     case events = "nh/events"
+	case villagers = "villagers"
 }
 
 enum CellReusibleID: String {

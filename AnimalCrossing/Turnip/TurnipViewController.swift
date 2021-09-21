@@ -11,7 +11,7 @@ protocol ITurnipViewController {
     func showErrorAlert(withMessage message: FailureCases)
 }
 
-class TurnipViewController: CustomViewController {
+class TurnipViewController: CloudViewController {
     var presenter: ITurnipPresenter
 
     var contentScrollView = UIScrollView()
@@ -156,7 +156,10 @@ extension TurnipViewController: UIScrollViewDelegate {
             make.leading.equalTo(buyBackgroundView.snp.centerX).offset(AppContraints.CellSizes.cellBgEdge)
         }
 
-        buyCalculateButton = customView?.makeOvalButtonWithCircle(withTitle: AppTitle.Turnip.expense, buttonWidth: 0, buttonHeight: AppContraints.Turnip.heightButton) ?? UIButton()
+        buyCalculateButton = OvalButton(withTitle: AppTitle.Turnip.expense,
+										width: AppContraints.Turnip.priceTFWidth,
+										height: AppContraints.Turnip.heightButton,
+										color: self.colors)
         buyBackgroundView.addSubview(buyCalculateButton)
         buyCalculateButton.snp.makeConstraints { make in
             make.top.equalTo(buyCountTextField.snp.bottom).offset(AppContraints.midEdge)
@@ -249,7 +252,10 @@ extension TurnipViewController: UIScrollViewDelegate {
         eveningImageView.image = UIImage(systemName: AppImage.Turnip.evening.rawValue)
         eveningImageView.tintColor = colors?.cellColorSet.titleTextColor
 
-        turnipPriceCalculateButton = customView?.makeOvalButtonWithCircle(withTitle: AppTitle.Turnip.turnipPrice, buttonWidth: 0, buttonHeight: AppContraints.Turnip.heightButton) ?? UIButton()
+        turnipPriceCalculateButton = OvalButton(withTitle: AppTitle.Turnip.turnipPrice,
+												width: AppContraints.Turnip.priceTFWidth,
+												height: AppContraints.Turnip.heightButton,
+												color: self.colors)
         turnipBackgroundView.addSubview(turnipPriceCalculateButton)
         turnipPriceCalculateButton.snp.makeConstraints { make in
             make.top.equalTo(firstTurnipColumn.snp.bottom).offset(AppContraints.midEdge)
@@ -436,14 +442,19 @@ extension TurnipViewController: UIScrollViewDelegate {
             make.leading.equalTo(sellBackgroundView).offset(AppContraints.CellSizes.cellBgEdge)
             make.trailing.equalTo(sellBackgroundView.snp.centerX).offset(-AppContraints.CellSizes.cellBgEdge)
         }
-        sellCountTextField = self.makePurchaseTextField(with: .sellCount, withPlacehoder: AppTitle.Turnip.count, withImageName: AppImage.Turnip.count.rawValue)
+        sellCountTextField = self.makePurchaseTextField(with: .sellCount,
+														withPlacehoder: AppTitle.Turnip.count,
+														withImageName: AppImage.Turnip.count.rawValue)
         sellBackgroundView.addSubview(sellCountTextField)
         sellCountTextField.snp.makeConstraints { make in
             make.top.equalTo(sellCountLabel.snp.bottom).offset(AppContraints.CellSizes.cellBgEdge)
             make.trailing.equalTo(sellBackgroundView).offset(-AppContraints.CellSizes.cellBgEdge)
             make.leading.equalTo(sellBackgroundView.snp.centerX).offset(AppContraints.CellSizes.cellBgEdge)
         }
-        sellCalculateButton = customView?.makeOvalButtonWithCircle(withTitle: AppTitle.Turnip.income, buttonWidth: 0, buttonHeight: AppContraints.Turnip.heightButton) ?? UIButton()
+        sellCalculateButton = OvalButton(withTitle: AppTitle.Turnip.income,
+										 width: AppContraints.Turnip.heightButton,
+										 height: AppContraints.Turnip.heightButton,
+										 color: self.colors)
         sellBackgroundView.addSubview(sellCalculateButton)
         sellCalculateButton.snp.makeConstraints { make in
             make.top.equalTo(sellCountTextField.snp.bottom).offset(AppContraints.midEdge)
@@ -488,7 +499,7 @@ fileprivate extension TurnipViewController {
         let textfield = UITextField()
         textfield.keyboardType = .default
         textfield.placeholder = placeholder
-        textfield.font = UIFont(name: AppFont.maruLight.rawValue, size: AppContraints.FontsSize.purchaseFont)
+        textfield.font = ACFont.purchaseFont.font
         textfield.textColor = colors?.textfieldColor.textColor
         textfield.layer.cornerRadius = AppContraints.Turnip.cornerRadius
         textfield.backgroundColor = colors?.textfieldColor.backgroundColor
@@ -510,7 +521,7 @@ fileprivate extension TurnipViewController {
     func makeTurnipPriceTextField(with text: TurnipTextFieldText) -> UITextField {
         let textfield = UITextField()
         textfield.keyboardType = .default
-        textfield.font = UIFont(name: AppFont.maruLight.rawValue, size: AppContraints.FontsSize.priceFont)
+        textfield.font = ACFont.priceFont.font
         textfield.textColor = colors?.textfieldColor.textColor
         textfield.layer.cornerRadius = AppContraints.Turnip.cornerRadius
         textfield.backgroundColor = colors?.textfieldColor.backgroundColor
@@ -534,7 +545,7 @@ fileprivate extension TurnipViewController {
        let label = UILabel()
         label.text = text
         label.textAlignment = .center
-        label.font = UIFont(name: AppFont.maruLight.rawValue, size: AppContraints.FontsSize.priceFont)
+        label.font = ACFont.priceFont.font 
         label.textColor = colors?.cellColorSet.itemTextColor
         return label
     }

@@ -10,16 +10,16 @@ import UIKit
 protocol IUserSettingsViewController: AnyObject {
 }
 
-class UserSettingsViewController: CustomViewController {
+class UserSettingsViewController: SheetViewController {
+	var segmentedControl = UISegmentedControl()
+	var segmentedView = UIView()
     var interactor: IUserSettingsInteractor
 
-    var contentScrollView = UIScrollView()
-    var avatarImageView = UIImageView()
-    var nameTextField = UITextView()
+	let generalInfoView = GeneralUserInfoView(userSettings: UserSettingsViewModel())
+	let accountVillageSettingsView = BalanceSettingsView()
 
     init(interactor: IUserSettingsInteractor) {
         self.interactor = interactor
-
         super.init(nibName: nil, bundle: nil)
         self.screenType = .other
     }
@@ -31,52 +31,72 @@ class UserSettingsViewController: CustomViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-		self.setupScrollView()
-		self.setupImageView()
+		let tap = UITapGestureRecognizer(target: self, action: #selector(dissmissKeyboard))
+		tap.cancelsTouchesInView = false
+		self.view.addGestureRecognizer(tap)
+
+		self.colors = ColorSet(for: screenType)
+		self.loadUI()
+		self.setupSegmentedControl()
+		self.segmentedViewSetup()
+		self.segmentedControl.selectedSegmentIndex = 0
+		self.showGeneralUserInfoView()
     }
 
-    func setupScrollView() {
-        view.addSubview(contentScrollView)
-        contentScrollView.snp.makeConstraints { make in
-            make.top.leading.trailing.bottom.equalTo(view)
-        }
-        contentScrollView.delegate = self
-        contentScrollView.alwaysBounceVertical = true
-        contentScrollView.contentSize = CGSize(width: view.frame.width, height: view.frame.height)
-    }
+	func setupSegmentedControl() {
+		self.segmentedControl = CustomSegmentedControl(screenType: self.screenType,
+													   items: ["General", "Island", "News"])
+		self.contentView.addSubview(self.segmentedControl)
+		self.segmentedControl.snp.makeConstraints { make in
+			make.top.equalTo(self.contentView).offset(AppContraints.standartEdge)
+			make.leading.equalTo(self.contentView).offset(AppContraints.minEdge)
+			make.trailing.equalTo(self.contentView).offset(-AppContraints.minEdge)
+			make.height.equalTo(AppContraints.doubleEdge)
+		}
+		self.segmentedControl.addTarget(self, action: #selector(selectedValue), for: .valueChanged)
+	}
 
-    private func setupImageView() {
-        contentScrollView.addSubview(avatarImageView)
-        avatarImageView.snp.makeConstraints { make in
-            make.top.equalTo(contentScrollView).offset(AppContraints.midEdge)
-            make.centerX.equalTo(contentScrollView)
-            make.height.width.equalTo(AppContraints.UserSettings.sizeImageView)
-        }
-        avatarImageView.layer.cornerRadius = AppContraints.UserSettings.cornerRadiusImageView
-    }
+	func segmentedViewSetup() {
+		self.contentView.addSubview(self.segmentedView)
+		self.segmentedView.snp.makeConstraints { make in
+			make.top.equalTo(self.segmentedControl.snp.bottom)
+			make.leading.trailing.bottom.equalTo(self.contentView)
+		}
+	}
+
+	func showGeneralUserInfoView() {
+		self.accountVillageSettingsView.removeFromSuperview()
+		self.segmentedView.addSubview(self.generalInfoView)
+		self.generalInfoView.snp.makeConstraints { make in
+			make.edges.equalToSuperview()
+		}
+	}
+
+	func showAccountVillageSettingsView() {
+		self.generalInfoView.removeFromSuperview()
+		self.segmentedView.addSubview(accountVillageSettingsView)
+		self.accountVillageSettingsView.snp.makeConstraints { make in
+			make.edges.equalToSuperview()
+		}
+	}
+
+	@objc
+	func selectedValue(sender: UISegmentedControl) {
+		if sender == self.segmentedControl {
+			let index = self.segmentedControl.selectedSegmentIndex
+			switch index {
+			case 0:
+				self.showGeneralUserInfoView()
+				print("generalInfoView")
+			case 1:
+				self.showAccountVillageSettingsView()
+			default:
+				print("bls")
+			}
+		}
+	}
 }
 
-extension UserSettingsViewController {
-    private func makeChangeButton() -> UIButton {
-        let button = UIButton()
-        button.snp.makeConstraints { make in
-            make.width.height.equalTo(AppContraints.PinPadLogin.padSize)
-        }
-		button.layer.backgroundColor = colors?.passCodeColor.buttonBgColor
+extension UserSettingsViewController { }
 
-        let imageView = UIImageView()
-        let image = UIImage(systemName: AppImage.UserSettings.pensil.rawValue)
-        imageView.image = image
-        imageView.tintColor = colors?.passCodeColor.buttonNumberColor
-        button.addSubview(imageView)
-        imageView.snp.makeConstraints { make in
-            make.leading.top.equalTo(button).offset(AppContraints.standartEdge)
-            make.trailing.bottom.equalTo(button).offset(-AppContraints.standartEdge)
-        }
-        return button
-    }
-}
-
-extension UserSettingsViewController: UIScrollViewDelegate {}
-
-extension UserSettingsViewController: IUserSettingsViewController {}
+extension UserSettingsViewController: IUserSettingsViewController { }

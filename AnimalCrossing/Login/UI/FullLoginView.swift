@@ -20,10 +20,11 @@ class FullLoginView: DefaultView {
 	let warningLabel = UILabel()
 
 	override init(controllerTitle: String? = nil, screenType: ScreenTypes = .other) {
-		super.init(controllerTitle: controllerTitle, screenType: screenType)
+		super.init(controllerTitle: controllerTitle, screenType: .loginScreen)
+		self.colors = ColorSet(for: .loginScreen)
 		self.loadUI()
 	}
-	
+
 	private func loadUI() {
 		self.controllerTitle = ""
 		self.textSettings()
@@ -45,52 +46,63 @@ class FullLoginView: DefaultView {
 			make.leading.trailing.equalTo(self.mainView)
 		}
 	}
-	
+
 	private func setupTextFields() {
-		self.emailTextField = self.customView.makeTextField(withPlacehoder: AppTitle.Login.emailTF,
-										  height: AppContraints.Login.heightTF,
-										  cornerRadius: AppContraints.Login.cornerRadiusTF,
-										  withImageName: AppImage.Login.iconForEmailTF.rawValue,
-										  isSecureTextEntry: false)
+		self.emailTextField = CustomTextField(settings: CustomTextField.Settings(color: self.colors,
+																				 cornerRadius: AppContraints.Login.cornerRadiusTF,
+																				 placeholder: AppTitle.Login.emailTF,
+																				 systemImageName: AppImage.Login.iconForEmailTF.rawValue))
+//			self.customView.makeTextField(withPlacehoder: AppTitle.Login.emailTF,
+//										  height: AppContraints.Login.heightTF,
+//										  cornerRadius: AppContraints.Login.cornerRadiusTF,
+//										  withImageName: AppImage.Login.iconForEmailTF.rawValue,
+//										  isSecureTextEntry: false)
 		self.mainView.addSubview(self.emailTextField)
 		self.emailTextField.snp.makeConstraints { make in
 			make.top.equalTo(self.appNameLabel.snp.bottom).offset(AppContraints.Login.loginMinVerticalEdge)
 			make.leading.equalTo(self.mainView).offset(AppContraints.Login.loginHorizontelEdge)
 			make.trailing.equalTo(self.mainView).offset(-AppContraints.Login.loginHorizontelEdge)
+			make.height.equalTo(AppContraints.Login.heightTF)
 		}
-		self.passwordNameTextField = self.customView.makeTextField(withPlacehoder: AppTitle.Login.passwordTF,
-										  height: AppContraints.Login.heightTF,
-										  cornerRadius: AppContraints.Login.cornerRadiusTF,
-										  withImageName: AppImage.Login.iconForPasswordTF.rawValue,
-										  isSecureTextEntry: true)
+		self.passwordNameTextField = CustomTextField(settings: CustomTextField.Settings(color: self.colors,
+																						cornerRadius: AppContraints.Login.cornerRadiusTF,
+																						placeholder: AppTitle.Login.passwordTF,
+																						systemImageName: AppImage.Login.iconForPasswordTF.rawValue,
+																						isSecureTextEntry: true))
 		self.mainView.addSubview(self.passwordNameTextField)
 		self.passwordNameTextField.snp.makeConstraints { make in
 			make.top.equalTo(self.emailTextField.snp.bottom).offset(AppContraints.midEdge)
 			make.leading.equalTo(self.mainView).offset(AppContraints.Login.loginHorizontelEdge)
 			make.trailing.equalTo(self.mainView).offset(-AppContraints.Login.loginHorizontelEdge)
+			make.height.equalTo(AppContraints.Login.heightTF)
 		}
 	}
-	
+
 	private func setupButtons() {
-		self.loginButton = self.customView.makeOvalButtonWithCircle(withTitle: AppTitle.Login.loginButton,
-												  buttonWidth: AppContraints.Login.widthLoginButton,
-												  buttonHeight: AppContraints.Login.heightButtons)
+		self.loginButton = OvalButton(withTitle: AppTitle.Login.loginButton,
+									  width: AppContraints.Login.widthLoginButton,
+									  height: AppContraints.Login.heightButtons,
+									  color: self.colors)
 		self.mainView.addSubview(self.loginButton)
 		self.loginButton.snp.makeConstraints { make in
 			make.top.equalTo(self.passwordNameTextField.snp.bottom).offset(AppContraints.standartEdge)
+			make.height.equalTo(AppContraints.Login.heightButtons)
+			make.width.equalTo(AppContraints.Login.widthLoginButton)
 			make.centerX.equalTo(self.mainView)
 		}
-		self.registerButton = self.customView.makeOvalButtonWithCircle(withTitle: AppTitle.Login.registerButton,
-												  buttonWidth: AppContraints.Login.widthButton,
-												  buttonHeight: AppContraints.Login.heightButtons)
+		self.registerButton = OvalButton(withTitle: AppTitle.Login.registerButton,
+										 width: AppContraints.Login.widthButton,
+										 height: AppContraints.Login.heightButtons,
+										 color: self.colors)
 		self.mainView.addSubview(self.registerButton)
 		self.registerButton.snp.makeConstraints { make in
 			make.top.equalTo(passwordNameTextField.snp.bottom).offset(AppContraints.standartEdge)
 			make.trailing.equalTo(loginButton.snp.leading).offset(-AppContraints.minEdge)
 		}
-		self.freeEnterButton = self.customView.makeOvalButtonWithCircle(withTitle: AppTitle.Login.freeButton,
-												  buttonWidth: AppContraints.Login.widthButton,
-												  buttonHeight: AppContraints.Login.heightButtons)
+		self.freeEnterButton = OvalButton(withTitle: AppTitle.Login.freeButton,
+										  width: AppContraints.Login.widthButton,
+										  height: AppContraints.Login.heightButtons,
+										  color: self.colors)
 		self.mainView.addSubview(self.freeEnterButton)
 		self.freeEnterButton.snp.makeConstraints { make in
 			make.top.equalTo(self.passwordNameTextField.snp.bottom).offset(AppContraints.standartEdge)
@@ -117,14 +129,14 @@ class FullLoginView: DefaultView {
 	private func textSettings() {
 		self.welcomeLabel.textAlignment = .center
 		self.welcomeLabel.textColor = #colorLiteral(red: 0.4470588235, green: 0.4039215686, blue: 0.3411764706, alpha: 1)
-		self.welcomeLabel.font = UIFont(name: AppFont.fink.rawValue, size: AppContraints.FontsSize.welcomeFont)
+		self.welcomeLabel.font = ACFont.welcomeFont.font
 		self.welcomeLabel.text = AppTitle.welcome
 		self.appNameLabel.textAlignment = .center
 		self.appNameLabel.textColor = #colorLiteral(red: 0.4470588235, green: 0.4039215686, blue: 0.3411764706, alpha: 1)
-		self.appNameLabel.font = UIFont(name: AppFont.fink.rawValue, size: AppContraints.FontsSize.appNameFont)
+		self.appNameLabel.font = ACFont.appNameFont.font
 		self.appNameLabel.text = AppTitle.nookBank
 		self.warningLabel.textColor = #colorLiteral(red: 0.4470588235, green: 0.4039215686, blue: 0.3411764706, alpha: 1)
-		self.warningLabel.font = UIFont(name: AppFont.maruBold.rawValue, size: AppContraints.FontsSize.defaultFont)
+		self.warningLabel.font = ACFont.defaultBoldFont.font 
 		self.warningLabel.numberOfLines = 0
 		self.warningLabel.textAlignment = .center
 	}

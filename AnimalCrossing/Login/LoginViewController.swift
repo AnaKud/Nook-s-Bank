@@ -17,12 +17,12 @@ protocol ILoginViewController: AnyObject {
     func showErrorAlert(withMessage message: FailureCases)
 }
 
-class LoginViewController: CustomViewController {
+class LoginViewController: CloudViewController {
     var interactor: ILoginInteractor
 	
 	let fullLoginView = FullLoginView(controllerTitle: AppTitle.nookBank, screenType: .loginScreen)
 	let simpleLoginView = SimpleLoginView(controllerTitle: AppTitle.nookBank, screenType: .other)
-	
+
     let welcomeLabel = UILabel()
     let appNameLabel = UILabel()
     var emailTextField = UITextField()
@@ -46,7 +46,7 @@ class LoginViewController: CustomViewController {
         super.viewDidLoad()
 		self.interactor.didLoadUI()
     }
-	
+
 	func updateScreenType(screenType: ScreenTypes) {
 		self.screenType = screenType
 		self.colors = ColorSet(for: screenType)

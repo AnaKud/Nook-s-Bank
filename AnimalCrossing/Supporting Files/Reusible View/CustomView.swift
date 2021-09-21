@@ -25,7 +25,7 @@ class CustomView {
         }
         topView.backgroundColor = colorSet?.cellColorSet.topViewColor
 
-        let circleView = self.makeCircleView(circleViewSize: AppContraints.CellSizes.circleViewSize, firstCharacter: firstCharacter)
+		let circleView = CircleView(size: AppContraints.CellSizes.circleViewSize, firstCharacter: firstCharacter, colorSet: self.colorSet)
         topView.addSubview(circleView)
         circleView.snp.makeConstraints { make in
             make.leading.equalTo(topView).offset(AppContraints.CellSizes.cellBgEdge)
@@ -41,14 +41,15 @@ class CustomView {
             make.bottom.equalTo(topView).offset(-AppContraints.CellSizes.cellBgEdge)
         }
         label.text = text
-        label.font = UIFont(name: AppFont.maruBold.rawValue, size: AppContraints.FontsSize.topViewFont)
+        label.font = ACFont.topViewFont.font
         label.textColor = colorSet?.cellColorSet.titleTextColor
         return topView
     }
 
+	@available(*, deprecated, message: "makeTextField. Use class")
     func makeTextField(height: CGFloat, cornerRadius: CGFloat, editable: Bool) -> UITextField {
         let textfield = UITextField()
-        textfield.font = UIFont(name: AppFont.maruLight.rawValue, size: AppContraints.FontsSize.defaultFont)
+        textfield.font = ACFont.defaultLightFont.font
         textfield.textColor = colorSet?.textfieldColor.textColor
         textfield.layer.cornerRadius = cornerRadius
         textfield.borderStyle = .none
@@ -60,23 +61,37 @@ class CustomView {
         textfield.rightView = UIView(frame: CGRect(x: 0, y: 0, width: AppContraints.minEdge, height: textfield.frame.height))
         return textfield
     }
-
-    func makeTextField(withPlacehoder placeholder: String, height: CGFloat, cornerRadius: CGFloat, withImageName imageName: String, isSecureTextEntry: Bool) -> UITextField {
+	
+	@available(*, deprecated, message: "makeTextField. Use class")
+	func makeTextField(withPlacehoder placeholder: String = "", withText text: String = "",
+					   height: CGFloat, cornerRadius: CGFloat,
+					   withImageName imageName: String = "",
+					   isSecureTextEntry: Bool = false) -> UITextField {
         let textfield = UITextField()
-        textfield.placeholder = placeholder
+		if !text.isEmpty { textfield.text = text }
+		if !placeholder.isEmpty { textfield.placeholder = placeholder }
         textfield.isSecureTextEntry = isSecureTextEntry
-        textfield.font = UIFont(name: AppFont.maruLight.rawValue, size: AppContraints.FontsSize.defaultFont)
+        textfield.font = ACFont.defaultLightFont.font 
         textfield.textColor = colorSet?.textfieldColor.textColor
         textfield.layer.cornerRadius = cornerRadius
         textfield.backgroundColor = colorSet?.textfieldColor.backgroundColor
-        let view = makeImageLeftViewTF(withImageName: imageName)
-        textfield.leftViewMode = .always
-        textfield.leftView = view
+		var leftView = UIView()
+		if !imageName.isEmpty {
+			leftView = makeImageLeftViewTF(withImageName: imageName)
+		} else {
+			leftView = UIView(frame: CGRect(x: 0, y: 0,
+											width: AppContraints.midEdge,
+											   height: textfield.frame.height))
+		}
+		textfield.leftViewMode = .always
+		textfield.leftView = leftView
         textfield.snp.makeConstraints { make in
             make.height.equalTo(height)
         }
         textfield.rightViewMode = .always
-        textfield.rightView = UIView(frame: CGRect(x: 0, y: 0, width: AppContraints.midEdge, height: textfield.frame.height))
+        textfield.rightView = UIView(frame: CGRect(x: 0, y: 0,
+												   width: AppContraints.midEdge,
+												   height: textfield.frame.height))
         return textfield
     }
 
@@ -94,105 +109,9 @@ class CustomView {
         }
         return viewWithImage
     }
-
-    func makeOvalButtonWithCircle(withTitle buttonTitle: String, buttonWidth: CGFloat, buttonHeight: CGFloat) -> UIButton {
-        let button = UIButton()
-        button.snp.makeConstraints { make in
-            make.height.equalTo(buttonHeight)
-            if buttonWidth != 0 {
-                make.width.equalTo(buttonWidth)
-            }
-        }
-        let buttonCornerRadius = buttonHeight / 2
-        button.layer.cornerRadius = buttonCornerRadius
-        button.backgroundColor = colorSet?.ovalButtonColor.buttonColor
-
-        let firstCharacter: String = "\(buttonTitle.first ?? "+")"
-        let circleViewSize = buttonHeight * 0.7
-        let circleEdges = (buttonHeight - circleViewSize) / 2
-        let circleView = makeCircleView(circleViewSize: circleViewSize, firstCharacter: firstCharacter)
-        button.addSubview(circleView)
-        circleView.snp.makeConstraints { make in
-            make.width.height.equalTo(circleViewSize)
-            make.leading.equalTo(button).offset(circleEdges)
-            make.centerY.equalTo(button)
-        }
-        let titleLabel = UILabel()
-        button.addSubview(titleLabel)
-        titleLabel.snp.makeConstraints { make in
-            make.leading.equalTo(circleView.snp.trailing).offset(circleEdges)
-            make.top.bottom.equalTo(button)
-            if buttonWidth == 0 {
-                make.trailing.equalTo(button).offset(-AppContraints.midEdge)
-            }
-        }
-        titleLabel.text = buttonTitle
-        titleLabel.textColor = colorSet?.ovalButtonColor.buttonTextColor
-        titleLabel.font = UIFont(name: AppFont.maruBold.rawValue, size: AppContraints.FontsSize.loginButtonFont)
-        return button
-    }
-
-    func makeCircleView(circleViewSize: CGFloat, firstCharacter: String) -> UIView {
-        let circleView = UIView()
-        let circleViewCornerRadius = circleViewSize / 2
-        circleView.layer.cornerRadius = circleViewCornerRadius
-        circleView.layer.masksToBounds = true
-        circleView.backgroundColor = colorSet?.circleViewColor.circleColor
-        let circleLabel = UILabel()
-        circleView.addSubview(circleLabel)
-        circleLabel.snp.makeConstraints { make in
-            make.leading.top.equalTo(circleView).offset(-1)
-            make.trailing.bottom.equalTo(circleView)
-        }
-        circleLabel.text = firstCharacter
-        circleLabel.font = UIFont(name: AppFont.maruBold.rawValue, size: 18)
-        circleLabel.textColor = colorSet?.circleViewColor.circleTextColor
-        circleLabel.textAlignment = .center
-        circleView.layer.masksToBounds = true
-        return circleView
-    }
 }
 
-final class CircleView: UIView {
-	private var circleViewSize: CGFloat
-	private var firstCharacter: String
-	private var colorSet: ColorSet
 
-	private lazy var circleViewCornerRadius = self.circleViewSize / 2
-
-	private let circleView = UIView()
-	private let circleLabel = UILabel()
-
-	init(size: CGFloat, firstCharacter: String, screenType: ScreenTypes = .other) {
-		self.circleViewSize = size
-		self.firstCharacter = firstCharacter
-		self.colorSet = ColorSet(for: screenType)
-		super.init(frame: CGRect(x: 0, y: 0, width: size, height: size))
-		self.setupLayouts()
-	}
-
-	@available(*, unavailable)
-	required init?(coder: NSCoder) {
-		fatalError("init(coder:) has not been implemented")
-	}
-
-	private func setupLayouts() {
-		self.circleView.layer.cornerRadius = circleViewCornerRadius
-		self.circleView.layer.masksToBounds = true
-		self.circleView.backgroundColor = colorSet.circleViewColor.circleColor
-		self.circleView.addSubview(circleLabel)
-		self.circleLabel.snp.makeConstraints { make in
-			make.leading.top.equalTo(circleView).offset(-1)
-			make.trailing.bottom.equalTo(circleView)
-		}
-		self.circleLabel.text = firstCharacter
-		self.circleLabel.font = UIFont(name: AppFont.maruBold.rawValue, size: 18)
-		self.circleLabel.textColor = colorSet.circleViewColor.circleTextColor
-		self.circleLabel.textAlignment = .center
-		self.circleView.layer.masksToBounds = true
-		addSubview(self.circleView)
-	}
-}
 
 class DefaultView: UIView {
 	private var screenType: ScreenTypes
@@ -200,7 +119,7 @@ class DefaultView: UIView {
 	lazy var colors: ColorSet = {
 		ColorSet(for: screenType)
 	}()
-	
+
 	var customView: CustomView {
 		CustomView(colorSet: colors)
 	}
@@ -216,7 +135,7 @@ class DefaultView: UIView {
 	init(controllerTitle: String? = nil, screenType: ScreenTypes = .other) {
 		self.controllerTitle = controllerTitle
 		self.screenType = screenType
-		super.init(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
+		super.init(frame: .zero)
 		self.setupMainView()
 		self.setupTopBottomLayout()
 		self.setupView()
@@ -287,7 +206,58 @@ class DefaultView: UIView {
 			}
 			self.titleLabel.text = controllerTitle
 			self.titleLabel.textAlignment = .center
-			self.titleLabel.font = UIFont(name: AppFont.fink.rawValue, size: AppContraints.FontsSize.controllerTitleFont)
+			self.titleLabel.font = ACFont.controllerTitleFont.font 
 		}
+	}
+}
+
+class TopView: UIView {
+	private var colorSet: ColorSet
+	private var text: String
+	private var firstCharacter: String
+	init(text: String, firstCharacter: String, screenType: ScreenTypes = .other) {
+		self.text = text
+		self.firstCharacter = firstCharacter
+		self.colorSet = ColorSet(for: screenType)
+		super.init(frame: .zero)
+		self.setupLayouts()
+	}
+
+	init(text: String, firstCharacter: String, colorSet: ColorSet?) {
+		self.text = text
+		self.firstCharacter = firstCharacter
+		self.colorSet = colorSet ?? ColorSet(for: .other)
+		super.init(frame: .zero)
+		self.setupLayouts()
+	}
+
+	@available(*, unavailable)
+	required init?(coder: NSCoder) {
+		fatalError("init(coder:) has not been implemented")
+	}
+
+	func setupLayouts() {
+		self.backgroundColor = self.colorSet.cellColorSet.topViewColor
+
+		let circleView = CircleView(size: AppContraints.CellSizes.circleViewSize,
+									firstCharacter: firstCharacter,
+									colorSet: self.colorSet)
+		self.addSubview(circleView)
+		circleView.snp.makeConstraints { make in
+			make.leading.equalTo(self).offset(AppContraints.CellSizes.cellBgEdge)
+			make.centerY.equalTo(self)
+			make.height.width.equalTo(AppContraints.CellSizes.circleViewSize)
+		}
+		let label = UILabel()
+		self.addSubview(label)
+		label.snp.makeConstraints { make in
+			make.leading.equalTo(circleView.snp.trailing).offset(AppContraints.CellSizes.cellBgEdge)
+			make.trailing.equalTo(self).offset(-AppContraints.CellSizes.cellBgEdge)
+			make.top.equalTo(self).offset(AppContraints.CellSizes.cellBgEdge)
+			make.bottom.equalTo(self).offset(-AppContraints.CellSizes.cellBgEdge)
+		}
+		label.text = self.text
+		label.font = ACFont.topViewFont.font
+		label.textColor = self.colorSet.cellColorSet.titleTextColor
 	}
 }

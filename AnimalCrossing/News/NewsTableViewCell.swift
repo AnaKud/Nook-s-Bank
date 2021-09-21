@@ -30,7 +30,9 @@ class NewsTableViewCell: UITableViewCell {
         dateLabel.text = event.date
         eventLabel.text = event.event
         let firstCharacter: String = "\(event.type.first ?? "+")"
-        eventCircleView = customView?.makeCircleView(circleViewSize: AppContraints.CellSizes.circleViewSize, firstCharacter: firstCharacter) ?? UIView()
+        eventCircleView = CircleView(size: AppContraints.CellSizes.circleViewSize,
+									 firstCharacter: firstCharacter,
+									 colorSet: self.colors)
     }
 
     private func setupLayout() {
@@ -63,7 +65,7 @@ class NewsTableViewCell: UITableViewCell {
             make.top.equalTo(dateView).offset(AppContraints.CellSizes.cellBgEdge)
             make.bottom.equalTo(dateView).offset(-AppContraints.CellSizes.cellBgEdge)
         }
-        dateLabel.font = UIFont(name: AppFont.maruBold.rawValue, size: AppContraints.FontsSize.newsFont)
+        dateLabel.font = ACFont.newsBoldFont.font 
         dateLabel.textColor = colors?.cellColorSet.titleTextColor
         backView.addSubview(eventLabel)
         eventLabel.snp.makeConstraints { make in
@@ -73,7 +75,7 @@ class NewsTableViewCell: UITableViewCell {
             make.height.greaterThanOrEqualTo(40)
         }
         eventLabel.numberOfLines = 0
-        eventLabel.font = UIFont(name: AppFont.maruLight.rawValue, size: AppContraints.FontsSize.newsFont)
+		eventLabel.font = ACFont.newsLightFont.font
         eventLabel.textColor = colors?.cellColorSet.itemTextColor
     }
 }

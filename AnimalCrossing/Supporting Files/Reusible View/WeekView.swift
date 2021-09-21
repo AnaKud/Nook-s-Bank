@@ -22,7 +22,7 @@ class WeekView: UIView {
             make.trailing.equalTo(mainView).offset(-AppContraints.minEdge)
         }
         label.text = weekDayText
-        label.font = UIFont(name: AppFont.maruLight.rawValue, size: AppContraints.FontsSize.weekViewFont)
+        label.font = ACFont.weekViewFont.font 
         label.textColor = colors?.cellColorSet.titleTextColor
         label.textAlignment = .right
         return mainView

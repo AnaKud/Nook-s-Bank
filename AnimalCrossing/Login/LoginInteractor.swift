@@ -99,7 +99,11 @@ class LoginInteractor: ILoginInteractor {
 	private func setupScreenType() -> ScreenTypes {
 		print("userDef \(UserDefaults.standard.value(forKey: "simpleLogin"))")
 		var screenType = ScreenTypes.loginScreen
-		if let value = UserDefaults.standard.value(forKey: "simpleLogin") as? Bool, value == true { screenType = .other }
+		if let value = UserDefaults.standard.value(forKey: "simpleLogin") as? Bool, value == true {
+			screenType = .other
+		} else { screenType = ScreenTypes.loginScreen }
+
+		print(screenType)
 		return screenType
 	}
 }

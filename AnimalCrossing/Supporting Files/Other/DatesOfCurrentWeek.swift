@@ -23,9 +23,10 @@ class DatesOfCurrentWeek {
         }
         return weekDates
     }
-
+// change to device time
     func getLastSunday() -> Date? {
-        let nowDate = Date()
+		let nowDate = Date()
+		
         let calendar = Calendar.current
         let dayComponent = calendar.dateComponents([.year, .month, .day, .weekday], from: nowDate)
 

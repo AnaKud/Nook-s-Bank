@@ -14,7 +14,7 @@ protocol IBankViewController {
     var currentAccount: BankViewModel? { get set }
 }
 
-class BankViewController: CustomViewController {
+class BankViewController: CloudViewController {
     var currentAccount: BankViewModel?
     let bankAccountView = UIView()
     let coinImageView = UIImageView()
@@ -104,8 +104,7 @@ class BankViewController: CustomViewController {
             make.top.equalTo(bankAccountView).offset(AppContraints.minEdge)
             make.trailing.equalTo(bankAccountView).offset(-AppContraints.minEdge)
         }
-        currentAccountTitleLabel.font = UIFont(name: AppFont.maruBold.rawValue,
-											   size: AppContraints.FontsSize.bankAccontFont)
+        currentAccountTitleLabel.font = ACFont.bankAccountFont.font
         currentAccountTitleLabel.textColor = colors?.bankViewColor.titleTextColor
 
         bankAccountView.addSubview(currentAccountLabel)
@@ -114,8 +113,7 @@ class BankViewController: CustomViewController {
             make.top.equalTo(currentAccountTitleLabel.snp.bottom).offset(AppContraints.minEdge)
             make.trailing.bottom.equalTo(bankAccountView).offset(-AppContraints.minEdge)
         }
-        currentAccountLabel.font = UIFont(name: AppFont.maruLight.rawValue,
-										  size: AppContraints.FontsSize.bankAccontFont)
+        currentAccountLabel.font = ACFont.bankAccountFont.font
         currentAccountLabel.textColor = colors?.bankViewColor.itemTextColor
         currentAccountLabel.text = self.presenter.returnCurrentAccountValue()
     }
@@ -150,7 +148,7 @@ class BankViewController: CustomViewController {
             make.top.equalTo(historyView).offset(AppContraints.minEdge)
             make.trailing.equalTo(historyView).offset(-AppContraints.midEdge)
         }
-        historyTitleLabel.font = UIFont(name: AppFont.maruBold.rawValue, size: AppContraints.FontsSize.bankAccontFont)
+        historyTitleLabel.font = ACFont.bankAccountFont.font
         historyTitleLabel.textColor = colors?.bankViewColor.titleTextColor
 
         historyView.addSubview(expensesCollectionView)

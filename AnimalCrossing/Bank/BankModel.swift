@@ -148,7 +148,7 @@ enum ExpenseType: String, CaseIterable {
 
     static let allValue: [String] = [ExpenseType.RawValue]()
 
-	// swiftlint:disable:next cyclomatic_complexit
+	// swiftlint:disable:next cyclomatic_complexity
     init?(id: Int) {
         switch id {
         case 0:

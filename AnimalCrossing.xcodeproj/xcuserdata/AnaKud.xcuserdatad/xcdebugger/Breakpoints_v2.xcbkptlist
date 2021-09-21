@@ -7,128 +7,224 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "EB7847D6-D246-4463-B8E0-A167A3A0D6D2"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "AnimalCrossing/Supporting Files/Reusible View/CustomView.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "28"
-            endingLineNumber = "28"
-            landmarkName = "setupTopView(text:_:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "FBE432E5-D385-47CD-A07A-D98183F8CC4C"
+            uuid = "C9EC989E-9E47-44F1-BBD9-9E070941DEF5"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "AnimalCrossing/Supporting Files/Reusible View/CustomView.swift"
+            filePath = "AnimalCrossing/Supporting Files/Reusible View/CustomTextField.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "31"
-            endingLineNumber = "31"
-            landmarkName = "setupTopView(text:_:)"
+            startingLineNumber = "49"
+            endingLineNumber = "49"
+            landmarkName = "setupUI(settings:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "95A24ED8-127D-446B-BECF-A12B9BB00547"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "AnimalCrossing/Supporting Files/Reusible View/CustomView.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "180"
-            endingLineNumber = "180"
-            landmarkName = "init(size:firstCharacter:screenType:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "D9D95E9B-087C-41F9-BEEC-53DFF94F1842"
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "AnimalCrossing/Supporting Files/Reusible View/CustomView.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "188"
-            endingLineNumber = "188"
-            landmarkName = "init(size:firstCharacter:colorSet:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "FC968CAF-C629-4110-B556-82E0E9164501"
+            uuid = "48F93463-9323-4A0E-8D06-0E5F2B01909B"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "AnimalCrossing/Supporting Files/Reusible View/CustomView.swift"
+            filePath = "AnimalCrossing/Supporting Files/Reusible View/CustomTextField.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "190"
-            endingLineNumber = "190"
-            landmarkName = "init(size:firstCharacter:colorSet:)"
+            startingLineNumber = "48"
+            endingLineNumber = "48"
+            landmarkName = "setupUI(settings:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "CDFE2D30-4FDD-430E-8D7C-E94106A0D986"
+            uuid = "DAEBBFB8-DC06-412E-93D6-FD7F10EE435B"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "AnimalCrossing/Supporting Files/ContantAndData/DesignData.swift"
+            filePath = "AnimalCrossing/Supporting Files/Reusible View/CustomTextField.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "253"
-            endingLineNumber = "253"
-            landmarkName = "init(for:)"
+            startingLineNumber = "50"
+            endingLineNumber = "50"
+            landmarkName = "setupUI(settings:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "95F62D38-2BCE-4563-99F3-806A16994AFA"
+            uuid = "FF091390-B286-4B5B-95ED-407806F184A6"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "AnimalCrossing/Supporting Files/ContantAndData/DesignData.swift"
+            filePath = "AnimalCrossing/User/Views/GeneralUserInfoView.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "250"
-            endingLineNumber = "250"
-            landmarkName = "init(for:)"
+            startingLineNumber = "165"
+            endingLineNumber = "165"
+            landmarkName = "setupPadSection()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "EC56A2F8-A47F-4B3F-B4FF-CE65196B524A"
+            uuid = "60A5D5AC-A1A1-4C43-9D77-5A0FA278C29A"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "AnimalCrossing/User/Views/GeneralUserInfoView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "162"
+            endingLineNumber = "162"
+            landmarkName = "setupPadSection()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "E5CD3A4D-B6B6-4C04-AFC3-6F6609529AD6"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "AnimalCrossing/User/Views/AvatarCollectionViewCell.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "21"
+            endingLineNumber = "21"
+            landmarkName = "config(with:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "2E429A5E-162C-405B-8CB2-69AA429BF9CD"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "AnimalCrossing/User/Views/AvatarCollectionViewCell.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "30"
+            endingLineNumber = "30"
+            landmarkName = "setUpLayout()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "6119218D-9959-4183-A74B-C07809EB94EA"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "AnimalCrossing/User/Views/GeneralUserInfoView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "223"
+            endingLineNumber = "223"
+            landmarkName = "collectionViewSettings()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "378E7973-7E49-48F3-A61B-60730FC5B5A5"
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "AnimalCrossing/News/NewsTableViewCell.swift"
+            filePath = "AnimalCrossing/Data Managers/NetworkManager.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "33"
-            endingLineNumber = "33"
-            landmarkName = "config(withEvent:)"
+            startingLineNumber = "45"
+            endingLineNumber = "45"
+            landmarkName = "searchVillagers(with:link:villagersHandler:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "378E7973-7E49-48F3-A61B-60730FC5B5A5 - 4f38bff6b199ab1f"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "AnimalCrossing.NetworkManager.searchVillagers(with: Swift.String, link: AnimalCrossing.AdditionalLink, villagersHandler: (Swift.Optional&lt;Swift.Array&lt;Swift.String&gt;&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "AnimalCrossing"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/AnaKud/Yandex.Disk.localized/Swift/Git/AnimalCrossing/AnimalCrossing/Data%20Managers/NetworkManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "45"
+                  endingLineNumber = "45"
+                  offsetFromSymbolStart = "408">
+               </Location>
+               <Location
+                  uuid = "378E7973-7E49-48F3-A61B-60730FC5B5A5 - e551abba3705d64c"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in AnimalCrossing.NetworkManager.searchVillagers(with: Swift.String, link: AnimalCrossing.AdditionalLink, villagersHandler: (Swift.Optional&lt;Swift.Array&lt;Swift.String&gt;&gt;) -&gt; ()) -&gt; ()"
+                  moduleName = "AnimalCrossing"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/AnaKud/Yandex.Disk.localized/Swift/Git/AnimalCrossing/AnimalCrossing/Data%20Managers/NetworkManager.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "47"
+                  endingLineNumber = "47"
+                  offsetFromSymbolStart = "124">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "85DCF332-9927-4DB6-A395-797DEE1A4C4D"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "AnimalCrossing/Data Managers/NetworkManager.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "87"
+            endingLineNumber = "87"
+            landmarkName = "makeVillagerRequest(with:link:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "A704AD6B-05F9-4ACD-8EB0-6CD9393BBA91"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "AnimalCrossing/Data Managers/NetworkManager.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "57"
+            endingLineNumber = "57"
+            landmarkName = "searchVillagers(with:link:villagersHandler:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "6C0F7AA6-41E5-4D26-B70E-883862C77E15"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "AnimalCrossing/User/UserSettingsViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "92"
+            endingLineNumber = "92"
+            landmarkName = "selectedValue(sender:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

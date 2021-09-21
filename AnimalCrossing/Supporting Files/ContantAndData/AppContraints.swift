@@ -20,27 +20,7 @@ struct AppContraints {
 
     static let standartCornerRadius: CGFloat = 15
 
-    struct FontsSize {
-        static let loginButtonFont: CGFloat = iphoneHeight > 800 ? 16 : 13
-        static let welcomeFont: CGFloat = iphoneHeight > 800 ? 36 : 32
-        static let appNameFont: CGFloat = iphoneHeight > 800 ? 40 : 36
-        static let defaultFont: CGFloat = iphoneHeight > 800 ? 20 : 16
-        static let padFont: CGFloat = iphoneHeight > 800 ? 50 : 46
-        static let controllerTitleFont: CGFloat = iphoneHeight > 800 ? 40 : 30
-
-        static let newsFont: CGFloat = iphoneHeight > 800 ? 20 : 18
-
-        static let topViewFont: CGFloat = iphoneHeight > 800 ? 20 : 16
-
-        static let bankAccontFont: CGFloat = iphoneHeight > 800 ? 20 : 18
-        static let bankValueFont: CGFloat = iphoneHeight > 800 ? 14 : 12
-        static let bankDateFont: CGFloat = iphoneHeight > 800 ? 10 : 8
-
-        static let weekViewFont: CGFloat = iphoneHeight > 800 ? 14 : 10
-        static let priceFont: CGFloat = iphoneHeight > 800 ? 16 : 14
-
-        static let purchaseFont: CGFloat = iphoneHeight > 800 ? 18 : 16
-    }
+	static let defaultBorder: CGFloat = 1
 
     struct Login {
         static let loginVerticalEdge = navTitle * 4
@@ -54,12 +34,18 @@ struct AppContraints {
         static let widthLoginButton = AppContraints.iphoneWidth / 3.3 - 15
     }
 
-    struct UserSettings {
-        static let sizeImageView = iphoneWidth / 5
-        static let cornerRadiusImageView = sizeImageView / 2
+    struct Settings {
+        static let avatarHeight = iphoneWidth / 4
         static let cornerRadiusTF = AppContraints.standartCornerRadius
-        static let heightTF = AppContraints.Login.heightTF
-        static let sizeButton = heightTF / 1.5
+		static let widthUserLabel: CGFloat = 60
+        static let heightTF: CGFloat = 50
+		static let edgesTFToSuperview: CGFloat = 30
+		static let widthPadLabel = widthUserLabel * 3
+		static let heightButton: CGFloat = 50
+		
+		static let widthButton: CGFloat = 150
+		
+		static let widthAccountLabel: CGFloat = 85
     }
 
     struct CellSizes {

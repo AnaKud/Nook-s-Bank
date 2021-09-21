@@ -14,7 +14,7 @@ protocol INewsViewController {
     func refreshView()
 }
 
-class NewsViewController: CustomViewController {
+class NewsViewController: CloudViewController {
     var presenter: INewsPresenter
     let tableView = UITableView()
     let activityIndicator = UIActivityIndicatorView()
