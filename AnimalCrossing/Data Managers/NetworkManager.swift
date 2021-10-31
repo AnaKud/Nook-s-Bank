@@ -40,15 +40,19 @@ class NetworkManager: INewsNetworkManager {
         }
         task.resume()
     }
-	func searchVillagers(with searchString: String, link: AdditionalLink = .villagers, villagersHandler: @escaping ([String]?) -> Void) {
+
+	func searchVillagers(with searchString: String,
+						 link: AdditionalLink = .villagers,
+						 villagersHandler: @escaping ([VillagerDTO]) -> Void) {
 		guard let request = self.makeVillagerRequest(with: searchString) else { return }
+
 		let task = URLSession.shared.dataTask(with: request) { data, response, error in
 			guard
 				error == nil,
 				let httpResponse = response as? HTTPURLResponse,
 				let data = data
 			else {
-				villagersHandler(nil)
+				villagersHandler([VillagerDTO]())
 				return
 			}
 			if httpResponse.statusCode == 200 {
@@ -56,8 +60,8 @@ class NetworkManager: INewsNetworkManager {
 					let json = try JSONSerialization.jsonObject(with: data, options: [])
 					print(json)
 					let decoder = JSONDecoder()
-					let villagers = try decoder.decode(String.self, from: data)
-					villagersHandler([villagers])
+					let villagers = try decoder.decode([VillagerDTO].self, from: data)
+					villagersHandler(villagers)
 				} catch {
 					print(error.localizedDescription)
 				}
