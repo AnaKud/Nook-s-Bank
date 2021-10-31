@@ -200,6 +200,26 @@ private extension GeneralUserInfoView {
 			make.bottom.equalTo(self.contentView).offset(-AppContraints.midEdge)
 		}
 	}
+
+	func makeButtonConstraintsForOnSwithcer() {
+		self.saveSettingsOrRegisterButton.snp.removeConstraints()
+		self.saveSettingsOrRegisterButton.snp.makeConstraints { make in
+			make.top.equalTo(self.newPadCheckingTextField.snp.bottom).offset(AppContraints.minEdge)
+			make.leading.equalTo(self.contentView).offset(AppContraints.Settings.edgesTFToSuperview)
+			make.trailing.equalTo(self.contentView).offset(-AppContraints.Settings.edgesTFToSuperview)
+			make.bottom.equalTo(self.contentView).offset(-AppContraints.midEdge)
+		}
+	}
+
+	func makeButtonConstraintsForOffSwithcer() {
+		self.saveSettingsOrRegisterButton.snp.removeConstraints()
+		self.saveSettingsOrRegisterButton.snp.makeConstraints { make in
+			make.top.equalTo(self.padLabel.snp.bottom).offset(AppContraints.minEdge)
+			make.leading.equalTo(self.contentView).offset(AppContraints.Settings.edgesTFToSuperview)
+			make.trailing.equalTo(self.contentView).offset(-AppContraints.Settings.edgesTFToSuperview)
+			make.bottom.equalTo(self.contentView).offset(-AppContraints.midEdge)
+		}
+	}
 }
 
 @objc
@@ -306,7 +326,6 @@ private extension GeneralUserInfoView {
 		default:
 			self.setupPadForExistingUser()
 		}
-		self.changePadTFVisability()
 	}
 
 	func changePadTFVisability() {
@@ -314,10 +333,12 @@ private extension GeneralUserInfoView {
 			self.oldPadTextField.isHidden = false
 			self.newPadTextField.isHidden = false
 			self.newPadCheckingTextField.isHidden = false
+			self.makeButtonConstraintsForOnSwithcer()
 		} else {
 			self.oldPadTextField.isHidden = true
 			self.newPadTextField.isHidden = true
 			self.newPadCheckingTextField.isHidden = true
+			self.makeButtonConstraintsForOffSwithcer()
 		}
 	}
 
@@ -402,7 +423,6 @@ private extension GeneralUserInfoView {
 													   width: AppContraints.Settings.widthButton,
 													   height: AppContraints.Settings.heightButton,
 													   color: self.colors)
-		self.contentView.addSubview(self.saveSettingsOrRegisterButton)
 	}
 }
 

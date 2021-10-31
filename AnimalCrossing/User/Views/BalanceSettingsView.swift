@@ -54,7 +54,7 @@ private extension BalanceSettingsView {
 			make.height.equalTo(AppContraints.Settings.heightTF)
 		}
 	}
-	
+
 	func setupLoanBalanceSection() {
 		self.loanBalanceLabel.text = "Loan Balance"
 		self.loanBalanceLabel.numberOfLines = 0

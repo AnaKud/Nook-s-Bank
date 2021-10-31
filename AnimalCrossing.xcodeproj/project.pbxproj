@@ -12,6 +12,7 @@
 		E312B78326E1263B00523CA1 /* CircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E312B78226E1263B00523CA1 /* CircleView.swift */; };
 		E312B78526E1274D00523CA1 /* OvalButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E312B78426E1274D00523CA1 /* OvalButton.swift */; };
 		E313148326E7D515002B5F46 /* SheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E313148226E7D515002B5F46 /* SheetViewController.swift */; };
+		E32C07B026FCF7B900050868 /* VillagerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E32C07AF26FCF7B900050868 /* VillagerModel.swift */; };
 		E3443D5326E937B6009CD308 /* CustomTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3443D5226E937B6009CD308 /* CustomTextField.swift */; };
 		E3443D5526E94753009CD308 /* CustomSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3443D5426E94753009CD308 /* CustomSegmentedControl.swift */; };
 		E372B38826D82B580046C4FA /* SimpleLoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E372B38726D82B580046C4FA /* SimpleLoginView.swift */; };
@@ -66,6 +67,9 @@
 		E3B9329526A16AEA003AFE7F /* LoginWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3B9329426A16AEA003AFE7F /* LoginWorker.swift */; };
 		E3B9329726A16B0B003AFE7F /* LoginInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3B9329626A16B0B003AFE7F /* LoginInteractor.swift */; };
 		E3B932A626A16F2A003AFE7F /* UserSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3B932A526A16F2A003AFE7F /* UserSettingsViewController.swift */; };
+		E3BC5BF62719E6EF0062ED5E /* AddVillagerPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3BC5BF52719E6EF0062ED5E /* AddVillagerPresenter.swift */; };
+		E3BC5BF8271A002A0062ED5E /* NewVillagerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3BC5BF7271A002A0062ED5E /* NewVillagerTableViewCell.swift */; };
+		E3C99A9F26FBC6CA001F3825 /* VillagerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3C99A9E26FBC6CA001F3825 /* VillagerTableViewCell.swift */; };
 		E3CC113A2696F7570080FD88 /* TurnipRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3CC11392696F7570080FD88 /* TurnipRouter.swift */; };
 		E3CC11422696F8DA0080FD88 /* ProphetPricesPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3CC113C2696F8DA0080FD88 /* ProphetPricesPresenter.swift */; };
 		E3CC11432696F8DA0080FD88 /* ProphetPricesWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3CC113D2696F8DA0080FD88 /* ProphetPricesWorker.swift */; };
@@ -80,7 +84,7 @@
 		E3D5C77C26ED3DED0039D54E /* AvatarCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D5C77B26ED3DED0039D54E /* AvatarCollectionViewCell.swift */; };
 		E3D5C77E26ED3EAF0039D54E /* GeneralUserInfoView+dataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D5C77D26ED3EAF0039D54E /* GeneralUserInfoView+dataSource.swift */; };
 		E3D5C7A626F3D8490039D54E /* VillagerNamesAutoComplete.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D5C7A526F3D8490039D54E /* VillagerNamesAutoComplete.swift */; };
-		E3D5C7A826F6015F0039D54E /* AddVillagersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D5C7A726F6015F0039D54E /* AddVillagersView.swift */; };
+		E3D5C7A826F6015F0039D54E /* AddVillagersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3D5C7A726F6015F0039D54E /* AddVillagersViewController.swift */; };
 		E3ED9CB526B5C10E005E603D /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = E3ED9CB426B5C10E005E603D /* FirebaseAuth */; };
 		E3ED9CB726B5C10E005E603D /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = E3ED9CB626B5C10E005E603D /* FirebaseDatabase */; };
 		E3ED9CB926B5C10E005E603D /* FirebaseDatabaseSwift-Beta in Frameworks */ = {isa = PBXBuildFile; productRef = E3ED9CB826B5C10E005E603D /* FirebaseDatabaseSwift-Beta */; };
@@ -99,6 +103,7 @@
 		E312B78226E1263B00523CA1 /* CircleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleView.swift; sourceTree = "<group>"; };
 		E312B78426E1274D00523CA1 /* OvalButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OvalButton.swift; sourceTree = "<group>"; };
 		E313148226E7D515002B5F46 /* SheetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetViewController.swift; sourceTree = "<group>"; };
+		E32C07AF26FCF7B900050868 /* VillagerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VillagerModel.swift; sourceTree = "<group>"; };
 		E3443D5226E937B6009CD308 /* CustomTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextField.swift; sourceTree = "<group>"; };
 		E3443D5426E94753009CD308 /* CustomSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSegmentedControl.swift; sourceTree = "<group>"; };
 		E372B38726D82B580046C4FA /* SimpleLoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleLoginView.swift; sourceTree = "<group>"; };
@@ -153,6 +158,9 @@
 		E3B9329426A16AEA003AFE7F /* LoginWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginWorker.swift; sourceTree = "<group>"; };
 		E3B9329626A16B0B003AFE7F /* LoginInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginInteractor.swift; sourceTree = "<group>"; };
 		E3B932A526A16F2A003AFE7F /* UserSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettingsViewController.swift; sourceTree = "<group>"; };
+		E3BC5BF52719E6EF0062ED5E /* AddVillagerPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddVillagerPresenter.swift; sourceTree = "<group>"; };
+		E3BC5BF7271A002A0062ED5E /* NewVillagerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewVillagerTableViewCell.swift; sourceTree = "<group>"; };
+		E3C99A9E26FBC6CA001F3825 /* VillagerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VillagerTableViewCell.swift; sourceTree = "<group>"; };
 		E3CC11392696F7570080FD88 /* TurnipRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TurnipRouter.swift; sourceTree = "<group>"; };
 		E3CC113C2696F8DA0080FD88 /* ProphetPricesPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProphetPricesPresenter.swift; sourceTree = "<group>"; };
 		E3CC113D2696F8DA0080FD88 /* ProphetPricesWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProphetPricesWorker.swift; sourceTree = "<group>"; };
@@ -167,7 +175,7 @@
 		E3D5C77B26ED3DED0039D54E /* AvatarCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarCollectionViewCell.swift; sourceTree = "<group>"; };
 		E3D5C77D26ED3EAF0039D54E /* GeneralUserInfoView+dataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "GeneralUserInfoView+dataSource.swift"; sourceTree = "<group>"; };
 		E3D5C7A526F3D8490039D54E /* VillagerNamesAutoComplete.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VillagerNamesAutoComplete.swift; sourceTree = "<group>"; };
-		E3D5C7A726F6015F0039D54E /* AddVillagersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddVillagersView.swift; sourceTree = "<group>"; };
+		E3D5C7A726F6015F0039D54E /* AddVillagersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddVillagersViewController.swift; sourceTree = "<group>"; };
 		E3F9486426F6140900AE02A7 /* NotificationSettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationSettingsView.swift; sourceTree = "<group>"; };
 		E3FC7E7F2692E9D40078A7E8 /* AppContraints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppContraints.swift; sourceTree = "<group>"; };
 		E3FC7E812692E9FF0078A7E8 /* AppTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppTitle.swift; sourceTree = "<group>"; };
@@ -223,6 +231,7 @@
 				E3D5C77B26ED3DED0039D54E /* AvatarCollectionViewCell.swift */,
 				E3D5C77526ECD1B50039D54E /* BalanceSettingsView.swift */,
 				E3F9486426F6140900AE02A7 /* NotificationSettingsView.swift */,
+				E3C99A9E26FBC6CA001F3825 /* VillagerTableViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -407,7 +416,10 @@
 		E3D5C7A926F6016A0039D54E /* AddVillagers */ = {
 			isa = PBXGroup;
 			children = (
-				E3D5C7A726F6015F0039D54E /* AddVillagersView.swift */,
+				E3D5C7A726F6015F0039D54E /* AddVillagersViewController.swift */,
+				E32C07AF26FCF7B900050868 /* VillagerModel.swift */,
+				E3BC5BF7271A002A0062ED5E /* NewVillagerTableViewCell.swift */,
+				E3BC5BF52719E6EF0062ED5E /* AddVillagerPresenter.swift */,
 			);
 			path = AddVillagers;
 			sourceTree = "<group>";
@@ -541,6 +553,7 @@
 				E3A2E9F52689C3A600297E51 /* UserLocale.swift in Sources */,
 				E3A927F926A9A01A002323F0 /* BankRouter.swift in Sources */,
 				E3A2E9FF2689C3A600297E51 /* NewsTableViewCell.swift in Sources */,
+				E32C07B026FCF7B900050868 /* VillagerModel.swift in Sources */,
 				E3D4E44C268B5B2500F26908 /* CustomView.swift in Sources */,
 				E3B9329526A16AEA003AFE7F /* LoginWorker.swift in Sources */,
 				E3F9486526F6140900AE02A7 /* NotificationSettingsView.swift in Sources */,
@@ -563,6 +576,7 @@
 				E30B5E6826C6D6C300E4D02E /* GeneralUserInfoView.swift in Sources */,
 				E372B38A26DABE410046C4FA /* Biometric.swift in Sources */,
 				E3CF43F926975FA500BFDAB8 /* GraphView.swift in Sources */,
+				E3C99A9F26FBC6CA001F3825 /* VillagerTableViewCell.swift in Sources */,
 				E3A2E9FC2689C3A600297E51 /* NewsPresenter.swift in Sources */,
 				E3D5C77C26ED3DED0039D54E /* AvatarCollectionViewCell.swift in Sources */,
 				E3A2EA002689C3A600297E51 /* EventWebView.swift in Sources */,
@@ -575,9 +589,10 @@
 				E3443D5326E937B6009CD308 /* CustomTextField.swift in Sources */,
 				E3A2E9F12689C3A600297E51 /* SupportingFile.swift in Sources */,
 				E3A2E9FD2689C3A600297E51 /* NewsViewController.swift in Sources */,
+				E3BC5BF8271A002A0062ED5E /* NewVillagerTableViewCell.swift in Sources */,
 				E3CC11492696FAC30080FD88 /* ProphetPricesAssembly.swift in Sources */,
 				E3AE603326DD765500681A79 /* FullLoginView.swift in Sources */,
-				E3D5C7A826F6015F0039D54E /* AddVillagersView.swift in Sources */,
+				E3D5C7A826F6015F0039D54E /* AddVillagersViewController.swift in Sources */,
 				E3FC7E842692EA510078A7E8 /* DesignData.swift in Sources */,
 				E3A2E9D92689C3A600297E51 /* LoginViewController.swift in Sources */,
 				E3A2E9ED2689C3A600297E51 /* MainRouter.swift in Sources */,
@@ -600,6 +615,7 @@
 				E3A2E9FE2689C3A600297E51 /* NewsAssembly.swift in Sources */,
 				E3A2E9F02689C3A600297E51 /* SceneDelegate.swift in Sources */,
 				E3A2E9F42689C3A600297E51 /* TurnipModel.swift in Sources */,
+				E3BC5BF62719E6EF0062ED5E /* AddVillagerPresenter.swift in Sources */,
 				E3CC11462696F8DA0080FD88 /* ProphetPricesViewController.swift in Sources */,
 				E372B38826D82B580046C4FA /* SimpleLoginView.swift in Sources */,
 				E3D5C77826ED1A610039D54E /* Switch.swift in Sources */,

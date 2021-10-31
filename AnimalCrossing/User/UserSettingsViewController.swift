@@ -17,6 +17,7 @@ class UserSettingsViewController: SheetViewController {
 
 	let generalInfoView = GeneralUserInfoView(userSettings: UserSettingsViewModel())
 	let accountVillageSettingsView = BalanceSettingsView()
+	let notificationSettingsView = NotificationSettingsView()
 
     init(interactor: IUserSettingsInteractor) {
         self.interactor = interactor
@@ -66,6 +67,7 @@ class UserSettingsViewController: SheetViewController {
 
 	func showGeneralUserInfoView() {
 		self.accountVillageSettingsView.removeFromSuperview()
+		self.notificationSettingsView.removeFromSuperview()
 		self.segmentedView.addSubview(self.generalInfoView)
 		self.generalInfoView.snp.makeConstraints { make in
 			make.edges.equalToSuperview()
@@ -74,8 +76,19 @@ class UserSettingsViewController: SheetViewController {
 
 	func showAccountVillageSettingsView() {
 		self.generalInfoView.removeFromSuperview()
+		self.notificationSettingsView.removeFromSuperview()
 		self.segmentedView.addSubview(accountVillageSettingsView)
 		self.accountVillageSettingsView.snp.makeConstraints { make in
+			make.edges.equalToSuperview()
+		}
+	}
+
+	func setupNotificationSettingsView() {
+		self.notificationSettingsView.controllerCallback = self
+		self.generalInfoView.removeFromSuperview()
+		self.accountVillageSettingsView.removeFromSuperview()
+		self.segmentedView.addSubview(notificationSettingsView)
+		self.notificationSettingsView.snp.makeConstraints { make in
 			make.edges.equalToSuperview()
 		}
 	}
@@ -87,11 +100,11 @@ class UserSettingsViewController: SheetViewController {
 			switch index {
 			case 0:
 				self.showGeneralUserInfoView()
-				print("generalInfoView")
 			case 1:
 				self.showAccountVillageSettingsView()
 			default:
-				print("bls")
+				self.setupNotificationSettingsView()
+			
 			}
 		}
 	}
@@ -100,3 +113,11 @@ class UserSettingsViewController: SheetViewController {
 extension UserSettingsViewController { }
 
 extension UserSettingsViewController: IUserSettingsViewController { }
+
+extension UserSettingsViewController: IUserSettingsControllerCallback {
+	func goToAddVillagerController() {
+
+		let nextVc = AddVillagersViewController(presenter: AddVillagerPresenter())
+		self.navigationController?.pushViewController(nextVc, animated: true)
+	}
+}
