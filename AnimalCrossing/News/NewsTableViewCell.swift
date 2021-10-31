@@ -65,6 +65,7 @@ class NewsTableViewCell: UITableViewCell {
             make.top.equalTo(dateView).offset(AppContraints.CellSizes.cellBgEdge)
             make.bottom.equalTo(dateView).offset(-AppContraints.CellSizes.cellBgEdge)
         }
+
         dateLabel.font = ACFont.newsBoldFont.font 
         dateLabel.textColor = colors?.cellColorSet.titleTextColor
         backView.addSubview(eventLabel)

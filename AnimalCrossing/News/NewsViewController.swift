@@ -40,7 +40,8 @@ class NewsViewController: CloudViewController {
     private func setupTable() {
         self.tableView.dataSource = self
         self.tableView.delegate = self
-        self.tableView.register(NewsTableViewCell.self, forCellReuseIdentifier: CellReusibleID.news.rawValue)
+        self.tableView.register(NewsTableViewCell.self,
+								forCellReuseIdentifier: CellReusibleID.news.rawValue)
     }
 
     func displayActivity() {

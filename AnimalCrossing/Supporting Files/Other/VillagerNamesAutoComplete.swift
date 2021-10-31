@@ -1,21 +1,17 @@
 //
 //  VillagerNamesAutoComplete.swift
 //  Created by Anastasiya Kudasheva on 16.09.2021
-
+// swiftlint:disable all
 import Foundation
 
 protocol VillagerNames {
-	func getAnswer() -> [String]
+	func getAnswer(request: String) -> [String]
 }
-// swiftlint:disable:next type_body_length
+
 struct VillagerNamesAutoComplete: VillagerNames {
-	var request: String
-	init(request: String) {
-		self.request = request
-	}
-	func getAnswer() -> [String] {
+	func getAnswer(request: String) -> [String] {
 		self.namesArray.filter {
-			$0.starts(with: self.request)
+			$0.starts(with: request)
 		}
 	}
 	private let namesArray = [
