@@ -183,10 +183,14 @@ enum AppImage {
 			let item = self.allCases.randomElement() ?? .tomNook
 			return UIImage(named: item.rawValue)
 		}
+
 		static var count: Int {
 			return self.allCases.count
 		}
-		
+	}
+
+	enum Settings: String {
+		case plus = "GreenPlus"
 	}
 }
 
@@ -209,7 +213,7 @@ struct ColorSet {
     var passCodeColor: PassCodeViewColor
 	var segmentedControlColor: SegmentedControlColor
 	var switchColor: SwitchColor
-	
+
     init(for screenType: ScreenTypes?) {
         self.cellColorSet = CellColor(for: screenType)
         self.textfieldColor = TextFieldColor(for: screenType)

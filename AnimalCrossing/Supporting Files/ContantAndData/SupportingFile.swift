@@ -71,6 +71,8 @@ enum AdditionalLink: String {
 enum CellReusibleID: String {
     case news = "newsCell"
     case expense = "expenseCell"
+	case addVillagers = "addVillagerTableViewCell"
+	case newVillager = "newVillagerTableViewCell"
 }
 
 struct DemoBankData {
