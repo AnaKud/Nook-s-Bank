@@ -24,13 +24,13 @@ class CustomSegmentedControl: UISegmentedControl {
 		self.backgroundColor = self.color.backgroundColor
 		self.selectedSegmentTintColor = self.color.selectedItemBgColor
 		self.setTitleTextAttributes([
-			.font: ACFont.defaultBoldFont.font,
-			.foregroundColor: self.color.selectedTextColor
+			.font: ACFont.defaultBoldFont.font as Any,
+			.foregroundColor: self.color.selectedTextColor as Any
 		],
 									for: .selected)
 		self.setTitleTextAttributes([
-			.font: ACFont.defaultLightFont.font,
-			.foregroundColor: self.color.textColor
+			.font: ACFont.defaultLightFont.font as Any,
+			.foregroundColor: self.color.textColor as Any
 		],
 									for: .normal)
 	}

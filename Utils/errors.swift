@@ -24,11 +24,13 @@ enum ValidationError: ACError {
 enum BiometricsAuthError: ACError {
 	case authError
 	case notConntected
+	case tooManyAttemp
 
 	var humanfriendlyMessage: String {
 		switch self {
 		case .authError: return "Internal error. Try again"
 		case .notConntected: return "You not using biometrics auth. Please change settings"
+		case .tooManyAttemp: return "Too many attemp. Please use passcode."
 		}
 	}
 }
@@ -68,6 +70,17 @@ enum LoginResult {
 	case error(LoginError)
 }
 
+enum LogoutError: ACError {
+	case padDelete
+
+	var humanfriendlyMessage: String {
+		switch self {
+		case .padDelete:
+			return "Internal Error. Try to change pad later"
+		}
+	}
+}
+
 enum LoginError: ACError {
 	case incorrectInfo
 	case incorrectPassword
@@ -97,21 +110,25 @@ enum LoginError: ACError {
 	}
 }
 
-enum UserRegisterResult {
-	case success
-	case error(UserRegisterError)
-}
-
-enum UserRegisterError: ACError {
+enum RegisterError: ACError {
 	var humanfriendlyMessage: String {
 		switch self {
-		case .databaseFail: return "Bad internet. Try create new user later"
+		case .databaseFail: return "DB access denied. Try create new user later"
+		case .simpleLoginFail: return "Can't set simple pad. Try change pad code in user settings"
+		case .validationError(let validationError): return validationError.humanfriendlyMessage
 		}
 	}
+	case validationError(ValidationError)
 	case databaseFail
+	case simpleLoginFail
 }
 
-public protocol ACError: Error {
+public enum ACResult<T, U: ACError> {
+	case success(T)
+	case failure(U)
+}
+
+public protocol ACError {
 	var humanfriendlyMessage: String { get }
 }
 

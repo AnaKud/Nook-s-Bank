@@ -1,0 +1,132 @@
+// LoginInteractor.swift
+// Created by Anastasiya Kudasheva on 16.07.2021.
+
+import Foundation
+
+typealias ILoginInteractor = ILoginInteractorBusinessLogic & UIFullLoginViewCallBack & UISimpleLoginViewCallBack
+
+protocol ILoginInteractorBusinessLogic {
+	func didLoadUI(vc: LoginViewController)
+	func willAppearUI()
+}
+
+protocol UISimpleLoginViewCallBack {
+	func pinEndEditing(pin: String)
+	func forgetPadButtonTapped()
+	func touchIdButtonTapped()
+}
+
+protocol UIFullLoginViewCallBack {
+	func loginButtonTapped(email: String?, password: String?)
+	func continueButtonTapped()
+	func registerButtonTapped(withUserName name: String?, email: String?, password: String?)
+	func forgetPasswordButtonTapped()
+}
+
+class LoginInteractor {
+	private let presenter: ILoginPresenter
+	private let worker: LoginWorker
+	private let router: ILoginRouter
+
+	init(presenter: ILoginPresenter, worker: LoginWorker, router: ILoginRouter) {
+		self.presenter = presenter
+		self.worker = worker
+		self.router = router
+	}
+}
+
+// MARK: - ILoginInteractorBusinessLogic
+extension LoginInteractor: ILoginInteractorBusinessLogic {
+	func didLoadUI(vc: LoginViewController) {
+		self.presenter.setupVC(vc)
+		self.router.setupVC(vc)
+	}
+
+	func willAppearUI() {
+		let screenType = self.setupScreenType()
+		self.presenter.presentScreen(forScreenType: screenType)
+		self.checkReachability()
+	}
+}
+
+// MARK: - UIFullLoginViewCallBack
+extension LoginInteractor: UIFullLoginViewCallBack {
+	func loginButtonTapped(email: String?, password: String?) {
+		self.worker.loginWithFirebase(email: email, password: password) { [weak self] result in
+			switch result {
+			case .success:
+				self?.router.goToNextWithLogin()
+			case let .error(error):
+				self?.presenter.showError(with: error, completion: nil)
+			}
+		}
+	}
+
+	func continueButtonTapped() {
+		//
+		UserDefaultManager().setSimpleLogin()
+		//
+		self.router.goToNextWithoutLogin()
+	}
+
+	func registerButtonTapped(withUserName name: String?, email: String?, password: String?) {
+		self.router.goToRegisterView()
+	}
+
+	func forgetPasswordButtonTapped() {
+		self.worker.forgetPasswordButtonTapped()
+	}
+}
+
+// MARK: - UISimpleLoginViewCallBack
+extension LoginInteractor: UISimpleLoginViewCallBack {
+	func forgetPadButtonTapped() {
+		self.worker.forgetPadButtonTapped { result in
+			switch result {
+			case .success:
+				self.presenter.presentScreen(forScreenType: self.setupScreenType())
+			case .failure(let error):
+				self.presenter.showError(with: error, completion: nil)
+			}
+		}
+	}
+
+	func pinEndEditing(pin: String) {
+		self.worker.simpleLogin(with: pin) { [weak self] result in
+			switch result {
+			case .success:
+				self?.router.goToNextWithLogin()
+			case let .error(error):
+				self?.presenter.showError(with: error, completion: nil)
+			}
+		}
+	}
+
+	func touchIdButtonTapped() {
+		self.worker.loginWithBiometric { [weak self] result in
+			switch result {
+			case .success:
+				self?.router.goToNextWithLogin()
+			case let .error(error):
+				self?.presenter.showError(with: error, completion: nil)
+			}
+		}
+	}
+}
+
+private extension LoginInteractor {
+	func setupScreenType() -> ScreenTypes {
+		return ScreenTypes(LoginType())
+	}
+
+	func checkReachability() {
+		Reachability()
+			.isConnectedToNetwork { [weak self] result in
+				if result == false {
+					self?.presenter.showError(with: InternetError.noInternet) {
+						self?.router.goToNextWithoutInternetConnection()
+					}
+				}
+			}
+	}
+}

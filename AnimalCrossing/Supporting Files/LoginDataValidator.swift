@@ -4,10 +4,8 @@
 import Foundation
 
 class NewUserValidator {
-	func validateUser(
-		_ user: NewUserViewModel,
-		completion: @escaping (NewUserValidationResult) -> Void
-	) {
+	func validateUser(_ user: NewUserViewModel,
+					  completion: @escaping (NewUserValidationResult) -> Void) {
 		guard EmailValidator.check(user.email) else {
 			return completion(.error(.emailError)) }
 		guard PasswordValidator.check(password: user.emailPassword),
@@ -25,11 +23,9 @@ class NewUserValidator {
 }
 
 enum LoginDataValidator {
-	static func check(
-		email: String?,
-		password: String?,
-		completion: @escaping (LoginValidationResult) -> Void
-	) {
+	static func check(email: String?,
+					  password: String?,
+					  completion: @escaping (LoginValidationResult) -> Void) {
 		guard let email = email,
 			  EmailValidator.check(email)
 		else {
