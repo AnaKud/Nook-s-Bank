@@ -1,9 +1,5 @@
-//
-//  CurrentModel.swift
-//  AnimalCrossing
-//
-//  Created by Anastasiya Kudasheva on 28.08.2021.
-//
+// CurrentModel.swift
+// Created by Anastasiya Kudasheva on 28.08.2021.
 
 import LocalAuthentication
 
