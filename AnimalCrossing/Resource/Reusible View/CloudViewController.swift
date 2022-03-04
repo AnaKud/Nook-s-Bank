@@ -1,17 +1,18 @@
-//
-//  CustomViewController.swift
-//  Created by Anastasiya Kudasheva on 06.06.2021.
+// CustomViewController.swift
+// Created by Anastasiya Kudasheva on 06.06.2021.
 
 import SnapKit
 import UIKit
 
 class CloudViewController: UIViewController {
-	var colors: ColorSet?
-	var customView: CustomView?
-	var screenType: ScreenTypes?
-	var controllerTitle: String?
+	var colors: ColorSet {
+		ColorSet(for: self.screenType)
+	}
+	private(set) var customView: CustomView?
+	private(set) var screenType: ScreenTypes?
+	private(set) var controllerTitle: String?
 
-	let topImageView = UIImageView()
+	private let topImageView = UIImageView()
 
 	let bottomImageView = UIImageView()
 	let titleLabel = UILabel()
@@ -19,21 +20,39 @@ class CloudViewController: UIViewController {
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		self.colors = ColorSet(for: screenType)
 		self.customView = CustomView(colorSet: colors)
 		self.loadUI()
 	}
 
 	func showErrorAlert(withMessage message: FailureCases) {
 		let alert = CustomAlertController(title: "Error", message: message.rawValue, preferredStyle: .alert)
+		alert.changeAlertColors(for: self.screenType)
 		let saveAction = UIAlertAction(title: "Ok", style: .default)
 		alert.addAction(saveAction)
 		self.present(alert, animated: true)
 	}
-	
+
+	func showAlert(with message: String, completion: (() -> Void)? = nil) {
+		let alert = CustomAlertController(title: nil,
+										  message: message,
+										  preferredStyle: .alert)
+		alert.changeAlertColors(for: self.screenType)
+		let cancelAction = UIAlertAction(title: "Ok", style: .cancel) { _ in completion?() }
+		alert.addAction(cancelAction)
+		self.present(alert, animated: true)
+	}
+
 	func showTopAndContentView() {
 		self.setupTopLayout()
 		self.setupContentViewLayout()
+	}
+
+	func setupScreenType(_ screenType: ScreenTypes) {
+		self.screenType = screenType
+	}
+
+	func setupControllerTitle(_ controllerTitle: String?) {
+		self.controllerTitle = controllerTitle
 	}
 }
 
@@ -55,7 +74,7 @@ private extension CloudViewController {
 		self.navigationController?.navigationBar.shadowImage = UIImage()
 		self.navigationController?.navigationBar.topItem?.title = ""
 		self.navigationController?.navigationBar.barStyle = .default
-		self.navigationController?.navigationBar.tintColor = self.colors?.mainViewColor.navigationItemColor
+		self.navigationController?.navigationBar.tintColor = self.colors.mainViewColor.navigationItemColor
 
 		self.view.addSubview(self.topImageView)
 		self.topImageView.snp.makeConstraints { make in
@@ -80,7 +99,7 @@ private extension CloudViewController {
 			}
 			self.titleLabel.text = self.controllerTitle
 			self.titleLabel.textAlignment = .center
-			self.titleLabel.font = ACFont.controllerTitleFont.font 
+			self.titleLabel.font = ACFont.controllerTitleFont.font
 		}
 		self.titleLabel.numberOfLines = 0
 	}
@@ -98,8 +117,8 @@ private extension CloudViewController {
 	}
 
 	func screenTypeSettings() {
-		self.view.backgroundColor = self.colors?.mainViewColor.backgroundColor
-		self.titleLabel.textColor = self.colors?.mainViewColor.textColor
+		self.view.backgroundColor = self.colors.mainViewColor.backgroundColor
+		self.titleLabel.textColor = self.colors.mainViewColor.textColor
 		switch self.screenType {
 		case .loggined:
 			self.topImageView.image = UIImage(named: AppImage.TopBottomImage.logTop.rawValue)
@@ -108,7 +127,7 @@ private extension CloudViewController {
 			self.topImageView.image = UIImage(named: AppImage.TopBottomImage.unlogTop.rawValue)
 			self.bottomImageView.image = UIImage(named: AppImage.TopBottomImage.unlogBottom.rawValue)
 		default:
-			self.view.backgroundColor = self.colors?.mainViewColor.backgroundColor
+			self.view.backgroundColor = self.colors.mainViewColor.backgroundColor
 		}
 	}
 }
@@ -129,6 +148,68 @@ private extension CloudViewController {
 	func logoutButtonTapped() {
 		print("back tapped")
 		// navDelegate?.logoutButtonTapped()
+	}
+}
+
+class TopCloudyView: UIView {
+	private let screenType: ScreenTypes
+
+	init(screenType: ScreenTypes) {
+		self.screenType = screenType
+		super.init(frame: .zero)
+		self.loadUI()
+	}
+
+	@available(*, unavailable)
+	required init?(coder: NSCoder) {
+		fatalError("init(coder:) has not been implemented")
+	}
+}
+
+private extension TopCloudyView {
+	func loadUI() {
+		let imageView = UIImageView()
+		self.addSubview(imageView)
+		imageView.snp.makeConstraints { make in
+			make.edges.equalTo(self)
+		}
+		switch self.screenType {
+		case .loggined:
+			imageView.image = UIImage(named: AppImage.TopBottomImage.logTop.rawValue)
+		default:
+			imageView.image = UIImage(named: AppImage.TopBottomImage.unlogTop.rawValue)
+		}
+	}
+}
+
+class BottomCloudyView: UIView {
+	private let screenType: ScreenTypes
+
+	init(screenType: ScreenTypes) {
+		self.screenType = screenType
+		super.init(frame: .zero)
+		self.loadUI()
+	}
+
+	@available(*, unavailable)
+	required init?(coder: NSCoder) {
+		fatalError("init(coder:) has not been implemented")
+	}
+}
+
+private extension BottomCloudyView {
+	func loadUI() {
+		let imageView = UIImageView()
+		self.addSubview(imageView)
+		imageView.snp.makeConstraints { make in
+			make.edges.equalTo(self)
+		}
+		switch self.screenType {
+		case .loggined:
+			imageView.image = UIImage(named: AppImage.TopBottomImage.logBottom.rawValue)
+		default:
+			imageView.image = UIImage(named: AppImage.TopBottomImage.unlogBottom.rawValue)
+		}
 	}
 }
 

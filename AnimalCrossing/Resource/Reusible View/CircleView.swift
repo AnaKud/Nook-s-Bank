@@ -1,9 +1,5 @@
-//
-//  CircleView.swift
-//  AnimalCrossing
-//
-//  Created by Anastasiya Kudasheva on 02.09.2021.
-//
+// CircleView.swift
+// Created by Anastasiya Kudasheva on 02.09.2021.
 
 import UIKit
 
@@ -35,9 +31,9 @@ final class CircleView: UIView {
 }
 private extension CircleView {
 	func setupLayouts() {
-	//	self.translatesAutoresizingMaskIntoConstraints = false
+		//	self.translatesAutoresizingMaskIntoConstraints = false
 		let circleLabel = self.makeCircleLabel()
-	//	circleLabel.translatesAutoresizingMaskIntoConstraints = false
+		//	circleLabel.translatesAutoresizingMaskIntoConstraints = false
 
 		self.layer.cornerRadius = self.circleViewSize / 2
 		self.backgroundColor = self.colorSet.circleColor
@@ -51,7 +47,7 @@ private extension CircleView {
 	func makeCircleLabel() -> UILabel {
 		let label = UILabel()
 		label.text = self.firstCharacter
-		label.font = ACFont.defaultBoldFont.font 
+		label.font = ACFont.defaultBoldFont.font
 		label.textColor = self.colorSet.circleTextColor
 		label.textAlignment = .center
 		return label

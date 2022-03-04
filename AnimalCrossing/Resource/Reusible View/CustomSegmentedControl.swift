@@ -1,6 +1,5 @@
-//
-//  CustomSegmentedControl.swift
-//  Created by Anastasiya Kudasheva on 08.09.2021
+// CustomSegmentedControl.swift
+// Created by Anastasiya Kudasheva on 08.09.2021
 
 import UIKit
 
@@ -25,13 +24,13 @@ class CustomSegmentedControl: UISegmentedControl {
 		self.backgroundColor = self.color.backgroundColor
 		self.selectedSegmentTintColor = self.color.selectedItemBgColor
 		self.setTitleTextAttributes([
-										.font: ACFont.defaultBoldFont.font,
-										.foregroundColor: self.color.selectedTextColor,
+			.font: ACFont.defaultBoldFont.font,
+			.foregroundColor: self.color.selectedTextColor
 		],
 									for: .selected)
 		self.setTitleTextAttributes([
-										.font: ACFont.defaultLightFont.font,
-										.foregroundColor: self.color.textColor,
+			.font: ACFont.defaultLightFont.font,
+			.foregroundColor: self.color.textColor
 		],
 									for: .normal)
 	}

@@ -1,9 +1,5 @@
-//
-//  OvalButton.swift
-//  AnimalCrossing
-//
-//  Created by Anastasiya Kudasheva on 02.09.2021.
-//
+// OvalButton.swift
+// Created by Anastasiya Kudasheva on 02.09.2021.
 
 import UIKit
 
@@ -45,7 +41,7 @@ private extension OvalButton {
 	func setupLayouts() {
 		self.layer.cornerRadius = self.height / 2
 		self.backgroundColor = self.color.ovalButtonColor.buttonColor
-	//	self.translatesAutoresizingMaskIntoConstraints = false
+		//	self.translatesAutoresizingMaskIntoConstraints = false
 		self.addCircleView()
 		self.addTitleLabel()
 	}
@@ -61,16 +57,16 @@ private extension OvalButton {
 									 firstCharacter: self.firstCharacter,
 									 colorSet: self.color)
 		self.addSubview(self.circleView)
-	//	self.circleView.translatesAutoresizingMaskIntoConstraints = false
-//		self.circleView.anchor(top: self.topAnchor,
-//							   leading: self.leadingAnchor,
-//							   bottom: self.bottomAnchor,
-//							   trailing: nil, padding: UIEdgeInsets(top: self.circleEdges,
-//																	left: self.circleEdges,
-//																	bottom: self.circleEdges,
-//																	right: 999),
-//							   size: CGSize(width: self.circleViewSize,
-//											height: self.circleViewSize))
+		//	self.circleView.translatesAutoresizingMaskIntoConstraints = false
+		//		self.circleView.anchor(top: self.topAnchor,
+		//							   leading: self.leadingAnchor,
+		//							   bottom: self.bottomAnchor,
+		//							   trailing: nil, padding: UIEdgeInsets(top: self.circleEdges,
+		//																	left: self.circleEdges,
+		//																	bottom: self.circleEdges,
+		//																	right: 999),
+		//							   size: CGSize(width: self.circleViewSize,
+		//											height: self.circleViewSize))
 		self.circleView.snp.makeConstraints { make in
 			make.top.leading.equalTo(self).offset(self.circleEdges)
 			make.centerY.equalTo(self)
@@ -80,19 +76,11 @@ private extension OvalButton {
 
 	func addTitleLabel() {
 		let titleLabel = UILabel()
-	//	titleLabel.translatesAutoresizingMaskIntoConstraints = false
+		//	titleLabel.translatesAutoresizingMaskIntoConstraints = false
 		titleLabel.text = title
 		titleLabel.textColor = self.color.ovalButtonColor.buttonTextColor
-		titleLabel.font = ACFont.loginButtonFont.font 
+		titleLabel.font = ACFont.loginButtonFont.font
 		self.addSubview(titleLabel)
-//		titleLabel.anchor(top: self.topAnchor,
-//						  leading: self.circleView.trailingAnchor,
-//						  bottom: self.bottomAnchor,
-//						  trailing: self.trailingAnchor,
-//						  padding: UIEdgeInsets(top: 0,
-//												left: self.circleEdges,
-//												bottom: 0,
-//												right: self.circleEdges))
 		titleLabel.snp.makeConstraints { make in
 			make.top.bottom.equalToSuperview()
 			make.leading.equalTo(self.circleView.snp.trailing).offset(self.circleEdges)

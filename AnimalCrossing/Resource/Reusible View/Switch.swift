@@ -1,11 +1,10 @@
-//
-//  CustomSwitch.swift
-//  Created by Anastasiya Kudasheva on 11.09.2021
+// CustomSwitch.swift
+// Created by Anastasiya Kudasheva on 11.09.2021
 
 import UIKit
 
 class CustomSwitcher: UISwitch {
-	var color: ColorSet.SwitchColor
+	private var color: ColorSet.SwitchColor
 	init(color: ColorSet) {
 		self.color = color.switchColor
 		super.init(frame: .zero)
