@@ -4,10 +4,6 @@
 import Foundation
 
 protocol IBankPresenter {
-	var user: IUser? { get set }
-	var account: BankViewModel? { get set }
-	func getCurrentUser()
-
 	func loadVC(_ view: BankViewController)
 	func plusButtonTapped()
 	func returnCurrentAccountValue() -> String
@@ -16,11 +12,11 @@ protocol IBankPresenter {
 }
 
 class BankPresenter {
-	var viewController: BankViewController?
-	var account: BankViewModel?
-	var user: IUser?
-	var daseManager: IBankDataBaseManager
-	var router: IBankRouter
+	private var viewController: BankViewController?
+	private var account: BankViewModel?
+	private var user: IUser?
+	private var daseManager: IBankDataBaseManager
+	private var router: IBankRouter
 
 	init(demoDataBase: IBankDataBaseManager, router: IBankRouter) {
 		self.daseManager = demoDataBase
