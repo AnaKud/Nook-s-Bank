@@ -14,7 +14,7 @@ class BankViewController: UIPageViewController {
 		ColorSet(for: self.screenType)
 	}
 	var screenType: ScreenTypes
-	var controllerTitle: String?
+	var controllerTitle = AppTitle.Bank.controllerTitle
 
 	private lazy var topImageView = TopCloudyView(screenType: self.screenType)
 
@@ -56,10 +56,10 @@ class BankViewController: UIPageViewController {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		self.loadUI()
-		self.presenter.loadView(view: self)
 		self.displayActivity()
 		self.initailInterface()
 		self.dataForUser()
+		self.presenter.loadVC(self)
 	}
 
 	override func viewWillAppear(_ animated: Bool) {

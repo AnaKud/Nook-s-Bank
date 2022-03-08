@@ -12,12 +12,9 @@ class BankAssembly {
 		}
 		// TODO: Добавить кордату и по пинкоду давать доступ к данным
 		// TODO: Сделать полноценный норм экран с добавлением расходов
-		var router: IBankRouter = BankRouter()
-		var presenter: IBankPresenter = BankPresenter(demoDataBase: demoDataBase, router: router)
-		presenter.screenType = screenType
+		let router: IBankRouter = BankRouter()
+		let presenter: IBankPresenter = BankPresenter(demoDataBase: demoDataBase, router: router)
 		let controller = BankViewController(presenter: presenter, screenType: screenType)
-		router.controller = controller
-		controller.controllerTitle = AppTitle.Bank.controllerTitle
 		return controller
 	}
 }

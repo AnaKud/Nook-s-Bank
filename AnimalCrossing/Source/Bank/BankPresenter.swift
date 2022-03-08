@@ -6,11 +6,9 @@ import Foundation
 protocol IBankPresenter {
 	var user: IUser? { get set }
 	var account: BankViewModel? { get set }
-	var screenType: ScreenTypes? { get set }
-
 	func getCurrentUser()
 
-	func loadView(view: IBankViewController)
+	func loadVC(_ view: BankViewController)
 	func plusButtonTapped()
 	func returnCurrentAccountValue() -> String
 	func returnCollectionCount() -> Int
@@ -18,8 +16,7 @@ protocol IBankPresenter {
 }
 
 class BankPresenter {
-	var screenType: ScreenTypes?
-	var view: IBankViewController?
+	var viewController: BankViewController?
 	var account: BankViewModel?
 	var user: IUser?
 	var daseManager: IBankDataBaseManager
@@ -47,18 +44,21 @@ extension BankPresenter: IBankPresenter {
 	}
 
 	func plusButtonTapped() {
-		self.view?.showAddExpenseAlert { expense in
+		self.viewController?.showAddExpenseAlert { expense in
 			self.addExpense(expense: expense)
 		}
 	}
 
-	func loadView(view: IBankViewController) {
-		self.view = view
-		self.view?.refreshView(currentValue: self.returnCurrentAccountValue())
+	func loadVC(_ vc: BankViewController) {
+		self.viewController = vc
+		self.router.loadVC(vc)
+		self.viewController?.interfaceWithData()
+		self.viewController?.refreshView(currentValue: self.returnCurrentAccountValue())
 	}
 
 	func returnCurrentAccountValue() -> String {
-		return String(describing: self.account?.bells?.account)
+		guard let value = self.account?.bells?.account else { return "" }
+		return "\(value)"
 	}
 
 	func returnCollectionCount() -> Int {
@@ -105,7 +105,7 @@ private extension BankPresenter {
 
 	func refreshView() {
 		let displayedValue = self.returnCurrentAccountValue()
-		self.view?.refreshView(currentValue: displayedValue)
+		self.viewController?.refreshView(currentValue: displayedValue)
 	}
 
 	func addExpenseToFb(expense: ExpenseDTO) {
