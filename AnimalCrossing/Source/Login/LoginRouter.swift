@@ -23,18 +23,6 @@ extension LoginRouter: ILoginRouter {
 		self.viewController = vc
 	}
 
-	func goToNextWithoutLogin() {
-		let mainRouter = MainRouter(screenType: .unloggined)
-		let nextVC = mainRouter.returnController()
-		self.viewController?.navigationController?.pushViewController(nextVC, animated: true)
-	}
-
-	func goToNextWithLogin() {
-		let mainRouter = MainRouter(screenType: .loggined)
-		let nextVC = mainRouter.returnController()
-		self.viewController?.navigationController?.pushViewController(nextVC, animated: true)
-	}
-
 	func goToRegisterView() {
 		let nextVC = RegisterUserAssemly.build()
 		let nextVCNavigationController = UINavigationController(rootViewController: nextVC)
@@ -42,9 +30,26 @@ extension LoginRouter: ILoginRouter {
 		self.viewController?.present(nextVCNavigationController, animated: false)
 	}
 
+	func goToNextWithoutLogin() {
+		let mainRouter = MainRouter(screenType: .unloggined)
+		self.goToTabbar(mainRouter)
+	}
+
+	func goToNextWithLogin() {
+		let mainRouter = MainRouter(screenType: .loggined)
+		self.goToTabbar(mainRouter)
+	}
+
 	func goToNextWithoutInternetConnection() {
 		let mainRouter = MainRouter(screenType: .unloggined, tag: 1)
+		self.goToTabbar(mainRouter)
+	}
+}
+
+private extension LoginRouter {
+	func goToTabbar(_ mainRouter: MainRouter) {
 		let nextVC = mainRouter.returnController()
-		self.viewController?.navigationController?.pushViewController(nextVC, animated: true)
+		nextVC.modalPresentationStyle = .fullScreen
+		self.viewController?.present(nextVC, animated: true, completion: nil)
 	}
 }

@@ -39,7 +39,6 @@ class LoginViewController: UIViewController {
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		self.setupNavigationController()
 		self.addDissmissKeyboard()
 		self.interactor.didLoadUI(vc: self)
 	}
@@ -78,14 +77,6 @@ extension LoginViewController: ILoginViewController {
 }
 
 private extension LoginViewController {
-	func setupNavigationController() {
-		self.navigationController?.navigationBar.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 0)
-		self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default)
-		self.navigationController?.navigationBar.shadowImage = UIImage()
-		self.navigationController?.navigationBar.topItem?.title = ""
-		self.navigationController?.navigationBar.barStyle = .default
-	}
-
 	func addDissmissKeyboard() {
 		let tap = UITapGestureRecognizer(target: self,
 										 action: #selector(self.dissmissKeyboard))
