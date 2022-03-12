@@ -21,7 +21,7 @@ class RegisterUserWorker {
 			switch validationResult {
 			case let .success(user):
 				self?.registerUser(user, completion: completion)
-			case let .error(error):
+			case let .failure(error):
 				completion(.failure(.validationError(error)))
 			}
 		}

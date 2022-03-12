@@ -6,17 +6,62 @@ import ACErrors
 import SwiftUI
 
 enum ValidationError: ACError {
-	case padError
-	case passwordError
-	case emailError
+	case padLenghtError
+	case padFormatError
+	case padNotMatched
+	case padEmpty
+	case passwordLenghtError
+	case passwordFormatError
+	case passwordNotMatched
+	case passwordEmpty
+	case emailFormatError
+	case emailEmpty
 	case errorOccurent
+
+	var humanfriendlyTitle: String? {
+		switch self {
+		case .padLenghtError,
+				.padFormatError,
+				.padNotMatched,
+				.padEmpty:
+			return "Passcode error"
+		case .passwordLenghtError,
+				.passwordFormatError,
+				.passwordEmpty,
+				.passwordNotMatched:
+			return "Password error"
+		case .emailFormatError,
+				.emailEmpty:
+			return "Email error"
+		case .errorOccurent:
+			return "Error occurent"
+		}
+	}
 
 	var humanfriendlyMessage: String {
 		switch self {
-		case .padError: return "Pad error, use other pad"
-		case .passwordError: return "Password error, use other password"
-		case .emailError: return "Email error, use other email"
-		case .errorOccurent: return "Error Occurent, try repeat it later"
+		case .padLenghtError:
+			return "Passcode should be 6 number lenght"
+		case .padFormatError:
+			return "Passcode should contain only numbers"
+		case .padNotMatched:
+			return "Passcodes not matchced. Check it"
+		case .padEmpty:
+			return "You did not provide a passcode"
+		case .passwordLenghtError:
+			return "Password should contain 6 character"
+		case .passwordFormatError:
+			return "Password should contain special symbol, uppercase and lowercase characters, numbers"
+		case .passwordNotMatched:
+			return "Passwords not matchced. Check it"
+		case .passwordEmpty:
+			return "You did not provide a password"
+		case .emailFormatError:
+			return "Email is in incorrect format"
+		case .emailEmpty:
+			return "You did not provide an email"
+		case .errorOccurent:
+			return "Try repeat later"
 		}
 	}
 }
@@ -25,6 +70,10 @@ enum BiometricsAuthError: ACError {
 	case authError
 	case notConntected
 	case tooManyAttemp
+
+	var humanfriendlyTitle: String? {
+		return nil
+	}
 
 	var humanfriendlyMessage: String {
 		switch self {
@@ -35,9 +84,14 @@ enum BiometricsAuthError: ACError {
 	}
 }
 
+struct ValidatedUserData {
+	let email: String
+	let password: String
+}
+
 enum LoginValidationResult: Equatable {
 	case success(email: String, password: String)
-	case error(ValidationError)
+	case failure(ValidationError)
 }
 
 enum NewUserValidationResult: Equatable {
@@ -72,11 +126,18 @@ enum LoginResult {
 
 enum LogoutError: ACError {
 	case padDelete
+	case forgetPasswordError
+
+	var humanfriendlyTitle: String? {
+		return nil
+	}
 
 	var humanfriendlyMessage: String {
 		switch self {
 		case .padDelete:
 			return "Internal Error. Try to change pad later"
+		case .forgetPasswordError:
+			return "Internal Error. Try later"
 		}
 	}
 }
@@ -88,6 +149,10 @@ enum LoginError: ACError {
 	case unexpectedError
 	case biometricAuthError
 	case padError
+
+	var humanfriendlyTitle: String? {
+		return nil
+	}
 
 	var humanfriendlyMessage: String {
 		switch self {
@@ -102,15 +167,20 @@ enum LoginError: ACError {
 
 	init(_ error: ValidationError) {
 		switch error {
-		case .padError: self = .notRegister
-		case .passwordError: self = .incorrectInfo
-		case .emailError: self = .incorrectInfo
+		case .padEmpty, .padFormatError, .padLenghtError: self = .padError
+		case .passwordEmpty, .passwordFormatError, .passwordLenghtError: self = .incorrectPassword
+		case .emailEmpty, .emailFormatError: self = .incorrectInfo
 		case .errorOccurent: self = .unexpectedError
+		default: self = .unexpectedError
 		}
 	}
 }
 
 enum RegisterError: ACError {
+	var humanfriendlyTitle: String? {
+		return nil
+	}
+
 	var humanfriendlyMessage: String {
 		switch self {
 		case .databaseFail: return "DB access denied. Try create new user later"
@@ -129,11 +199,16 @@ public enum ACResult<T, U: ACError> {
 }
 
 public protocol ACError {
+	var humanfriendlyTitle: String? { get }
 	var humanfriendlyMessage: String { get }
 }
 
 enum InternetError: ACError {
 	case noInternet
+
+	var humanfriendlyTitle: String? {
+		return nil
+	}
 
 	var humanfriendlyMessage: String {
 		switch self {
@@ -144,6 +219,10 @@ enum InternetError: ACError {
 
 enum BankError: ACError {
 	case noBankData
+
+	var humanfriendlyTitle: String? {
+		return nil
+	}
 
 	var humanfriendlyMessage: String {
 		switch self {

@@ -19,11 +19,15 @@ extension RegisterUserPresenter: IRegisterUserPresenter {
 		self.viewController = viewController
 	}
 
-	func showError(with message: ACError) {
-		self.viewController?.showAlert(with: message.humanfriendlyMessage, completion: nil)
+	func showError(with error: ACError) {
+		self.viewController?.showAlert(title: error.humanfriendlyTitle,
+									   message: error.humanfriendlyMessage,
+									   completion: nil)
 	}
 
 	func showSuccessMessage(completion: (() -> Void)?) {
-		self.viewController?.showAlert(with: "You successfully registered. Please login.", completion: completion)
+		self.viewController?.showAlert(title: nil,
+									   message: "You successfully registered. Please login.",
+									   completion: completion)
 	}
 }

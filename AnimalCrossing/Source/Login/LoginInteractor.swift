@@ -20,7 +20,7 @@ protocol UIFullLoginViewCallBack {
 	func loginButtonTapped(email: String?, password: String?)
 	func continueButtonTapped()
 	func registerButtonTapped(withUserName name: String?, email: String?, password: String?)
-	func forgetPasswordButtonTapped()
+	func forgetPasswordButtonTapped(email: String?)
 }
 
 class LoginInteractor {
@@ -73,15 +73,28 @@ extension LoginInteractor: UIFullLoginViewCallBack {
 		self.router.goToRegisterView()
 	}
 
-	func forgetPasswordButtonTapped() {
-		self.worker.forgetPasswordButtonTapped()
+	func forgetPasswordButtonTapped(email: String?) {
+		guard let email = email,
+		!email.isEmpty else {
+			self.presenter.showError(with: ValidationError.emailEmpty, completion: nil)
+			return
+		}
+		self.worker.forgetPasswordButtonTapped(forEmail: email) { result in
+			switch result {
+			case .success:
+				self.presenter.showSuccessEmailReminderAlert()
+			case .failure(let error):
+				self.presenter.showError(with: error, completion: nil)
+			}
+		}
 	}
 }
 
 // MARK: - UISimpleLoginViewCallBack
 extension LoginInteractor: UISimpleLoginViewCallBack {
 	func forgetPadButtonTapped() {
-		self.worker.forgetPadButtonTapped { result in
+		self.worker.forgetPadButtonTapped { [weak self] result in
+			guard let self = self else { return }
 			switch result {
 			case .success:
 				self.presenter.presentScreen(forScreenType: self.setupScreenType())

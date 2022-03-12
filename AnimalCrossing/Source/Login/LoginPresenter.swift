@@ -6,6 +6,7 @@ import Foundation
 protocol ILoginPresenter: AnyObject, ILoginViewControllerSender {
 	func presentScreen(forScreenType screenType: ScreenTypes)
 	func showError(with message: ACError, completion: (() -> Void)?)
+	func showSuccessEmailReminderAlert()
 }
 
 class LoginPresenter {
@@ -13,8 +14,14 @@ class LoginPresenter {
 }
 
 extension LoginPresenter: ILoginPresenter {
-	func showError(with message: ACError, completion: (() -> Void)? = nil) {
-		self.viewController?.showAlert(with: message.humanfriendlyMessage, completion: completion)
+	func showSuccessEmailReminderAlert() {
+		self.viewController?.showAlert(title: nil, message: "Check your email", completion: nil)
+	}
+
+	func showError(with error: ACError, completion: (() -> Void)? = nil) {
+		self.viewController?.showAlert(title: error.humanfriendlyTitle,
+									   message: error.humanfriendlyMessage,
+									   completion: completion)
 	}
 
 	func presentScreen(forScreenType screenType: ScreenTypes) {

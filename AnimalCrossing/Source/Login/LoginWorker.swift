@@ -34,8 +34,16 @@ class LoginWorker {
 		}
 	}
 
-	func forgetPasswordButtonTapped() {
-		print("forgetPasswordButtonTapped")
+	func forgetPasswordButtonTapped(forEmail email: String?,
+									completion: @escaping (ACResult<Void, LogoutError>) -> Void) {
+		LoginDataValidator.check(email: email) { result in
+			switch result {
+			case .success(let email):
+				self.fireBaseManager.resetPassword(forEmail: email, completion: completion)
+			case .failure:
+				completion(.failure(.forgetPasswordError))
+			}
+		}
 	}
 
 	func forgetPadButtonTapped(completion: @escaping (ACResult<Void, LogoutError>) -> Void) {
@@ -48,13 +56,14 @@ class LoginWorker {
 }
 
 private extension LoginWorker {
-	func processLoginValidationResult(_ result: LoginValidationResult,
+	func processLoginValidationResult(_ result: ACResult<ValidatedUserData, ValidationError>,
 									  completion: @escaping (LoginResult) -> Void) {
 		switch result {
-		case let .success(email, password):
-			self.fireBaseManager.login(withEmail: email,
-									   withPassword: password, completion: completion)
-		case let .error(error):
+		case let .success(userData):
+			self.fireBaseManager.login(withEmail: userData.email,
+									   withPassword: userData.password,
+									   completion: completion)
+		case let .failure(error):
 			completion(.error(LoginError(error)))
 		}
 	}

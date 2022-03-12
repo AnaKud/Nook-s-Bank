@@ -14,7 +14,9 @@ protocol ILoginFireBaseManager {
 	func logout(completion: @escaping (Result<Void, Error>) -> Void)
 	func simpleLogin(withPad pad: String,
 					 completion: @escaping (LoginResult) -> Void)
-	func simpleLogin(completion: @escaping (LoginResult) -> Void) 
+	func simpleLogin(completion: @escaping (LoginResult) -> Void)
+	func resetPassword(forEmail email: String,
+					   completion: @escaping (ACResult<Void, LogoutError>) -> Void)
 }
 
 extension FireBaseManager: ILoginFireBaseManager {
@@ -53,10 +55,22 @@ extension FireBaseManager: ILoginFireBaseManager {
 	func logout(completion: @escaping (Result<Void, Error>) -> Void) {
 		do {
 			try Auth.auth().signOut()
+			completion(.success(()))
 		} catch {
 			completion(.failure(error))
 		}
-		completion(.success(()))
+	}
+
+	func resetPassword(forEmail email: String,
+					   completion: @escaping (ACResult<Void, LogoutError>) -> Void) {
+		Auth.auth().sendPasswordReset(withEmail: email) { error in
+			if error != nil {
+				completion(.success(()))
+			}
+			else {
+				completion(.failure(.forgetPasswordError))
+			}
+		}
 	}
 }
 

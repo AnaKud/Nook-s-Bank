@@ -32,8 +32,8 @@ class CloudViewController: UIViewController {
 		self.present(alert, animated: true)
 	}
 
-	func showAlert(with message: String, completion: (() -> Void)? = nil) {
-		let alert = CustomAlertController(title: nil,
+	func showAlert(title: String?, message: String, completion: (() -> Void)?) {
+		let alert = CustomAlertController(title: title,
 										  message: message,
 										  preferredStyle: .alert)
 		alert.changeAlertColors(for: self.screenType)

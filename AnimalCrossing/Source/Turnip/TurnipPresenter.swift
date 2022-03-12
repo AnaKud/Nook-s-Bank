@@ -48,7 +48,8 @@ class TurnipPresenter: ITurnipPresenter {
 		guard let buyPrice = buyPrice,
 			  let price = Int(buyPrice)
 		else {
-			self.view?.showAlert(with: FailureCases.turnipPriceError.rawValue,
+			self.view?.showAlert(title: nil,
+								 message: FailureCases.turnipPriceError.rawValue,
 								 completion: nil)
 			return
 		}

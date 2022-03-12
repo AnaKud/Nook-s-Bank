@@ -185,6 +185,6 @@ private extension FullLoginView {
 	}
 
 	func forgetPasswordButtonTapped(sender: UIButton) {
-		self.callBack?.forgetPasswordButtonTapped()
+		self.callBack?.forgetPasswordButtonTapped(email: self.emailTextField.text)
 	}
 }

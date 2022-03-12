@@ -5,7 +5,7 @@ import Foundation
 
 protocol INewsPresenter: AnyObject {
 	func setupVC(_ controller: NewsViewController?)
-	func showError(with message: ACError)
+	func showError(with error: ACError)
 	func displayTable()
 }
 
@@ -16,8 +16,10 @@ final class NewsPresenter: INewsPresenter {
 		self.view = controller
 	}
 
-	func showError(with message: ACError) {
-		self.view?.showAlert(with: message.humanfriendlyMessage, completion: nil)
+	func showError(with error: ACError) {
+		self.view?.showAlert(title: error.humanfriendlyTitle,
+							 message: error .humanfriendlyMessage,
+							 completion: nil)
 	}
 
 	func displayTable() {

@@ -63,9 +63,9 @@ class LoginViewController: UIViewController {
 }
 
 extension LoginViewController: ILoginViewController {
-	func showAlert(with message: String, completion: (() -> Void)? = nil) {
+	func showAlert(title: String?, message: String, completion: (() -> Void)?) {
 		DispatchQueue.main.async {
-			let alert = CustomAlertController(title: nil,
+			let alert = CustomAlertController(title: title,
 											  message: message,
 											  preferredStyle: .alert)
 			alert.changeAlertColors(for: self.screenType)
