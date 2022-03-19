@@ -11,11 +11,7 @@ class ProphetPricesWorker {
 	}
 	func doSomeWork(with data: ProphetPrices.Turnip.Request, completion: @escaping (TurnipResponse?) -> Void) {
 		self.networkManager.downloadTurnip(forTurnipPrices: data) { response in
-			if data.buyPrice == 0 {
-				completion(nil)
-			} else {
-				completion(response)
-			}
+			completion(response)
 		}
 	}
 }

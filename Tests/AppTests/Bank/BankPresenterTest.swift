@@ -7,63 +7,126 @@ import XCTest
 @testable import AnimalCrossing
 
 class BankPresenterTests: XCTestCase {
-	private let dataBase = BankFireBaseManagerMock()
-	private var router = BankRouterMock()
-	private var presenter: BankPresenter!
+	private let router = BankRouterMock()
+	private var interactor: BankInteractor!
+	private let presenter = BankPresenterMock()
+	private let view = BankViewControllerMock()
+
+	override func setUp() {
+		super.setUp()
+	}
+
+	override func tearDown() {
+		super.tearDown()
+		self.interactor = nil
+	}
 
 	func testPresenterAddExpence() {
-		self.presenter = self.makePresenter()
-		self.presenter.loadView(view: BankViewControllerMock(value: 2, operationType: .plus))
-		self.presenter.plusButtonTapped()
-		XCTAssertEqual(2, self.dataBase.balance)
+		self.interactor = self.makeInteractor()
+		self.interactor.addExpenseOrIncome(ExpenseTransition(value: 2, operationType: .plus, expenseType: .artwork))
+		self.interactor.plusButtonTapped()
+		XCTAssertEqual("2", self.presenter.balanceValue)
 	}
 
 	func testPresenterAddIncome() {
-		self.dataBase.balance = 2
-		self.presenter = self.makePresenter()
-		self.presenter.loadView(view: BankViewControllerMock(value: 1, operationType: .minus))
-		self.presenter.plusButtonTapped()
-		XCTAssertEqual(1, self.dataBase.balance)
+		self.interactor = self.makeInteractor(withBalance: 2)
+		self.interactor.loadVC(self.view)
+		self.interactor.addExpenseOrIncome(ExpenseTransition(value: 1,
+															 operationType: .minus,
+															 expenseType: .other))
+		XCTAssertEqual("1", self.presenter.balanceValue)
 	}
 
 	func testPresenterNotAddIncomeBalanceIsZero() {
-		self.presenter = self.makePresenter()
-		self.presenter.loadView(view: BankViewControllerMock(value: 2, operationType: .minus))
-		self.presenter.plusButtonTapped()
-		XCTAssertEqual(0, self.dataBase.balance)
-	}
-
-	func testPresenterGetCurrentUser() {
-		self.presenter = self.makePresenter()
-		self.presenter.getCurrentUser()
-		XCTAssertEqual("unitTest@mail.ru", self.dataBase.user.email)
-		XCTAssertEqual("unidUid", self.dataBase.user.uid)
+		self.interactor = self.makeInteractor()
+		self.interactor.loadVC(self.view)
+		self.interactor.addExpenseOrIncome(ExpenseTransition(value: 2, operationType: .minus, expenseType: .artwork))
+		XCTAssertEqual("0", self.presenter.balanceValue)
 	}
 
 	func testDisplayCurrentAccount() {
-		self.presenter = self.makePresenter()
-		self.dataBase.balance = 100
-		XCTAssertEqual("100", "\(self.dataBase.balance)")
+		self.interactor = self.makeInteractor(withBalance: 100)
+		self.interactor.loadVC(self.view)
+		XCTAssertEqual("100", self.presenter.balanceValue)
 	}
 
 	func testPresenterReturnExpensesCount() {
-		self.presenter = self.makePresenter()
-		self.presenter.getCurrentUser()
-		XCTAssertEqual(1, self.presenter.returnCollectionCount())
+		self.interactor = self.makeInteractor()
+		self.interactor.loadVC(self.view)
+		XCTAssertEqual(1, self.interactor.returnCollectionCount())
 	}
 
 	func testPresenterReturnExpensesItem() {
-		self.presenter = self.makePresenter()
-		self.presenter.getCurrentUser()
-		XCTAssertEqual(100, self.presenter.returnCollectionItem(index: 0).value)
+		self.interactor = self.makeInteractor()
+		self.interactor.loadVC(self.view)
+		XCTAssertEqual("+100", self.interactor.returnCollectionItem(index: 0).expenseText)
 	}
 }
 
 private extension BankPresenterTests {
-	func makePresenter() -> BankPresenter {
-		let presenter = BankPresenter(demoDataBase: self.dataBase,
-									  router: self.router)
-		presenter.getCurrentUser()
-		return presenter
+	func makeInteractor(withBalance balance: Int = 0) -> BankInteractor {
+		return BankInteractor(presenter: self.presenter,
+							  router: self.router,
+							  worker: BankWorkerMock(balance: balance))
+	}
+}
+
+class BankPresenterMock: IBankPresenter {
+	private(set) var balanceValue = ""
+
+	func loadVC(_ view: IBankViewController) { }
+
+	func showAccountValue(_ value: String) {
+		self.balanceValue = value
+	}
+
+	func refreshCollectionView() { }
+
+	func showAddExpenseAlert() { }
+
+	func showErrorAlert(error: ACError, handler: (() -> Void)?) { }
+}
+
+class BankWorkerMock: IBankWorker {
+	private(set) var expenses = [ExpenseTransition(ExpenseDto(value: 100,
+												 operationType: .plus))]
+
+	private(set) var balance: Int
+
+	private var bankAccount: BankAccountTransition {
+		BankAccountTransition(loan: nil,
+							  poki: nil,
+							  bells: CurrencyTransition(account: self.balance,
+														type: .bells,
+										 expenses: self.expenses),
+							  miles: nil)
+	}
+
+	init(balance: Int = 0) {
+		self.balance = balance
+	}
+
+	func checkDataAvailability(completion: @escaping (ACVoidResult<BankError>) -> Void) {
+		completion(.success)
+	}
+
+	func getCurrentUser(completion: @escaping (BankAccountTransition) -> Void) {
+		completion(self.bankAccount)
+	}
+
+	func addExpense(_ expense: ExpenseTransition,
+					currentAccountValue: Int?,
+					completion: @escaping (ACVoidResult<AddingExpensesError>) -> Void) {
+		var accountValue = currentAccountValue ?? 0
+		switch expense.operationType {
+		case .plus:
+			accountValue += (expense.value ?? 0)
+		case .minus:
+			guard (accountValue - (expense.value ?? 0)) >= 0 else { return completion(.failure(.cantBeLowerThanZero)) }
+			accountValue -= (expense.value ?? 0)
+		}
+		self.expenses.append(expense)
+		self.balance = accountValue
+		completion(.success)
 	}
 }

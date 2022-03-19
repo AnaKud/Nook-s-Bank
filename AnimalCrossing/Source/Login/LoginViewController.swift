@@ -4,7 +4,7 @@
 import SnapKit
 import UIKit
 
-protocol ILoginViewController: AnyObject, IAlertOnVC {
+protocol ILoginViewController: INavigator, IAlertOnVC {
 	func setupFullLoginView()
 	func setupSimpleLoginView()
 }
@@ -88,4 +88,8 @@ private extension LoginViewController {
 	func dissmissKeyboard() {
 		self.view.endEditing(true)
 	}
+}
+
+extension LoginViewController: INavigator {
+	var currentVC: UIViewController? { return self }
 }

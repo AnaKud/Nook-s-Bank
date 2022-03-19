@@ -31,6 +31,7 @@ class CustomTextField: UITextField {
 			self.isEditable = isEditable
 		}
 	}
+
 	private var settings: CustomTextField.Settings
 
 	init(settings: CustomTextField.Settings) {

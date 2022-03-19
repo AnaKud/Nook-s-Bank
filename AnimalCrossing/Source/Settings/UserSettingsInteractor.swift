@@ -15,11 +15,10 @@ class UserSettingsInteractor {
 		self.presenter = presenter
 		self.worker = worker
 	}
-	
+
 	func addVillagerButtonTapped() {
 		self.presenter.addVillagerButtonTapped()
 	}
 }
 
-extension UserSettingsInteractor: IUserSettingsInteractor {
-}
+extension UserSettingsInteractor: IUserSettingsInteractor { }

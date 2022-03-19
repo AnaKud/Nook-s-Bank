@@ -16,32 +16,32 @@ final class PadValidationTestCase: XCTestCase {
 	}
 
 	func testCheckPadNotNumber() {
-		let validationResult = PadValidator.check(password: "QWERTY")
+		let validationResult = PadValidator.check("QWERTY")
 		XCTAssertFalse(validationResult)
 	}
 
 	func testCheckPadNumber() {
-		let validationResult = PadValidator.check(password: "123456")
+		let validationResult = PadValidator.check("123456")
 		XCTAssertTrue(validationResult)
 	}
 
 	func testCheckPadNumberWithOneChar() {
-		let validationResult = PadValidator.check(password: "12345A")
+		let validationResult = PadValidator.check("12345A")
 		XCTAssertFalse(validationResult)
 	}
 
 	func testCheckPadCurrentLenght() {
-		let validationResult = PadValidator.check(password: "123456")
+		let validationResult = PadValidator.checkLength("123456")
 		XCTAssertTrue(validationResult)
 	}
 
 	func testCheckPadWrongLenght5() {
-		let validationResult = PadValidator.check(password: "12345")
+		let validationResult = PadValidator.checkLength("12345")
 		XCTAssertFalse(validationResult)
 	}
 
 	func testCheckPadWrongLenght7() {
-		let validationResult = PadValidator.check(password: "1234567")
+		let validationResult = PadValidator.checkLength("1234567")
 		XCTAssertFalse(validationResult)
 	}
 }

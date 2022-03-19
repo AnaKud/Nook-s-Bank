@@ -188,7 +188,7 @@ class TurnipPresenter: ITurnipPresenter {
 		let expense = ExpenseTransition(value: value, operationType: operationType, expenseType: .turnip)
 		switch screenType {
 		case .loggined:
-			self.firebaseManager.addExpenseOrIncome(ExpenseDTO(from: expense), currency: .bells)
+			self.firebaseManager.addExpenseOrIncome(ExpenseDto(from: expense), currency: .bells)
 		default:
 			assertionFailure("Fail addExpenseOrIncome")
 		}

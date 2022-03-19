@@ -3,10 +3,12 @@
 
 import UIKit
 
-protocol IBankViewController {
+protocol IBankViewController: INavigator {
 	func interfaceWithData()
-	func refreshView(currentValue: String)
-	func showAddExpenseAlert(expenseHandler: @escaping (ExpenseTransition) -> Void)
+	func setNewTotalAccountValue(_ value: String)
+	func refreshCollectionView()
+	func showAddExpenseAlert()
+	func showErrorAlert(title: String?, message: String, handler: (() -> Void)?)
 }
 
 class BankViewController: UIPageViewController {
@@ -34,14 +36,15 @@ class BankViewController: UIPageViewController {
 	private var plusImage: UIImage?
 	private var activityIndicatorView = UIActivityIndicatorView()
 
-	let presenter: IBankPresenter
+	private let interactor: IBankInteractor
 
-//	private var bankViewDelegate: BankViewDelegate {
-//		BankViewDelegate(presenter: presenter, colors: ColorSet(for: screenType))
-//	}
+	private lazy var bankViewDelegate: BankViewDelegate = {
+		BankViewDelegate(interactor: self.interactor,
+						 colors: ColorSet(for: self.screenType))
+	}()
 
-	init(presenter: IBankPresenter, screenType: ScreenTypes) {
-		self.presenter = presenter
+	init(interactor: IBankInteractor, screenType: ScreenTypes) {
+		self.interactor = interactor
 		self.screenType = screenType
 		super.init(transitionStyle: .pageCurl,
 				   navigationOrientation: .horizontal,
@@ -59,7 +62,7 @@ class BankViewController: UIPageViewController {
 		self.displayActivity()
 		self.initailInterface()
 		self.dataForUser()
-		self.presenter.loadVC(self)
+		self.interactor.loadVC(self)
 	}
 
 	override func viewWillAppear(_ animated: Bool) {
@@ -191,7 +194,7 @@ class BankViewController: UIPageViewController {
 		}
 		currentAccountLabel.font = ACFont.bankAccountFont.font
 		currentAccountLabel.textColor = self.colors.bankViewColor.itemTextColor
-		currentAccountLabel.text = self.presenter.returnCurrentAccountValue()
+		currentAccountLabel.text = self.interactor.returnCurrentAccountValue()
 	}
 
 	private func setupPlusButton() {
@@ -236,8 +239,8 @@ class BankViewController: UIPageViewController {
 	}
 
 	private func setupCollectionView() {
-		self.expensesCollectionView.delegate = self
-		self.expensesCollectionView.dataSource = self
+		self.expensesCollectionView.delegate = self.bankViewDelegate
+		self.expensesCollectionView.dataSource = self.bankViewDelegate
 		let layout = UICollectionViewFlowLayout()
 		layout.scrollDirection = .vertical
 		layout.minimumLineSpacing = AppContraints.midEdge
@@ -271,7 +274,7 @@ extension BankViewController: IBankViewController {
 		activityIndicatorView.isHidden = true
 	}
 
-	func showAddExpenseAlert(expenseHandler: @escaping (ExpenseTransition) -> Void) {
+	func showAddExpenseAlert() {
 		let alert = CustomAlertController(title: AppTitle.Bank.newExpense, message: nil, preferredStyle: .alert)
 		alert.changeAlertColors(for: self.screenType)
 		alert.addTextField { valueTextField in
@@ -296,7 +299,7 @@ extension BankViewController: IBankViewController {
 				  let valueInt = Int(valueString)
 			else { return }
 			let newExpense = ExpenseTransition(value: valueInt, operationType: .minus, expenseType: ExpenseType.random())
-			expenseHandler(newExpense)
+			self.interactor.addExpenseOrIncome(newExpense)
 		}
 
 		let incomeAction = UIAlertAction(title: "Add Income", style: .default) { _ in
@@ -306,7 +309,7 @@ extension BankViewController: IBankViewController {
 			else { return }
 
 			let newExpense = ExpenseTransition(value: valueInt, operationType: .plus, expenseType: ExpenseType.random())
-			expenseHandler(newExpense)
+			self.interactor.addExpenseOrIncome(newExpense)
 		}
 
 		let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
@@ -318,16 +321,36 @@ extension BankViewController: IBankViewController {
 		self.present(alert, animated: true)
 	}
 
-	func refreshView(currentValue: String) {
-		DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1) {
-			self.expensesCollectionView.reloadData()
-			self.currentAccountLabel.text = currentValue
+	func setNewTotalAccountValue(_ value: String) {
+		DispatchQueue.main.async {
+			self.currentAccountLabel.text = value
 		}
+	}
+
+	func refreshCollectionView() {
+		DispatchQueue.main.async {
+			self.expensesCollectionView.reloadData()
+		}
+	}
+
+	func showErrorAlert(title: String?, message: String, handler: (() -> Void)?) {
+		let alert = CustomAlertController(title: title,
+										  message: message,
+										  preferredStyle: .alert)
+		let action = UIAlertAction(title: "Ok", style: .default) { _ in
+			handler?()
+		}
+		alert.addAction(action)
+		self.present(alert, animated: true)
 	}
 }
 
 @objc extension BankViewController {
 	func plusButtonTapped(sender: UIButton) {
-		self.presenter.plusButtonTapped()
+		self.interactor.plusButtonTapped()
 	}
+}
+
+extension BankViewController: INavigator {
+	var currentVC: UIViewController? { return self }
 }

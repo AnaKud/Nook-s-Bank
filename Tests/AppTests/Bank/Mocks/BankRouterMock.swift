@@ -5,8 +5,12 @@
 
 class BankRouterMock: IBankRouter {
 	var state: String = ""
-	var controller: BankViewController?
+
 	func popToViewController() {
 		self.state = "popToViewController"
+	}
+
+	func loadNavigator(_ navigator: INavigator) {
+		self.state = "vcLoaded"
 	}
 }

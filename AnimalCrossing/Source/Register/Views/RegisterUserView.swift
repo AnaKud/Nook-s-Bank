@@ -244,7 +244,7 @@ private extension RegisterUserView {
 										   repetedEmailPassword: self.passwordEmailCheckingTextField.text,
 										   padAvailaible: self.padSwitcher.isOn,
 										   pad: self.newPadTextField.text,
-										   repetedPad: self.newPadCheckingTextField.text, bankAccount: nil)
+										   repetedPad: self.newPadCheckingTextField.text)
 			self.callback.registerUserButtonTapped(newUser)
 	}
 }

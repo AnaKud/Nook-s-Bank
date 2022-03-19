@@ -64,7 +64,7 @@ extension LoginInteractor: UIFullLoginViewCallBack {
 
 	func continueButtonTapped() {
 		//
-		UserDefaultManager().setSimpleLogin()
+	//	UserDefaultManager().setSimpleLogin()
 		//
 		self.router.goToNextWithoutLogin()
 	}

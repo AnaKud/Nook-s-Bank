@@ -81,7 +81,7 @@ extension LoanHistoryDto: IFirDictionary {
 		}
 	}
 
-	func makeDictionary() -> [NSString : Any] {
+	func makeDictionary() -> [NSString: Any?] {
 		[
 			FirKeys.uid.key: self.uid,
 			FirKeys.date.key: "\(self.date)",

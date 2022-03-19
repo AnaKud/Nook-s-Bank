@@ -29,10 +29,8 @@ class ProphetPricesInteractor: IProphetPricesInteractor {
 		worker.doSomeWork(with: request) { [ weak self ] result in
 			let existingPrices = request.pricesArray()
 			let response = ProphetPrices.Turnip.Response(from: result, existingPrices: existingPrices)
-			print(response)
 
 			self?.presenter.presentSomething(response: response)
-			print(response)
 		}
 	}
 }

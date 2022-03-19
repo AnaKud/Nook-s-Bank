@@ -2,23 +2,24 @@
 // Created by Anastasiya Kudasheva on 04.03.2022
 
 @testable import AnimalCrossing
+import UIKit
 
 class BankViewControllerMock: IBankViewController {
-	private let expense: ExpenseTransition
+	var currentVC: UIViewController? { return nil }
 
-	init(value: Int, operationType: OperationType) {
-		self.expense = ExpenseTransition(value: value,
-										 operationType: operationType,
-										 expenseType: ExpenseType.random())
+	private(set) var balanceString = ""
+
+	init() { }
+
+	func setNewTotalAccountValue(_ value: String) {
+		self.balanceString = value
 	}
 
 	func interfaceWithData() { }
 
-	func refreshView(currentValue: String) { }
+	func refreshCollectionView() { }
 
-	func showAddExpenseAlert(expenseHandler: @escaping (ExpenseTransition) -> Void) {
-		expenseHandler(self.expense)
-	}
+	func showAddExpenseAlert() { }
 
-	var currentAccount: BankViewModel?
+	func showErrorAlert(title: String?, message: String, handler: (() -> Void)?) { }
 }

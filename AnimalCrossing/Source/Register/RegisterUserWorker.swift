@@ -16,31 +16,30 @@ class RegisterUserWorker {
 	}
 
 	func validateNewUser(_ user: NewUserViewModel,
-						 completion: @escaping (ACResult<Void, RegisterError>) -> Void) {
+						 completion: @escaping (ACVoidResult<RegisterError>) -> Void) {
 		self.userValidator.validateUser(user) { [weak self] validationResult in
-			switch validationResult {
-			case let .success(user):
-				self?.registerUser(user, completion: completion)
-			case let .failure(error):
+			if case let .failure(error) = validationResult {
 				completion(.failure(.validationError(error)))
+			} else {
+				self?.registerUser(NewUserDto(user), completion: completion)
 			}
 		}
 	}
 }
 
 private extension RegisterUserWorker {
-	func registerUser(_ user: NewUserDto, completion: @escaping (ACResult<Void, RegisterError>) -> Void) {
+	func registerUser(_ user: NewUserDto, completion: @escaping (ACVoidResult<RegisterError>) -> Void) {
 		self.fireBaseManager.register(newUser: user) { result in
 			switch result {
 			case .success:
-				user.padAvailaible ? self.setSimpleLogin(completion: completion) : completion(.success(()))
+				user.padAvailaible ? self.setSimpleLogin(completion: completion) : completion(.success)
 			case let .failure(error):
 				completion(.failure(error))
 			}
 		}
 	}
 
-	func setSimpleLogin(completion: @escaping (ACResult<Void, RegisterError>) -> Void) {
-		self.userDefaultManager.setSimpleLogin() ? completion(.success(())) : completion(.failure(.simpleLoginFail))
+	func setSimpleLogin(completion: @escaping (ACVoidResult<RegisterError>) -> Void) {
+		self.userDefaultManager.setSimpleLogin() ? completion(.success) : completion(.failure(.simpleLoginFail))
 	}
 }

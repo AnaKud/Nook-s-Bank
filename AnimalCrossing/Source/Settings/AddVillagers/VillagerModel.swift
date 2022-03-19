@@ -99,7 +99,7 @@ enum VillagerColors {
 		case "brown": self = .brown
 		case "gray": self = .gray
 		case "orange": self = .orange
- 		case "red": self = .red
+		case "red": self = .red
 		case "pink": self = .pink
 		case "blue": self = .blue
 		case "black": self = .black
@@ -107,10 +107,9 @@ enum VillagerColors {
 		default: self = .colorful
 		}
 	}
-	
+
 	var color: UIColor {
 		switch self {
-		
 		case .white: return #colorLiteral(red: 1, green: 0.9999999404, blue: 0.9999999404, alpha: 0.5)
 		case .yellow:
 			return #colorLiteral(red: 0.9995340705, green: 0.988355577, blue: 0.4726552367, alpha: 0.5209540563)

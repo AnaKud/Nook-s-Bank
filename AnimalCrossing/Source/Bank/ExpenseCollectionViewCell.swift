@@ -4,18 +4,15 @@
 import UIKit
 
 class ExpenseCollectionViewCell: UICollectionViewCell {
-	var colors: ColorSet?
-	var customView: CustomView?
-
-	let expenseTypeImageView = UIImageView()
-	let valueLabel = UILabel()
-	let dateLabel = UILabel()
+	private let expenseTypeImageView = UIImageView()
+	private let valueLabel = UILabel()
+	private let dateLabel = UILabel()
 
 	private let circleWidth = AppContraints.Bank.collectionCellWidth / 2
 
 	override init(frame: CGRect) {
 		super.init(frame: frame)
-		contentView.backgroundColor = .clear
+		self.contentView.backgroundColor = .clear
 		self.setUpLayout()
 	}
 
@@ -25,44 +22,37 @@ class ExpenseCollectionViewCell: UICollectionViewCell {
 	}
 
 	private func setUpLayout() {
-		contentView.addSubview(expenseTypeImageView)
-		expenseTypeImageView.snp.makeConstraints { make in
-			make.top.equalTo(contentView)
-			make.leading.equalTo(contentView).offset(AppContraints.Bank.imageCollectionViewEdge)
-			make.trailing.equalTo(contentView).offset(-AppContraints.Bank.imageCollectionViewEdge)
+		self.contentView.addSubview(self.expenseTypeImageView)
+		self.expenseTypeImageView.snp.makeConstraints { make in
+			make.top.equalTo(self.contentView)
+			make.leading.equalTo(self.contentView).offset(AppContraints.Bank.imageCollectionViewEdge)
+			make.trailing.equalTo(self.contentView).offset(-AppContraints.Bank.imageCollectionViewEdge)
 			make.width.height.equalTo(AppContraints.Bank.imageCollectionViewSize)
 		}
-		contentView.addSubview(valueLabel)
-		valueLabel.snp.makeConstraints { make in
-			make.top.equalTo(expenseTypeImageView.snp.bottom).offset(-AppContraints.minEdge)
-			make.leading.equalTo(contentView).offset(AppContraints.minEdge)
-			make.trailing.equalTo(contentView).offset(-AppContraints.minEdge)
+		self.contentView.addSubview(self.valueLabel)
+		self.valueLabel.snp.makeConstraints { make in
+			make.top.equalTo(self.expenseTypeImageView.snp.bottom).offset(-AppContraints.minEdge)
+			make.leading.equalTo(self.contentView).offset(AppContraints.minEdge)
+			make.trailing.equalTo(self.contentView).offset(-AppContraints.minEdge)
 		}
-		valueLabel.font = ACFont.bankValueFont.font
-		valueLabel.textAlignment = .center
-		contentView.addSubview(dateLabel)
-		dateLabel.snp.makeConstraints { make in
-			make.top.equalTo(valueLabel.snp.bottom).offset(-AppContraints.minEdge)
-			make.leading.equalTo(contentView).offset(AppContraints.minEdge)
-			make.trailing.bottom.equalTo(contentView).offset(-AppContraints.minEdge)
+		self.valueLabel.font = ACFont.bankValueFont.font
+		self.valueLabel.textAlignment = .center
+		self.contentView.addSubview(dateLabel)
+		self.dateLabel.snp.makeConstraints { make in
+			make.top.equalTo(self.valueLabel.snp.bottom).offset(-AppContraints.minEdge)
+			make.leading.equalTo(self.contentView).offset(AppContraints.minEdge)
+			make.trailing.bottom.equalTo(self.contentView).offset(-AppContraints.minEdge)
 		}
-		dateLabel.textAlignment = .center
-		dateLabel.numberOfLines = 0
-		dateLabel.textColor = colors?.bankViewColor.itemTextColor
-		dateLabel.font = ACFont.bankDateFont.font
+		self.dateLabel.textAlignment = .center
+		self.dateLabel.numberOfLines = 0
+		self.dateLabel.font = ACFont.bankDateFont.font
 	}
 
-	func config(item: ExpenseViewModel) {
-		switch item.operationType {
-		case .plus:
-			valueLabel.text = "+\(item.value)"
-			valueLabel.textColor = colors?.bankViewColor.incomeLabelColor
-		case .minus:
-			valueLabel.text = "-\(item.value)"
-			valueLabel.textColor = colors?.bankViewColor.expenseLabelColor
-		}
-		dateLabel.text = item.date
-		expenseTypeImageView.image = UIImage(named: item.expenseType)
-		dateLabel.textColor = self.colors?.bankViewColor.itemTextColor
+	func config(item: ExpenseViewModel, textColor: UIColor?) {
+		self.dateLabel.text = item.date
+		self.valueLabel.text = item.expenseText
+		self.valueLabel.textColor = item.expenseColor
+		self.expenseTypeImageView.image = UIImage(named: item.expenseType)
+		self.dateLabel.textColor = textColor
 	}
 }

@@ -97,14 +97,14 @@ class NetworkManager: INewsNetworkManager {
 protocol IProphetPricesNetworkManager {
 	func downloadTurnip(
 		forTurnipPrices prices: ProphetPrices.Turnip.Request,
-		turnipHandler: @escaping (TurnipResponse) -> Void
+		turnipHandler: @escaping (TurnipResponse?) -> Void
 	)
 }
 
 extension NetworkManager: IProphetPricesNetworkManager {
 	func downloadTurnip(
 		forTurnipPrices prices: ProphetPrices.Turnip.Request,
-		turnipHandler: @escaping (TurnipResponse) -> Void
+		turnipHandler: @escaping (TurnipResponse?) -> Void
 	) {
 		let urlString = self.makeBaseTurnipUrl(forTurnipPrices: prices)
 		guard let url = URL(string: urlString) else { return }
@@ -118,6 +118,7 @@ extension NetworkManager: IProphetPricesNetworkManager {
 
 			if httpResponse.statusCode == 200 {
 				do {
+					print(String(data: data, encoding: .utf8))
 					let decoder = JSONDecoder()
 					let turnipData = try decoder.decode(TurnipResponse.self, from: data)
 					turnipHandler(turnipData)

@@ -51,6 +51,7 @@ class NewsViewModel {
 		let dateFormatter = DateFormatter()
 		dateFormatter.dateFormat = "yyyy-MM-dd"
 		let internetDate = dateFormatter.date(from: date)
+		dateFormatter.locale = Locale(identifier: "en_US")
 		dateFormatter.dateFormat = "dd MMM yyyy"
 		return dateFormatter.string(from: internetDate ?? Date())
 	}

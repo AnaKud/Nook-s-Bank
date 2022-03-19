@@ -5,6 +5,7 @@ import UIKit
 
 class CustomSwitcher: UISwitch {
 	private var color: ColorSet.SwitchColor
+
 	init(color: ColorSet) {
 		self.color = color.switchColor
 		super.init(frame: .zero)
@@ -16,7 +17,7 @@ class CustomSwitcher: UISwitch {
 		fatalError("init(coder:) has not been implemented")
 	}
 
-	func setupUI() {
+	private func setupUI() {
 		self.backgroundColor = self.color.backgroundColor
 		self.onTintColor = self.color.onTintColor
 		self.thumbTintColor = self.color.thumbTintColor

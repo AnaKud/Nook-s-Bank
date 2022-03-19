@@ -7,11 +7,13 @@ class PassCodeView: UIView, UITextInputTraits {
 	var endEditing: Bool {
 		self.code.count == self.maxLength
 	}
+
 	var code: String = "" {
 		didSet {
 			self.updateStack(by: code)
 		}
 	}
+
 	override var canBecomeFirstResponder: Bool {
 		return false
 	}
@@ -35,8 +37,10 @@ class PassCodeView: UIView, UITextInputTraits {
 			self.code.removeAll()
 		}
 	}
+}
 
-	private func setupPins() {
+private extension PassCodeView {
+	func setupPins() {
 		self.addSubview(self.stack)
 
 		self.stack.snp.makeConstraints { make in
@@ -44,14 +48,14 @@ class PassCodeView: UIView, UITextInputTraits {
 		}
 		self.backgroundColor = self.colorSet.backgroundColor
 		self.stack.axis = .horizontal
-		self.stack.distribution = .equalSpacing
+		self.stack.distribution = .fillProportionally
 		self.updateStack(by: self.code)
 	}
 
-	private func updateStack(by code: String) {
-		var emptyPins: [UIView] = Array(0..<maxLength).map { _ in emptyPin() }
+	func updateStack(by code: String) {
+		var emptyPins: [UIView] = Array(0..<maxLength).map { _ in self.emptyPin() }
 		let userPinLength = code.count
-		let pins: [UIView] = Array(0..<userPinLength).map { _ in pin() }
+		let pins: [UIView] = Array(0..<userPinLength).map { _ in self.pin() }
 
 		for (index, element) in pins.enumerated() {
 			emptyPins[index] = element
@@ -62,13 +66,11 @@ class PassCodeView: UIView, UITextInputTraits {
 		}
 	}
 
-	private func emptyPin() -> UIView {
-		return Pin()
-	}
+	func emptyPin() -> UIView { return Pin() }
 
-	private func pin() -> UIView {
+	func pin() -> UIView {
 		let pin = Pin()
-		pin.pin.backgroundColor = colorSet.pinColor
+		pin.fillBackground()
 		return pin
 	}
 }
@@ -89,42 +91,5 @@ extension PassCodeView: UIKeyInput {
 		if self.hasText {
 			self.code.removeLast()
 		}
-	}
-}
-
-class Pin: UIView {
-	let pin = UIView()
-	private let colorSet = ColorSet.PassCodeViewColor(for: .other)
-
-	override init(frame: CGRect) {
-		super.init(frame: frame)
-		self.setupPin()
-	}
-
-	@available(*, unavailable)
-	required init?(coder: NSCoder) {
-		fatalError("init(coder:) has not been implemented")
-	}
-
-	private func setupPin() {
-		self.addSubview(self.pin)
-		self.pin.snp.makeConstraints { make in
-			make.height.width.equalTo(AppContraints.PinPadLogin.pinSize)
-		}
-		self.pin.layer.cornerRadius = AppContraints.PinPadLogin.pinCorner
-		self.pin.layer.borderWidth = AppContraints.PinPadLogin.pinBorder
-		self.pin.layer.borderColor = colorSet.pinBorderColor
-		self.pin.layer.masksToBounds = true
-	}
-}
-
-extension UIStackView {
-	func removeAllArrangedSubViews() {
-		let removedSubviews = arrangedSubviews.reduce([]) { allSubviews, subview -> [UIView] in
-			self.removeArrangedSubview(subview)
-			return allSubviews + [subview]
-		}
-		NSLayoutConstraint.deactivate(removedSubviews.flatMap({ $0.constraints }))
-		removedSubviews.forEach({ $0.removeFromSuperview() })
 	}
 }

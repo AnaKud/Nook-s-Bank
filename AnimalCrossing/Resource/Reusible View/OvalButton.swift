@@ -41,7 +41,6 @@ private extension OvalButton {
 	func setupLayouts() {
 		self.layer.cornerRadius = self.height / 2
 		self.backgroundColor = self.color.ovalButtonColor.buttonColor
-		//	self.translatesAutoresizingMaskIntoConstraints = false
 		self.addCircleView()
 		self.addTitleLabel()
 	}
@@ -57,16 +56,6 @@ private extension OvalButton {
 									 firstCharacter: self.firstCharacter,
 									 colorSet: self.color)
 		self.addSubview(self.circleView)
-		//	self.circleView.translatesAutoresizingMaskIntoConstraints = false
-		//		self.circleView.anchor(top: self.topAnchor,
-		//							   leading: self.leadingAnchor,
-		//							   bottom: self.bottomAnchor,
-		//							   trailing: nil, padding: UIEdgeInsets(top: self.circleEdges,
-		//																	left: self.circleEdges,
-		//																	bottom: self.circleEdges,
-		//																	right: 999),
-		//							   size: CGSize(width: self.circleViewSize,
-		//											height: self.circleViewSize))
 		self.circleView.snp.makeConstraints { make in
 			make.top.leading.equalTo(self).offset(self.circleEdges)
 			make.centerY.equalTo(self)
@@ -76,7 +65,6 @@ private extension OvalButton {
 
 	func addTitleLabel() {
 		let titleLabel = UILabel()
-		//	titleLabel.translatesAutoresizingMaskIntoConstraints = false
 		titleLabel.text = title
 		titleLabel.textColor = self.color.ovalButtonColor.buttonTextColor
 		titleLabel.font = ACFont.loginButtonFont.font

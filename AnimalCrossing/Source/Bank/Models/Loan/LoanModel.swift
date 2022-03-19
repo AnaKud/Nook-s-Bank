@@ -41,9 +41,12 @@ class LoanTransition {
 }
 
 struct LoanDto: Decodable {
-	var currentValue: Int
-	let loanHistory: [LoanHistoryDto]
+	var currentValue: Int?
+	let type = CurrencyType.loan
+	let loanHistory: [LoanHistoryDto]?
+}
 
+extension LoanDto {
 	init(from decoder: Decoder) throws {
 		let container = try decoder.container(keyedBy: FirKeys.self)
 		self.currentValue = try container.decode(Int.self, forKey: .currentValue)
@@ -64,26 +67,25 @@ extension LoanDto: IFirDictionary {
 		}
 	}
 
-	func makeDictionary() -> [NSString : Any] {
+	func makeDictionary() -> [NSString : Any?] {
 		[
-			FirKeys.currentValue.key: NSString(string: "\(self.currentValue)"),
+			FirKeys.currentValue.key: self.currentValue,
 			FirKeys.loanHistory.key: self.makeLoanHistoryArray()
 		]
 	}
 
-	private func makeLoanHistoryArray() -> [[NSString : Any]] {
-		var result = [[NSString : Any]]()
-		for history in self.loanHistory {
-			result.append(history.makeDictionary())
-		}
+	private func makeLoanHistoryArray() -> [[NSString : Any?]] {
+		let result: [[NSString: Any?]] = self.loanHistory?.compactMap {
+			$0.makeDictionary()
+		} ?? [[NSString: Any?]]()
 		return result
 	}
 }
 
 extension LoanDto {
-	init(object: LoanTransition) {
-		self.currentValue = object.currentValue
-		self.loanHistory = object.loanHistory.compactMap{
+	init(object: LoanTransition?) {
+		self.currentValue = object?.currentValue
+		self.loanHistory = object?.loanHistory.compactMap {
 			LoanHistoryDto(object: $0)
 		}
 	}

@@ -25,7 +25,7 @@ class RegisterUserInteractor {
 
 extension RegisterUserInteractor: IRegisterUserInteractor {
 	func didLoadVC(_ vc: RegisterUserViewController) {
-		self.router.setupVC(vc)
+		self.router.setupNavigator(vc)
 		self.presenter.setupVC(vc)
 	}
 

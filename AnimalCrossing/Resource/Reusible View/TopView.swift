@@ -7,6 +7,7 @@ class TopView: UIView {
 	private var colorSet: ColorSet
 	private var text: String
 	private var firstCharacter: String
+
 	init(text: String, firstCharacter: String, screenType: ScreenTypes = .other) {
 		self.text = text
 		self.firstCharacter = firstCharacter
@@ -28,7 +29,7 @@ class TopView: UIView {
 		fatalError("init(coder:) has not been implemented")
 	}
 
-	func setupLayouts() {
+	private func setupLayouts() {
 		self.backgroundColor = self.colorSet.cellColorSet.topViewColor
 
 		let circleView = CircleView(size: AppContraints.CellSizes.circleViewSize,

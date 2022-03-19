@@ -130,3 +130,7 @@ extension AddVillagersViewController: UITableViewDelegate, UITableViewDataSource
 		self.presenter.selectItem(indexPath.row)
 	}
 }
+
+extension AddVillagersViewController: INavigator {
+	var currentVC: UIViewController? { return self }
+}

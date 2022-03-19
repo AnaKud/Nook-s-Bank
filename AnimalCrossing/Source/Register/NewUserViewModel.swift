@@ -12,7 +12,6 @@ struct NewUserViewModel {
 	let padAvailaible: Bool
 	let pad: String?
 	let repetedPad: String?
-	let bankAccount: BankViewModel?
 
 	init(name: String?,
 		 avatar: String?,
@@ -21,8 +20,7 @@ struct NewUserViewModel {
 		 repetedEmailPassword: String?,
 		 padAvailaible: Bool,
 		 pad: String?,
-		 repetedPad: String?,
-		 bankAccount: BankViewModel? = nil) {
+		 repetedPad: String?) {
 		self.name = name
 		self.avatar = avatar
 		self.email = email
@@ -31,7 +29,6 @@ struct NewUserViewModel {
 		self.padAvailaible = padAvailaible
 		self.pad = pad
 		self.repetedPad = repetedPad
-		self.bankAccount = bankAccount
 	}
 }
 
@@ -42,7 +39,6 @@ struct NewUserDto {
 	let emailPassword: String
 	let padAvailaible: Bool
 	let pad: String?
-	let bankAccount: BankAccountDto?
 }
 
 extension NewUserDto {
@@ -53,7 +49,6 @@ extension NewUserDto {
 		self.emailPassword = vm.emailPassword ?? ""
 		self.padAvailaible = vm.padAvailaible
 		self.pad = vm.pad
-		self.bankAccount = nil // todo
 	}
 }
 
@@ -76,13 +71,13 @@ extension NewUserDto: IFirDictionary {
 		}
 	}
 
-	func makeDictionary() -> [NSString: Any] {
+	func makeDictionary() -> [NSString: Any?] {
 		[
 			FirKeys.name.key: self.name,
 			FirKeys.avatar.key: self.avatar,
 			FirKeys.email.key: self.email,
 			FirKeys.padAvailaible.key: "\(self.padAvailaible)",
-			FirKeys.pad.key: self.pad ?? "nul"
+			FirKeys.pad.key: self.pad
 		]
 	}
 }

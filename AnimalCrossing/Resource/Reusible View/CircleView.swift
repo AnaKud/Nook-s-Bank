@@ -29,11 +29,10 @@ final class CircleView: UIView {
 		fatalError("init(coder:) has not been implemented")
 	}
 }
+
 private extension CircleView {
 	func setupLayouts() {
-		//	self.translatesAutoresizingMaskIntoConstraints = false
 		let circleLabel = self.makeCircleLabel()
-		//	circleLabel.translatesAutoresizingMaskIntoConstraints = false
 
 		self.layer.cornerRadius = self.circleViewSize / 2
 		self.backgroundColor = self.colorSet.circleColor

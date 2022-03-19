@@ -29,6 +29,7 @@ class TurnipPrices {
         self.buyPrice = buyPrice
         self.turnipCount = turnipCount
     }
+
 	init(
 		sundayDate: Date?,
 		buyPrice: Int,

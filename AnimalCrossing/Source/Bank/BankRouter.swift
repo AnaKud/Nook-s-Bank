@@ -8,18 +8,18 @@
 import Foundation
 
 protocol IBankRouter {
-	func loadVC(_ vc: BankViewController)
+	func loadNavigator(_ navigator: INavigator)
 	func popToViewController()
 }
 
 class BankRouter: IBankRouter {
-	private weak var controller: BankViewController?
+	private weak var navigator: INavigator?
 
-	func loadVC(_ vc: BankViewController) {
-		self.controller = vc
+	func loadNavigator(_ navigator: INavigator) {
+		self.navigator = navigator
 	}
 
 	func popToViewController() {
-		self.controller?.navigationController?.popToRootViewController(animated: true)
+		self.navigator?.popToRootVC(animated: true)
 	}
 }

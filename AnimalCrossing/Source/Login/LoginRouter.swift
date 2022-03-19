@@ -24,13 +24,16 @@ extension LoginRouter: ILoginRouter {
 	}
 
 	func goToRegisterView() {
-		let nextVC = RegisterUserAssemly.build()
+		let nextVC = UserSettingsAssemly.build()
 		let nextVCNavigationController = UINavigationController(rootViewController: nextVC)
 		nextVCNavigationController.modalPresentationStyle = .fullScreen
 		self.viewController?.present(nextVCNavigationController, animated: false)
 	}
 
 	func goToNextWithoutLogin() {
+//		FireBaseManager.shared.login(withEmail: "Ana@ya.ru",
+//								   withPassword: "Ana123!",
+//								   completion: { _ in })
 		let mainRouter = MainRouter(screenType: .unloggined)
 		self.goToTabbar(mainRouter)
 	}

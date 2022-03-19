@@ -89,6 +89,8 @@ struct ValidatedUserData {
 	let password: String
 }
 
+extension ValidatedUserData: Equatable { }
+
 enum LoginValidationResult: Equatable {
 	case success(email: String, password: String)
 	case failure(ValidationError)
@@ -193,9 +195,42 @@ enum RegisterError: ACError {
 	case simpleLoginFail
 }
 
-public enum ACResult<T, U: ACError> {
+public enum ACVoidResult<U: ACError> {
+	case success
+	case failure(U)
+}
+
+extension ACVoidResult: Equatable {
+	public static func == (lhs: ACVoidResult<U>, rhs: ACVoidResult<U>) -> Bool {
+		switch (lhs, rhs) {
+		case let (.success, .success):
+			return true
+		case let (.failure(lhsValue), .failure(rhsValue)):
+			return lhsValue.humanfriendlyTitle == rhsValue.humanfriendlyTitle
+			&& lhsValue.humanfriendlyMessage == rhsValue.humanfriendlyMessage
+		default:
+			return false
+		}
+	}
+}
+
+public enum ACResult<T: Equatable, U: ACError> {
 	case success(T)
 	case failure(U)
+}
+
+extension ACResult: Equatable {
+	public static func == (lhs: ACResult<T, U>, rhs: ACResult<T, U>) -> Bool {
+		switch (lhs, rhs) {
+		case let (.success(lhsValue), .success(rhsValue)):
+			return lhsValue == rhsValue
+		case let (.failure(lhsValue), .failure(rhsValue)):
+			return lhsValue.humanfriendlyTitle == rhsValue.humanfriendlyTitle
+			&& lhsValue.humanfriendlyMessage == rhsValue.humanfriendlyMessage
+		default:
+			return false
+		}
+	}
 }
 
 public protocol ACError {

@@ -3,9 +3,7 @@
 
 import UIKit
 
-protocol ITurnipViewController: IAlertOnVC {
-	
-}
+protocol ITurnipViewController: IAlertOnVC, INavigator { }
 
 class TurnipViewController: CloudViewController {
 	var presenter: ITurnipPresenter
@@ -268,7 +266,7 @@ extension TurnipViewController: UIScrollViewDelegate {
 
 	func makeFirstColumnViews() {
 		let monText = self.presenter.dateForView(forDayWeek: .monday)
-		monView = WeekView.setupWeekView(weekDayText: monText, colors: colors)
+		monView = WeekView(text: monText, colors: colors)
 		firstTurnipColumn.addSubview(monView)
 		monView.snp.makeConstraints { make in
 			make.top.equalTo(firstTurnipColumn).offset(AppContraints.Turnip.monViewOffset)
@@ -277,7 +275,7 @@ extension TurnipViewController: UIScrollViewDelegate {
 			make.width.equalTo(AppContraints.Turnip.weekViewWidth)
 		}
 		let tueText = self.presenter.dateForView(forDayWeek: .tuesday)
-		tueView = WeekView.setupWeekView(weekDayText: tueText, colors: colors)
+		tueView = WeekView(text: tueText, colors: colors)
 		firstTurnipColumn.addSubview(tueView)
 		tueView.snp.makeConstraints { make in
 			make.top.equalTo(monView.snp.bottom).offset(AppContraints.minEdge)
@@ -286,7 +284,7 @@ extension TurnipViewController: UIScrollViewDelegate {
 			make.width.equalTo(AppContraints.Turnip.weekViewWidth)
 		}
 		let wedText = self.presenter.dateForView(forDayWeek: .wednesday)
-		wedView = WeekView.setupWeekView(weekDayText: wedText, colors: colors)
+		wedView = WeekView(text: wedText, colors: colors)
 		firstTurnipColumn.addSubview(wedView)
 		wedView.snp.makeConstraints { make in
 			make.top.equalTo(tueView.snp.bottom).offset(AppContraints.minEdge)
@@ -295,7 +293,7 @@ extension TurnipViewController: UIScrollViewDelegate {
 			make.width.equalTo(AppContraints.Turnip.weekViewWidth)
 		}
 		let thuText = self.presenter.dateForView(forDayWeek: .thursday)
-		thuView = WeekView.setupWeekView(weekDayText: thuText, colors: colors)
+		thuView = WeekView(text: thuText, colors: colors)
 		firstTurnipColumn.addSubview(thuView)
 		thuView.snp.makeConstraints { make in
 			make.top.equalTo(wedView.snp.bottom).offset(AppContraints.minEdge)
@@ -304,7 +302,7 @@ extension TurnipViewController: UIScrollViewDelegate {
 			make.width.equalTo(AppContraints.Turnip.weekViewWidth)
 		}
 		let friText = self.presenter.dateForView(forDayWeek: .friday)
-		friView = WeekView.setupWeekView(weekDayText: friText, colors: colors)
+		friView = WeekView(text: friText, colors: colors)
 		firstTurnipColumn.addSubview(friView)
 		friView.snp.makeConstraints { make in
 			make.top.equalTo(thuView.snp.bottom).offset(AppContraints.minEdge)
@@ -313,7 +311,7 @@ extension TurnipViewController: UIScrollViewDelegate {
 			make.width.equalTo(AppContraints.Turnip.weekViewWidth)
 		}
 		let satText = self.presenter.dateForView(forDayWeek: .saturday)
-		satView = WeekView.setupWeekView(weekDayText: satText, colors: colors)
+		satView = WeekView(text: satText, colors: colors)
 		firstTurnipColumn.addSubview(satView)
 		satView.snp.makeConstraints { make in
 			make.top.equalTo(friView.snp.bottom).offset(AppContraints.minEdge)

@@ -16,7 +16,7 @@ protocol ILoginFireBaseManager {
 					 completion: @escaping (LoginResult) -> Void)
 	func simpleLogin(completion: @escaping (LoginResult) -> Void)
 	func resetPassword(forEmail email: String,
-					   completion: @escaping (ACResult<Void, LogoutError>) -> Void)
+					   completion: @escaping (ACVoidResult<LogoutError>) -> Void)
 }
 
 extension FireBaseManager: ILoginFireBaseManager {
@@ -62,12 +62,11 @@ extension FireBaseManager: ILoginFireBaseManager {
 	}
 
 	func resetPassword(forEmail email: String,
-					   completion: @escaping (ACResult<Void, LogoutError>) -> Void) {
+					   completion: @escaping (ACVoidResult<LogoutError>) -> Void) {
 		Auth.auth().sendPasswordReset(withEmail: email) { error in
 			if error != nil {
-				completion(.success(()))
-			}
-			else {
+				completion(.success)
+			} else {
 				completion(.failure(.forgetPasswordError))
 			}
 		}

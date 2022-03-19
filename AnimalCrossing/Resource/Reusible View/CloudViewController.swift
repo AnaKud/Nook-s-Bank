@@ -5,18 +5,16 @@ import SnapKit
 import UIKit
 
 class CloudViewController: UIViewController {
-	var colors: ColorSet {
-		ColorSet(for: self.screenType)
-	}
+	var colors: ColorSet { ColorSet(for: self.screenType) }
 	private(set) var customView: CustomView?
 	private(set) var screenType: ScreenTypes?
 	private(set) var controllerTitle: String?
 
-	private let topImageView = UIImageView()
+	private lazy var topImageView = TopCloudyView(screenType: self.screenType)
+	private lazy var bottomImageView = BottomCloudyView(screenType: self.screenType)
+	private let titleLabel = UILabel()
 
-	let bottomImageView = UIImageView()
-	let titleLabel = UILabel()
-	var contentView = UIView()
+	private(set) var contentView = UIView()
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -56,9 +54,14 @@ class CloudViewController: UIViewController {
 	}
 }
 
+extension CloudViewController: INavigator {
+	var currentVC: UIViewController? { return self }
+}
+
 private extension CloudViewController {
 	func loadUI() {
-		let tap = UITapGestureRecognizer(target: self, action: #selector(dissmissKeyboard))
+		let tap = UITapGestureRecognizer(target: self,
+										 action: #selector(self.dissmissKeyboard))
 		tap.cancelsTouchesInView = false
 		self.view.addGestureRecognizer(tap)
 
@@ -119,97 +122,11 @@ private extension CloudViewController {
 	func screenTypeSettings() {
 		self.view.backgroundColor = self.colors.mainViewColor.backgroundColor
 		self.titleLabel.textColor = self.colors.mainViewColor.textColor
-		switch self.screenType {
-		case .loggined:
-			self.topImageView.image = UIImage(named: AppImage.TopBottomImage.logTop.rawValue)
-			self.bottomImageView.image = UIImage(named: AppImage.TopBottomImage.logBottom.rawValue)
-		case .unloggined:
-			self.topImageView.image = UIImage(named: AppImage.TopBottomImage.unlogTop.rawValue)
-			self.bottomImageView.image = UIImage(named: AppImage.TopBottomImage.unlogBottom.rawValue)
-		default:
-			self.view.backgroundColor = self.colors.mainViewColor.backgroundColor
-		}
 	}
 }
 
 @objc extension CloudViewController {
 	func dissmissKeyboard() {
-		view.endEditing(true)
-	}
-
-	func userSettingsButtonTapped() {
-		print("tapped")
-		// navDelegate?.userSettingsButtonTapped()
-	}
-	func backButtonTapped() {
-		print("back tapped")
-		// navDelegate?.backButtonTapped()
-	}
-	func logoutButtonTapped() {
-		print("back tapped")
-		// navDelegate?.logoutButtonTapped()
+		self.view.endEditing(true)
 	}
 }
-
-class TopCloudyView: UIView {
-	private let screenType: ScreenTypes
-
-	init(screenType: ScreenTypes) {
-		self.screenType = screenType
-		super.init(frame: .zero)
-		self.loadUI()
-	}
-
-	@available(*, unavailable)
-	required init?(coder: NSCoder) {
-		fatalError("init(coder:) has not been implemented")
-	}
-}
-
-private extension TopCloudyView {
-	func loadUI() {
-		let imageView = UIImageView()
-		self.addSubview(imageView)
-		imageView.snp.makeConstraints { make in
-			make.edges.equalTo(self)
-		}
-		switch self.screenType {
-		case .loggined:
-			imageView.image = UIImage(named: AppImage.TopBottomImage.logTop.rawValue)
-		default:
-			imageView.image = UIImage(named: AppImage.TopBottomImage.unlogTop.rawValue)
-		}
-	}
-}
-
-class BottomCloudyView: UIView {
-	private let screenType: ScreenTypes
-
-	init(screenType: ScreenTypes) {
-		self.screenType = screenType
-		super.init(frame: .zero)
-		self.loadUI()
-	}
-
-	@available(*, unavailable)
-	required init?(coder: NSCoder) {
-		fatalError("init(coder:) has not been implemented")
-	}
-}
-
-private extension BottomCloudyView {
-	func loadUI() {
-		let imageView = UIImageView()
-		self.addSubview(imageView)
-		imageView.snp.makeConstraints { make in
-			make.edges.equalTo(self)
-		}
-		switch self.screenType {
-		case .loggined:
-			imageView.image = UIImage(named: AppImage.TopBottomImage.logBottom.rawValue)
-		default:
-			imageView.image = UIImage(named: AppImage.TopBottomImage.unlogBottom.rawValue)
-		}
-	}
-}
-

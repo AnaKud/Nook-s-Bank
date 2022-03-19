@@ -4,45 +4,42 @@
 @testable import AnimalCrossing
 
 class BankFireBaseManagerMock: IBankDataBaseManager {
-	var user: IUser!
-	var expenses = [ExpenseTransition(ExpenseDTO(value: 100,
+	var expenses = [ExpenseTransition(ExpenseDto(value: 100,
 												 operationType: .plus))]
-	var balance: Int = 0
+	var balance: Int
 	var bankPresenter: IBankPresenter?
 
-	func addExpenseOrIncome(_ model: ExpenseDTO, currency: CurrencyType) {
-		print(self.balance)
+	private var bankAccount: BankAccountDto {
+		BankAccountDto(bells: CurrencyDto(
+			object: CurrencyTransition(account: self.balance,
+									   type: .bells,
+									   expenses: self.expenses)))
+	}
+
+	init(balance: Int = 0) {
+		self.balance = balance
+	}
+
+	func addExpenseOrIncome(_ model: ExpenseDto, currency: CurrencyType) -> Bool {
 		self.expenses.append(ExpenseTransition(model))
-		switch model.operationType {
-		case .plus:
-			self.balance += model.value
-		default:
-			self.balance -= model.value
+		if model.operationType == "plus" {
+			self.balance += model.value ?? 0
+		} else {
+			self.balance -= model.value ?? 0
 		}
-		print(self.balance)
+		return true
 	}
 
-	func getUser() -> IUser? {
-		self.user = UserMock()
-		return self.user
+	func checkDBAvailability(completion: @escaping (ACVoidResult<BankError>) -> Void) {
+		completion(.success)
 	}
 
-	func updateAccountValue(newValue: Int, currency: CurrencyType) {
+	func updateAccountValue(newValue: Int, currency: CurrencyType) -> Bool {
 		self.balance = newValue
+		return true
 	}
 
-	func currentBankAccountFromFB(completion: @escaping (ACResult<BankAccountDto, BankError>) -> Void) {
-		let bellsAccount = CurrencyTransition(account: self.balance, type: .bells, expenses: self.expenses)
-		completion(.success(BankAccountDto(loan: nil,
-										   poki: nil,
-										   bells: CurrencyDto(object: bellsAccount),
-										   miles: nil)))
-	}
-
-	func currentExpensesFromFB(completion: @escaping ([ExpenseDTO]) -> Void) {
-		let result: [ExpenseDTO] = self.expenses.compactMap { expense in
-			ExpenseDTO(from: expense)
-		}
-		completion(result)
+	func currentBankAccountFromFB(completion: @escaping (BankAccountDto) -> Void) {
+		completion(self.bankAccount)
 	}
 }

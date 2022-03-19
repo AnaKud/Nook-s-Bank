@@ -4,7 +4,7 @@
 import SnapKit
 import UIKit
 
-protocol INewsViewController {
+protocol INewsViewController: INavigator {
 	func displayActivity()
 	func displayTable()
 	func refreshView()

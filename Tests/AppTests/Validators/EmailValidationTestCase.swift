@@ -11,7 +11,7 @@ final class EmailValidationTestCase: XCTestCase {
 	}
 
 	func testEmailValidatorWithWrongCharCountEmail() {
-		let validationResult = EmailValidator.check("r@l.ru")
+		let validationResult = EmailValidator.checkLength("r@l.ru")
 		XCTAssertFalse(validationResult)
 	}
 

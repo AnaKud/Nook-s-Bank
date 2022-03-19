@@ -6,7 +6,7 @@ import SwiftUI
 import SwiftUICharts
 import UIKit
 
-protocol IProphetPricesViewController: AnyObject {
+protocol IProphetPricesViewController: INavigator {
 	func displayDateViews(dates: ProphetPrices.Turnip.ViewModel.Dates)
 	func displayPrices(prices: ProphetPrices.Turnip.ViewModel.Prices)
 	func displayGraph(with data: ProphetPrices.Turnip.ViewModel.PriceForGraph)
@@ -14,7 +14,7 @@ protocol IProphetPricesViewController: AnyObject {
 	func displayEmptyScreen()
 }
 
-class ProphetPricesViewController: CloudViewController {
+class ProphetPricesViewController: SheetViewController {
 	var interactor: IProphetPricesInteractor
 
 	// Views
@@ -62,8 +62,7 @@ class ProphetPricesViewController: CloudViewController {
 
 	init(interactor: IProphetPricesInteractor) {
 		self.interactor = interactor
-		super.init(nibName: nil, bundle: nil)
-		self.setupScreenType(.other)
+		super.init(screenType: .other)
 	}
 
 	@available(*, unavailable)
@@ -144,15 +143,14 @@ extension ProphetPricesViewController: IProphetPricesViewController {
 		let satText = dates.dateForView(forDayWeek: .saturday)
 
 		DispatchQueue.main.async {
-			self.monView = WeekView.setupWeekView(weekDayText: monText, colors: self.colors)
-			self.tueView = WeekView.setupWeekView(weekDayText: tueText, colors: self.colors)
-			self.wedView = WeekView.setupWeekView(weekDayText: wedText, colors: self.colors)
-			self.thuView = WeekView.setupWeekView(weekDayText: thuText, colors: self.colors)
-			self.friView = WeekView.setupWeekView(weekDayText: friText, colors: self.colors)
-			self.satView = WeekView.setupWeekView(weekDayText: satText, colors: self.colors)
-			
+			self.monView = WeekView(text: monText, colors: self.colors)
+			self.tueView = WeekView(text: tueText, colors: self.colors)
+			self.wedView = WeekView(text: wedText, colors: self.colors)
+			self.thuView = WeekView(text: thuText, colors: self.colors)
+			self.friView = WeekView(text: friText, colors: self.colors)
+			self.satView = WeekView(text: satText, colors: self.colors)
+
 			self.setupGraphView()
-			
 			self.setupPriceView()
 		}
 	}
@@ -218,8 +216,8 @@ fileprivate extension ProphetPricesViewController {
 		priceBackgroundView.backgroundColor = self.colors.cellColorSet.backgroundViewColor
 		priceBackgroundView.layer.cornerRadius = AppContraints.CellSizes.cellCornerRadius
 		priceBackgroundView.layer.masksToBounds = true
-		priceTopView = customView?.setupTopView(text: AppTitle.Prophet.priceTitle,
-												AppTitle.Prophet.priceForOval) ?? UIView()
+//		priceTopView = customView?.setupTopView(text: AppTitle.Prophet.priceTitle,
+//												AppTitle.Prophet.priceForOval) ?? UIView()
 		priceBackgroundView.addSubview(priceTopView)
 		priceTopView.snp.makeConstraints { make in
 			make.top.leading.trailing.equalTo(priceBackgroundView)
@@ -419,7 +417,6 @@ fileprivate extension ProphetPricesViewController {
 		contentScrollView.addSubview(graphBackgroundView)
 		graphBackgroundView.snp.makeConstraints { make in
 			make.top.equalTo(contentScrollView).offset(AppContraints.CellSizes.cellBgEdge)
-			//make.top.equalTo(priceBackgroundView.snp.bottom).offset(AppContraints.CellSizes.cellBgEdge)
 			make.leading.equalTo(contentScrollView).offset(AppContraints.CellSizes.cellBgEdge)
 			make.trailing.equalTo(contentScrollView).offset(-AppContraints.CellSizes.cellBgEdge)
 			make.bottom.equalTo(contentScrollView).offset(-AppContraints.CellSizes.cellBgEdge)
@@ -428,9 +425,9 @@ fileprivate extension ProphetPricesViewController {
 		graphBackgroundView.backgroundColor = self.colors.cellColorSet.backgroundViewColor
 		graphBackgroundView.layer.cornerRadius = AppContraints.CellSizes.cellCornerRadius
 		graphBackgroundView.layer.masksToBounds = true
-		graphTopView = customView?.setupTopView(text: AppTitle.Prophet.graphTitle,
-												AppTitle.Prophet.graphForOval)
-		?? UIView()
+//		graphTopView = customView?.setupTopView(text: AppTitle.Prophet.graphTitle,
+//												AppTitle.Prophet.graphForOval)
+		//?? UIView()
 		graphBackgroundView.addSubview(graphTopView)
 		graphTopView.snp.makeConstraints { make in
 			make.top.leading.trailing.equalTo(graphBackgroundView)

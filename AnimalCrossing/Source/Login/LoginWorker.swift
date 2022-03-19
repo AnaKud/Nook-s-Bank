@@ -35,7 +35,7 @@ class LoginWorker {
 	}
 
 	func forgetPasswordButtonTapped(forEmail email: String?,
-									completion: @escaping (ACResult<Void, LogoutError>) -> Void) {
+									completion: @escaping (ACVoidResult<LogoutError>) -> Void) {
 		LoginDataValidator.check(email: email) { result in
 			switch result {
 			case .success(let email):
@@ -46,8 +46,8 @@ class LoginWorker {
 		}
 	}
 
-	func forgetPadButtonTapped(completion: @escaping (ACResult<Void, LogoutError>) -> Void) {
-		self.userDefaultManager.removeSimpleLogin() ? completion(.success(())) : completion(.failure(.padDelete))
+	func forgetPadButtonTapped(completion: @escaping (ACVoidResult<LogoutError>) -> Void) {
+		self.userDefaultManager.removeSimpleLogin() ? completion(.success) : completion(.failure(.padDelete))
 	}
 
 	func simpleLogin(with pin: String, completion: @escaping (LoginResult) -> Void) {

@@ -14,7 +14,7 @@ class BalanceSettingsView: UIView {
 	private var milesBalanceTextField = UITextField()
 	private var pokiBalanceLabel = UILabel()
 	private var pokiBalanceTextField = UITextField()
-	
+
 	private var saveLoanBalanceButton = UIButton()
 
 	override init(frame: CGRect) {

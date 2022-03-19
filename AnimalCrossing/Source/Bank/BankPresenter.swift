@@ -4,107 +4,40 @@
 import Foundation
 
 protocol IBankPresenter {
-	func loadVC(_ view: BankViewController)
-	func plusButtonTapped()
-	func returnCurrentAccountValue() -> String
-	func returnCollectionCount() -> Int
-	func returnCollectionItem(index: Int) -> ExpenseViewModel
+	func loadVC(_ view: IBankViewController)
+	func showAccountValue(_ value: String)
+	func refreshCollectionView()
+	func showAddExpenseAlert()
+	func showErrorAlert(error: ACError, handler: (() -> Void)?)
 }
 
 class BankPresenter {
-	private var viewController: BankViewController?
-	private var account: BankViewModel?
-	private var user: IUser?
-	private var daseManager: IBankDataBaseManager
-	private var router: IBankRouter
+	private var viewController: IBankViewController?
 
-	init(demoDataBase: IBankDataBaseManager, router: IBankRouter) {
-		self.daseManager = demoDataBase
-		self.router = router
-		self.getCurrentUser()
-	}
+	init() { }
 }
 
 extension BankPresenter: IBankPresenter {
-	func getCurrentUser() {
-		self.user = self.daseManager.getUser()
-		self.daseManager.currentBankAccountFromFB { result in
-			switch result {
-			case .success(let dto):
-				let account = BankAccountTransition(dto)
-				self.account = BankViewModel(object: account)
-			case .failure(let error):
-				print(error.humanfriendlyMessage)
-			}
-		}
-	}
-
-	func plusButtonTapped() {
-		self.viewController?.showAddExpenseAlert { expense in
-			self.addExpense(expense: expense)
-		}
-	}
-
-	func loadVC(_ vc: BankViewController) {
+	func loadVC(_ vc: IBankViewController) {
 		self.viewController = vc
-		self.router.loadVC(vc)
 		self.viewController?.interfaceWithData()
-		self.viewController?.refreshView(currentValue: self.returnCurrentAccountValue())
 	}
 
-	func returnCurrentAccountValue() -> String {
-		guard let value = self.account?.bells?.account else { return "" }
-		return "\(value)"
+	func showAccountValue(_ value: String) {
+		self.viewController?.setNewTotalAccountValue(value)
 	}
 
-	func returnCollectionCount() -> Int {
-		return self.account?.bells?.expenses.count ?? 0
+	func refreshCollectionView() {
+		self.viewController?.refreshCollectionView()
 	}
 
-	func returnCollectionItem(index: Int) -> ExpenseViewModel {
-		let item = self.account?.bells?.expenses[index]
-		?? ExpenseViewModel(date: "", value: 0, operationType: .plus, expenseType: .other)
-		return item
-	}
-}
-
-private extension BankPresenter {
-	func addExpense(expense: ExpenseTransition) {
-		let expenseForFir = ExpenseDTO(from: expense)
-		guard let account = self.account else { return }
-		switch expense.operationType {
-		case .plus:
-			account.bells?.account += expense.value
-		case .minus:
-			guard account.bells?.account ?? 0 - expense.value > 0 else { return }
-			account.bells?.account -= expense.value
-		}
-		account.bells?.expenses.insert(ExpenseViewModel(object: expense), at: 0)
-		self.addExpenseToFb(expense: expenseForFir)
-		self.updateCurrentAccountValue()
-		self.refreshView()
+	func showAddExpenseAlert() {
+		self.viewController?.showAddExpenseAlert()
 	}
 
-	func updateCurrentAccountValue() {
-		guard let account = self.account?.bells?.account else { return }
-		self.daseManager.updateAccountValue(newValue: account, currency: .bells)
-	}
-
-	func sortExpenses(expensesInput: [ExpenseDTO]?) -> [ExpenseDTO]? {
-		let result = expensesInput?.sorted(by: {
-			let firstDate = Date(timeIntervalSince1970: $0.date)
-			let secondDate = Date(timeIntervalSince1970: $1.date)
-			return firstDate.compare(secondDate) == .orderedDescending
-		}) ?? [ExpenseDTO]()
-		return result
-	}
-
-	func refreshView() {
-		let displayedValue = self.returnCurrentAccountValue()
-		self.viewController?.refreshView(currentValue: displayedValue)
-	}
-
-	func addExpenseToFb(expense: ExpenseDTO) {
-		self.daseManager.addExpenseOrIncome(expense, currency: .bells)
+	func showErrorAlert(error: ACError, handler: (() -> Void)?) {
+		self.viewController?.showErrorAlert(title: error.humanfriendlyTitle,
+											message: error.humanfriendlyMessage,
+											handler: handler)
 	}
 }

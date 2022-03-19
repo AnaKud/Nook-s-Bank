@@ -6,13 +6,13 @@ protocol IRegisterUserRouter {
 }
 
 class RegisterUserRouter {
-	private weak var viewController: RegisterUserViewController?
+	private weak var navigator: INavigator?
 
-	func setupVC(_ viewController: RegisterUserViewController) {
-		self.viewController = viewController
+	func setupNavigator(_ navigator: INavigator) {
+		self.navigator = navigator
 	}
 
 	func dismissVC() {
-		self.viewController?.navigationController?.dismiss(animated: true)
+		self.navigator?.dismissVC()
 	}
 }

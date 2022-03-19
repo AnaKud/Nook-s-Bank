@@ -15,7 +15,6 @@ struct AppContraints {
 	static let doubleEdge = standartEdge * 2
 
 	static let standartCornerRadius: CGFloat = 15
-
 	static let defaultBorder: CGFloat = 1
 
 	struct Login {
@@ -55,6 +54,7 @@ struct AppContraints {
 		static let topViewHeight: CGFloat = 44
 		static let circleViewSize = 44 - (2 * midEdge)
 	}
+
 	struct Bank {
 		static let bankAccountViewHeight: CGFloat = 70
 		static let plusButtonHeight: CGFloat = 50
@@ -64,6 +64,7 @@ struct AppContraints {
 		static let imageCollectionViewSize: CGFloat = collectionCellWidth - 2 * imageCollectionViewEdge
 		static let circleWidth = (collectionCellWidth - (2 * midEdge)) / 2
 	}
+
 	struct Turnip {
 		static let heightTF: CGFloat = 35
 		static let cornerRadius: CGFloat = 5

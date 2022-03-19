@@ -19,7 +19,7 @@ class AddVillagerRouter {
 	}
 }
 
-extension AddVillagerRouter: IAddVillagerRouter{
+extension AddVillagerRouter: IAddVillagerRouter {
 	func navigate(with result: VillagerViewModel) {
 		self.villagerHandler(result)
 		self.controller?.navigationController?.popViewController(animated: true)

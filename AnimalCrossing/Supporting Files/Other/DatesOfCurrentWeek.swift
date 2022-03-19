@@ -6,6 +6,7 @@ import Foundation
 class DatesOfCurrentWeek {
 	func getWeekDates() -> [String]? {
 		let dateFormatter = DateFormatter()
+		dateFormatter.locale = Locale(identifier: "en_US")
 		dateFormatter.dateFormat = "E, dd/MM"
 		var startDate = self.getLastSunday()
 		var weekDates = [String]()

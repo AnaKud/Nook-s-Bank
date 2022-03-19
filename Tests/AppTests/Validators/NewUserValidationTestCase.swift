@@ -42,7 +42,7 @@ final class NewUserValidationTestCase: XCTestCase {
 									pad: nil,
 									repetedPad: nil)
 		self.validator.validateUser(user) { validationResult in
-			XCTAssertEqual(validationResult, .error(.emailError))
+			XCTAssertEqual(validationResult, .failure(.emailEmpty))
 		}
 	}
 
@@ -70,7 +70,7 @@ final class NewUserValidationTestCase: XCTestCase {
 									pad: nil,
 									repetedPad: nil)
 		self.validator.validateUser(user) { validationResult in
-			XCTAssertEqual(validationResult, .error(.passwordError))
+			XCTAssertEqual(validationResult, .failure(.passwordFormatError))
 		}
 	}
 
@@ -98,7 +98,7 @@ final class NewUserValidationTestCase: XCTestCase {
 									pad: nil,
 									repetedPad: nil)
 		self.validator.validateUser(user) { validationResult in
-			XCTAssertEqual(validationResult, .error(.passwordError))
+			XCTAssertEqual(validationResult, .failure(.passwordNotMatched))
 		}
 	}
 
@@ -126,7 +126,7 @@ final class NewUserValidationTestCase: XCTestCase {
 									pad: "123456",
 									repetedPad: "123455")
 		self.validator.validateUser(user) { validationResult in
-			XCTAssertEqual(validationResult, .error(.padError))
+			XCTAssertEqual(validationResult, .failure(.padNotMatched))
 		}
 	}
 
@@ -154,7 +154,7 @@ final class NewUserValidationTestCase: XCTestCase {
 									pad: "12345A",
 									repetedPad: "12345A")
 		self.validator.validateUser(user) { validationResult in
-			XCTAssertEqual(validationResult, .error(.padError))
+			XCTAssertEqual(validationResult, .failure(.padFormatError))
 		}
 	}
 

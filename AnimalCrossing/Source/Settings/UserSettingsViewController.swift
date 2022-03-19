@@ -3,7 +3,7 @@
 
 import UIKit
 
-protocol IUserSettingsViewController: AnyObject {
+protocol IUserSettingsViewController: INavigator {
 	func setVillagersArray(_ villagers: [VillagerViewModel])
 }
 
@@ -18,8 +18,7 @@ class UserSettingsViewController: SheetViewController {
 
 	init(interactor: IUserSettingsInteractor) {
 		self.interactor = interactor
-		super.init(nibName: nil, bundle: nil)
-		self.screenType = .other
+		super.init(screenType: .other)
 	}
 
 	@available(*, unavailable)
@@ -39,7 +38,7 @@ class UserSettingsViewController: SheetViewController {
 		self.segmentedControl.selectedSegmentIndex = 0
 		self.showGeneralUserInfoView()
 	}
-	
+
 	func setupSegmentedControl() {
 		self.segmentedControl = CustomSegmentedControl(screenType: self.screenType,
 													   items: ["General", "Island", "News"])

@@ -4,7 +4,7 @@
 import UIKit
 
 class BankBellsView: UIView {
-	private let presenter: BankPresenter
+	private let presenter: BankInteractor
 
 	private let colors = ColorSet(for: .loggined)
 
@@ -20,7 +20,7 @@ class BankBellsView: UIView {
 	private let historyTitleLabel = UILabel()
 	private let expensesCollectionView = UICollectionView()
 
-	init(presenter: BankPresenter) {
+	init(presenter: BankInteractor) {
 		self.presenter = presenter
 		super.init(frame: .zero)
 	}
@@ -134,7 +134,7 @@ class PlusMinusButton: UIButton {
 		super.init(frame: .zero)
 		self.loadUI()
 	}
-	
+
 	required init?(coder: NSCoder) {
 		fatalError("init(coder:) has not been implemented")
 	}

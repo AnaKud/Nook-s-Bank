@@ -5,7 +5,7 @@ import Foundation
 import LocalAuthentication
 
 protocol IDeviceOwnerAuthentication {
-	func authenticationRequest(completion: @escaping (ACResult<Void, BiometricsAuthError>) -> Void)
+	func authenticationRequest(completion: @escaping (ACVoidResult<BiometricsAuthError>) -> Void)
 }
 
 class DeviceOwnerAuthentication: IDeviceOwnerAuthentication {
@@ -13,13 +13,13 @@ class DeviceOwnerAuthentication: IDeviceOwnerAuthentication {
 
 	private let context = LAContext()
 
-	func authenticationRequest(completion: @escaping (ACResult<Void, BiometricsAuthError>) -> Void) {
+	func authenticationRequest(completion: @escaping (ACVoidResult<BiometricsAuthError>) -> Void) {
 		if self.context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: nil) {
 			self.context.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics,
 										localizedReason: "App login") { success, error in
 				switch (success, error) {
 				case (true, nil):
-					completion(.success(()))
+					completion(.success)
 				case (false, let error as LAError):
 					self.handleError(error) { handledError in
 						completion(.failure(handledError))

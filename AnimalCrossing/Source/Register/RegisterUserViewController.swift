@@ -3,7 +3,7 @@
 
 import UIKit
 
-protocol IRegisterUserViewController: AnyObject, IAlertOnVC { }
+protocol IRegisterUserViewController: INavigator, IAlertOnVC { }
 
 class RegisterUserViewController: SheetViewController {
 	private let interactor: IRegisterUserInteractor
@@ -11,8 +11,7 @@ class RegisterUserViewController: SheetViewController {
 
 	init(interactor: IRegisterUserInteractor) {
 		self.interactor = interactor
-		super.init(nibName: nil, bundle: nil)
-		self.screenType = .other
+		super.init(screenType: .other)
 	}
 
 	@available(*, unavailable)

@@ -16,27 +16,27 @@ final class PasswordValidationTestCase: XCTestCase {
 	}
 
 	func testCheckPasswordCurrentLenght() {
-		let validationResult = PasswordValidator.check(password: "Ann!23")
+		let validationResult = PasswordValidator.check("Ann!23")
 		XCTAssertTrue(validationResult)
 	}
 
 	func testCheckPasswordWrongLenght() {
-		let validationResult = PasswordValidator.check(password: "Ann!3")
+		let validationResult = PasswordValidator.checkLength("Ann!3")
 		XCTAssertFalse(validationResult)
 	}
 
 	func testCheckPasswordHasSpecialSymbol() {
-		let validationResult = PasswordValidator.check(password: "Ann123")
+		let validationResult = PasswordValidator.check("Ann123")
 		XCTAssertFalse(validationResult)
 	}
 
 	func testCheckPasswordHasUppercasedCharacter() {
-		let validationResult = PasswordValidator.check(password: "ann!23")
+		let validationResult = PasswordValidator.check("ann!23")
 		XCTAssertFalse(validationResult)
 	}
 
 	func testCheckPasswordHasNumber() {
-		let validationResult = PasswordValidator.check(password: "Annet!")
+		let validationResult = PasswordValidator.check("Annet!")
 		XCTAssertFalse(validationResult)
 	}
 }

@@ -4,7 +4,7 @@
 import Foundation
 
 protocol IFirDictionary {
-	func makeDictionary() -> [NSString: Any]
+	func makeDictionary() -> [NSString: Any?]
 }
 
 protocol IFirKeys {

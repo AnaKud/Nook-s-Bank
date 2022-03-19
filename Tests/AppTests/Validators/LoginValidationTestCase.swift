@@ -7,25 +7,27 @@ import XCTest
 final class LoginValidationTestCase: XCTestCase {
 	func testCurrentEmail() {
 		LoginDataValidator.check(email: "Ann@mail.ru", password: "Ann123!") { validationResult in
-			XCTAssertEqual(validationResult, .success(email: "Ann@mail.ru", password: "Ann123!"))
+			let referenceValue = ValidatedUserData(email: "Ann@mail.ru", password: "Ann123!")
+			XCTAssertEqual(validationResult, .success(referenceValue))
 		}
 	}
 
 	func testWrongEmail() {
 		LoginDataValidator.check(email: "Annmail.ru", password: "Ann123!") { validationResult in
-			XCTAssertEqual(validationResult, .error(.emailError))
+			XCTAssertEqual(validationResult, .failure(.emailFormatError))
 		}
 	}
 
 	func testCurrentPassword() {
 		LoginDataValidator.check(email: "Ann@mail.ru", password: "Ann123!") { validationResult in
-			XCTAssertEqual(validationResult, .success(email: "Ann@mail.ru", password: "Ann123!"))
+			let referenceValue = ValidatedUserData(email: "Ann@mail.ru", password: "Ann123!")
+			XCTAssertEqual(validationResult, .success(referenceValue))
 		}
 	}
 
 	func testWrongPassword() {
 		LoginDataValidator.check(email: "Ann@mail.ru", password: "Ann123") { validationResult in
-			XCTAssertEqual(validationResult, .error(.passwordError))
+			XCTAssertEqual(validationResult, .failure(.passwordFormatError))
 		}
 	}
 }

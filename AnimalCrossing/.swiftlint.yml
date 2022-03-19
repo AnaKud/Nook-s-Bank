@@ -1,9 +1,14 @@
 included:
   - Source
   - Tests
+  
 analyzer_rules:
   - unused_declaration
   - unused_import
+
+disabled_rules:
+  - vertical_parameter_alignment
+
 opt_in_rules:
   - anyobject_protocol
   - array_init

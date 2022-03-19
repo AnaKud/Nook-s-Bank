@@ -11,35 +11,49 @@ class SheetViewController: UIViewController {
 	private(set) lazy var colors: ColorSet = {
 		ColorSet(for: self.screenType)
 	}()
-	var screenType: ScreenTypes?
+	private(set) var screenType: ScreenTypes
 	private var closeButtonCallBack: ICloseButtonCallBack?
-	let titleLabel = UILabel()
-	var contentView = UIView()
+	private let titleLabel = UILabel()
+	private(set) var contentView = UIView()
+
+	init(screenType: ScreenTypes) {
+		self.screenType = screenType
+		super.init(nibName: nil, bundle: nil)
+	}
+
+	@available(*, unavailable)
+	required init?(coder: NSCoder) {
+		fatalError("init(coder:) has not been implemented")
+	}
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		self.loadUI()
 	}
 
-	func loadUI() {
+	final func loadUI() {
 		self.screenTypeSettings()
 		self.setupTopLayout()
 		self.setupContentView()
 	}
 
-	func configureKeyboardDismissing() {
+	final func configureKeyboardDismissing() {
 		let tap = UITapGestureRecognizer(target: self, action: #selector(self.dissmissKeyboard))
 		tap.cancelsTouchesInView = false
 		self.view.addGestureRecognizer(tap)
 	}
 
-	func setupCallBack(_ callBack: ICloseButtonCallBack) {
+	final func setupCallBack(_ callBack: ICloseButtonCallBack) {
 		self.closeButtonCallBack = callBack
 	}
 
-	func setupHeader(_ text: String) {
+	final func setupHeader(_ text: String) {
 		self.titleLabel.text = text
 	}
+}
+
+extension SheetViewController: INavigator {
+	var currentVC: UIViewController? { return self }
 }
 
 private extension SheetViewController {
@@ -57,7 +71,8 @@ private extension SheetViewController {
 		self.navigationController?.navigationBar.barStyle = .default
 		self.navigationController?.navigationBar.tintColor = self.colors.mainViewColor.navigationItemColor
 		self.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .close,
-																target: self, action: #selector(self.closeButtonTapped))
+																target: self,
+																action: #selector(self.closeButtonTapped))
 		self.setupTitleLabel()
 	}
 

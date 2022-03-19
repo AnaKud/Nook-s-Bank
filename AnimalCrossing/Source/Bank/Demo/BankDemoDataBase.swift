@@ -2,45 +2,46 @@
 // Created by Anastasiya Kudasheva on 16.12.2021
 
 class BankDemoDataBase: IBankDataBaseManager {
-	private var account = makeDemoAccount()
+	private lazy var account = Self.makeDemoAccount()
 
-	var bankPresenter: IBankPresenter?
+	func checkDBAvailability(completion: @escaping (ACVoidResult<BankError>) -> Void) {
+		completion(.success)
+	}
+
+	func currentBankAccountFromFB(completion: @escaping (BankAccountDto) -> Void) {
+		completion(self.account)
+	}
 
 	func currentBankAccountFromFB(completion: @escaping (ACResult<BankAccountDto, BankError>) -> Void) {
 		completion(.success(self.account))
 	}
 
-	func addExpenseOrIncome(_ model: ExpenseDTO, currency: CurrencyType) {
-		self.account.bells?.expenses.append(model)
+	func addExpenseOrIncome(_ model: ExpenseDto, currency: CurrencyType) -> Bool {
+		guard self.account.bells != nil else { return false }
+		self.account.bells?.expenses?.append(model)
+		return true
 	}
 
-	func getUser() -> IUser? {
-		self.makeDemoUser()
-	}
-
-	func updateAccountValue(newValue: Int, currency: CurrencyType) {
+	func updateAccountValue(newValue: Int, currency: CurrencyType) -> Bool {
+		guard self.account.bells != nil else { return false }
 		self.account.bells?.account = newValue
+		return true
 	}
 }
 
 private extension BankDemoDataBase {
 	static func makeDemoAccount() -> BankAccountDto {
 		let expenses = [
-			ExpenseDTO(value: 1452, operationType: .plus),
-			ExpenseDTO(value: 1248, operationType: .minus),
-			ExpenseDTO(value: 3248, operationType: .minus),
-			ExpenseDTO(value: 74_532, operationType: .plus),
-			ExpenseDTO(value: 29_012, operationType: .plus)
+			ExpenseDto(value: 1452, operationType: .plus),
+			ExpenseDto(value: 1248, operationType: .minus),
+			ExpenseDto(value: 3248, operationType: .minus),
+			ExpenseDto(value: 74_532, operationType: .plus),
+			ExpenseDto(value: 29_012, operationType: .plus)
 		]
-		return BankAccountDto(loan: nil,
-							  poki: nil,
-							  bells: CurrencyDto(account: 100_500,
+		return BankAccountDto(
+							  bells: CurrencyDto(account: 0,
 												 type: "bells",
-												 expenses: expenses),
-							  miles: nil)
-	}
-
-	func makeDemoUser() -> IUser? {
-		UserLocale(uid: "demoUserUid", email: "demoUser@mail.ru")
+												 expenses: expenses)
+							  )
 	}
 }

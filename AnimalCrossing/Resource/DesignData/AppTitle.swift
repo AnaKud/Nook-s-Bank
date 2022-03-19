@@ -8,6 +8,7 @@ struct AppTitle {
 	static let welcome = "Welcome to"
 	static let save = "Save"
 	static let cancel = "Cancel"
+
 	struct Login {
 		static let emailTF = "Your email"
 		static let passwordTF = "Your password"
@@ -17,9 +18,11 @@ struct AppTitle {
 		static let hello = "Hello"
 		static let nameMessage = "Enter your name"
 	}
+
 	struct News {
 		static let controllerTitle = "Nook News"
 	}
+
 	struct Bank {
 		static let controllerTitle = " Bank of Nook"
 		static let currentAccountTitle = "Your current account:"
@@ -28,6 +31,7 @@ struct AppTitle {
 		static let demoHistory = "Demo Purchase History:"
 		static let newExpense = "Add new expense or income"
 	}
+
 	struct Turnip {
 		static let controllerTitle = "Turnips' Calculator"
 		static let price = "Price"
@@ -43,6 +47,7 @@ struct AppTitle {
 		static let income = "Calculate income"
 		static let turnipPrice = "Prophet prices"
 	}
+
 	struct Prophet {
 		static let priceForOval = "P"
 		static let priceTitle = "Prophet Turnips' Prices"

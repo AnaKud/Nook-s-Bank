@@ -9,7 +9,6 @@ class NewUserValidator {
 		self.checkEmail(user, completion: completion)
 		self.checkPassword(user, completion: completion)
 		self.checkPasscode(user, completion: completion)
-		completion(.success(NewUserDto(user)))
 	}
 }
 
@@ -26,7 +25,7 @@ private extension NewUserValidator {
 	}
 
 	func checkPassword(_ user: NewUserViewModel,
-					completion: @escaping (ACResult<NewUserDto, ValidationError>) -> Void) {
+					   completion: @escaping (ACResult<NewUserDto, ValidationError>) -> Void) {
 		guard PasswordValidator.checkEquality(user.emailPassword, user.repetedEmailPassword) else {
 			return completion(.failure(.passwordNotMatched))
 		}
@@ -42,7 +41,7 @@ private extension NewUserValidator {
 	}
 
 	func checkPasscode(_ user: NewUserViewModel,
-					completion: @escaping (ACResult<NewUserDto, ValidationError>) -> Void) {
+					   completion: @escaping (ACResult<NewUserDto, ValidationError>) -> Void) {
 		if user.padAvailaible {
 			guard PadValidator.checkEquality(user.pad, user.repetedPad) else {
 				return completion(.failure(.padNotMatched))
@@ -104,8 +103,7 @@ enum EmailValidator {
 	static func check(_ email: String) -> Bool {
 		let pattern = "[A-Z0-9a-z.-_]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,3}"
 		let predicate = NSPredicate(format: "SELF MATCHES %@", pattern)
-		guard predicate.evaluate(with: email)
-		else { return false }
+		guard predicate.evaluate(with: email) else { return false }
 		return true
 	}
 }
@@ -142,7 +140,7 @@ enum PadValidator {
 	}
 
 	static func checkLength(_ password: String) -> Bool {
-		return password.count >= 6
+		return password.count == 6
 	}
 
 	static func check(_ password: String) -> Bool {
