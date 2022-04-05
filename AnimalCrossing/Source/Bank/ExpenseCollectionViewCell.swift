@@ -52,7 +52,7 @@ class ExpenseCollectionViewCell: UICollectionViewCell {
 		self.dateLabel.text = item.date
 		self.valueLabel.text = item.expenseText
 		self.valueLabel.textColor = item.expenseColor
-		self.expenseTypeImageView.image = UIImage(named: item.expenseType)
+		self.expenseTypeImageView.image = item.expenseType.image
 		self.dateLabel.textColor = textColor
 	}
 }

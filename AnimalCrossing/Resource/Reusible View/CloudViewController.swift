@@ -7,7 +7,7 @@ import UIKit
 class CloudViewController: UIViewController {
 	var colors: ColorSet { ColorSet(for: self.screenType) }
 	private(set) var customView: CustomView?
-	private(set) var screenType: ScreenTypes?
+	private(set) var screenType: ScreenType?
 	private(set) var controllerTitle: String?
 
 	private lazy var topImageView = TopCloudyView(screenType: self.screenType)
@@ -45,7 +45,7 @@ class CloudViewController: UIViewController {
 		self.setupContentViewLayout()
 	}
 
-	func setupScreenType(_ screenType: ScreenTypes) {
+	func setupScreenType(_ screenType: ScreenType) {
 		self.screenType = screenType
 	}
 
@@ -94,16 +94,16 @@ private extension CloudViewController {
 			make.bottom.equalTo(self.bottomImageView.snp.top).offset(-AppContraints.minEdge)
 		}
 		self.contentView.backgroundColor = .clear
-		if self.screenType != .loginScreen {
-			self.view.addSubview(self.titleLabel)
-			self.titleLabel.snp.makeConstraints { make in
-				make.top.equalTo(self.view).offset(AppContraints.navTitle)
-				make.leading.trailing.equalTo(self.view)
-			}
-			self.titleLabel.text = self.controllerTitle
-			self.titleLabel.textAlignment = .center
-			self.titleLabel.font = ACFont.controllerTitleFont.font
+
+		self.view.addSubview(self.titleLabel)
+		self.titleLabel.snp.makeConstraints { make in
+			make.top.equalTo(self.view).offset(AppContraints.navTitle)
+			make.leading.trailing.equalTo(self.view)
 		}
+		self.titleLabel.text = self.controllerTitle
+		self.titleLabel.textAlignment = .center
+		self.titleLabel.font = ACFont.controllerTitleFont.font
+
 		self.titleLabel.numberOfLines = 0
 	}
 

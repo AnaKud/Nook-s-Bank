@@ -8,10 +8,10 @@ class TopView: UIView {
 	private var text: String
 	private var firstCharacter: String
 
-	init(text: String, firstCharacter: String, screenType: ScreenTypes = .other) {
+	init(text: String, firstCharacter: String, screen: Screen = .mainScreen(.additionalScreen)) {
 		self.text = text
 		self.firstCharacter = firstCharacter
-		self.colorSet = ColorSet(for: screenType)
+		self.colorSet = ColorSet(for: screen)
 		super.init(frame: .zero)
 		self.setupLayouts()
 	}
@@ -19,7 +19,7 @@ class TopView: UIView {
 	init(text: String, firstCharacter: String, colorSet: ColorSet?) {
 		self.text = text
 		self.firstCharacter = firstCharacter
-		self.colorSet = colorSet ?? ColorSet(for: .other)
+		self.colorSet = colorSet ?? ColorSet(for: .mainScreen(.additionalScreen))
 		super.init(frame: .zero)
 		self.setupLayouts()
 	}

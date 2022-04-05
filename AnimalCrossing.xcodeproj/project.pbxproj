@@ -11,6 +11,23 @@
 		4DDE2A252784C7C300EC7103 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DDE2A242784C7C300EC7103 /* Reachability.swift */; };
 		4DF085B2277E2D1F00345A57 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 4DF085B1277E2D1F00345A57 /* SnapKit */; };
 		4DF085B5277E2D5900345A57 /* SwiftUICharts in Frameworks */ = {isa = PBXBuildFile; productRef = 4DF085B4277E2D5900345A57 /* SwiftUICharts */; };
+		E309C7D127EF06BD00648431 /* AlertColors.swift in Sources */ = {isa = PBXBuildFile; fileRef = E309C7D027EF06BD00648431 /* AlertColors.swift */; };
+		E309C7D427EF182100648431 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = E309C7D327EF182100648431 /* Colors.swift */; };
+		E309C7D627EF186900648431 /* CellColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E309C7D527EF186900648431 /* CellColor.swift */; };
+		E309C7D827EF19E300648431 /* OvalButtonColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E309C7D727EF19E300648431 /* OvalButtonColor.swift */; };
+		E309C7DA27EF205700648431 /* CircleViewColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E309C7D927EF205700648431 /* CircleViewColor.swift */; };
+		E309C7DC27EF224D00648431 /* TextFieldColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E309C7DB27EF224D00648431 /* TextFieldColor.swift */; };
+		E309C7DE27EF23EB00648431 /* MainViewColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E309C7DD27EF23EB00648431 /* MainViewColor.swift */; };
+		E309C7E027EF25DC00648431 /* PassCodeViewColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E309C7DF27EF25DC00648431 /* PassCodeViewColor.swift */; };
+		E309C7E227EF270500648431 /* ActivityIndicatorColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E309C7E127EF270500648431 /* ActivityIndicatorColor.swift */; };
+		E309C7E427EF272B00648431 /* SegmentedControlColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E309C7E327EF272B00648431 /* SegmentedControlColor.swift */; };
+		E309C7E627EF28DB00648431 /* SwitchColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E309C7E527EF28DB00648431 /* SwitchColor.swift */; };
+		E309C7E827EF2A3C00648431 /* BankViewColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E309C7E727EF2A3C00648431 /* BankViewColor.swift */; };
+		E309C7EB27EF675500648431 /* AddExpenseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E309C7EA27EF675500648431 /* AddExpenseViewController.swift */; };
+		E309C7ED27EF68FC00648431 /* AddExpenseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E309C7EC27EF68FC00648431 /* AddExpenseCollectionViewCell.swift */; };
+		E309C7EF27EF6AAF00648431 /* AddExpenseAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = E309C7EE27EF6AAF00648431 /* AddExpenseAssembly.swift */; };
+		E309C7F127EF9D3D00648431 /* AddExpensePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E309C7F027EF9D3D00648431 /* AddExpensePresenter.swift */; };
+		E309C7F327EF9D5B00648431 /* AddExpenseViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E309C7F227EF9D5B00648431 /* AddExpenseViewDelegate.swift */; };
 		E30F577327E65A18004403E0 /* ScreenTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = E30F577227E65A18004403E0 /* ScreenTypes.swift */; };
 		E30F577527E65A57004403E0 /* WeekDay.swift in Sources */ = {isa = PBXBuildFile; fileRef = E30F577427E65A57004403E0 /* WeekDay.swift */; };
 		E30F577727E65A6C004403E0 /* AdditionalLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = E30F577627E65A6C004403E0 /* AdditionalLink.swift */; };
@@ -22,6 +39,7 @@
 		E30F578727E65E1B004403E0 /* TapBarColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E30F578627E65E1B004403E0 /* TapBarColor.swift */; };
 		E30F578B27E66092004403E0 /* PinView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E30F578A27E66092004403E0 /* PinView.swift */; };
 		E30F578E27E66164004403E0 /* UIStackView+removeAllSubview.swift in Sources */ = {isa = PBXBuildFile; fileRef = E30F578D27E66164004403E0 /* UIStackView+removeAllSubview.swift */; };
+		E30F579027E77E8B004403E0 /* PlusMinusButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E30F578F27E77E8B004403E0 /* PlusMinusButton.swift */; };
 		E312B78326E1263B00523CA1 /* CircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E312B78226E1263B00523CA1 /* CircleView.swift */; };
 		E312B78526E1274D00523CA1 /* OvalButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E312B78426E1274D00523CA1 /* OvalButton.swift */; };
 		E313148326E7D515002B5F46 /* SheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E313148226E7D515002B5F46 /* SheetViewController.swift */; };
@@ -36,6 +54,8 @@
 		E3451F36276B995E000CD7C1 /* ExpenseType.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3451F35276B995E000CD7C1 /* ExpenseType.swift */; };
 		E3451F38276B99A4000CD7C1 /* ExpenseDto.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3451F37276B99A4000CD7C1 /* ExpenseDto.swift */; };
 		E3451F3A276B99EA000CD7C1 /* ExpenseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3451F39276B99EA000CD7C1 /* ExpenseViewModel.swift */; };
+		E348DFD927F0F4A600FC12FD /* AddExpenseRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E348DFD827F0F4A600FC12FD /* AddExpenseRouter.swift */; };
+		E348DFDB27F0F4ED00FC12FD /* AddExpenseError.swift in Sources */ = {isa = PBXBuildFile; fileRef = E348DFDA27F0F4ED00FC12FD /* AddExpenseError.swift */; };
 		E349A55627DC96DA007FB8E3 /* BankInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E349A55527DC96DA007FB8E3 /* BankInteractor.swift */; };
 		E349A55827DCBDF5007FB8E3 /* BankWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = E349A55727DCBDF5007FB8E3 /* BankWorker.swift */; };
 		E349A55A27DD1CD4007FB8E3 /* ExpenseTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = E349A55927DD1CD4007FB8E3 /* ExpenseTransition.swift */; };
@@ -123,7 +143,7 @@
 		E3A2E9E02689C3A600297E51 /* DatesOfCurrentWeek.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A2E9932689C3A600297E51 /* DatesOfCurrentWeek.swift */; };
 		E3A2E9EB2689C3A600297E51 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E3A2E9B12689C3A600297E51 /* Assets.xcassets */; };
 		E3A2E9EC2689C3A600297E51 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E3A2E9B22689C3A600297E51 /* LaunchScreen.storyboard */; };
-		E3A2E9ED2689C3A600297E51 /* MainRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A2E9B42689C3A600297E51 /* MainRouter.swift */; };
+		E3A2E9ED2689C3A600297E51 /* MainAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A2E9B42689C3A600297E51 /* MainAssembly.swift */; };
 		E3A2E9EF2689C3A600297E51 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A2E9B72689C3A600297E51 /* AppDelegate.swift */; };
 		E3A2E9F02689C3A600297E51 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A2E9B82689C3A600297E51 /* SceneDelegate.swift */; };
 		E3A2E9F12689C3A600297E51 /* TurnipTextFieldText.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3A2E9B92689C3A600297E51 /* TurnipTextFieldText.swift */; };
@@ -264,6 +284,23 @@
 /* Begin PBXFileReference section */
 		4D1915FD2780BC3D009E81C9 /* BankBellsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankBellsView.swift; sourceTree = "<group>"; };
 		4DDE2A242784C7C300EC7103 /* Reachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
+		E309C7D027EF06BD00648431 /* AlertColors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertColors.swift; sourceTree = "<group>"; };
+		E309C7D327EF182100648431 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		E309C7D527EF186900648431 /* CellColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellColor.swift; sourceTree = "<group>"; };
+		E309C7D727EF19E300648431 /* OvalButtonColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OvalButtonColor.swift; sourceTree = "<group>"; };
+		E309C7D927EF205700648431 /* CircleViewColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleViewColor.swift; sourceTree = "<group>"; };
+		E309C7DB27EF224D00648431 /* TextFieldColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldColor.swift; sourceTree = "<group>"; };
+		E309C7DD27EF23EB00648431 /* MainViewColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewColor.swift; sourceTree = "<group>"; };
+		E309C7DF27EF25DC00648431 /* PassCodeViewColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassCodeViewColor.swift; sourceTree = "<group>"; };
+		E309C7E127EF270500648431 /* ActivityIndicatorColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicatorColor.swift; sourceTree = "<group>"; };
+		E309C7E327EF272B00648431 /* SegmentedControlColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SegmentedControlColor.swift; sourceTree = "<group>"; };
+		E309C7E527EF28DB00648431 /* SwitchColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchColor.swift; sourceTree = "<group>"; };
+		E309C7E727EF2A3C00648431 /* BankViewColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankViewColor.swift; sourceTree = "<group>"; };
+		E309C7EA27EF675500648431 /* AddExpenseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddExpenseViewController.swift; sourceTree = "<group>"; };
+		E309C7EC27EF68FC00648431 /* AddExpenseCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddExpenseCollectionViewCell.swift; sourceTree = "<group>"; };
+		E309C7EE27EF6AAF00648431 /* AddExpenseAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddExpenseAssembly.swift; sourceTree = "<group>"; };
+		E309C7F027EF9D3D00648431 /* AddExpensePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddExpensePresenter.swift; sourceTree = "<group>"; };
+		E309C7F227EF9D5B00648431 /* AddExpenseViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddExpenseViewDelegate.swift; sourceTree = "<group>"; };
 		E30F577227E65A18004403E0 /* ScreenTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenTypes.swift; sourceTree = "<group>"; };
 		E30F577427E65A57004403E0 /* WeekDay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekDay.swift; sourceTree = "<group>"; };
 		E30F577627E65A6C004403E0 /* AdditionalLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdditionalLink.swift; sourceTree = "<group>"; };
@@ -275,6 +312,7 @@
 		E30F578627E65E1B004403E0 /* TapBarColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapBarColor.swift; sourceTree = "<group>"; };
 		E30F578A27E66092004403E0 /* PinView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinView.swift; sourceTree = "<group>"; };
 		E30F578D27E66164004403E0 /* UIStackView+removeAllSubview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+removeAllSubview.swift"; sourceTree = "<group>"; };
+		E30F578F27E77E8B004403E0 /* PlusMinusButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlusMinusButton.swift; sourceTree = "<group>"; };
 		E312B78226E1263B00523CA1 /* CircleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleView.swift; sourceTree = "<group>"; };
 		E312B78426E1274D00523CA1 /* OvalButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OvalButton.swift; sourceTree = "<group>"; };
 		E313148226E7D515002B5F46 /* SheetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetViewController.swift; sourceTree = "<group>"; };
@@ -289,6 +327,8 @@
 		E3451F35276B995E000CD7C1 /* ExpenseType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseType.swift; sourceTree = "<group>"; };
 		E3451F37276B99A4000CD7C1 /* ExpenseDto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseDto.swift; sourceTree = "<group>"; };
 		E3451F39276B99EA000CD7C1 /* ExpenseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseViewModel.swift; sourceTree = "<group>"; };
+		E348DFD827F0F4A600FC12FD /* AddExpenseRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddExpenseRouter.swift; sourceTree = "<group>"; };
+		E348DFDA27F0F4ED00FC12FD /* AddExpenseError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddExpenseError.swift; sourceTree = "<group>"; };
 		E349A55527DC96DA007FB8E3 /* BankInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankInteractor.swift; sourceTree = "<group>"; };
 		E349A55727DCBDF5007FB8E3 /* BankWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankWorker.swift; sourceTree = "<group>"; };
 		E349A55927DD1CD4007FB8E3 /* ExpenseTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseTransition.swift; sourceTree = "<group>"; };
@@ -373,7 +413,7 @@
 		E3A2E9932689C3A600297E51 /* DatesOfCurrentWeek.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatesOfCurrentWeek.swift; sourceTree = "<group>"; };
 		E3A2E9B12689C3A600297E51 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E3A2E9B32689C3A600297E51 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		E3A2E9B42689C3A600297E51 /* MainRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainRouter.swift; sourceTree = "<group>"; };
+		E3A2E9B42689C3A600297E51 /* MainAssembly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainAssembly.swift; sourceTree = "<group>"; };
 		E3A2E9B72689C3A600297E51 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E3A2E9B82689C3A600297E51 /* SceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		E3A2E9B92689C3A600297E51 /* TurnipTextFieldText.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TurnipTextFieldText.swift; sourceTree = "<group>"; };
@@ -498,14 +538,47 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E309C7CF27EF069A00648431 /* Colors */ = {
+			isa = PBXGroup;
+			children = (
+				E309C7E127EF270500648431 /* ActivityIndicatorColor.swift */,
+				E309C7D027EF06BD00648431 /* AlertColors.swift */,
+				E309C7E727EF2A3C00648431 /* BankViewColor.swift */,
+				E309C7D527EF186900648431 /* CellColor.swift */,
+				E309C7D927EF205700648431 /* CircleViewColor.swift */,
+				E309C7D327EF182100648431 /* Colors.swift */,
+				E3FF7E7D275BC40000454805 /* ColorSet.swift */,
+				E309C7DD27EF23EB00648431 /* MainViewColor.swift */,
+				E309C7D727EF19E300648431 /* OvalButtonColor.swift */,
+				E309C7DF27EF25DC00648431 /* PassCodeViewColor.swift */,
+				E309C7E327EF272B00648431 /* SegmentedControlColor.swift */,
+				E309C7E527EF28DB00648431 /* SwitchColor.swift */,
+				E309C7DB27EF224D00648431 /* TextFieldColor.swift */,
+			);
+			path = Colors;
+			sourceTree = "<group>";
+		};
+		E309C7E927EF673400648431 /* AddExpense */ = {
+			isa = PBXGroup;
+			children = (
+				E309C7EA27EF675500648431 /* AddExpenseViewController.swift */,
+				E309C7F027EF9D3D00648431 /* AddExpensePresenter.swift */,
+				E309C7F227EF9D5B00648431 /* AddExpenseViewDelegate.swift */,
+				E348DFD827F0F4A600FC12FD /* AddExpenseRouter.swift */,
+				E309C7EE27EF6AAF00648431 /* AddExpenseAssembly.swift */,
+				E309C7EC27EF68FC00648431 /* AddExpenseCollectionViewCell.swift */,
+			);
+			path = AddExpense;
+			sourceTree = "<group>";
+		};
 		E30B5E6426C6C01F00E4D02E /* DesignData */ = {
 			isa = PBXGroup;
 			children = (
+				E309C7CF27EF069A00648431 /* Colors */,
 				E3FC7E7F2692E9D40078A7E8 /* AppContraints.swift */,
 				E3FC7E832692EA510078A7E8 /* AppImage.swift */,
 				E3FC7E812692E9FF0078A7E8 /* AppTitle.swift */,
 				E30F577827E65A87004403E0 /* CellReusibleID.swift */,
-				E3FF7E7D275BC40000454805 /* ColorSet.swift */,
 				E30F578627E65E1B004403E0 /* TapBarColor.swift */,
 				E30F577227E65A18004403E0 /* ScreenTypes.swift */,
 			);
@@ -516,7 +589,7 @@
 			isa = PBXGroup;
 			children = (
 				E3FF1590275E770B00C033C3 /* villagers.csv */,
-				E3A2E9B42689C3A600297E51 /* MainRouter.swift */,
+				E3A2E9B42689C3A600297E51 /* MainAssembly.swift */,
 				E3FF1592275E77D000C033C3 /* CSVPaser.swift */,
 				E3A2E9932689C3A600297E51 /* DatesOfCurrentWeek.swift */,
 				E372B38926DABE410046C4FA /* Biometric.swift */,
@@ -560,6 +633,14 @@
 				E3451F31276B98B1000CD7C1 /* BankDemoDataBase.swift */,
 			);
 			path = Demo;
+			sourceTree = "<group>";
+		};
+		E348DFDC27F0F50B00FC12FD /* Bank */ = {
+			isa = PBXGroup;
+			children = (
+				E348DFDA27F0F4ED00FC12FD /* AddExpenseError.swift */,
+			);
+			path = Bank;
 			sourceTree = "<group>";
 		};
 		E349A56127DD2066007FB8E3 /* Currency */ = {
@@ -780,6 +861,7 @@
 			children = (
 				E39D9DBC277CCAD8009CBA0B /* ACErrors.h */,
 				E39D9DC5277CCAF9009CBA0B /* ACError.swift */,
+				E348DFDC27F0F50B00FC12FD /* Bank */,
 			);
 			path = ACErrors;
 			sourceTree = "<group>";
@@ -863,6 +945,7 @@
 		E3A2E9C02689C3A600297E51 /* Bank */ = {
 			isa = PBXGroup;
 			children = (
+				E309C7E927EF673400648431 /* AddExpense */,
 				E3451F2E276B9885000CD7C1 /* Demo */,
 				E3E159D8276A50680010E4A8 /* Models */,
 				E3A2E9C12689C3A600297E51 /* BankAssembly.swift */,
@@ -906,6 +989,7 @@
 			isa = PBXGroup;
 			children = (
 				E312B78226E1263B00523CA1 /* CircleView.swift */,
+				E30F578F27E77E8B004403E0 /* PlusMinusButton.swift */,
 				E3A2E9D22689C3A600297E51 /* CloudViewController.swift */,
 				E3A2E9D12689C3A600297E51 /* CustomAlertController.swift */,
 				E3443D5426E94753009CD308 /* CustomSegmentedControl.swift */,
@@ -1404,6 +1488,7 @@
 				E3A2E9F72689C3A600297E51 /* BankAssembly.swift in Sources */,
 				E349A55A27DD1CD4007FB8E3 /* ExpenseTransition.swift in Sources */,
 				E349A55627DC96DA007FB8E3 /* BankInteractor.swift in Sources */,
+				E309C7D427EF182100648431 /* Colors.swift in Sources */,
 				E3828A02276CED1000744853 /* RegisterUserViewController.swift in Sources */,
 				E312B78526E1274D00523CA1 /* OvalButton.swift in Sources */,
 				E3A2E9F32689C3A600297E51 /* BankAccountDto.swift in Sources */,
@@ -1418,10 +1503,12 @@
 				E30F578527E65D0C004403E0 /* TopCloudyView.swift in Sources */,
 				E3D4E44C268B5B2500F26908 /* CustomView.swift in Sources */,
 				E3828A0B276CED1000744853 /* AvatarCollectionViewCell.swift in Sources */,
+				E309C7DA27EF205700648431 /* CircleViewColor.swift in Sources */,
 				E3B9329526A16AEA003AFE7F /* LoginWorker.swift in Sources */,
 				E3CC11452696F8DA0080FD88 /* ProphetPricesModels.swift in Sources */,
 				E3A2E9F82689C3A600297E51 /* BankViewController.swift in Sources */,
 				E3FC7E802692E9D40078A7E8 /* AppContraints.swift in Sources */,
+				E348DFDB27F0F4ED00FC12FD /* AddExpenseError.swift in Sources */,
 				E349A56927DD2101007FB8E3 /* BankViewModel.swift in Sources */,
 				E39D9DCE277DA400009CBA0B /* UserDefaultManager.swift in Sources */,
 				E3A2EA072689C3A600297E51 /* TurnipPresenter.swift in Sources */,
@@ -1430,13 +1517,16 @@
 				E39D9DD0277DE765009CBA0B /* TopView.swift in Sources */,
 				E3A2E9EF2689C3A600297E51 /* AppDelegate.swift in Sources */,
 				E3828A0E276CED1000744853 /* RegisterUserInteractor.swift in Sources */,
+				E309C7DC27EF224D00648431 /* TextFieldColor.swift in Sources */,
 				E3828A33276CF09300744853 /* NotificationSettingsView.swift in Sources */,
 				E3828A2E276CF09300744853 /* UserSettingsWorker.swift in Sources */,
 				E3A2E9E02689C3A600297E51 /* DatesOfCurrentWeek.swift in Sources */,
 				E3E5ADE827A30D4300C58A8E /* LoanHistoryModel.swift in Sources */,
 				E3828A31276CF09300744853 /* UserSettingsViewModel.swift in Sources */,
+				E309C7D127EF06BD00648431 /* AlertColors.swift in Sources */,
 				E39D9DD5277DFB5F009CBA0B /* IBankDataBaseManager.swift in Sources */,
 				E3828A0D276CED1000744853 /* RegisterUserView.swift in Sources */,
+				E309C7EB27EF675500648431 /* AddExpenseViewController.swift in Sources */,
 				E3A2E9DE2689C3A600297E51 /* AnimalCrossing.xcdatamodeld in Sources */,
 				E3451F38276B99A4000CD7C1 /* ExpenseDto.swift in Sources */,
 				E30F578B27E66092004403E0 /* PinView.swift in Sources */,
@@ -1449,8 +1539,11 @@
 				E3A2E9FA2689C3A600297E51 /* ExpenseCollectionViewCell.swift in Sources */,
 				E3828A3C276CF09300744853 /* AddVillagersViewController.swift in Sources */,
 				E349A55827DCBDF5007FB8E3 /* BankWorker.swift in Sources */,
+				E309C7E027EF25DC00648431 /* PassCodeViewColor.swift in Sources */,
 				E30F577927E65A87004403E0 /* CellReusibleID.swift in Sources */,
+				E309C7D827EF19E300648431 /* OvalButtonColor.swift in Sources */,
 				4DDE2A252784C7C300EC7103 /* Reachability.swift in Sources */,
+				E30F579027E77E8B004403E0 /* PlusMinusButton.swift in Sources */,
 				E3E5ADE427A30CF600C58A8E /* IFirDictionary.swift in Sources */,
 				E3A2E9DA2689C3A600297E51 /* LoginPresenter.swift in Sources */,
 				E349A55C27DD1FFF007FB8E3 /* CurrencyType.swift in Sources */,
@@ -1460,9 +1553,12 @@
 				E3CF43F926975FA500BFDAB8 /* GraphView.swift in Sources */,
 				E3A2E9FC2689C3A600297E51 /* NewsPresenter.swift in Sources */,
 				E3A2EA002689C3A600297E51 /* EventWebView.swift in Sources */,
+				E309C7DE27EF23EB00648431 /* MainViewColor.swift in Sources */,
 				E3A2EA082689C3A600297E51 /* TurnipAssembly.swift in Sources */,
 				E39D9DCC277D9C49009CBA0B /* errors.swift in Sources */,
 				E3CC11472696F8DA0080FD88 /* ProphetPricesInteractor.swift in Sources */,
+				E348DFD927F0F4A600FC12FD /* AddExpenseRouter.swift in Sources */,
+				E309C7ED27EF68FC00648431 /* AddExpenseCollectionViewCell.swift in Sources */,
 				E3828A3F276CF10C00744853 /* DataSorce.swift in Sources */,
 				E3828A03276CED1000744853 /* RegisterUserAssemly.swift in Sources */,
 				E349A56B27DD210F007FB8E3 /* BankAccountTransition.swift in Sources */,
@@ -1474,26 +1570,32 @@
 				E3828A39276CF09300744853 /* VillagerModel.swift in Sources */,
 				E30F578E27E66164004403E0 /* UIStackView+removeAllSubview.swift in Sources */,
 				E3828A38276CF09300744853 /* AddVillagerPresenter.swift in Sources */,
+				E309C7F127EF9D3D00648431 /* AddExpensePresenter.swift in Sources */,
 				E3828A30276CF09300744853 /* VillagerTableViewCell.swift in Sources */,
 				E3B9329726A16B0B003AFE7F /* LoginInteractor.swift in Sources */,
+				E309C7D627EF186900648431 /* CellColor.swift in Sources */,
 				E3443D5326E937B6009CD308 /* CustomTextField.swift in Sources */,
 				E3A2E9F12689C3A600297E51 /* TurnipTextFieldText.swift in Sources */,
 				E3A2E9FD2689C3A600297E51 /* NewsViewController.swift in Sources */,
 				E3E159D42764FFCA0010E4A8 /* LoginDataValidator.swift in Sources */,
+				E309C7E427EF272B00648431 /* SegmentedControlColor.swift in Sources */,
 				E3CC11492696FAC30080FD88 /* ProphetPricesAssembly.swift in Sources */,
 				E3AE603326DD765500681A79 /* FullLoginView.swift in Sources */,
 				E3451F36276B995E000CD7C1 /* ExpenseType.swift in Sources */,
 				E349A56027DD205D007FB8E3 /* CurrencyTransition.swift in Sources */,
 				E3FF7E7E275BC40000454805 /* ColorSet.swift in Sources */,
 				E3FC7E842692EA510078A7E8 /* AppImage.swift in Sources */,
+				E309C7F327EF9D5B00648431 /* AddExpenseViewDelegate.swift in Sources */,
 				E3A2E9D92689C3A600297E51 /* LoginViewController.swift in Sources */,
-				E3A2E9ED2689C3A600297E51 /* MainRouter.swift in Sources */,
+				E3A2E9ED2689C3A600297E51 /* MainAssembly.swift in Sources */,
+				E309C7E627EF28DB00648431 /* SwitchColor.swift in Sources */,
 				E3AC2D7F279D528100438A5B /* BankViewDelegate.swift in Sources */,
 				E312B78326E1263B00523CA1 /* CircleView.swift in Sources */,
 				E3A2E9DF2689C3A600297E51 /* FireBaseManager.swift in Sources */,
 				E3828A2C276CF09300744853 /* UserSettingsAssemly.swift in Sources */,
 				E3D5C7A626F3D8490039D54E /* VillagersAutoComplete.swift in Sources */,
 				E349A56327DD2097007FB8E3 /* ExpenseDateFormatter.swift in Sources */,
+				E309C7EF27EF6AAF00648431 /* AddExpenseAssembly.swift in Sources */,
 				E3A2EA042689C3A600297E51 /* CustomAlertController.swift in Sources */,
 				E30F578727E65E1B004403E0 /* TapBarColor.swift in Sources */,
 				E3828A32276CF09300744853 /* BalanceSettingsView.swift in Sources */,
@@ -1508,6 +1610,7 @@
 				E3FF64C2269CAEE500AC64D7 /* KeychainService.swift in Sources */,
 				E39D9DCA277D8C95009CBA0B /* AlertOnVC.swift in Sources */,
 				E3828A06276CED1000744853 /* RegisterUserPresenter.swift in Sources */,
+				E309C7E827EF2A3C00648431 /* BankViewColor.swift in Sources */,
 				E3A2E9DB2689C3A600297E51 /* LoginRouter.swift in Sources */,
 				E3A2E9DC2689C3A600297E51 /* CoreDataManager.swift in Sources */,
 				E3FC7E822692E9FF0078A7E8 /* AppTitle.swift in Sources */,
@@ -1525,6 +1628,7 @@
 				E3451F32276B98B1000CD7C1 /* BankDemoDataBase.swift in Sources */,
 				E3CC11462696F8DA0080FD88 /* ProphetPricesViewController.swift in Sources */,
 				E372B38826D82B580046C4FA /* SimpleLoginView.swift in Sources */,
+				E309C7E227EF270500648431 /* ActivityIndicatorColor.swift in Sources */,
 				E3D5C77826ED1A610039D54E /* CustomSwitch.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -2110,7 +2214,7 @@
 				E39D9D71277CABA0009CBA0B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		E39D9D75277CABA0009CBA0B /* Build configuration list for PBXNativeTarget "ValidatorsTest" */ = {
 			isa = XCConfigurationList;
@@ -2119,7 +2223,7 @@
 				E39D9D73277CABA0009CBA0B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		E39D9D9E277CAECD009CBA0B /* Build configuration list for PBXNativeTarget "KeyboardListener" */ = {
 			isa = XCConfigurationList;
@@ -2128,7 +2232,7 @@
 				E39D9DA0277CAECD009CBA0B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		E39D9DA1277CAECD009CBA0B /* Build configuration list for PBXNativeTarget "KeyboardListenerTests" */ = {
 			isa = XCConfigurationList;
@@ -2137,7 +2241,7 @@
 				E39D9DA3277CAECD009CBA0B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		E39D9DC2277CCAD8009CBA0B /* Build configuration list for PBXNativeTarget "ACErrors" */ = {
 			isa = XCConfigurationList;
@@ -2146,7 +2250,7 @@
 				E39D9DC4277CCAD8009CBA0B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		E3A6E7E1266C1ED500E2A5FE /* Build configuration list for PBXProject "AnimalCrossing" */ = {
 			isa = XCConfigurationList;
@@ -2155,7 +2259,7 @@
 				E3A6E7FC266C1ED500E2A5FE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		E3A6E7FD266C1ED500E2A5FE /* Build configuration list for PBXNativeTarget "AnimalCrossing" */ = {
 			isa = XCConfigurationList;
@@ -2164,7 +2268,7 @@
 				E3A6E7FF266C1ED500E2A5FE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 		E3D956E0272EF21E000C3E8E /* Build configuration list for PBXNativeTarget "AnimalCrossingTests" */ = {
 			isa = XCConfigurationList;
@@ -2173,7 +2277,7 @@
 				E3D956DF272EF21E000C3E8E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
+			defaultConfigurationName = Debug;
 		};
 /* End XCConfigurationList section */
 

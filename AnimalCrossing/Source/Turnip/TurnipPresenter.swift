@@ -4,7 +4,7 @@
 import Foundation
 
 protocol ITurnipPresenter {
-	var screenType: ScreenTypes? { get set }
+	var screenType: ScreenType? { get set }
 	func loadView(with view: ITurnipViewController)
 	func dateForView(forDayWeek dayWeek: WeekDay) -> String?
 	func dataForTextField(for textFiled: TurnipTextFieldText) -> String
@@ -26,7 +26,7 @@ class TurnipPresenter: ITurnipPresenter {
 	var coreDataManger: ITurnipCoreDataManager
 	var router: ITurnipRouter
 
-	var screenType: ScreenTypes?
+	var screenType: ScreenType?
 	var turnipPrices: TurnipPrices?
 	var turnipCoreData: TurnipPrices?
 	var lastSunday = DatesOfCurrentWeek().getLastSunday()
@@ -185,11 +185,15 @@ class TurnipPresenter: ITurnipPresenter {
 	private func addDataToFireBase(price: Int, count: Int?, operationType: OperationType) {
 		guard let countInt = count, countInt > 0 else { return }
 		let value = price * countInt
-		let expense = ExpenseTransition(value: value, operationType: operationType, expenseType: .turnip)
-		switch screenType {
-		case .loggined:
-			self.firebaseManager.addExpenseOrIncome(ExpenseDto(from: expense), currency: .bells)
-		default:
+		let expense = ExpenseTransition(value: value,
+										currencyType: .bells,
+										operationType: operationType,
+										expenseType: .turnip)
+		switch self.screenType {
+		case .logined:
+			_ = self.firebaseManager.addExpenseOrIncome(ExpenseDto(from: expense),
+														currency: .bells)
+		case .unlogined, .additionalScreen, .none:
 			assertionFailure("Fail addExpenseOrIncome")
 		}
 	}

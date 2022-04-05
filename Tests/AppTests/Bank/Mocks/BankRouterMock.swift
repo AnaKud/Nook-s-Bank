@@ -13,4 +13,10 @@ class BankRouterMock: IBankRouter {
 	func loadNavigator(_ navigator: INavigator) {
 		self.state = "vcLoaded"
 	}
+
+	func presentAddExpenseView(screenType: LoginedScreenType,
+							   operationType: OperationType,
+							   completion: @escaping (ExpenseTransition) -> Void) {
+		self.state = "presentAddExpenseView"
+	}
 }

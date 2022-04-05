@@ -203,7 +203,7 @@ public enum ACVoidResult<U: ACError> {
 extension ACVoidResult: Equatable {
 	public static func == (lhs: ACVoidResult<U>, rhs: ACVoidResult<U>) -> Bool {
 		switch (lhs, rhs) {
-		case let (.success, .success):
+		case (.success, .success):
 			return true
 		case let (.failure(lhsValue), .failure(rhsValue)):
 			return lhsValue.humanfriendlyTitle == rhsValue.humanfriendlyTitle

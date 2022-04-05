@@ -7,7 +7,7 @@ class GeneralUserInfoView: UIView {
 	var userSettings: UserSettingsViewModel?
 	private var currentAvatarIcon: AppImage.AvatarIcon?
 
-	private var colors = ColorSet(for: .other)
+	private var colors = ColorSet(for: .mainScreen(.additionalScreen))
 
 	private var scrollView = UIScrollView()
 	private var contentView = UIView()

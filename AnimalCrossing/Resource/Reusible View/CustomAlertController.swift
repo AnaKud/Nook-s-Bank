@@ -4,7 +4,7 @@
 import UIKit
 
 class CustomAlertController: UIAlertController {
-	private var color = ColorSet.Alert(for: nil)
+	private var color = ColorSet.Alert(.mainScreen(.additionalScreen))
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -14,7 +14,15 @@ class CustomAlertController: UIAlertController {
 		self.view.layer.borderColor = self.color.borderColor
 	}
 
-	func changeAlertColors(for screenType: ScreenTypes?) {
-		self.color = ColorSet.Alert(for: screenType)
+	func changeAlertColors(for screen: Screen?) {
+		self.color = ColorSet.Alert(screen)
+	}
+
+	func changeAlertColors(for screenType: ScreenType?) {
+		self.color = ColorSet.Alert(screenType)
+	}
+
+	func changeAlertColors(for screenType: LoginedScreenType?) {
+		self.color = ColorSet.Alert(screenType)
 	}
 }

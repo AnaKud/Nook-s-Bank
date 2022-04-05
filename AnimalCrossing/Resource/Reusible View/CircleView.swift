@@ -8,7 +8,7 @@ final class CircleView: UIView {
 	private var firstCharacter: String
 	private var colorSet: ColorSet.CircleViewColor
 
-	init(size: CGFloat, firstCharacter: String, screenType: ScreenTypes = .other) {
+	init(size: CGFloat, firstCharacter: String, screenType: Screen = .mainScreen(.additionalScreen)) {
 		self.circleViewSize = size
 		self.firstCharacter = firstCharacter
 		self.colorSet = ColorSet(for: screenType).circleViewColor
@@ -19,7 +19,7 @@ final class CircleView: UIView {
 	init(size: CGFloat, firstCharacter: String, colorSet: ColorSet?) {
 		self.circleViewSize = size
 		self.firstCharacter = firstCharacter
-		self.colorSet = colorSet?.circleViewColor ?? ColorSet(for: .other).circleViewColor
+		self.colorSet = colorSet?.circleViewColor ?? ColorSet(for: .mainScreen(.additionalScreen)).circleViewColor
 		super.init(frame: CGRect(x: 0, y: 0, width: size, height: size))
 		self.setupLayouts()
 	}

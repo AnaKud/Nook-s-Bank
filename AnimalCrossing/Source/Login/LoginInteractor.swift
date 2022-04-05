@@ -43,8 +43,7 @@ extension LoginInteractor: ILoginInteractorBusinessLogic {
 	}
 
 	func willAppearUI() {
-		let screenType = self.setupScreenType()
-		self.presenter.presentScreen(forScreenType: screenType)
+		self.presenter.presentScreen(for: self.setupScreenType())
 		self.checkReachability()
 	}
 }
@@ -97,7 +96,7 @@ extension LoginInteractor: UISimpleLoginViewCallBack {
 			guard let self = self else { return }
 			switch result {
 			case .success:
-				self.presenter.presentScreen(forScreenType: self.setupScreenType())
+				self.presenter.presentScreen(for: self.setupScreenType())
 			case .failure(let error):
 				self.presenter.showError(with: error, completion: nil)
 			}
@@ -128,8 +127,8 @@ extension LoginInteractor: UISimpleLoginViewCallBack {
 }
 
 private extension LoginInteractor {
-	func setupScreenType() -> ScreenTypes {
-		return ScreenTypes(LoginType())
+	func setupScreenType() -> Screen {
+		return Screen(loginType: LoginType())
 	}
 
 	func checkReachability() {

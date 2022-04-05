@@ -12,7 +12,7 @@ class RegisterUserView: UIView {
 	private var callback: IRegisterUserButtonCallback
 	var avatarNameHandler: String?
 
-	private var colors = ColorSet(for: .other)
+	private var colors = ColorSet(for: .mainScreen(.additionalScreen))
 
 	private var scrollView = UIScrollView()
 	private var contentView = UIView()

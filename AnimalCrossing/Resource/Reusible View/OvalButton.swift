@@ -24,7 +24,7 @@ class OvalButton: UIButton {
 
 	init(withTitle title: String, width: CGFloat, height: CGFloat, color: ColorSet?) {
 		self.title = title
-		self.color = color ?? ColorSet(for: .other)
+		self.color = color ?? ColorSet(for: .mainScreen(.additionalScreen))
 		self.height = height
 		super.init(frame: CGRect(x: 0, y: 0, width: width, height: height))
 		self.calculateSettings()

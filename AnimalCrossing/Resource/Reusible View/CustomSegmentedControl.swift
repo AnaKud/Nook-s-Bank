@@ -6,8 +6,8 @@ import UIKit
 class CustomSegmentedControl: UISegmentedControl {
 	private var color: ColorSet.SegmentedControlColor
 
-	init(screenType: ScreenTypes?, items: [Any]?) {
-		self.color = ColorSet.SegmentedControlColor(for: screenType)
+	init(screenType: ScreenType?, items: [Any]?) {
+		self.color = ColorSet.SegmentedControlColor(screenType)
 		super.init(items: items)
 		self.setupView()
 	}

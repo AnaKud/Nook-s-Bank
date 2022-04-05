@@ -7,8 +7,8 @@ class CustomView {
 	private let colorSet: ColorSet?
 
 	@available(*, deprecated, message: "CustomView is deprecated")
-	init(for screenType: ScreenTypes?) {
-		self.colorSet = ColorSet(for: screenType)
+	init(for screen: Screen?) {
+		self.colorSet = ColorSet(for: screen)
 	}
 
 	@available(*, deprecated, message: "CustomView is deprecated")

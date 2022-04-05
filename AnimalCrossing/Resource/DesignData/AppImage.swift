@@ -36,8 +36,10 @@ enum AppImage {
 	enum Bank: String {
 		case coinLogin = "CoinLog"
 		case coinUnLogin = "CoinUnlog"
-		case plusLogin = "plusLog"
+		case plusBells = "plusBells"
+		case minusBells = "minusBells"
 		case plusUnlogin = "plusUnlog"
+		case minusUnlogin = "minusUnlog"
 
 		var image: UIImage? {
 			UIImage(named: self.rawValue)

@@ -5,7 +5,7 @@ import UIKit
 
 class FullLoginView: UIView {
 	private var callBack: UIFullLoginViewCallBack?
-	private let colors = ColorSet(for: .loginScreen)
+	private let colors = ColorSet(for: .loginScreen(.full))
 
 	private let welcomeLabel = UILabel()
 	private let appNameLabel = UILabel()
