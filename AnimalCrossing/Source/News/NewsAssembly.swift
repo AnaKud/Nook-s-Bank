@@ -4,7 +4,7 @@
 import UIKit
 
 class NewsAssembly {
-	func build(screenType: ScreenTypes) -> NewsViewController {
+	func build(screenType: ScreenType) -> NewsViewController {
 		let networkManager: INewsNetworkManager = NetworkManager.shared
 		let coreData: INewsCoreDataManager = CoreDataManager.shared
 		let router: INewsRouter = NewsRouter()

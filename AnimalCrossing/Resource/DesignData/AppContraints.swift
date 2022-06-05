@@ -65,6 +65,15 @@ struct AppContraints {
 		static let circleWidth = (collectionCellWidth - (2 * midEdge)) / 2
 	}
 
+	struct AddExpense {
+		static let cornerRadius: CGFloat = 5
+		static let collectionCellWidth: CGFloat = (iphoneWidth - 2 * standartEdge) / 5
+		static let collectionCellHeight: CGFloat = collectionCellWidth * 1.2
+		static let collectionViewHeight: CGFloat = iphoneWidth * 0.8
+		static let imageCollectionViewEdge: CGFloat = 5
+		static let imageCollectionViewSize: CGFloat = collectionCellWidth - 2 * imageCollectionViewEdge
+	}
+
 	struct Turnip {
 		static let heightTF: CGFloat = 35
 		static let cornerRadius: CGFloat = 5

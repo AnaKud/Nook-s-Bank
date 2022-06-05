@@ -24,7 +24,7 @@ extension LoginRouter: ILoginRouter {
 	}
 
 	func goToRegisterView() {
-		let nextVC = UserSettingsAssemly.build()
+		let nextVC = RegisterUserAssemly.build()
 		let nextVCNavigationController = UINavigationController(rootViewController: nextVC)
 		nextVCNavigationController.modalPresentationStyle = .fullScreen
 		self.viewController?.present(nextVCNavigationController, animated: false)
@@ -34,24 +34,24 @@ extension LoginRouter: ILoginRouter {
 //		FireBaseManager.shared.login(withEmail: "Ana@ya.ru",
 //								   withPassword: "Ana123!",
 //								   completion: { _ in })
-		let mainRouter = MainRouter(screenType: .unloggined)
-		self.goToTabbar(mainRouter)
+		let mainAssembly = MainAssembly(screenType: .unlogined)
+		self.goToTabbar(mainAssembly)
 	}
 
 	func goToNextWithLogin() {
-		let mainRouter = MainRouter(screenType: .loggined)
-		self.goToTabbar(mainRouter)
+		let mainAssembly = MainAssembly(screenType: .logined(.main))
+		self.goToTabbar(mainAssembly)
 	}
 
 	func goToNextWithoutInternetConnection() {
-		let mainRouter = MainRouter(screenType: .unloggined, tag: 1)
-		self.goToTabbar(mainRouter)
+		let mainAssembly = MainAssembly(screenType: .unlogined, tag: 1)
+		self.goToTabbar(mainAssembly)
 	}
 }
 
 private extension LoginRouter {
-	func goToTabbar(_ mainRouter: MainRouter) {
-		let nextVC = mainRouter.returnController()
+	func goToTabbar(_ mainAssembly: MainAssembly) {
+		let nextVC = mainAssembly.returnController()
 		nextVC.modalPresentationStyle = .fullScreen
 		self.viewController?.present(nextVC, animated: true, completion: nil)
 	}

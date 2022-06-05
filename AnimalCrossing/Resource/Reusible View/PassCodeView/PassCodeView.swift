@@ -19,7 +19,7 @@ class PassCodeView: UIView, UITextInputTraits {
 	}
 
 	private let maxLength = AppContraints.PinPadLogin.maxPasswordLength
-	private let colorSet = ColorSet.PassCodeViewColor(for: .other)
+	private let colorSet = ColorSet.PassCodeViewColor()
 	private let stack = UIStackView()
 
 	override init(frame: CGRect) {

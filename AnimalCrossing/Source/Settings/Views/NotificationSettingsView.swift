@@ -10,7 +10,7 @@ protocol IUserSettingsControllerCallback {
 class NotificationSettingsView: UIView {
 	var array = [VillagerViewModel]()
 
-	lazy var colors = ColorSet(for: .other)
+	lazy var colors = ColorSet(for: .mainScreen(.additionalScreen))
 
 	var controllerCallback: IUserSettingsControllerCallback?
 

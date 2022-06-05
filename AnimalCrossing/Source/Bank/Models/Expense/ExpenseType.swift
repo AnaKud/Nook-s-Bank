@@ -1,7 +1,9 @@
 // ExpenseType.swift
 // Created by Anastasiya Kudasheva on 16.12.2021
 
-enum ExpenseType {//: String, CaseIterable, Decodable {
+import UIKit
+
+enum ExpenseType {
 	case furniture
 	case clothing
 	case bugs
@@ -14,6 +16,12 @@ enum ExpenseType {//: String, CaseIterable, Decodable {
 	case garden
 	case turnip
 	case other
+	case work
+	case cashback
+
+	var image: UIImage? {
+		UIImage(named: name)
+	}
 
 	var name: String {
 		switch self {
@@ -29,25 +37,30 @@ enum ExpenseType {//: String, CaseIterable, Decodable {
 		case .garden: return "garden"
 		case .turnip: return "turnip"
 		case .other: return "other"
+		case .work: return "work"
+		case .cashback: return "cashback"
 		}
 	}
 
 	// swiftlint:disable:next cyclomatic_complexity
 	init(id: Int) {
 		switch id {
-		case 0: self = .furniture
-		case 1: self = .clothing
-		case 2: self = .bugs
-		case 3: self = .fish
-		case 4: self = .seaCreatures
-		case 5: self = .tools
-		case 6: self = .fossils
-		case 7: self = .artwork
-		case 8: self = .music
-		case 9: self = .garden
-		case 10: self = .turnip
-		case 11: self = .other
-		default: self = .other
+		case 1: self = .furniture
+		case 2: self = .clothing
+		case 3: self = .bugs
+		case 4: self = .fish
+		case 5: self = .seaCreatures
+		case 6: self = .tools
+		case 7: self = .fossils
+		case 8: self = .artwork
+		case 9: self = .music
+		case 10: self = .garden
+		case 11: self = .turnip
+		case 12: self = .other
+		case 13: self = .work
+		case 14: self = .cashback
+		default:
+			self = .other
 		}
 	}
 
@@ -64,7 +77,7 @@ enum ExpenseType {//: String, CaseIterable, Decodable {
 		case "artwork": self = .artwork
 		case "music": self = .music
 		case "garden": self = .garden
-		case "yurnip": self = .turnip
+		case "turnip": self = .turnip
 		case "other": self = .other
 		default: self = .other
 		}

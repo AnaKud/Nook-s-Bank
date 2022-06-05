@@ -24,7 +24,7 @@ struct AppTitle {
 	}
 
 	struct Bank {
-		static let controllerTitle = " Bank of Nook"
+		static let controllerTitle = "Bank of Nook"
 		static let currentAccountTitle = "Your current account:"
 		static let purchaseHistory = "Purchase History:"
 		static let demoTitle = "Demo account:"

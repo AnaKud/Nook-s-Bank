@@ -5,7 +5,7 @@ import UIKit
 
 class FullLoginView: UIView {
 	private var callBack: UIFullLoginViewCallBack?
-	private let colors = ColorSet(for: .loginScreen)
+	private let colors = ColorSet(for: .loginScreen(.full))
 
 	private let welcomeLabel = UILabel()
 	private let appNameLabel = UILabel()
@@ -36,7 +36,7 @@ class FullLoginView: UIView {
 		height: AppContraints.Login.heightButtons,
 		color: self.colors
 	)
-	private lazy var freeEnterButton = OvalButton(
+	private lazy var continueButton = OvalButton(
 		withTitle: AppTitle.Login.freeButton,
 		width: AppContraints.Login.widthButton,
 		height: AppContraints.Login.heightButtons,
@@ -88,6 +88,8 @@ private extension FullLoginView {
 			make.top.equalTo(self.welcomeLabel.snp.bottom).offset(AppContraints.minEdge)
 			make.leading.trailing.equalTo(self)
 		}
+		self.welcomeLabel.accessibilityIdentifier = "welcomeLabel"
+		self.appNameLabel.accessibilityIdentifier = "appNameLabel"
 	}
 
 	func setupTextFields() {
@@ -120,11 +122,12 @@ private extension FullLoginView {
 			make.top.equalTo(passwordNameTextField.snp.bottom).offset(AppContraints.standartEdge)
 			make.trailing.equalTo(loginButton.snp.leading).offset(-AppContraints.minEdge)
 		}
-		self.addSubview(self.freeEnterButton)
-		self.freeEnterButton.snp.makeConstraints { make in
+		self.addSubview(self.continueButton)
+		self.continueButton.snp.makeConstraints { make in
 			make.top.equalTo(self.passwordNameTextField.snp.bottom).offset(AppContraints.standartEdge)
 			make.leading.equalTo(self.loginButton.snp.trailing).offset(AppContraints.minEdge)
 		}
+		self.continueButton.accessibilityIdentifier = "continueButton"
 	}
 
 	func setupForgetPasswordButton() {
@@ -155,7 +158,7 @@ private extension FullLoginView {
 											 for: .editingDidEndOnExit)
 		self.registerButton.addTarget(self, action: #selector(self.registerButtonTapped), for: .touchUpInside)
 		self.loginButton.addTarget(self, action: #selector(self.loginButtonTapped), for: .touchUpInside)
-		self.freeEnterButton.addTarget(self, action: #selector(self.continueButtonTapped), for: .touchUpInside)
+		self.continueButton.addTarget(self, action: #selector(self.continueButtonTapped), for: .touchUpInside)
 		self.forgetPasswordButton.addTarget(self, action: #selector(self.forgetPasswordButtonTapped), for: .touchUpInside)
 	}
 }

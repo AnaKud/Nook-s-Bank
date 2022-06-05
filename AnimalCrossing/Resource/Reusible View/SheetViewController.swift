@@ -8,15 +8,13 @@ protocol ICloseButtonCallBack {
 }
 
 class SheetViewController: UIViewController {
-	private(set) lazy var colors: ColorSet = {
-		ColorSet(for: self.screenType)
-	}()
-	private(set) var screenType: ScreenTypes
+	private(set) lazy var colors: ColorSet = { ColorSet(for: self.screenType) }()
+	private(set) var screenType: ScreenType
 	private var closeButtonCallBack: ICloseButtonCallBack?
 	private let titleLabel = UILabel()
 	private(set) var contentView = UIView()
 
-	init(screenType: ScreenTypes) {
+	init(screenType: ScreenType) {
 		self.screenType = screenType
 		super.init(nibName: nil, bundle: nil)
 	}
@@ -81,7 +79,6 @@ private extension SheetViewController {
 		self.titleLabel.snp.makeConstraints { make in
 			make.top.equalTo(self.view).offset(AppContraints.navTitle)
 			make.trailing.leading.equalTo(self.view)
-			make.height.equalTo(AppContraints.navAndTabHeight)
 		}
 		self.titleLabel.textAlignment = .center
 		self.titleLabel.font = ACFont.controllerTitleFont.font
@@ -91,7 +88,7 @@ private extension SheetViewController {
 	func setupContentView() {
 		self.view.addSubview(self.contentView)
 		self.contentView.snp.makeConstraints { make in
-			make.top.equalTo(self.titleLabel.snp.bottom)
+			make.top.equalTo(self.titleLabel.snp.bottom).offset(AppContraints.midEdge)
 			make.leading.trailing.bottom.equalTo(self.view)
 		}
 	}

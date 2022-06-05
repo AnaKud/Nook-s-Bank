@@ -4,6 +4,7 @@
 
 import XCTest
 @testable import Firebase
+@testable import ACErrors
 @testable import AnimalCrossing
 
 class BankPresenterTests: XCTestCase {
@@ -23,7 +24,8 @@ class BankPresenterTests: XCTestCase {
 
 	func testPresenterAddExpence() {
 		self.interactor = self.makeInteractor()
-		self.interactor.addExpenseOrIncome(ExpenseTransition(value: 2, operationType: .plus, expenseType: .artwork))
+		self.interactor.addExpenseOrIncome(ExpenseTransition(value: 2,
+															 currencyType: .bells, operationType: .plus, expenseType: .artwork))
 		self.interactor.plusButtonTapped()
 		XCTAssertEqual("2", self.presenter.balanceValue)
 	}
@@ -32,6 +34,7 @@ class BankPresenterTests: XCTestCase {
 		self.interactor = self.makeInteractor(withBalance: 2)
 		self.interactor.loadVC(self.view)
 		self.interactor.addExpenseOrIncome(ExpenseTransition(value: 1,
+															 currencyType: .bells,
 															 operationType: .minus,
 															 expenseType: .other))
 		XCTAssertEqual("1", self.presenter.balanceValue)
@@ -40,7 +43,9 @@ class BankPresenterTests: XCTestCase {
 	func testPresenterNotAddIncomeBalanceIsZero() {
 		self.interactor = self.makeInteractor()
 		self.interactor.loadVC(self.view)
-		self.interactor.addExpenseOrIncome(ExpenseTransition(value: 2, operationType: .minus, expenseType: .artwork))
+		self.interactor.addExpenseOrIncome(ExpenseTransition(value: 2,
+															 currencyType: .bells,
+															 operationType: .minus, expenseType: .artwork))
 		XCTAssertEqual("0", self.presenter.balanceValue)
 	}
 
@@ -89,7 +94,8 @@ class BankPresenterMock: IBankPresenter {
 
 class BankWorkerMock: IBankWorker {
 	private(set) var expenses = [ExpenseTransition(ExpenseDto(value: 100,
-												 operationType: .plus))]
+															  currencyType: .bells,
+															  operationType: .plus))]
 
 	private(set) var balance: Int
 

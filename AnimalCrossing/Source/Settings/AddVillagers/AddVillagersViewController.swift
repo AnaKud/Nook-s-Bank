@@ -4,7 +4,7 @@
 import UIKit
 
 class AddVillagersViewController: UIViewController {
-	private let colors = ColorSet(for: .other)
+	private let colors = ColorSet(for: .mainScreen(.additionalScreen))
 
 	private let headerLabel = UILabel()
 	private let searchBar = UISearchBar()

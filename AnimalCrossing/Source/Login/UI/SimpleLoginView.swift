@@ -7,7 +7,7 @@ import SwiftUICharts
 class SimpleLoginView: UIView {
 	private var callBack: UISimpleLoginViewCallBack?
 	private let controllerTitle: String
-	private let colors = ColorSet(for: .other)
+	private let colors = ColorSet(for: .loginScreen(.simple))
 
 	private let titleLabel = UILabel()
 	private let pinView = PassCodeView()

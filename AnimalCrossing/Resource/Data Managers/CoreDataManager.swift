@@ -2,7 +2,7 @@
 // Created by Anastasiya Kudasheva on 10.06.2021.
 
 import CoreData
-import Foundation
+import ACErrors
 
 protocol IPresenterForCoreDataError {
 	func presentError(error: FailureCases)

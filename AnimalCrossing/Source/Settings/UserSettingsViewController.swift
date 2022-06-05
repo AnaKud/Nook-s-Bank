@@ -18,7 +18,7 @@ class UserSettingsViewController: SheetViewController {
 
 	init(interactor: IUserSettingsInteractor) {
 		self.interactor = interactor
-		super.init(screenType: .other)
+		super.init(screenType: .additionalScreen)
 	}
 
 	@available(*, unavailable)

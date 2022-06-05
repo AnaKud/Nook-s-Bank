@@ -5,6 +5,7 @@
 
 class BankFireBaseManagerMock: IBankDataBaseManager {
 	var expenses = [ExpenseTransition(ExpenseDto(value: 100,
+												 currencyType: .bells,
 												 operationType: .plus))]
 	var balance: Int
 	var bankPresenter: IBankPresenter?

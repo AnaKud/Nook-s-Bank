@@ -4,6 +4,7 @@
 enum CellReusibleID: String {
 	case news = "newsCell"
 	case expense = "expenseCell"
+	case addExpense = "addExpense"
 	case addVillagers = "addVillagerTableViewCell"
 	case newVillager = "newVillagerTableViewCell"
 	case avatarRegister = "AvatarCollectionViewCell"

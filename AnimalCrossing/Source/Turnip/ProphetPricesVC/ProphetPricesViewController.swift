@@ -62,7 +62,7 @@ class ProphetPricesViewController: SheetViewController {
 
 	init(interactor: IProphetPricesInteractor) {
 		self.interactor = interactor
-		super.init(screenType: .other)
+		super.init(screenType: .additionalScreen)
 	}
 
 	@available(*, unavailable)
@@ -216,8 +216,6 @@ fileprivate extension ProphetPricesViewController {
 		priceBackgroundView.backgroundColor = self.colors.cellColorSet.backgroundViewColor
 		priceBackgroundView.layer.cornerRadius = AppContraints.CellSizes.cellCornerRadius
 		priceBackgroundView.layer.masksToBounds = true
-//		priceTopView = customView?.setupTopView(text: AppTitle.Prophet.priceTitle,
-//												AppTitle.Prophet.priceForOval) ?? UIView()
 		priceBackgroundView.addSubview(priceTopView)
 		priceTopView.snp.makeConstraints { make in
 			make.top.leading.trailing.equalTo(priceBackgroundView)
@@ -425,9 +423,6 @@ fileprivate extension ProphetPricesViewController {
 		graphBackgroundView.backgroundColor = self.colors.cellColorSet.backgroundViewColor
 		graphBackgroundView.layer.cornerRadius = AppContraints.CellSizes.cellCornerRadius
 		graphBackgroundView.layer.masksToBounds = true
-//		graphTopView = customView?.setupTopView(text: AppTitle.Prophet.graphTitle,
-//												AppTitle.Prophet.graphForOval)
-		//?? UIView()
 		graphBackgroundView.addSubview(graphTopView)
 		graphTopView.snp.makeConstraints { make in
 			make.top.leading.trailing.equalTo(graphBackgroundView)

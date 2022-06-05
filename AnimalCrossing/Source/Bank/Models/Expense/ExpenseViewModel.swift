@@ -6,21 +6,24 @@ import class UIKit.UIColor
 class ExpenseViewModel {
 	let date: String
 	let expenseText: String
+	let currencyType: CurrencyType
 	let expenseColor: UIColor?
-	let expenseType: String
+	let expenseType: ExpenseType
 
-	init(date: String, value: Int, operationType: OperationType, expenseType: ExpenseType) {
+	init(date: String, value: Int, currencyType: CurrencyType, operationType: OperationType, expenseType: ExpenseType) {
 		self.date = date
 		self.expenseText = Self.makeExpenseText(value, operationType: operationType)
-		self.expenseColor = Self.makeExpenseColor(operationType)
-		self.expenseType = expenseType.name
+		self.currencyType = currencyType
+		self.expenseColor = Self.makeExpenseColor(operationType, currencyType: currencyType)
+		self.expenseType = expenseType
 	}
 
 	init(object: ExpenseTransition) {
 		self.date = ExpenseDateFormatter.convert(object.date)
 		self.expenseText = Self.makeExpenseText(object.value, operationType: object.operationType)
-		self.expenseColor = Self.makeExpenseColor(object.operationType)
-		self.expenseType = object.expenseType.name
+		self.currencyType = object.currencyType
+		self.expenseColor = Self.makeExpenseColor(object.operationType, currencyType: object.currencyType)
+		self.expenseType = object.expenseType ?? .other
 	}
 
 	private static func makeExpenseText(_ expense: Int?, operationType: OperationType?) -> String {
@@ -32,11 +35,23 @@ class ExpenseViewModel {
 		}
 	}
 
-	private static func makeExpenseColor(_ operationType: OperationType?) -> UIColor? {
+	private static func makeExpenseColor(_ operationType: OperationType?, currencyType: CurrencyType) -> UIColor? {
+		let loginedScreenType = LoginedScreenType(currencyType)
 		switch operationType {
-		case .plus: return ColorSet.BankViewColor(for: .loggined).expenseLabelColor
-		case .minus: return ColorSet.BankViewColor(for: .loggined).incomeLabelColor
+		case .plus: return ColorSet.BankViewColor(.logined(loginedScreenType)).expenseLabelColor
+		case .minus: return ColorSet.BankViewColor(.logined(loginedScreenType)).incomeLabelColor
 		case .none: return .black
+		}
+	}
+}
+
+private extension LoginedScreenType {
+	init(_ currencyType: CurrencyType) {
+		switch currencyType {
+		case .poki: self = .poki
+		case .miles: self = .miles
+		case .bells: self = .bells
+		case .loan: self = .loan
 		}
 	}
 }

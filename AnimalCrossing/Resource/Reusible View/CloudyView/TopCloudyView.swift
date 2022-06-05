@@ -4,9 +4,9 @@
 import UIKit
 
 class TopCloudyView: UIView {
-	private let screenType: ScreenTypes?
+	private let screenType: ScreenType?
 
-	init(screenType: ScreenTypes?) {
+	init(screenType: ScreenType?) {
 		self.screenType = screenType
 		super.init(frame: .zero)
 		self.loadUI()
@@ -26,10 +26,10 @@ private extension TopCloudyView {
 			make.edges.equalTo(self)
 		}
 		switch self.screenType {
-		case .loggined:
-			imageView.image = UIImage(named: AppImage.TopBottomImage.logTop.rawValue)
-		default:
+		case .unlogined, .additionalScreen, .none:
 			imageView.image = UIImage(named: AppImage.TopBottomImage.unlogTop.rawValue)
+		case .logined:
+			imageView.image = UIImage(named: AppImage.TopBottomImage.logTop.rawValue)
 		}
 	}
 }

@@ -3,6 +3,11 @@
 
 import Foundation
 
+enum LoginResult {
+	case success(LoginType)
+	case error(LoginError)
+}
+
 enum LoginType: String {
 	case simple
 	case full

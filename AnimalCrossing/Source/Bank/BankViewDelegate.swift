@@ -8,25 +8,26 @@ class BankViewDelegate: NSObject,
 						UICollectionViewDataSource,
 						UICollectionViewDelegateFlowLayout {
 	private let colors: ColorSet
-	private let interactor: IBankInteractor
+	private let viewCallback: IBankBellsViewCallback
 
-	init(interactor: IBankInteractor, colors: ColorSet) {
+	init(viewCallback: IBankBellsViewCallback, colors: ColorSet) {
 		self.colors = colors
-		self.interactor = interactor
+		self.viewCallback = viewCallback
+		super.init()
 	}
 
 	func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-		return self.interactor.returnCollectionCount()
+		return self.viewCallback.returnCollectionCount()
 	}
 
 	func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 		guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CellReusibleID.expense.rawValue,
 															for: indexPath) as? ExpenseCollectionViewCell
 		else { return UICollectionViewCell() }
-		let expenseItem = self.interactor.returnCollectionItem(index: indexPath.row)
+		let expenseItem = self.viewCallback.returnCollectionItem(index: indexPath.row)
 
 		cell.config(item: expenseItem,
-					textColor: .black) //self.colors.bankViewColor.itemTextColor)
+					textColor: self.colors.bankViewColor.itemTextColor)
 		return cell
 	}
 
@@ -39,33 +40,3 @@ class BankViewDelegate: NSObject,
 					  height: AppContraints.Bank.collectionCellHeight)
 	}
 }
-
-//extension BankViewController: UICollectionViewDelegate,
-//							  UICollectionViewDataSource,
-//							  UICollectionViewDelegateFlowLayout {
-//	func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-//		return self.presenter.returnCollectionCount()
-//	}
-//	
-//	func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-//		guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CellReusibleID.expense.rawValue,
-//															for: indexPath) as? ExpenseCollectionViewCell
-//		else { return UICollectionViewCell() }
-//		let expenseItem = self.presenter.returnCollectionItem(index: indexPath.row)
-//		cell.colors = self.colors
-//		
-//		cell.customView = CustomView(colorSet: self.colors)
-//		cell.config(item: expenseItem)
-//		collectionView.reloadData()
-//		return cell
-//	}
-//	
-//	func collectionView(
-//		_ collectionView: UICollectionView,
-//		layout collectionViewLayout: UICollectionViewLayout,
-//		sizeForItemAt indexPath: IndexPath
-//	) -> CGSize {
-//		return CGSize(width: AppContraints.Bank.collectionCellWidth,
-//					  height: AppContraints.Bank.collectionCellHeight)
-//	}
-//}

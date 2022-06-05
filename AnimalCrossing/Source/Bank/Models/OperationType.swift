@@ -11,4 +11,11 @@ enum OperationType: String {
 		default: self = .plus
 		}
 	}
+
+	var name: String {
+		switch self {
+		case .plus: return "income"
+		case .minus: return "expense"
+		}
+	}
 }

@@ -4,11 +4,13 @@
 import Foundation
 
 class BankAssembly {
-	func build(screenType: ScreenTypes) -> BankViewController {
+	func build(screenType: ScreenType) -> BankViewController {
 		let dataBaseManager: IBankDataBaseManager
 		switch screenType {
-		case .loggined: dataBaseManager = FireBaseManager.shared
-		default: dataBaseManager = BankDemoDataBase()
+		case .unlogined, .additionalScreen:
+			dataBaseManager = BankDemoDataBase()
+		case .logined:
+			dataBaseManager = FireBaseManager.shared
 		}
 		// TODO: Добавить кордату и по пинкоду давать доступ к данным
 		// TODO: Сделать полноценный норм экран с добавлением расходов

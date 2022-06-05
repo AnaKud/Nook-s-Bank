@@ -3,7 +3,7 @@
 
 import Foundation
 
-enum ExpenseDateFormatter {
+public enum ExpenseDateFormatter {
 	static func convert(_ date: Double?) -> String {
 		guard let date = date else { return "" }
 		let dateFormatter = DateFormatter()

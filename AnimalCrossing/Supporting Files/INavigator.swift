@@ -12,7 +12,7 @@ protocol INavigator: AnyObject {
 	func presentNextVC(_ vc: UIViewController,
 					   presentationStyle: UIModalPresentationStyle,
 					   animated: Bool)
-	func dismissVC(animated: Bool)
+	func dismissVC(animated: Bool, completion: (() -> Void)?)
 }
 
 extension INavigator {
@@ -36,7 +36,12 @@ extension INavigator {
 		self.currentVC?.present(vc, animated: animated)
 	}
 
-	func dismissVC(animated: Bool = true) {
-		self.currentVC?.navigationController?.dismiss(animated: true)
+	func dismissVC(animated: Bool = true, completion: (() -> Void)? = nil) {
+		if self.currentVC?.navigationController != nil {
+		self.currentVC?.navigationController?.dismiss(animated: animated,
+													  completion: completion)
+		} else {
+			self.currentVC?.dismiss(animated: animated, completion: completion)
+		}
 	}
 }

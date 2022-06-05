@@ -68,7 +68,7 @@ class NewsTableViewCell: UITableViewCell {
 			make.top.equalTo(self.dateView).offset(AppContraints.CellSizes.cellBgEdge)
 			make.bottom.equalTo(self.dateView).offset(-AppContraints.CellSizes.cellBgEdge)
 		}
-		self.dateLabel.font = ACFont.newsBoldFont.font
+
 		self.backView.addSubview(self.eventLabel)
 		self.eventLabel.snp.makeConstraints { make in
 			make.top.equalTo(self.dateView.snp.bottom).offset(AppContraints.CellSizes.cellBgEdge)

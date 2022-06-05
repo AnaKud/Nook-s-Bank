@@ -54,9 +54,6 @@ class NetworkManager: INewsNetworkManager {
 			print(data.description)
 			if httpResponse.statusCode == 200 {
 				do {
-					let json = try JSONSerialization.jsonObject(with: data, options: [])
-					print("json:")
-					print(json)
 					let decoder = JSONDecoder()
 					villagers = try decoder.decode([VillagerDTO].self, from: data)
 				} catch {
@@ -92,8 +89,6 @@ class NetworkManager: INewsNetworkManager {
 	}
 }
 
-///https://animal-crossing-api.glitch.me/ac-turnip.com
-
 protocol IProphetPricesNetworkManager {
 	func downloadTurnip(
 		forTurnipPrices prices: ProphetPrices.Turnip.Request,
@@ -118,7 +113,6 @@ extension NetworkManager: IProphetPricesNetworkManager {
 
 			if httpResponse.statusCode == 200 {
 				do {
-					print(String(data: data, encoding: .utf8))
 					let decoder = JSONDecoder()
 					let turnipData = try decoder.decode(TurnipResponse.self, from: data)
 					turnipHandler(turnipData)

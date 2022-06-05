@@ -1,6 +1,6 @@
 // AlertOnVC.swift
 // Created by Anastasiya Kudasheva on 30.12.2021
 
-protocol IAlertOnVC {
+protocol IAlertOnVC: AnyObject {
 	func showAlert(title: String?, message: String, completion: (() -> Void)?)
 }

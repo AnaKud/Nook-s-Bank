@@ -31,4 +31,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		didDiscardSceneSessions sceneSessions: Set<UISceneSession>
 	) {
 	}
+
+	private func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+		if launchOptions != nil {
+			return UserDefaultManager().setSimpleLogin()
+		}
+		return true
+	}
 }

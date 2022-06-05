@@ -23,6 +23,7 @@ class EventWebView: UIViewController, WKUIDelegate, IEventWebView {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		self.openURL()
+		self.webView?.accessibilityIdentifier = "eventWebView"
 	}
 }
 

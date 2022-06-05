@@ -1,7 +1,6 @@
 // DeviceOwnerAuthentication.swift
 // Created by Anastasiya Kudasheva on 15.07.2021.
 
-import Foundation
 import LocalAuthentication
 
 protocol IDeviceOwnerAuthentication {

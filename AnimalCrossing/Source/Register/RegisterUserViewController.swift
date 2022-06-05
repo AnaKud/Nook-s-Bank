@@ -11,7 +11,7 @@ class RegisterUserViewController: SheetViewController {
 
 	init(interactor: IRegisterUserInteractor) {
 		self.interactor = interactor
-		super.init(screenType: .other)
+		super.init(screenType: .additionalScreen)
 	}
 
 	@available(*, unavailable)
