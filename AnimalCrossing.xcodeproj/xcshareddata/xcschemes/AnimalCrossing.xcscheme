@@ -58,6 +58,16 @@
                ReferencedContainer = "container:AnimalCrossing.xcodeproj">
             </BuildableReference>
          </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "E35D2387284864CB0059FD57"
+               BuildableName = "ValidatorTests.xctest"
+               BlueprintName = "ValidatorTests"
+               ReferencedContainer = "container:AnimalCrossing.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction

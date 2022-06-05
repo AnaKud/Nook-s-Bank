@@ -1,7 +1,7 @@
 // TurnipPresenter.swift
 // Created by Anastasiya Kudasheva on 27.06.2021.
 
-import Foundation
+import ACErrors
 
 protocol ITurnipPresenter {
 	var screenType: ScreenType? { get set }
@@ -49,7 +49,7 @@ class TurnipPresenter: ITurnipPresenter {
 			  let price = Int(buyPrice)
 		else {
 			self.view?.showAlert(title: nil,
-								 message: FailureCases.turnipPriceError.rawValue,
+								 message: FailureCases.turnipPriceError.humanfriendlyMessage,
 								 completion: nil)
 			return
 		}

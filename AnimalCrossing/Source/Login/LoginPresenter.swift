@@ -1,7 +1,7 @@
 // LoginPresenter.swift
 // Created by Anastasiya Kudasheva on 10.06.2021.
 
-import Foundation
+import ACErrors
 
 protocol ILoginPresenter: AnyObject, ILoginViewControllerSender {
 	func presentScreen(for screen: Screen)

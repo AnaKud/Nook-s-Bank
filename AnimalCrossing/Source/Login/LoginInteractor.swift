@@ -1,8 +1,6 @@
 // LoginInteractor.swift
 // Created by Anastasiya Kudasheva on 16.07.2021.
 
-import Foundation
-
 typealias ILoginInteractor = ILoginInteractorBusinessLogic & UIFullLoginViewCallBack & UISimpleLoginViewCallBack
 
 protocol ILoginInteractorBusinessLogic {

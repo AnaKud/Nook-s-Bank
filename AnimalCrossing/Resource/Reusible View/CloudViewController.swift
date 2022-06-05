@@ -3,6 +3,7 @@
 
 import SnapKit
 import UIKit
+import ACErrors
 
 class CloudViewController: UIViewController {
 	var colors: ColorSet { ColorSet(for: self.screenType) }
@@ -23,7 +24,7 @@ class CloudViewController: UIViewController {
 	}
 
 	func showErrorAlert(withMessage message: FailureCases) {
-		let alert = CustomAlertController(title: "Error", message: message.rawValue, preferredStyle: .alert)
+		let alert = CustomAlertController(title: "Error", message: message.humanfriendlyMessage, preferredStyle: .alert)
 		alert.changeAlertColors(for: self.screenType)
 		let saveAction = UIAlertAction(title: "Ok", style: .default)
 		alert.addAction(saveAction)
@@ -94,17 +95,18 @@ private extension CloudViewController {
 			make.bottom.equalTo(self.bottomImageView.snp.top).offset(-AppContraints.minEdge)
 		}
 		self.contentView.backgroundColor = .clear
-
-		self.view.addSubview(self.titleLabel)
-		self.titleLabel.snp.makeConstraints { make in
-			make.top.equalTo(self.view).offset(AppContraints.navTitle)
-			make.leading.trailing.equalTo(self.view)
-		}
-		self.titleLabel.text = self.controllerTitle
-		self.titleLabel.textAlignment = .center
-		self.titleLabel.font = ACFont.controllerTitleFont.font
-
+		//if self.screenType != .unlogined {
+			self.view.addSubview(self.titleLabel)
+			self.titleLabel.snp.makeConstraints { make in
+				make.top.equalTo(self.view).offset(AppContraints.navTitle)
+				make.leading.trailing.equalTo(self.view)
+			}
+			self.titleLabel.text = self.controllerTitle
+			self.titleLabel.textAlignment = .center
+			self.titleLabel.font = ACFont.controllerTitleFont.font
+		//}
 		self.titleLabel.numberOfLines = 0
+		self.titleLabel.accessibilityIdentifier = "controllerTitleLabel"
 	}
 
 	func setupBottomLayout() {

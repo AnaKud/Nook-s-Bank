@@ -4,6 +4,7 @@
 
 import XCTest
 @testable import Firebase
+@testable import ACErrors
 @testable import AnimalCrossing
 
 class BankPresenterTests: XCTestCase {

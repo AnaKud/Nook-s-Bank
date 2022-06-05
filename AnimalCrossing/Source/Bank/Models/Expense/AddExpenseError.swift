@@ -1,6 +1,8 @@
 // AddExpenseError.swift
 // Created by Anastasiya Kudasheva on 27.03.2022
 
+import ACErrors
+
 enum AddExpenseError: ACError {
 	case emptyText
 	case notInt

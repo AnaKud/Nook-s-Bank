@@ -1,9 +1,6 @@
 // RegisterUserInteractor.swift
 // Created by Anastasiya Kudasheva on 22.07.2021.
 
-import ACErrors
-import Foundation
-
 protocol IRegisterUserInteractor: IRegisterUserButtonCallback {
 	func didLoadVC(_ vc: RegisterUserViewController)
 	func closeButtonTapped()

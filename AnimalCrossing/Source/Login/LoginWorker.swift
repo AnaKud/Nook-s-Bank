@@ -1,8 +1,6 @@
 // LoginWorker.swift
 // Created by Anastasiya Kudasheva on 16.07.2021.
 
-import Foundation
-
 class LoginWorker {
 	private var fireBaseManager: ILoginFireBaseManager
 	private var keychainService: IKeychainService

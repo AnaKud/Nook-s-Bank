@@ -2,7 +2,6 @@
 // Created by Anastasiya Kudasheva on 22.07.2021.
 
 import Foundation
-import ACErrors
 
 class RegisterUserWorker {
 	private let fireBaseManager: IUserFBRegistration
