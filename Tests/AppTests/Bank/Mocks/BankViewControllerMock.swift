@@ -1,7 +1,7 @@
 // BankViewControllerMock.swift
 // Created by Anastasiya Kudasheva on 04.03.2022
 
-@testable import AnimalCrossing
+@testable import AnimalCrossingBank
 import UIKit
 
 class BankViewControllerMock: IBankViewController {

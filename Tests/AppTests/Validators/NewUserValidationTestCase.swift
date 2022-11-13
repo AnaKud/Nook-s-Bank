@@ -3,7 +3,7 @@
 // Created by Anastasiya Kudasheva on 27.12.2021
 
 import XCTest
-@testable import AnimalCrossing
+@testable import AnimalCrossingBank
 
 final class NewUserValidationTestCase: XCTestCase {
 	private var validator: NewUserValidator!

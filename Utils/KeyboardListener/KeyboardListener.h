@@ -1,6 +1,5 @@
-//
-//  KeyboardListener.h
-//  Created by Anastasiya Kudasheva on 29.12.2021
+// KeyboardListener.h
+// Created by Anastasiya Kudasheva on 29.12.2021
 
 #import <Foundation/Foundation.h>
 

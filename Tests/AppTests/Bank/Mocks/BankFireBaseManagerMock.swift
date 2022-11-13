@@ -1,7 +1,7 @@
 // BankFireBaseManagerMock.swift
 // Created by Anastasiya Kudasheva on 04.03.2022
 
-@testable import AnimalCrossing
+@testable import AnimalCrossingBank
 
 class BankFireBaseManagerMock: IBankDataBaseManager {
 	var expenses = [ExpenseTransition(ExpenseDto(value: 100,

@@ -82,6 +82,17 @@ identifier_name:
     - id
     - vc
     - vm
+    - y
+    - x
+    - t
+    - c1
+    - c2
+    - b
+    - i
+    - a
+    - r
+    - g
+    - c
 number_separator:
   minimum_length: 5
 file_name:

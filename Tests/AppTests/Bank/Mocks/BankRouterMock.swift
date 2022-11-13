@@ -1,7 +1,7 @@
 // BankRouterMock.swift
 // Created by Anastasiya Kudasheva on 04.03.2022
 
-@testable import AnimalCrossing
+@testable import AnimalCrossingBank
 
 class BankRouterMock: IBankRouter {
 	var state: String = ""

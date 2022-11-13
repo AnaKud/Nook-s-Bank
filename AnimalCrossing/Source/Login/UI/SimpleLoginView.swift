@@ -2,7 +2,6 @@
 // Created by Anastasiya Kudasheva on 26.08.2021.
 
 import UIKit
-import SwiftUICharts
 
 class SimpleLoginView: UIView {
 	private var callBack: UISimpleLoginViewCallBack?

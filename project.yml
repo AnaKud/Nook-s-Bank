@@ -1,0 +1,138 @@
+name: AnimalCrossingBank
+
+options:
+  minimumXcodeGenVersion: 2.10.1
+  createIntermediateGroups: true
+configs:
+  Debug: debug
+  Release: release
+  InHouse: debug
+
+packages:
+  Firebase:
+    url: https://github.com/firebase/firebase-ios-sdk.git
+    revision: master
+  SnapKit:
+    url: https://github.com/SnapKit/SnapKit.git
+    revision: develop
+
+settings:
+  base:
+    SWIFT_VERSION: 5.5
+    IPHONEOS_DEPLOYMENT_TARGET: 13.0
+
+targets:
+
+  ACErrors:
+    type: framework
+    platform: iOS
+    sources:
+      - path: Utils/ACErrors
+
+  Formatter:
+    type: framework
+    platform: iOS
+    sources:
+      - path: Utils/Formatter
+
+  KeyboardListener:
+    type: framework
+    platform: iOS
+    sources:
+      - path: Utils/KeyboardListener
+  KeyboardListenerTests:
+    type: bundle.unit-test
+    platform: iOS
+    base:
+      TEST_TARGET_NAME: KeyboardListener
+    sources:
+      - path: Tests/KeyboardListenerTests
+    run:
+      config: Debug
+    test:
+      config: Debug
+    dependencies:
+      - target: KeyboardListener
+
+  Validator:
+    type: framework
+    platform: iOS
+    sources:
+      - path: Utils/Validator
+  ValidatorTests:
+    type: bundle.unit-test
+    platform: iOS
+    base:
+      TEST_TARGET_NAME: Validator
+    sources:
+      - path: Tests/ValidatorTests
+    run:
+      config: Debug
+    test:
+      config: Debug
+    dependencies:
+      - target: Validator
+
+  AnimalCrossing:
+    type: application
+    platform: iOS
+    deploymentTarget: "13.0"
+    sources:
+      - path: AnimalCrossing
+        excludes:
+          - .swiftlint.yml
+    settings:
+      base:
+        INFOPLIST_FILE: AnimalCrossing/Info.plist
+        IPHONEOS_DEPLOYMENT_TARGET: 13.0
+        PRODUCT_MODULE_NAME: AnimalCrossingBank
+        PRODUCT_BUNDLE_IDENTIFIER: AnimalCrossingBank.anakud.com
+        SWIFT_VERSION: 5.5
+        CLANG_ENABLE_MODULES: YES
+        ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES: YES
+    dependencies:
+      - package: Firebase
+        product: FirebaseAuth
+      - package: Firebase
+        product: FirebaseDatabase
+      - package: SnapKit
+      - target: ACErrors
+      - target: Formatter
+      - target: Validator
+      - target: KeyboardListener
+    postCompileScripts:
+      - script: |
+                if which swiftlint >/dev/null; then
+                   swiftlint
+                else
+                   echo "warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint"
+                fi
+      - name: Run SwiftLint
+    
+  AnimalCrossingTests:
+    type: bundle.unit-test
+    platform: iOS
+    deploymentTarget: "13.0"
+    sources:
+      - path: Tests/AppTests
+    base:
+      INFOPLIST_FILE: AnimalCrossing/Info.plist
+      TEST_TARGET_NAME: AnimalCrossing
+    run:
+      config: Debug
+    test:
+      config: Debug
+    dependencies:
+      - target: AnimalCrossing
+
+  AnimalCrossingUITests:
+    type: bundle.ui-testing
+    platform: iOS
+    deploymentTarget: "13.0"
+    sources:
+      - path: Tests/AppUITests
+    dependencies:
+      - target: AnimalCrossing
+    base:
+      PRODUCT_BUNDLE_IDENTIFIER: UITests.AnimalCrossingUITests
+      TEST_TARGET_NAME: AnimalCrossing

@@ -3,7 +3,7 @@
 //  Created by Anastasiya Kudasheva on 31.10.2021
 
 import XCTest
-@testable import AnimalCrossing
+@testable import AnimalCrossingBank
 
 class AnimalCrossingTests: XCTestCase {
 	func testCSVParser() {

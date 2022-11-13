@@ -3,7 +3,6 @@
 // Created by Anastasiya Kudasheva on 08.07.2021.
 
 import SwiftUI
-import SwiftUICharts
 import UIKit
 
 protocol IProphetPricesViewController: INavigator {

@@ -2,7 +2,6 @@
 // Created by Anastasiya Kudasheva on 08.07.2021.
 
 import SwiftUI
-import SwiftUICharts
 
 struct GraphView: View {
 	private let data: [Double]

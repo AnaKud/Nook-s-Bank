@@ -5,7 +5,7 @@
 import XCTest
 @testable import Firebase
 @testable import ACErrors
-@testable import AnimalCrossing
+@testable import AnimalCrossingBank
 
 class BankPresenterTests: XCTestCase {
 	private let router = BankRouterMock()

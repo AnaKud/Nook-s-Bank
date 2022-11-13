@@ -2,7 +2,7 @@
 // Created by Anastasiya Kudasheva on 04.03.2022
 
 import XCTest
-@testable import AnimalCrossing
+@testable import AnimalCrossingBank
 
 final class LoginValidationTestCase: XCTestCase {
 	func testCurrentEmail() {
