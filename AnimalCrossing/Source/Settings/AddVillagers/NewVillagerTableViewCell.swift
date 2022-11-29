@@ -4,6 +4,8 @@
 import UIKit
 
 class NewVillagerTableViewCell: UITableViewCell {
+	private let screenType = ScreenType.additionalScreen
+
 	private let nameLabel = UILabel()
 	private let speciesLabel = UILabel()
 	private let birthdayLabel = UILabel()
@@ -25,7 +27,7 @@ class NewVillagerTableViewCell: UITableViewCell {
 	}
 
 	private func setUpLayout() {
-		self.selectedBackgroundView?.backgroundColor = ColorSet.CellColor(for: .other).topViewColor
+		self.selectedBackgroundView?.backgroundColor = ColorSet.CellColor(self.screenType).topViewColor
 		self.addSubview(self.nameLabel)
 		self.nameLabel.snp.makeConstraints { make in
 			make.top.equalToSuperview().offset(AppContraints.midEdge)

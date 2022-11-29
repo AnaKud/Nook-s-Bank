@@ -7,12 +7,13 @@ import SwiftUI
 struct TapBarColor {
 	let selectedColor: UIColor?
 	let unselectedColor: UIColor?
-	init(for screenType: ScreenTypes?) {
+
+	init(for screenType: ScreenType) {
 		switch screenType {
-		case .unloggined:
+		case .unlogined, .additionalScreen:
 			self.selectedColor = #colorLiteral(red: 0.2605174184, green: 0.2605243921, blue: 0.260520637, alpha: 1)
 			self.unselectedColor = #colorLiteral(red: 0.4756349325, green: 0.4756467342, blue: 0.4756404161, alpha: 1)
-		default:
+		case .logined:
 			self.selectedColor = #colorLiteral(red: 0.3490196078, green: 0.4352941176, blue: 0.6823529412, alpha: 1)
 			self.unselectedColor = #colorLiteral(red: 0.4470588235, green: 0.4039215686, blue: 0.3411764706, alpha: 1)
 		}

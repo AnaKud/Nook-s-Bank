@@ -4,7 +4,7 @@
 import UIKit
 
 class BalanceSettingsView: UIView {
-	private lazy var colors = ColorSet(for: .other)
+	private lazy var colors = ColorSet(for: .mainScreen(.additionalScreen))
 
 	private var bellsBalanceLabel = UILabel()
 	private var bellsBalanceTextField = UITextField()

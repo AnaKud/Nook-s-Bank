@@ -1,10 +1,10 @@
-// MainRouter.swift
+// MainAssembly.swift
 // Created by Anastasiya Kudasheva on 05.05.2021.
 
 import UIKit
 
-internal final class MainRouter {
-	private var screenType: ScreenTypes
+final class MainAssembly {
+	private var screenType: ScreenType
 	private let currentTag: Int
 	private let tabbar: UITabBarController
 
@@ -17,7 +17,7 @@ internal final class MainRouter {
 	private let turnipNavigationController: UINavigationController
 	private let turnipViewController: TurnipViewController
 
-	init(screenType: ScreenTypes, tag: Int = 0) {
+	init(screenType: ScreenType, tag: Int = 0) {
 		self.screenType = screenType
 		self.currentTag = tag
 		let colors = TapBarColor(for: screenType)
@@ -50,7 +50,7 @@ internal final class MainRouter {
 		self.turnipViewController.tabBarItem = turnipTabBarItem
 	}
 
-	internal func returnController() -> UITabBarController {
+	func returnController() -> UITabBarController {
 		self.tabbar.selectedIndex = self.currentTag
 		return self.tabbar
 	}

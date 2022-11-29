@@ -5,7 +5,7 @@ import UIKit
 
 class Pin: UIView {
 	private let pin = UIView()
-	private let colorSet = ColorSet.PassCodeViewColor(for: .other)
+	private let colorSet = ColorSet.PassCodeViewColor()
 
 	override init(frame: CGRect) {
 		super.init(frame: frame)

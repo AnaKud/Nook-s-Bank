@@ -1,15 +1,18 @@
 // BankInteractor.swift
 // Created by Anastasiya Kudasheva on 12.03.2022
 
-import Foundation
+import ACErrors
 
-protocol IBankInteractor {
+protocol IBankViewDelegate: AnyObject {
+	func returnCollectionCount() -> Int
+	func returnCollectionItem(index: Int) -> ExpenseViewModel
+}
+
+protocol IBankInteractor: IBankBellsViewCallback {
 	func loadVC(_ view: IBankViewController)
 	func plusButtonTapped()
 	func addExpenseOrIncome(_ value: ExpenseTransition)
 	func returnCurrentAccountValue() -> String
-	func returnCollectionCount() -> Int
-	func returnCollectionItem(index: Int) -> ExpenseViewModel
 }
 
 class BankInteractor {
@@ -28,7 +31,23 @@ class BankInteractor {
 
 extension BankInteractor: IBankInteractor {
 	func plusButtonTapped() {
-		self.presenter.showAddExpenseAlert()
+		let completion: (ExpenseTransition) -> Void = { [weak self] expenseTransition in
+			self?.addExpenseOrIncome(expenseTransition)
+		}
+
+		self.router.presentAddExpenseView(screenType: .bells,
+										  operationType: .plus,
+										  completion: completion)
+	}
+
+	func minusButtonTapped() {
+		let completion: (ExpenseTransition) -> Void = { [weak self] expenseTransition in
+			self?.addExpenseOrIncome(expenseTransition)
+		}
+
+		self.router.presentAddExpenseView(screenType: .bells,
+										  operationType: .minus,
+										  completion: completion)
 	}
 
 	func loadVC(_ vc: IBankViewController) {
@@ -56,17 +75,20 @@ extension BankInteractor: IBankInteractor {
 
 	func returnCollectionItem(index: Int) -> ExpenseViewModel {
 		let item = self.bankVM?.bells?.expenses[index]
-		?? ExpenseViewModel(date: "", value: 0, operationType: .plus, expenseType: .other)
+		?? ExpenseViewModel(date: "", value: 0, currencyType: .bells, operationType: .plus, expenseType: .other)
 		return item
 	}
 
 	func addExpenseOrIncome(_ value: ExpenseTransition) {
-		self.worker.addExpense(value, currentAccountValue: self.bankVM?.bells?.account) { result in
+		self.worker.addExpense(
+			value,
+			currentAccountValue: self.bankVM?.bells?.account
+		) { [weak self] result in
 			switch result {
 			case .success:
-				self.getCurrentUser()
+				self?.getCurrentUser()
 			case .failure(let error):
-				self.presenter.showErrorAlert(error: error, handler: nil)
+				self?.presenter.showErrorAlert(error: error, handler: nil)
 			}
 		}
 	}

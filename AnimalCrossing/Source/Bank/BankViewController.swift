@@ -12,38 +12,22 @@ protocol IBankViewController: INavigator {
 }
 
 class BankViewController: UIPageViewController {
-	var colors: ColorSet {
-		ColorSet(for: self.screenType)
-	}
-	var screenType: ScreenTypes
-	var controllerTitle = AppTitle.Bank.controllerTitle
+	var colors: ColorSet { ColorSet(for: self.screenType) }
+	private(set) var screenType: ScreenType
+	private(set) var controllerTitle = AppTitle.Bank.controllerTitle
 
 	private lazy var topImageView = TopCloudyView(screenType: self.screenType)
-
 	private lazy var bottomImageView = BottomCloudyView(screenType: self.screenType)
 
-	private let contentView = UIView()
 	private let titleLabel = UILabel()
+	private let contentView = UIView()
+	private lazy var bellsView = BankBellsView(callback: self.interactor, screenType: self.screenType)
 
-	private let bankAccountView = UIView()
-	private let coinImageView = UIImageView()
-	private let currentAccountTitleLabel = UILabel()
-	private let currentAccountLabel = UILabel()
-	private let historyTitleLabel = UILabel()
-	private let historyView = UIView()
-	private var expensesCollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout())
-	private let plusButton = UIButton()
-	private var plusImage: UIImage?
 	private var activityIndicatorView = UIActivityIndicatorView()
 
 	private let interactor: IBankInteractor
 
-	private lazy var bankViewDelegate: BankViewDelegate = {
-		BankViewDelegate(interactor: self.interactor,
-						 colors: ColorSet(for: self.screenType))
-	}()
-
-	init(interactor: IBankInteractor, screenType: ScreenTypes) {
+	init(interactor: IBankInteractor, screenType: ScreenType) {
 		self.interactor = interactor
 		self.screenType = screenType
 		super.init(transitionStyle: .pageCurl,
@@ -61,7 +45,6 @@ class BankViewController: UIPageViewController {
 		self.loadUI()
 		self.displayActivity()
 		self.initailInterface()
-		self.dataForUser()
 		self.interactor.loadVC(self)
 	}
 
@@ -103,17 +86,21 @@ class BankViewController: UIPageViewController {
 			make.bottom.equalTo(self.bottomImageView.snp.top).offset(-AppContraints.minEdge)
 		}
 		self.contentView.backgroundColor = .clear
-		if self.screenType != .loginScreen {
-			self.view.addSubview(self.titleLabel)
-			self.titleLabel.snp.makeConstraints { make in
-				make.top.equalTo(self.view).offset(AppContraints.navTitle)
-				make.leading.trailing.equalTo(self.view)
-			}
-			self.titleLabel.text = self.controllerTitle
-			self.titleLabel.textAlignment = .center
-			self.titleLabel.font = ACFont.controllerTitleFont.font
+		
+		self.view.addSubview(self.titleLabel)
+		self.titleLabel.snp.makeConstraints { make in
+			make.top.equalTo(self.view).offset(AppContraints.navTitle)
+			make.leading.trailing.equalTo(self.view)
 		}
+		self.titleLabel.text = self.controllerTitle
+		self.titleLabel.textAlignment = .center
+		self.titleLabel.font = ACFont.controllerTitleFont.font
+
 		self.titleLabel.numberOfLines = 0
+		self.contentView.addSubview(self.bellsView)
+		self.bellsView.snp.makeConstraints { make in
+			make.edges.equalTo(self.contentView)
+		}
 	}
 
 	func setupBottomLayout() {
@@ -144,134 +131,18 @@ class BankViewController: UIPageViewController {
 		self.activityIndicatorView.startAnimating()
 		self.activityIndicatorView.hidesWhenStopped = true
 	}
-
-	private func dataForUser() {
-		switch screenType {
-		case .loggined:
-			currentAccountTitleLabel.text = AppTitle.Bank.currentAccountTitle
-			coinImageView.image = UIImage(named: AppImage.Bank.coinLogin.rawValue)
-			historyTitleLabel.text = AppTitle.Bank.purchaseHistory
-			plusImage = UIImage(named: AppImage.Bank.plusLogin.rawValue)
-		default:
-			currentAccountTitleLabel.text = AppTitle.Bank.demoTitle
-			coinImageView.image = UIImage(named: AppImage.Bank.coinUnLogin.rawValue)
-			historyTitleLabel.text = AppTitle.Bank.demoHistory
-			plusImage = UIImage(named: AppImage.Bank.plusUnlogin.rawValue)
-		}
-	}
-
-	private func setupBankAccountView() {
-		self.contentView.addSubview(bankAccountView)
-		bankAccountView.snp.makeConstraints { make in
-			make.leading.top.equalTo(self.contentView).offset(AppContraints.midEdge)
-			make.trailing.equalTo(self.contentView).offset(-AppContraints.midEdge)
-			make.height.equalTo(AppContraints.Bank.bankAccountViewHeight)
-		}
-		bankAccountView.layer.cornerRadius = AppContraints.standartCornerRadius
-		bankAccountView.backgroundColor = self.colors.bankViewColor.backgroundViewColor
-
-		bankAccountView.addSubview(coinImageView)
-		coinImageView.snp.makeConstraints { make in
-			make.top.leading.equalTo(bankAccountView).offset(AppContraints.minEdge)
-			make.bottom.equalTo(bankAccountView).offset(-AppContraints.minEdge)
-			make.width.equalTo(coinImageView.snp.height)
-		}
-
-		bankAccountView.addSubview(currentAccountTitleLabel)
-		currentAccountTitleLabel.snp.makeConstraints { make in
-			make.leading.equalTo(coinImageView.snp.trailing).offset(AppContraints.midEdge)
-			make.top.equalTo(bankAccountView).offset(AppContraints.minEdge)
-			make.trailing.equalTo(bankAccountView).offset(-AppContraints.minEdge)
-		}
-		currentAccountTitleLabel.font = ACFont.bankAccountFont.font
-		currentAccountTitleLabel.textColor = self.colors.bankViewColor.titleTextColor
-
-		bankAccountView.addSubview(currentAccountLabel)
-		currentAccountLabel.snp.makeConstraints { make in
-			make.leading.equalTo(coinImageView.snp.trailing).offset(AppContraints.midEdge)
-			make.top.equalTo(currentAccountTitleLabel.snp.bottom).offset(AppContraints.minEdge)
-			make.trailing.bottom.equalTo(bankAccountView).offset(-AppContraints.minEdge)
-		}
-		currentAccountLabel.font = ACFont.bankAccountFont.font
-		currentAccountLabel.textColor = self.colors.bankViewColor.itemTextColor
-		currentAccountLabel.text = self.interactor.returnCurrentAccountValue()
-	}
-
-	private func setupPlusButton() {
-		self.contentView.addSubview(plusButton)
-		plusButton.snp.makeConstraints { make in
-			make.centerX.equalTo(contentView)
-			make.bottom.equalTo(contentView).offset(-AppContraints.minEdge)
-			make.height.width.equalTo(AppContraints.Bank.plusButtonHeight)
-		}
-
-		plusButton.setImage(plusImage, for: .normal)
-		plusButton.addTarget(self, action: #selector(plusButtonTapped), for: .touchUpInside)
-	}
-
-	private func setupViewForCollection() {
-		self.contentView.addSubview(historyView)
-		historyView.snp.makeConstraints { make in
-			make.top.equalTo(bankAccountView.snp.bottom).offset(AppContraints.midEdge)
-			make.leading.equalTo(self.contentView).offset(AppContraints.midEdge)
-			make.trailing.equalTo(self.contentView).offset(-AppContraints.midEdge)
-			make.bottom.equalTo(plusButton.snp.top).offset(-AppContraints.midEdge)
-		}
-		historyView.layer.cornerRadius = AppContraints.standartCornerRadius
-		historyView.backgroundColor = self.colors.bankViewColor.backgroundViewColor
-		historyView.layer.masksToBounds = true
-
-		historyView.addSubview(historyTitleLabel)
-		historyTitleLabel.snp.makeConstraints { make in
-			make.leading.equalTo(historyView).offset(AppContraints.midEdge)
-			make.top.equalTo(historyView).offset(AppContraints.minEdge)
-			make.trailing.equalTo(historyView).offset(-AppContraints.midEdge)
-		}
-		historyTitleLabel.font = ACFont.bankAccountFont.font
-		historyTitleLabel.textColor = self.colors.bankViewColor.titleTextColor
-
-		historyView.addSubview(expensesCollectionView)
-		expensesCollectionView.snp.makeConstraints { make in
-			make.top.equalTo(historyTitleLabel.snp.bottom).offset(AppContraints.minEdge)
-			make.leading.trailing.bottom.equalTo(historyView)
-		}
-		expensesCollectionView.backgroundColor = .clear
-	}
-
-	private func setupCollectionView() {
-		self.expensesCollectionView.delegate = self.bankViewDelegate
-		self.expensesCollectionView.dataSource = self.bankViewDelegate
-		let layout = UICollectionViewFlowLayout()
-		layout.scrollDirection = .vertical
-		layout.minimumLineSpacing = AppContraints.midEdge
-		expensesCollectionView.collectionViewLayout = layout
-		expensesCollectionView.register(ExpenseCollectionViewCell.self,
-										forCellWithReuseIdentifier: CellReusibleID.expense.rawValue)
-	}
 }
 
 extension BankViewController: IBankViewController {
 	func initailInterface() {
-		bankAccountView.isHidden = true
-		coinImageView.isHidden = true
-		historyView.isHidden = true
-		expensesCollectionView.isHidden = true
-		plusButton.isHidden = true
-		activityIndicatorView.isHidden = false
+		self.bellsView.isHidden = true
+		self.activityIndicatorView.isHidden = false
 	}
 
 	func interfaceWithData() {
-		self.setupBankAccountView()
-		self.setupPlusButton()
-		self.setupViewForCollection()
-		self.setupCollectionView()
-		bankAccountView.isHidden = false
-		coinImageView.isHidden = false
-		historyView.isHidden = false
-		expensesCollectionView.isHidden = false
-		plusButton.isHidden = false
-		activityIndicatorView.stopAnimating()
-		activityIndicatorView.isHidden = true
+		self.bellsView.isHidden = false
+		self.activityIndicatorView.stopAnimating()
+		self.activityIndicatorView.isHidden = true
 	}
 
 	func showAddExpenseAlert() {
@@ -298,7 +169,7 @@ extension BankViewController: IBankViewController {
 				  let valueString = valueTextField.text,
 				  let valueInt = Int(valueString)
 			else { return }
-			let newExpense = ExpenseTransition(value: valueInt, operationType: .minus, expenseType: ExpenseType.random())
+			let newExpense = ExpenseTransition(value: valueInt, currencyType: .bells, operationType: .minus, expenseType: ExpenseType.random())
 			self.interactor.addExpenseOrIncome(newExpense)
 		}
 
@@ -308,7 +179,7 @@ extension BankViewController: IBankViewController {
 				  let valueInt = Int(valueString)
 			else { return }
 
-			let newExpense = ExpenseTransition(value: valueInt, operationType: .plus, expenseType: ExpenseType.random())
+			let newExpense = ExpenseTransition(value: valueInt, currencyType: .bells, operationType: .plus, expenseType: ExpenseType.random())
 			self.interactor.addExpenseOrIncome(newExpense)
 		}
 
@@ -322,15 +193,11 @@ extension BankViewController: IBankViewController {
 	}
 
 	func setNewTotalAccountValue(_ value: String) {
-		DispatchQueue.main.async {
-			self.currentAccountLabel.text = value
-		}
+		self.bellsView.setNewTotalAccountValue(value)
 	}
 
 	func refreshCollectionView() {
-		DispatchQueue.main.async {
-			self.expensesCollectionView.reloadData()
-		}
+		self.bellsView.refreshCollectionView()
 	}
 
 	func showErrorAlert(title: String?, message: String, handler: (() -> Void)?) {
@@ -342,12 +209,6 @@ extension BankViewController: IBankViewController {
 		}
 		alert.addAction(action)
 		self.present(alert, animated: true)
-	}
-}
-
-@objc extension BankViewController {
-	func plusButtonTapped(sender: UIButton) {
-		self.interactor.plusButtonTapped()
 	}
 }
 

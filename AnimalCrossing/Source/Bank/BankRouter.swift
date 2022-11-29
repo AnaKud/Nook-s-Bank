@@ -9,6 +9,9 @@ import Foundation
 
 protocol IBankRouter {
 	func loadNavigator(_ navigator: INavigator)
+	func presentAddExpenseView(screenType: LoginedScreenType,
+							   operationType: OperationType,
+							   completion: @escaping (ExpenseTransition) -> Void)
 	func popToViewController()
 }
 
@@ -21,5 +24,14 @@ class BankRouter: IBankRouter {
 
 	func popToViewController() {
 		self.navigator?.popToRootVC(animated: true)
+	}
+
+	func presentAddExpenseView(screenType: LoginedScreenType,
+							   operationType: OperationType,
+							   completion: @escaping (ExpenseTransition) -> Void) {
+		let nextVC = AddExpenseAssembly.build(screenType: screenType,
+											  operationType: operationType,
+											  completion: completion)
+		self.navigator?.presentNextVC(nextVC, presentationStyle: .popover, animated: true)
 	}
 }

@@ -4,7 +4,7 @@
 import Foundation
 
 class TurnipAssembly {
-	func build(screenType: ScreenTypes) -> TurnipViewController {
+	func build(screenType: ScreenType) -> TurnipViewController {
 		let firebaseManager: ITurnipFireBaseManager = FireBaseManager.shared
 		let coreDataManger: ITurnipCoreDataManager = CoreDataManager.shared
 		var router: ITurnipRouter = TurnipRouter()

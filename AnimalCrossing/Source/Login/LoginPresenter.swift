@@ -1,10 +1,10 @@
 // LoginPresenter.swift
 // Created by Anastasiya Kudasheva on 10.06.2021.
 
-import Foundation
+import ACErrors
 
 protocol ILoginPresenter: AnyObject, ILoginViewControllerSender {
-	func presentScreen(forScreenType screenType: ScreenTypes)
+	func presentScreen(for screen: Screen)
 	func showError(with message: ACError, completion: (() -> Void)?)
 	func showSuccessEmailReminderAlert()
 }
@@ -24,8 +24,8 @@ extension LoginPresenter: ILoginPresenter {
 									   completion: completion)
 	}
 
-	func presentScreen(forScreenType screenType: ScreenTypes) {
-		switch screenType {
+	func presentScreen(for screen: Screen) {
+		switch screen {
 		case .loginScreen:
 			self.viewController?.setupFullLoginView()
 		default:

@@ -10,8 +10,7 @@ protocol ILoginViewController: INavigator, IAlertOnVC {
 }
 
 class LoginViewController: UIViewController {
-	private lazy var colors = ColorSet(for: self.screenType)
-	private var screenType: ScreenTypes?
+	private var screen: Screen?
 
 	private var interactor: ILoginInteractor
 
@@ -49,13 +48,13 @@ class LoginViewController: UIViewController {
 	}
 
 	func setupFullLoginView() {
-		self.screenType = .loginScreen
+		self.screen = .loginScreen(.full)
 		self.fullLoginView.setupCallBack(self.interactor)
 		self.view = self.fullLoginView
 	}
 
 	func setupSimpleLoginView() {
-		self.screenType = .other
+		self.screen = .loginScreen(.simple)
 		self.simpleLoginView.setupCallBack(self.interactor)
 		self.simpleLoginView.clearPinView()
 		self.view = self.simpleLoginView
@@ -68,7 +67,7 @@ extension LoginViewController: ILoginViewController {
 			let alert = CustomAlertController(title: title,
 											  message: message,
 											  preferredStyle: .alert)
-			alert.changeAlertColors(for: self.screenType)
+			alert.changeAlertColors(for: self.screen)
 			let cancelAction = UIAlertAction(title: "Ok", style: .cancel) { _ in completion?() }
 			alert.addAction(cancelAction)
 			self.present(alert, animated: true)

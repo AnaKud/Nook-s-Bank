@@ -1,7 +1,7 @@
 // NewsPresenter.swift
 // Created by Anastasiya Kudasheva on 11.06.2021.
 
-import Foundation
+import ACErrors
 
 protocol INewsPresenter: AnyObject {
 	func setupVC(_ controller: NewsViewController?)

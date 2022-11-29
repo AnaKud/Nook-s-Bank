@@ -32,11 +32,11 @@ class BankDemoDataBase: IBankDataBaseManager {
 private extension BankDemoDataBase {
 	static func makeDemoAccount() -> BankAccountDto {
 		let expenses = [
-			ExpenseDto(value: 1452, operationType: .plus),
-			ExpenseDto(value: 1248, operationType: .minus),
-			ExpenseDto(value: 3248, operationType: .minus),
-			ExpenseDto(value: 74_532, operationType: .plus),
-			ExpenseDto(value: 29_012, operationType: .plus)
+			ExpenseDto(value: 1452, currencyType: .bells, operationType: .plus),
+			ExpenseDto(value: 1248, currencyType: .bells, operationType: .minus),
+			ExpenseDto(value: 3248, currencyType: .bells, operationType: .minus),
+			ExpenseDto(value: 74_532, currencyType: .bells, operationType: .plus),
+			ExpenseDto(value: 29_012, currencyType: .bells, operationType: .plus)
 		]
 		return BankAccountDto(
 							  bells: CurrencyDto(account: 0,
